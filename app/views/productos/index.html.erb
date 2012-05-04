@@ -1,0 +1,39 @@
+
+	<legend>Listando productos</legend>
+
+	<table class="table table-bordered table-stripped">
+		<thead>
+	  		<tr>
+				<th>C&oacute;digo</th>
+				<th>Nombre</th>
+				<th>Descripci&oacute;n</th>
+				<th>Detalle</th>
+				<th>Precio</th>
+				<th>Referencia</th>
+				<th>Disponible</th>
+				<th>Publicado</th>
+				<th colspan="3"></th>
+	  		</tr>
+		</thead>
+		<tbody>
+			<% @productos.each do |producto| %>
+	  			<tr>
+					<td><%= producto.codigo %></td>
+					<td><%= producto.nombre %></td>
+					<td><%= producto.descripcion %></td>
+					<td><%= producto.detalle %></td>
+					<td><%= producto.precio %></td>
+					<td><%= producto.referencia %></td>
+					<td><%= producto.disponible %></td>
+					<td><%= producto.publicado %></td>
+					<td><%= link_to 'Ver', producto %></td>
+					<td><%= link_to 'Editar', edit_producto_path(producto) %></td>
+					<td><%= link_to 'Destruir', producto, confirm: '¿Estás seguro?', method: :delete %></td>
+	  			</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<div class="form-actions">
+		<%= link_to 'Nuevo Producto', new_producto_path, :class => 'btn btn-primary' %>		
+	</div>
