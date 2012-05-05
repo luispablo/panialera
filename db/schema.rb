@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120504221625) do
+ActiveRecord::Schema.define(:version => 20120505004409) do
+
+  create_table "barrios", :force => true do |t|
+    t.string   "nombre"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "categorias", :force => true do |t|
     t.string   "codigo"
