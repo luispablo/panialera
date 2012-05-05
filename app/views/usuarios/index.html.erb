@@ -1,0 +1,36 @@
+
+	<legend>Listando usuarios</legend>
+
+	<table class="table table-bordered table-stripped">
+		<thead>
+  			<tr>
+			    <th>Nombre</th>
+			    <th>Apellido</th>
+			    <th>Sexo</th>
+			    <th>Tel&eacute;fono particular</th>
+			    <th>Tel&eacute;fono celular</th>
+			    <th>e-mail</th>
+			    <th colspan="3"></th>
+  			</tr>
+		</thead>
+		<tbody>
+			<% @usuarios.each do |usuario| %>
+  				<tr>
+				    <td><%= usuario.nombre %></td>
+				    <td><%= usuario.apellido %></td>
+				    <td><%= usuario.sexo %></td>
+				    <td><%= usuario.tel_particular %></td>
+				    <td><%= usuario.tel_celular %></td>
+				    <td><%= usuario.email %></td>
+				    <td><%= link_to 'Ver', usuario %></td>
+				    <td><%= link_to 'Editar', edit_usuario_path(usuario) %></td>
+				    <td><%= link_to 'Destruir', usuario, confirm: '¿Estás seguro?', method: :delete %></td>
+  				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<div class="form-actions">
+		<%= link_to 'Nuevo Usuario', new_usuario_path, :class => 'btn btn-primary' %>
+	</div>
+

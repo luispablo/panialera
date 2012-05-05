@@ -1,4 +1,6 @@
 Panialera::Application.routes.draw do
+  resources :usuarios
+
   resources :productos
 
   # You can have the root of your site routed with "root"

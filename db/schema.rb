@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120504214040) do
+ActiveRecord::Schema.define(:version => 20120504221625) do
 
   create_table "categorias", :force => true do |t|
     t.string   "codigo"
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(:version => 20120504214040) do
     t.boolean  "publicado"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "usuarios", :force => true do |t|
+    t.string   "nombre"
+    t.string   "apellido"
+    t.string   "sexo"
+    t.string   "tel_particular"
+    t.string   "tel_celular"
+    t.string   "email"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
 end
