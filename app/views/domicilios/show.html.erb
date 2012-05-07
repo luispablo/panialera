@@ -39,6 +39,10 @@
   <b>Barrio:</b>
   <%= @domicilio.barrio.nombre unless @domicilio.barrio.nil? %>
 </p>
+<p>
+	<b>Usuario:</b>
+	<%= @domicilio.usuario.apellido unless @domicilio.usuario.nil? %>
+</p>
 
 
 <%= link_to 'Editar', edit_domicilio_path(@domicilio) %> |

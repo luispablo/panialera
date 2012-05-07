@@ -12,6 +12,7 @@
 				<th>Entre calles</th>
 				<th>C&oacute;digo postal</th>
 				<th>Barrio</th>
+				<th>Usuario</th>
 				<th colspan="3"></th>
 			</tr>
 		</thead>
@@ -26,6 +27,7 @@
 			    <td><%= domicilio.entre_calles %></td>
 			    <td><%= domicilio.codigo_postal %></td>
 			    <td><%= domicilio.barrio.nombre unless domicilio.barrio.nil? %></td>
+			    <td><%= domicilio.usuario.apellido unless domicilio.usuario.nil? %></td>
 			    <td><%= link_to 'Ver', domicilio %></td>
 			    <td><%= link_to 'Editar', edit_domicilio_path(domicilio) %></td>
 			    <td><%= link_to 'Destruir', domicilio, confirm: '¿Estás seguro?', method: :delete %></td>

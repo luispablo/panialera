@@ -14,5 +14,7 @@
 #
 
 class Usuario < ActiveRecord::Base
+  has_many :domicilios
+  
   validates :nombre, :apellido, :email, :presence => { :message => ' es un campo requerido.'}
 end

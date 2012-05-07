@@ -29,6 +29,10 @@
 		    		<%= f.label :piso, :class => 'control-label' %>
 		    		<div class="controls"><%= f.text_field :piso %></div>
 		  		</div>
+		  		<div class="control-group">
+		  			<%= f.label :usuario, :class => 'control-label' %>
+		  			<div class="controls"><%= f.select :usuario_id, Usuario.all.map { |u| [u.apellido, u.id] } %></div>
+		  		</div>
 			</div>
 			<div class="span6">
 				<div class="control-group">
