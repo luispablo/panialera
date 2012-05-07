@@ -14,7 +14,7 @@
 				    <td><%= barrio.nombre %></td>
 				    <td><%= link_to 'Ver', barrio %></td>
 				    <td><%= link_to 'Editar', edit_barrio_path(barrio) %></td>
-				    <td><%= link_to 'Destruir', barrio, confirm: 'Are you sure?', method: :delete %></td>
+				    <td><%= link_to 'Destruir', barrio, confirm: '¿Estás seguro?', method: :delete %></td>
 			  	</tr>
 			<% end %>
 		</tbody>

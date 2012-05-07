@@ -1,0 +1,56 @@
+
+	<%= form_for(@domicilio, :html => {:class => 'form-horizontal'}) do |f| %>
+  		<% if @domicilio.errors.any? %>
+  			<div class="row">
+  				<div class="span6 offset3">
+					<% @domicilio.errors.full_messages.each do |msg| %>
+						<span class="label label-important"><%= msg %></span><br/>
+					<% end %>
+  				</div>
+  			</div>
+			<br/>
+  		<% end %>
+
+		<div class="row">
+			<div class="span6">
+				<div class="control-group">
+		    		<%= f.label :nombre, :class => 'control-label' %>
+		    		<div class="controls"><%= f.text_field :nombre %></div>
+		  		</div>
+				<div class="control-group">
+		    		<%= f.label :calle, :class => 'control-label' %>
+		    		<div class="controls"><%= f.text_field :calle %></div>
+		  		</div>
+				<div class="control-group">
+		    		<%= f.label :numero, :class => 'control-label' %>
+		    		<div class="controls"><%= f.number_field :numero %></div>
+		  		</div>
+				<div class="control-group">
+		    		<%= f.label :piso, :class => 'control-label' %>
+		    		<div class="controls"><%= f.text_field :piso %></div>
+		  		</div>
+			</div>
+			<div class="span6">
+				<div class="control-group">
+		    		<%= f.label :depto, :class => 'control-label' %>
+		    		<div class="controls"><%= f.text_field :depto %></div>
+		  		</div>
+				<div class="control-group">
+		    		<%= f.label :entre_calles, :class => 'control-label' %>
+		    		<div class="controls"><%= f.text_field :entre_calles %></div>
+		  		</div>
+				<div class="control-group">
+		    		<%= f.label :codigo_postal, :class => 'control-label' %>
+		    		<div class="controls"><%= f.text_field :codigo_postal %></div>
+		  		</div>
+				<div class="control-group">
+		    		<%= f.label :barrio, :class => 'control-label' %>
+		    		<div class="controls"><%= f.select :barrio_id, Barrio.all.map { |b| [b.nombre, b.id] } %></div>
+		  		</div>
+			</div>
+		</div>
+  		
+  		<div class="form-actions">
+    		<%= f.submit 'Grabar', :class => 'btn btn-primary' %>
+  		</div>
+	<% end %>

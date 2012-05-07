@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @domicilio.nombre %>
+</p>
+
+<p>
+  <b>Calle:</b>
+  <%= @domicilio.calle %>
+</p>
+
+<p>
+  <b>Numero:</b>
+  <%= @domicilio.numero %>
+</p>
+
+<p>
+  <b>Piso:</b>
+  <%= @domicilio.piso %>
+</p>
+
+<p>
+  <b>Depto:</b>
+  <%= @domicilio.depto %>
+</p>
+
+<p>
+  <b>Entre calles:</b>
+  <%= @domicilio.entre_calles %>
+</p>
+
+<p>
+  <b>Codigo postal:</b>
+  <%= @domicilio.codigo_postal %>
+</p>
+
+<p>
+  <b>Barrio:</b>
+  <%= @domicilio.barrio.nombre unless @domicilio.barrio.nil? %>
+</p>
+
+
+<%= link_to 'Editar', edit_domicilio_path(@domicilio) %> |
+<%= link_to 'Volver', domicilios_path %>
