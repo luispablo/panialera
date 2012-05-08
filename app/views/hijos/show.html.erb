@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @hijo.nombre %>
+</p>
+
+<p>
+  <b>Apellido:</b>
+  <%= @hijo.apellido %>
+</p>
+
+<p>
+  <b>Fecha nacimiento:</b>
+  <%= @hijo.fecha_nacimiento %>
+</p>
+
+<p>
+  <b>Sexo:</b>
+  <%= @hijo.sexo %>
+</p>
+
+<p>
+  <b>Usa paniales:</b>
+  <%= @hijo.usa_paniales %>
+</p>
+
+<p>
+  <b>Usuario:</b>
+  <%= @hijo.usuario.apellido unless @hijo.usuario.nil? %>
+</p>
+
+
+<%= link_to 'Editar', edit_hijo_path(@hijo) %> |
+<%= link_to 'Volver', hijos_path %>

@@ -1,4 +1,6 @@
 Panialera::Application.routes.draw do
+  resources :hijos
+
   resources :vales
 
   resources :domicilios

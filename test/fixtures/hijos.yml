@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: hijos
+#
+#  id               :integer         not null, primary key
+#  nombre           :string(255)
+#  apellido         :string(255)
+#  fecha_nacimiento :date
+#  sexo             :string(255)
+#  usa_paniales     :boolean
+#  usuario_id       :integer
+#  created_at       :datetime        not null
+#  updated_at       :datetime        not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre: MyString
+  apellido: MyString
+  fecha_nacimiento: 2012-05-08
+  sexo: MyString
+  usa_paniales: false
+  usuario: 
+
+two:
+  nombre: MyString
+  apellido: MyString
+  fecha_nacimiento: 2012-05-08
+  sexo: MyString
+  usa_paniales: false
+  usuario: 

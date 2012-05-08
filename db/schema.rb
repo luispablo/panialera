@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120507235615) do
+ActiveRecord::Schema.define(:version => 20120508220857) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(:version => 20120507235615) do
   end
 
   add_index "domicilios", ["barrio_id"], :name => "index_domicilios_on_barrio_id"
+
+  create_table "hijos", :force => true do |t|
+    t.string   "nombre"
+    t.string   "apellido"
+    t.date     "fecha_nacimiento"
+    t.string   "sexo"
+    t.boolean  "usa_paniales"
+    t.integer  "usuario_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "hijos", ["usuario_id"], :name => "index_hijos_on_usuario_id"
 
   create_table "productos", :force => true do |t|
     t.string   "codigo"

@@ -1,0 +1,42 @@
+
+	<%= form_for(@hijo, :html => {:class => 'form-horizontal'}) do |f| %>
+  		<% if @hijo.errors.any? %>
+  			<div class="row">
+  				<div class="span6 offset3">
+					<% @hijo.errors.full_messages.each do |msg| %>
+						<span class="label label-important"><%= msg %></span><br/>
+					<% end %>
+  				</div>
+  			</div>
+			<br/>
+  		<% end %>
+
+		<div class="control-group">
+	    	<%= f.label :nombre, :class => 'control-label' %>
+	    	<div class="controls"><%= f.text_field :nombre %></div>
+	  	</div>
+		<div class="control-group">
+		    <%= f.label :apellido, :class => 'control-label' %>
+	    	<div class="controls"><%= f.text_field :apellido %></div>
+	  	</div>
+		<div class="control-group">
+		    <%= f.label :fecha_nacimiento, :class => 'control-label' %>
+	    	<div class="controls"><%= f.date_select :fecha_nacimiento, {:include_blank => true}, {:class => 'span1'} %></div>
+	  	</div>
+		<div class="control-group">
+		    <%= f.label :sexo, :class => 'control-label' %>
+	    	<div class="controls"><%= f.text_field :sexo %></div>
+	  	</div>
+		<div class="control-group">
+		    <%= f.label :usa_paniales, :class => 'control-label' %>
+	    	<div class="controls"><%= f.check_box :usa_paniales %></div>
+	  	</div>
+		<div class="control-group">
+		    <%= f.label :usuario, :class => 'control-label' %>
+	    	<div class="controls"><%= f.select :usuario_id, Usuario.all.map { |u| [u.apellido, u.id]} %></div>
+	  	</div>
+	  	
+	  	<div class="form-actions">
+	    	<%= f.submit 'Grabar', :class => 'btn btn-primary' %>
+	  	</div>
+	<% end %>

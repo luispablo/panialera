@@ -1,0 +1,35 @@
+
+	<legend>Listando hijos</legend>
+
+	<table class="table table-bordered table-stripped">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Fecha nacimiento</th>
+				<th>Sexo</th>
+				<th>Usa pañales</th>
+				<th>Padre / Madre</th>
+				<th colspan="3"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @hijos.each do |hijo| %>
+				<tr>
+				    <td><%= hijo.nombre %></td>
+				    <td><%= hijo.apellido %></td>
+				    <td><%= hijo.fecha_nacimiento %></td>
+				    <td><%= hijo.sexo %></td>
+				    <td><%= hijo.usa_paniales %></td>
+				    <td><%= hijo.usuario.apellido unless hijo.usuario.nil? %></td>
+				    <td><%= link_to 'Ver', hijo %></td>
+				    <td><%= link_to 'Editar', edit_hijo_path(hijo) %></td>
+				    <td><%= link_to 'Destruir', hijo, confirm: '¿Estás seguro?', method: :delete %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<div class="form-actions">
+		<%= link_to 'Nuevo Hijo', new_hijo_path, :class => 'btn btn-primary' %>
+	</div>
