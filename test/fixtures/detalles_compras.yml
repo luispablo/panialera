@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: detalles_compras
+#
+#  id          :integer         not null, primary key
+#  compra_id   :integer
+#  producto_id :integer
+#  cantidad    :integer
+#  precio      :float
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  compra: 
+  producto: 
+  cantidad: 1
+  precio: 1.5
+
+two:
+  compra: 
+  producto: 
+  cantidad: 1
+  precio: 1.5

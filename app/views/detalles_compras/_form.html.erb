@@ -1,0 +1,35 @@
+
+	<%= form_for(@detalle_compra, :html => {:class => 'form-horizontal'}) do |f| %>
+  		<% if @detalle_compra.errors.any? %>
+  			<div class="row">
+  				<div class="span6 offset3">
+					<% @detalle_compra.errors.full_messages.each do |msg| %>
+						<span class="label label-important"><%= msg %></span><br/>
+					<% end %>
+  				</div>
+  			</div>
+			<br/>
+  		<% end %>
+
+  		<div class="control-group">
+    		<%= f.label :compra, :class => 'control-label' %>
+    		<div class="controls"><%= f.select :compra_id, Compra.all.map { |c| [c.fecha, c.id]} %></div>
+  		</div>
+  		<div class="control-group">
+    		<%= f.label :producto, :class => 'control-label' %>
+    		<div class="controls"><%= f.select :producto_id, Producto.all.map { |p| [p.nombre, p.id]} %></div>
+  		</div>
+  		<div class="control-group">
+    		<%= f.label :cantidad, :class => 'control-label' %>
+    		<div class="controls"><%= f.number_field :cantidad %></div>
+  		</div>
+  		<div class="control-group">
+    		<%= f.label :precio, :class => 'control-label' %>
+    		<div class="controls"><%= f.text_field :precio %></div>
+  		</div>
+  		
+  		<div class="form-actions">
+    		<%= f.submit 'Grabar', :class => 'btn btn-primary' %>
+  		</div>
+  		
+	<% end %>

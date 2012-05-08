@@ -1,0 +1,31 @@
+
+	<legend>Listando detalles de compras</legend>
+
+	<table class="table table-bordered table-stripped">
+		<thead>
+			<tr>
+				<th>Compra</th>
+				<th>Producto</th>
+				<th>Cantidad</th>
+				<th>Precio</th>
+				<th colspan="3"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @detalles_compras.each do |detalle_compra| %>
+  				<tr>
+				    <td><%= detalle_compra.compra.fecha unless detalle_compra.compra.nil? %></td>
+				    <td><%= detalle_compra.producto.nombre unless detalle_compra.producto.nil? %></td>
+				    <td><%= detalle_compra.cantidad %></td>
+				    <td><%= detalle_compra.precio %></td>
+				    <td><%= link_to 'Ver', detalle_compra %></td>
+				    <td><%= link_to 'Editar', edit_detalle_compra_path(detalle_compra) %></td>
+				    <td><%= link_to 'Destruir', detalle_compra, confirm: '¿Estás seguro?', method: :delete %></td>
+  				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<div class="form-actions">
+		<%= link_to 'Nuevo Detalle de compra', new_detalle_compra_path, :class => 'btn btn-primary' %>
+	</div>

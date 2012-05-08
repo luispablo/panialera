@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Compra:</b>
+  <%= @detalle_compra.compra.fecha unless @detalle_compra.compra.nil? %>
+</p>
+
+<p>
+  <b>Producto:</b>
+  <%= @detalle_compra.producto.nombre unless @detalle_compra.producto.nil? %>
+</p>
+
+<p>
+  <b>Cantidad:</b>
+  <%= @detalle_compra.cantidad %>
+</p>
+
+<p>
+  <b>Precio:</b>
+  <%= @detalle_compra.precio %>
+</p>
+
+
+<%= link_to 'Editar', edit_detalle_compra_path(@detalle_compra) %> |
+<%= link_to 'Volver', detalles_compras_path %>
