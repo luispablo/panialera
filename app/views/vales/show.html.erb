@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Codigo:</b>
+  <%= @vale.codigo %>
+</p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @vale.nombre %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @vale.descripcion %>
+</p>
+
+<p>
+  <b>Valor:</b>
+  <%= @vale.valor %>
+</p>
+
+
+<%= link_to 'Editar', edit_vale_path(@vale) %> |
+<%= link_to 'Volver', vales_path %>

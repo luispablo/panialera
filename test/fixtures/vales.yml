@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: vales
+#
+#  id          :integer         not null, primary key
+#  codigo      :string(255)
+#  nombre      :string(255)
+#  descripcion :string(255)
+#  valor       :float
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  codigo: MyString
+  nombre: MyString
+  descripcion: MyString
+  valor: 1.5
+
+two:
+  codigo: MyString
+  nombre: MyString
+  descripcion: MyString
+  valor: 1.5

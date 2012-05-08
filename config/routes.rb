@@ -1,4 +1,6 @@
 Panialera::Application.routes.draw do
+  resources :vales
+
   resources :domicilios
 
   resources :barrios

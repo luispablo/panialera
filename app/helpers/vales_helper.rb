@@ -1,0 +1,2 @@
+module ValesHelper
+end

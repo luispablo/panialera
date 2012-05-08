@@ -1,0 +1,31 @@
+
+	<legend>Listando vales</legend>
+
+	<table class="table table-bordered table-stripped">
+		<thead>
+			<tr>
+				<th>C&oacute;digo</th>
+				<th>Nombre</th>
+				<th>Descripci&oacute;n</th>
+				<th>Valor</th>
+				<th colspan="3"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @vales.each do |vale| %>
+  				<tr>
+				    <td><%= vale.codigo %></td>
+				    <td><%= vale.nombre %></td>
+				    <td><%= vale.descripcion %></td>
+				    <td><%= vale.valor %></td>
+				    <td><%= link_to 'Ver', vale %></td>
+				    <td><%= link_to 'Editar', edit_vale_path(vale) %></td>
+				    <td><%= link_to 'Destruir', vale, confirm: '¿Estás seguro?', method: :delete %></td>
+  				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<div class="form-actions">
+		<%= link_to 'Nuevo Vale', new_vale_path, :class => 'btn btn-primary' %>
+	</div>
