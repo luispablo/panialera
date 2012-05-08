@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @compra.fecha %>
+</p>
+
+<p>
+  <b>Usuario:</b>
+  <%= @compra.usuario.apellido unless @compra.usuario.nil? %>
+</p>
+
+<p>
+  <b>Domicilio:</b>
+  <%= @compra.domicilio.nombre unless @compra.domicilio.nil? %>
+</p>
+
+
+<%= link_to 'Editar', edit_compra_path(@compra) %> |
+<%= link_to 'Volver', compras_path %>

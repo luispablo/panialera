@@ -1,0 +1,29 @@
+
+	<legend>Listando compras</legend>
+
+	<table class="table table-bordered table-stripped">
+		<thead>
+  			<tr>
+			    <th>Fecha</th>
+			    <th>Usuario</th>
+			    <th>Domicilio</th>
+			    <th colspan="3"></th>
+  			</tr>
+		</thead>
+		<tbody>
+			<% @compras.each do |compra| %>
+  				<tr>
+				    <td><%= compra.fecha %></td>
+				    <td><%= compra.usuario.apellido unless compra.usuario.nil? %></td>
+				    <td><%= compra.domicilio.nombre unless compra.domicilio.nil? %></td>
+				    <td><%= link_to 'Ver', compra %></td>
+				    <td><%= link_to 'Editar', edit_compra_path(compra) %></td>
+				    <td><%= link_to 'Destruir', compra, confirm: '¿Estás seguro?', method: :delete %></td>
+  				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<div class="form-actions">
+		<%= link_to 'Nueva Compra', new_compra_path, :class => 'btn btn-primary' %>
+	</div>

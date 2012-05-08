@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: compras
+#
+#  id           :integer         not null, primary key
+#  fecha        :datetime
+#  usuario_id   :integer
+#  domicilio_id :integer
+#  created_at   :datetime        not null
+#  updated_at   :datetime        not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fecha: 2012-05-08 19:25:18
+  usuario: 
+  domicilio: 
+
+two:
+  fecha: 2012-05-08 19:25:18
+  usuario: 
+  domicilio: 

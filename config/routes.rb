@@ -1,4 +1,6 @@
 Panialera::Application.routes.draw do
+  resources :compras
+
   resources :hijos
 
   resources :vales
