@@ -13,6 +13,7 @@
 #  publicado   :boolean
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
+#  marca_id    :integer
 #
 
 require 'test_helper'

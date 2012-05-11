@@ -1,0 +1,23 @@
+
+	<%= form_for(@marca, :html => {:class => 'form-horizontal'}) do |f| %>
+  		<% if @marca.errors.any? %>
+  			<div class="row">
+  				<div class="span6 offset3">
+					<% @marca.errors.full_messages.each do |msg| %>
+						<span class="label label-important"><%= msg %></span><br/>
+					<% end %>
+  				</div>
+  			</div>
+			<br/>
+  		<% end %>
+
+  		<div class="control-group">
+    		<%= f.label :nombre, :class => 'control-label' %>
+    		<div class="controls"><%= f.text_field :nombre %></div>
+  		</div>
+  		
+  		<div class="form-actions">
+    		<%= f.submit 'Grabar', :class => 'btn btn-primary'%>
+  		</div>
+  		
+	<% end %>

@@ -5,6 +5,7 @@
 		<thead>
 	  		<tr>
 				<th>C&oacute;digo</th>
+	  			<th>Marca</th>
 				<th>Nombre</th>
 				<th>Descripci&oacute;n</th>
 				<th>Detalle</th>
@@ -19,6 +20,7 @@
 			<% @productos.each do |producto| %>
 	  			<tr>
 					<td><%= producto.codigo %></td>
+					<td><%= producto.marca.nombre unless producto.marca.nil? %></td>
 					<td><%= producto.nombre %></td>
 					<td><%= producto.descripcion %></td>
 					<td><%= producto.detalle %></td>

@@ -1,6 +1,4 @@
-class HijosController < ApplicationController
-  layout 'admin'
-  
+class HijosController < AdminController
   # GET /hijos
   # GET /hijos.json
   def index

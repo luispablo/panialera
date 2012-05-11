@@ -1,6 +1,4 @@
-class CategoriasController < ApplicationController
-  layout 'admin'
-  
+class CategoriasController < AdminController
   # GET /categorias
   # GET /categorias.json
   def index

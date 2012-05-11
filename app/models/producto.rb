@@ -13,8 +13,10 @@
 #  publicado   :boolean
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
+#  marca_id    :integer
 #
 
 class Producto < ActiveRecord::Base
+  belongs_to :marca
   validates :codigo, :nombre, :precio, :presence => { :message => "es un campo requerido." } 
 end

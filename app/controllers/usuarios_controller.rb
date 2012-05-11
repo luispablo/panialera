@@ -1,6 +1,4 @@
-class UsuariosController < ApplicationController
-  layout 'admin'
-  
+class UsuariosController < AdminController
   # GET /usuarios
   # GET /usuarios.json
   def index

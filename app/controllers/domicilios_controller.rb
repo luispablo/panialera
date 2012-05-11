@@ -1,6 +1,4 @@
-class DomiciliosController < ApplicationController
-  layout 'admin'
-  
+class DomiciliosController < AdminController
   # GET /domicilios
   # GET /domicilios.json
   def index

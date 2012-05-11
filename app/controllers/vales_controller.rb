@@ -1,6 +1,4 @@
-class ValesController < ApplicationController
-	layout 'admin'
-	
+class ValesController < AdminController
   # GET /vales
   # GET /vales.json
   def index

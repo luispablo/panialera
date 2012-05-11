@@ -1,0 +1,25 @@
+
+	<legend>Listando marcas</legend>
+
+	<table class="table table-bordered table-stripped">
+		<thead>
+  			<tr>
+    			<th>Nombre</th>
+    			<th colspan="3"></th>
+  			</tr>
+		</thead>
+		<tbody>
+			<% @marcas.each do |marca| %>
+  				<tr>
+				    <td><%= marca.nombre %></td>
+				    <td><%= link_to 'Ver', marca %></td>
+				    <td><%= link_to 'Editar', edit_marca_path(marca) %></td>
+				    <td><%= link_to 'Destruir', marca, confirm: '¿Estás seguro?', method: :delete %></td>
+  				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<div class="form-actions">
+		<%= link_to 'Nueva Marca', new_marca_path, :class => 'btn btn-primary' %>
+	</div>

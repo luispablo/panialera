@@ -1,6 +1,4 @@
-class DetallesComprasController < ApplicationController
-  layout 'admin'
-  
+class DetallesComprasController < AdminController
   # GET /detalles_compras
   # GET /detalles_compras.json
   def index

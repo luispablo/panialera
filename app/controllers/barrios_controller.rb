@@ -1,6 +1,4 @@
-class BarriosController < ApplicationController
-  layout 'admin'
-  
+class BarriosController < AdminController
   # GET /barrios
   # GET /barrios.json
   def index

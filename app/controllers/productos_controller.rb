@@ -1,6 +1,4 @@
-class ProductosController < ApplicationController
-  layout 'admin'
-  
+class ProductosController < AdminController
   # GET /productos
   # GET /productos.json
   def index

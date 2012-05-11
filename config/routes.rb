@@ -1,4 +1,6 @@
 Panialera::Application.routes.draw do
+  resources :marcas
+
   resources :detalles_compras
 
   resources :compras
