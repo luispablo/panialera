@@ -14,6 +14,7 @@
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
 #  marca_id    :integer
+#  imagen      :string(255)
 #
 
 class Producto < ActiveRecord::Base
@@ -21,6 +22,8 @@ class Producto < ActiveRecord::Base
   
   has_many :cat_productos
   has_many :categorias, :through => :cat_productos
+
+  mount_uploader :imagen, ImagenUploader
   
   validates :codigo, :nombre, :precio, :presence => { :message => "es un campo requerido." } 
 end

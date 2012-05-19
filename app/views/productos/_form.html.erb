@@ -1,5 +1,5 @@
 
-	<%= form_for(@producto, :html => {:class => 'form-horizontal'}) do |f| %>
+	<%= form_for(@producto, :html => {:class => 'form-horizontal', :multipart => true}) do |f| %>
   		<% if @producto.errors.any? %>
   			<div class="row">
   				<div class="span6 offset3">
@@ -33,6 +33,17 @@
 		    		<%= f.label :detalle, :class => 'control-label' %>
 		    		<div class="controls"><%= f.text_field :detalle %></div>
 		  		</div>
+ 				<div class="control-group">
+ 					<%= f.label :imagen, :class => 'control-label'%>
+ 					<div class="controls">
+ 						<%= image_tag @producto.imagen_url(:thumb) if @producto.imagen? %>
+ 						<%= f.file_field :imagen %>
+					</div>
+ 				</div>
+ 				<div class="control-group">
+				    <%= f.label :remote_imagen_url, "o URL de la imagen", :class => 'control-label' %>
+				    <div class="controls"><%= f.text_field :remote_imagen_url %></div>
+ 				</div>
 			</div>
 			<div class="span4">
 		  		<div class="control-group">

@@ -4,7 +4,7 @@
 	<table class="table table-bordered table-stripped">
 		<thead>
 	  		<tr>
-				<th>C&oacute;digo</th>
+				<th colspan="2">C&oacute;digo</th>
 	  			<th>Marca</th>	  			
 				<th>Nombre</th>
 				<th>Descripci&oacute;n</th>
@@ -20,6 +20,7 @@
 		<tbody>
 			<% @productos.each do |producto| %>
 	  			<tr>
+	  				<td><%= image_tag producto.imagen_url() if producto.imagen? %></td>
 					<td><%= producto.codigo %></td>
 					<td><%= producto.marca.nombre unless producto.marca.nil? %></td>
 					<td><%= producto.nombre %></td>

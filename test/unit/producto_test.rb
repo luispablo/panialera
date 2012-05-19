@@ -14,6 +14,7 @@
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
 #  marca_id    :integer
+#  imagen      :string(255)
 #
 
 require 'test_helper'

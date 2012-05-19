@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag @producto.imagen_url(:thumb) if @producto.imagen? %>
+
 <p>
   <b>Codigo:</b>
   <%= @producto.codigo %>
