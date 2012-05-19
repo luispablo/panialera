@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fecha: 2012-05-19
+  usuario: 
+  domicilio: 
+
+two:
+  fecha: 2012-05-19
+  usuario: 
+  domicilio: 

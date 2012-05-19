@@ -1,5 +1,7 @@
 Panialera::Application.routes.draw do
 
+  resources :ventas
+
   match '/compras/agregar_detalle', :to => 'compras#agregar_detalle'
   match '/compras/quitar_detalle/:id', :to => 'compras#quitar_detalle'
   resources :compra_detalles

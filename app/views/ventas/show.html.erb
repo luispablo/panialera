@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @venta.fecha %>
+</p>
+
+<p>
+  <b>Usuario:</b>
+  <%= @venta.usuario.apellido unless @venta.usuario.nil? %>
+</p>
+
+<p>
+  <b>Domicilio:</b>
+  <%= @venta.domicilio.nombre unless @venta.domicilio.nil? %>
+</p>
+
+
+<%= link_to 'Editar cabecera', edit_venta_path(@venta) %> |
+<%= link_to 'Volver', ventas_path %>

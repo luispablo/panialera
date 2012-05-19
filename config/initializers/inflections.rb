@@ -5,8 +5,11 @@
 ActiveSupport::Inflector.inflections do |inflect|
 #   inflect.plural /^(ox)$/i, '\1en'
 #   inflect.singular /^(ox)en/i, '\1'
+  
   inflect.irregular 'categoria', 'categorias'
   inflect.irregular 'compra_detalle', 'compra_detalles'
+  inflect.irregular 'venta', 'ventas'
+  
 #   inflect.uncountable %w( fish sheep )
 end
 #

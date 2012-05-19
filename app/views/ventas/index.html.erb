@@ -1,0 +1,31 @@
+
+	<legend>Listando ventas</legend>
+
+	<table class="table table-stripped">
+		<thead>
+			<tr>
+			    <th>Fecha</th>
+			    <th>Usuario</th>
+			    <th>Domicilio</th>
+			    <th></th>
+			    <th></th>
+			    <th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @ventas.each do |venta| %>
+				<tr>
+				    <td><%= venta.fecha %></td>
+				    <td><%= venta.usuario.apellido unless venta.usuario.nil? %></td>
+				    <td><%= venta.domicilio.nombre unless venta.domicilio.nil? %></td>
+				    <td><%= link_to 'Detalle', venta %></td>
+				    <td><%= link_to 'Editar', edit_venta_path(venta) %></td>
+				    <td><%= link_to 'Destruir', venta, confirm: '¿Estás seguro?', method: :delete %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<div class="form-actions">
+		<%= link_to 'Nueva Venta', new_venta_path, :class => 'btn btn-primary' %>
+	</div>
