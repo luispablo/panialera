@@ -24,7 +24,7 @@ class ComprasController < AdminController
   # GET /compras/new
   # GET /compras/new.json
   def new
-    @compra = Compra.new
+    @compra = Compra.new(:fecha => Date.today)
 
     respond_to do |format|
       format.html # new.html.erb
