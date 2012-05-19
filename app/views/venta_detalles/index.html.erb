@@ -1,0 +1,29 @@
+<h1>Listing venta_detalles</h1>
+
+<table>
+  <tr>
+    <th>Venta</th>
+    <th>Producto</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @venta_detalles.each do |venta_detalle| %>
+  <tr>
+    <td><%= venta_detalle.venta %></td>
+    <td><%= venta_detalle.producto %></td>
+    <td><%= venta_detalle.cantidad %></td>
+    <td><%= venta_detalle.precio %></td>
+    <td><%= link_to 'Show', venta_detalle %></td>
+    <td><%= link_to 'Edit', edit_venta_detalle_path(venta_detalle) %></td>
+    <td><%= link_to 'Destroy', venta_detalle, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Venta detalle', new_venta_detalle_path %>

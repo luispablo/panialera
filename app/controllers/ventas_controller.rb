@@ -1,5 +1,6 @@
 class VentasController < AdminController
   before_filter :cargar_referencias, :only =>['new', 'edit']
+  before_filter :cargar_productos, :only => ['show', 'agregar_detalle', 'quitar_detalle']
   
   # GET /ventas
   # GET /ventas.json
@@ -83,7 +84,26 @@ class VentasController < AdminController
     end
   end
   
+  def agregar_detalle
+    @venta = Venta.find(params[:venta_id])
+    VentaDetalle.create(:venta_id => @venta.id, :producto_id => params[:producto_id])
+    
+    render 'show'
+  end
+  
+  def quitar_detalle
+    @detalle = VentaDetalle.find(params[:id])
+    @venta = @detalle.venta
+    @detalle.destroy
+    
+    render 'show'
+  end
+  
 private
+  def cargar_productos
+    @productos = Producto.all
+  end
+  
   def cargar_referencias
     @usuarios = Usuario.all
     @domicilios = Domicilio.all

@@ -1,9 +1,13 @@
 Panialera::Application.routes.draw do
 
+  match '/ventas/agregar_detalle', :to => 'ventas#agregar_detalle'
+  match '/ventas/quitar_detalle/:id', :to => 'ventas#quitar_detalle'
   resources :ventas
+  resources :venta_detalles
 
   match '/compras/agregar_detalle', :to => 'compras#agregar_detalle'
   match '/compras/quitar_detalle/:id', :to => 'compras#quitar_detalle'
+  resources :compras
   resources :compra_detalles
 
   match '/productos/:id/categorias', :to => 'productos#categorias'
@@ -14,7 +18,6 @@ Panialera::Application.routes.draw do
 
   resources :detalles_compras
 
-  resources :compras
 
   resources :hijos
 

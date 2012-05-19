@@ -1,0 +1,48 @@
+
+	<script>
+		$(document).ready(function() 
+		{
+		  /* Activating Best In Place */
+		  jQuery(".best_in_place").best_in_place();
+		});
+	</script>
+
+	<div class="row">
+		<div class="span8">
+			<%= form_tag({:controller => 'ventas', :action => 'agregar_detalle'}, :method => 'post', :class => 'form-horizontal') do %>
+				<legend>Detalles de la venta</legend>
+				<%= hidden_field_tag :venta_id, @venta.id %>
+				<div class="control-group">
+					<%= select_tag :producto_id, options_for_select(@productos.map { |p| [p.nombre, p.id]}) %>
+					<%= submit_tag 'Agregar', :class => 'btn' %>
+				</div>
+			<% end %>			
+		</div>
+	</div>
+	<div class="row">
+		<div class="span8">
+			
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Producto</th>
+						<th>Cantidad</th>
+						<th>Precio</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @venta.venta_detalles.each do |d| %>
+						<tr>
+							<td><%= d.producto.nombre %></td>
+							<td><%= best_in_place d, :cantidad, :type => :input, :nil => "Clic aquí" %></td>
+							<td><%= best_in_place d, :precio, :type => :input, :nil => "Clic aquí" %></td>
+							<td><%= link_to 'Quitar', "#{ventas_url}/quitar_detalle/#{d.id}", :class => 'btn'%></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+	
+		</div>
+	</div>
+
