@@ -1,0 +1,29 @@
+<h1>Listing compra_detalles</h1>
+
+<table>
+  <tr>
+    <th>Compra</th>
+    <th>Producto</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @compra_detalles.each do |compra_detalle| %>
+  <tr>
+    <td><%= compra_detalle.compra %></td>
+    <td><%= compra_detalle.producto %></td>
+    <td><%= compra_detalle.cantidad %></td>
+    <td><%= compra_detalle.precio %></td>
+    <td><%= link_to 'Show', compra_detalle %></td>
+    <td><%= link_to 'Edit', edit_compra_detalle_path(compra_detalle) %></td>
+    <td><%= link_to 'Destroy', compra_detalle, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Compra detalle', new_compra_detalle_path %>

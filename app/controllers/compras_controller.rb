@@ -14,6 +14,7 @@ class ComprasController < AdminController
   # GET /compras/1.json
   def show
     @compra = Compra.find(params[:id])
+    @productos = Producto.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -79,5 +80,22 @@ class ComprasController < AdminController
       format.html { redirect_to compras_url }
       format.json { head :no_content }
     end
+  end
+  
+  def agregar_detalle
+    @compra = Compra.find(params[:compra_id])
+    @productos = Producto.all
+    CompraDetalle.create(:compra_id => @compra.id, :producto_id => params[:producto_id])
+    
+    render 'show'
+  end
+  
+  def quitar_detalle
+    @detalle = CompraDetalle.find(params[:id])
+    @compra = @detalle.compra
+    @productos = Producto.all
+    @detalle.destroy
+    
+    render 'show'
   end
 end

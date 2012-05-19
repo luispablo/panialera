@@ -1,5 +1,9 @@
 Panialera::Application.routes.draw do
 
+  match '/compras/agregar_detalle', :to => 'compras#agregar_detalle'
+  match '/compras/quitar_detalle/:id', :to => 'compras#quitar_detalle'
+  resources :compra_detalles
+
   match '/productos/:id/categorias', :to => 'productos#categorias'
   match '/productos/agregar_categoria', :to => 'productos#agregar_categoria'
   match '/productos/quitar_categoria/:id', :to => 'productos#quitar_categoria'

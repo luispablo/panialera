@@ -13,4 +13,6 @@
 class Compra < ActiveRecord::Base
   belongs_to :usuario
   belongs_to :domicilio
+  
+  has_many :compra_detalles
 end

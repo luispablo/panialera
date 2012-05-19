@@ -4,6 +4,7 @@ gem 'rails', '3.2.1'
 
 gem "mini_magick"
 gem "carrierwave"
+gem "best_in_place"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120519153304) do
+ActiveRecord::Schema.define(:version => 20120519154907) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -39,6 +39,18 @@ ActiveRecord::Schema.define(:version => 20120519153304) do
   end
 
   add_index "categorias", ["categoria_id"], :name => "index_categorias_on_categoria_id"
+
+  create_table "compra_detalles", :force => true do |t|
+    t.integer  "compra_id"
+    t.integer  "producto_id"
+    t.float    "cantidad"
+    t.float    "precio"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "compra_detalles", ["compra_id"], :name => "index_compra_detalles_on_compra_id"
+  add_index "compra_detalles", ["producto_id"], :name => "index_compra_detalles_on_producto_id"
 
   create_table "compras", :force => true do |t|
     t.datetime "fecha"

@@ -1,3 +1,5 @@
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -15,6 +17,7 @@
   <%= @compra.domicilio.nombre unless @compra.domicilio.nil? %>
 </p>
 
+	<%= render 'compras/detalles' %>
 
-<%= link_to 'Editar', edit_compra_path(@compra) %> |
-<%= link_to 'Volver', compras_path %>
+	<%= link_to 'Editar cabecera', edit_compra_path(@compra) %> |
+	<%= link_to 'Volver', compras_path %>
