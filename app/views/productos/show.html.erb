@@ -45,6 +45,22 @@
   <b>Publicado:</b>
   <%= @producto.publicado %>
 </p>
+<p>
+	<b>Stock:</b>
+	<%= @producto.stock %>
+</p>
+<p>
+	<b>Talle:</b>
+	<%= @producto.talle %>
+</p>
+<p>
+	<b>Edad del beb&eacute;:</b>
+	<%= @producto.edad_bebe %>
+</p>
+<p>
+	<b>Peso del beb&eacute;:</b>
+	<%= @producto.peso_bebe %>
+</p>
 
 
 <%= link_to 'Editar', edit_producto_path(@producto) %> |

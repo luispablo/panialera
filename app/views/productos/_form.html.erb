@@ -63,6 +63,22 @@
 		    		<div class="controls"><%= f.check_box :publicado %></div>
 		  		</div>
 		  		<div class="control-group">
+		  			<%= f.label :stock, :class => 'control-label' %>
+		  			<div class="controls"><%= f.text_field :stock %></div>		  			
+		  		</div>
+		  		<div class="control-group">
+		  			<%= f.label :talle, :class => 'control-label' %>
+		  			<div class="controls"><%= f.text_field :talle %></div>
+		  		</div>
+		  		<div class="control-group">
+		  			<%= f.label :peso_bebe, 'Peso del bebé', :class => 'control-label' %>
+		  			<div class="controls"><%= f.text_field :peso_bebe %></div>
+		  		</div>
+		  		<div class="control-group">
+		  			<%= f.label :edad_bebe, 'Edad del bebé', :class => 'control-label' %>
+		  			<div class="controls"><%= f.text_field :edad_bebe %></div>
+		  		</div>
+		  		<div class="control-group">
 		  			<%= f.label 'Categorías', :class => 'control-label' %>
 		  			<div class="controls">
 		  				<% if @producto.persisted? %>
