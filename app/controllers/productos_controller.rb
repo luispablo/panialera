@@ -10,6 +10,11 @@ class ProductosController < AdminController
     end
   end
 
+  def categorias
+    @producto = Producto.find(params[:id])
+    @categorias = Categoria.all
+  end
+
   # GET /productos/1
   # GET /productos/1.json
   def show
@@ -79,5 +84,24 @@ class ProductosController < AdminController
       format.html { redirect_to productos_url }
       format.json { head :no_content }
     end
+  end
+  
+  def agregar_categoria
+    CatProducto.create(:producto_id => params[:producto_id], :categoria_id => params[:categoria_id])
+    
+    @categorias = Categoria.all
+    @producto = Producto.find(params[:producto_id])
+    
+    render 'categorias'
+  end
+  
+  def quitar_categoria
+    @cat_producto = CatProducto.find(params[:id])
+    @categorias = Categoria.all
+    @producto = Producto.find(@cat_producto.producto_id)
+    
+    @cat_producto.destroy
+    
+    render 'categorias'
   end
 end

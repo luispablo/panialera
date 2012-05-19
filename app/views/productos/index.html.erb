@@ -5,9 +5,10 @@
 		<thead>
 	  		<tr>
 				<th>C&oacute;digo</th>
-	  			<th>Marca</th>
+	  			<th>Marca</th>	  			
 				<th>Nombre</th>
 				<th>Descripci&oacute;n</th>
+				<th>Categor&iacute;as</th>
 				<th>Detalle</th>
 				<th>Precio</th>
 				<th>Referencia</th>
@@ -23,6 +24,7 @@
 					<td><%= producto.marca.nombre unless producto.marca.nil? %></td>
 					<td><%= producto.nombre %></td>
 					<td><%= producto.descripcion %></td>
+					<td><% producto.categorias.each { |c| %><span class="label"><%= c.nombre %></span>&nbsp;<% } %></td>
 					<td><%= producto.detalle %></td>
 					<td><%= producto.precio %></td>
 					<td><%= producto.referencia %></td>

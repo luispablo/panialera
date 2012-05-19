@@ -13,4 +13,8 @@
 
 class Categoria < ActiveRecord::Base
   belongs_to :categoria
+  
+  has_many :cat_productos
+  has_many :categorias, :through => :cat_productos
+  
 end

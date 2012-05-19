@@ -12,7 +12,7 @@
   		<% end %>
 
 		<div class="row">
-			<div class="span6">
+			<div class="span4">
 				<div class="control-group">
 					<%= f.label :marca, :class => 'control-label' %>
 					<div class="controls"><%= f.select :marca_id, Marca.all.map { |m| [m.nombre, m.id] } %></div>
@@ -34,7 +34,7 @@
 		    		<div class="controls"><%= f.text_field :detalle %></div>
 		  		</div>
 			</div>
-			<div class="span6">
+			<div class="span4">
 		  		<div class="control-group">
 		    		<%= f.label :precio, :class => 'control-label' %>
 		    		<div class="controls"><%= f.text_field :precio %></div>
@@ -50,6 +50,14 @@
 		  		<div class="control-group">
 		    		<%= f.label :publicado, :class => 'control-label' %>
 		    		<div class="controls"><%= f.check_box :publicado %></div>
+		  		</div>
+		  		<div class="control-group">
+		  			<%= f.label 'Categorías', :class => 'control-label' %>
+		  			<div class="controls">
+		  				<% if @producto.persisted? %>
+		  					<%= link_to nombres_categorias(@producto), producto_path(@producto)+"/categorias" %>
+		  				<% end %>		  				
+		  			</div>	  				
 		  		</div>
 			</div>
 		</div>

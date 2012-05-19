@@ -18,5 +18,9 @@
 
 class Producto < ActiveRecord::Base
   belongs_to :marca
+  
+  has_many :cat_productos
+  has_many :categorias, :through => :cat_productos
+  
   validates :codigo, :nombre, :precio, :presence => { :message => "es un campo requerido." } 
 end

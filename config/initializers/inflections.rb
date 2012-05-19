@@ -7,7 +7,6 @@ ActiveSupport::Inflector.inflections do |inflect|
 #   inflect.singular /^(ox)en/i, '\1'
   inflect.irregular 'categoria', 'categorias'
   inflect.irregular 'detalle_compra', 'detalles_compras'
-  
 #   inflect.uncountable %w( fish sheep )
 end
 #

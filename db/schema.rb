@@ -11,13 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120511231824) do
+ActiveRecord::Schema.define(:version => 20120518231019) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "cat_productos", :force => true do |t|
+    t.integer  "producto_id"
+    t.integer  "categoria_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "cat_productos", ["categoria_id"], :name => "index_cat_productos_on_categoria_id"
+  add_index "cat_productos", ["producto_id"], :name => "index_cat_productos_on_producto_id"
 
   create_table "categorias", :force => true do |t|
     t.string   "codigo"

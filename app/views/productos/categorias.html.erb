@@ -1,0 +1,39 @@
+
+<div class="span5">
+	<%= form_tag({:controller => 'productos', :action => 'agregar_categoria'}, :method => 'post', :class => 'form-horizontal') do %>
+  		<% if @producto.errors.any? %>
+  			<div class="row">
+  				<div class="span6 offset3">
+					<% @producto.errors.full_messages.each do |msg| %>
+						<span class="label label-important"><%= msg %></span><br/>
+					<% end %>
+  				</div>
+  			</div>
+  			<br/>
+  		<% end %>
+  		
+		<legend>Categor&iacute;as de <%= @producto.nombre %></legend>
+		<div class="control-group">
+			<%= select_tag :categoria_id, options_for_select(@categorias.map { |c| [c.nombre, c.id]}) %>
+			<%= submit_tag 'Agregar', :class => 'btn' %>		
+		</div>
+		<%= hidden_field_tag :producto_id, @producto.id %>
+		
+		<table class="table table-bordered table-stripped">
+			<thead>
+				<tr>
+					<th colspan="2">Categor&iacute;as del producto</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @producto.cat_productos.each do |cp| %>
+					<tr>
+						<td><%= cp.categoria.nombre %></td>
+						<td><%= link_to 'Quitar', "#{productos_url}/quitar_categoria/#{cp.id}"%></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+	<% end %>
+</div>
