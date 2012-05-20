@@ -1,0 +1,216 @@
+body {
+	background-color: #f8ecc9;
+	margin-left: 0px;
+	margin-top: 15px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+}
+.nav1 {
+	font-family: Century Gothic;
+	font-size: 10pt;
+	color: #3d2711;
+	text-decoration: none;
+}
+
+ .nav1 a:link {
+color: #3d2711;
+text-decoration: none;
+}
+
+.nav1 a:visited {
+color: #3d2711;
+text-decoration: none;
+}
+
+.nav1 a:hover {
+	color: #879E34;
+	text-decoration: none;
+}
+
+.nav1 a:active {
+color: #3d2711;
+text-decoration: none;
+}
+
+.nav2 {
+	font-family: Century Gothic;
+	font-size: 8pt;
+	color: #3d2711;
+	text-decoration: none;
+	
+}
+
+ .nav2 a:link {
+color: #3d2711;
+text-decoration: none;
+}
+
+.nav2 a:visited {
+color: #3d2711;
+text-decoration: none;
+}
+
+.nav2 a:hover {
+	color: #879E34;
+	text-decoration: none;
+}
+
+.nav2 a:active {
+color: #3d2711;
+text-decoration: none;
+}
+
+
+	div#menu_superior
+	{
+		width: 950px;
+		height: 200px;
+	}
+	div#menu_superior div#top
+	{
+		background-color: #f8ecc9;
+		width: 950px;
+		height: 120px;
+		text-align: left;
+	}
+	div#menu_superior div#top img#logo
+	{
+		margin-left: 39px;
+		margin-top: 8px;
+		float: left;
+	}
+	div#menu_superior div#bottom
+	{
+		background-color: white;
+		width: 950px;
+		height: 87px;
+	}
+	div#menu_superior div#bottom div#linea
+	{
+		border-bottom: dashed 1px;
+	}
+	div#menu_superior div#bottom img#slogan
+	{
+		margin-top: 8px;
+	}
+	div#menu_superior div#top div#menu_items
+	{
+		width: 550px;
+		height: 35px;
+		float: left;
+		margin-top: 85px;
+		margin-left: 45px;
+	}
+	div#menu_superior div#top div#menu_items ul
+	{
+		margin-top: 0px;
+		padding-left: 0px;
+		float: right;
+		margin-right: 10px;
+	}
+	div#menu_superior div#top div#menu_items li
+	{
+		float: left;
+		list-style: none;
+		margin-right: 3px;
+	}
+
+	body
+	{
+		text-align: center;
+	}
+	div#main
+	{
+		margin:0 auto 0 auto; 
+		width: 950px;
+	}
+	div#contenido
+	{
+		float: left;
+		background-color: white;
+	}
+	div#contenido div#menu_izquierdo
+	{
+		width: 220px;
+		float: left;
+		padding-top: 15px;
+		text-align: left;
+		padding-left: 20px;
+	}
+	div#contenido div#menu_izquierdo ul
+	{
+		margin-top: 0px;
+		padding-top: 0px;
+		padding-left: 0px;
+		margin-left: 5px;
+	}
+	div#contenido div#menu_izquierdo li
+	{
+		list-style: none;
+	}
+	div#contenido div#cuerpo_principal
+	{
+		padding-top: 5px;
+		width: 710px;
+		float: left;
+	}
+	
+	div#contenido div#cuerpo_principal p
+	{
+		font-family: Century Gothic;
+		font-size: 10pt;
+		color: #3d2711;
+	}
+	
+	ul#destacados li
+	{
+		list-style: none;
+		float: left;
+		font-family: Century Gothic;
+		font-size: 12pt;
+		color: #3d2711;
+		text-decoration: none;
+		margin-right: 40px;
+		margin-left: 40px;
+	}
+	ul#destacados li p
+	{
+		margin: 0 0 0 0;
+	}
+	div#cuerpo_principal img#foto
+	{
+		margin-top: 3px;
+		float: left;
+	}
+	div#cuerpo_principal ul#botones_grandes
+	{
+		margin-top: 0px;
+		height: 300px;
+		float: right;
+		width: 240px;
+		padding-left: 0px;
+	}
+	div#cuerpo_principal ul#botones_grandes li
+	{
+		list-style: none;
+		width: 235px;
+		text-align: right;
+		height: 102px;
+		margin-bottom: 2px;
+	}
+	div#footer
+	{
+		background-color: white;
+		border-top: dashed 1px;
+		float: left;
+		width: 100%;
+		margin-top: 20px;
+	}
+	div#copyright
+	{
+		padding-top: 50px;
+		font-family: Century Gothic;
+		font-size: 10pt;
+		color: #3d2711;
+	}
+	

@@ -2,8 +2,43 @@
 	<% if notice %>
 		<p id="notice"><%= notice %></p>
 	<% end %>
+
+	<%= image_tag 'bebe_durmiendo.png' %>
 	
-	<h1>Your Pragmatic Catalog</h1>
+	<ul id="botones_grandes">
+		<li><%= image_tag 'novedades.png' %></li>
+		<li><%= image_tag 'en_venta.png' %></li>
+		<li><%= image_tag 'mas_vendidos.png' %></li>
+	</ul>
+	
+	<p>
+		Welcome to&nbsp;<strong>Vanilla Creme  Green</strong>&nbsp;boutique web design template! The header will be 
+		customized with your business name and optional tagline/slogan. All links located at top and in left hand 
+		column will be editable by you through your store admin area.&nbsp;<strong>
+	</p>
+	
+	<p>
+		Free installation is always included when using a compatible web host!</strong>
+	</p>
+	
+	<%= image_tag 'productos_destacados.png' %>
+	<ul id="destacados">
+		<li>
+			<%= image_tag 'thumb.png' %>
+			<p>Nombre Producto</p>
+			<p>Precio</p>
+		</li>
+		<li>
+			<%= image_tag 'thumb.png' %>
+			<p>Nombre Producto</p>
+			<p>Precio</p>
+		</li>
+		<li>
+			<%= image_tag 'thumb.png' %>
+			<p>Nombre Producto</p>
+			<p>Precio</p>
+		</li>
+	</ul>
 	
 	<% @productos.each do |p| %>
 		<div class="entry">

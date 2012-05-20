@@ -3,32 +3,80 @@
 <html>
 	<head>
 		<title>Pa&ntilde;alera Digital</title>
-  		<%= stylesheet_link_tag    "application", :media => "all" %>
+  		<%= stylesheet_link_tag    "vanilla", :media => "all" %>
   		<%= javascript_include_tag "application" %>
   		<%= csrf_meta_tags %>
 	</head>
 	
 	<body>
+<div id="main">
 
-		<div id="columns">
-			<div id="side">
-				<div id="carrito">
-					<%= render @carrito %>
+			<div id="menu_superior">
+				<div id="top">
+					<%= image_tag "logo.png", :id => 'logo' %>					
+					
+					<div id="menu_items">
+						<ul>
+							<li>
+								<a href="#"><%= image_tag "item_menu_inicio.png" %></a>
+							</li>
+							<li>
+								<a href="#"><%= image_tag "item_menu_inicio.png" %></a>
+							</li>
+						</ul>
+					</div>
 				</div>
+				<div id="bottom">
+					<div id="linea">&nbsp;</div>
 
-				<ul>
-					<li><a href="http://www....">Home</a></li>
-					<li><a href="http://www..../faq">Questions</a></li>
-					<li><a href="http://www..../news">News</a></li>
-					<li><a href="http://www..../contact">Contact</a></li>
-				</ul>
+					<%= image_tag "slogan.png", :id => 'slogan' %>					
+				</div>
 			</div>
 			
-			<div id="main">
-				<%= yield %>
-			</div>
-		</div>
+			<div id="contenido">
+			
+				<div id="menu_izquierdo">
+					<%= image_tag 'buscar.png' %>
+					<form method="post" action="http://thischickdesigns.com/catalog.htm" style="margin:0">
+						<input type="text" name="keyword" size="12"> 
+						<input type="submit" value="Ir" class="formbutton">
+					</form>
+					<br/>
 
+					<%= image_tag 'categorias.png' %>					
+					<ul class="nav1">
+						<li><a href="#">Item 1</a></li>
+						<li><a href="#">Item 1</a></li>
+						<li><a href="#">Item 1</a></li>
+						<li><a href="#">Item 1</a></li>
+					</ul>					
+					<br/>
+
+					<%= image_tag 'tu_compra.png' %>
+					<%= render @carrito %>
+					<ul class="nav1">
+						<li><a href="#">view cart</a></li>
+						<li><a href="#">order details</a></li>
+					</ul>	
+					
+				</div>
+				
+				<div id="cuerpo_principal">
+					<%= yield %>
+				</div>
+				
+				<div id="footer">&nbsp;</div>
+				
+			</div>
+
+			<div id="copyright">
+				&nbsp;
+				<br/>
+				&copy;2012 Pa&ntilde;alera Digital. Todos los derechos reservados. Powered by Me. Web Design by Me.
+			</div>
+			
+		</div>	
+		
 	</body>
 	
 </html>
