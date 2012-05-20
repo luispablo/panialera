@@ -77,6 +77,7 @@ class CarritosController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to carritos_url }
+      format.js 
       format.json { head :no_content }
     end
   end

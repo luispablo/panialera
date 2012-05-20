@@ -47,7 +47,7 @@
     respond_to do |format|
       if @carrito_item.save
         format.html { redirect_to tienda_url }
-        format.js
+        format.js { @item_actual = @carrito_item }
         format.json { render json: @carrito_item, status: :created, location: @carrito_item }
       else
         format.html { render action: "new" }
