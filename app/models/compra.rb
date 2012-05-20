@@ -14,5 +14,5 @@ class Compra < ActiveRecord::Base
   belongs_to :usuario
   belongs_to :domicilio
   
-  has_many :compra_detalles
+  has_many :compra_detalles, dependent: :destroy
 end

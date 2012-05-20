@@ -1,0 +1,25 @@
+<h1>Listing carrito_items</h1>
+
+<table>
+  <tr>
+    <th>Producto</th>
+    <th>Carrito</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @carrito_items.each do |carrito_item| %>
+  <tr>
+    <td><%= carrito_item.producto %></td>
+    <td><%= carrito_item.carrito %></td>
+    <td><%= link_to 'Show', carrito_item %></td>
+    <td><%= link_to 'Edit', edit_carrito_item_path(carrito_item) %></td>
+    <td><%= link_to 'Destroy', carrito_item, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Carrito item', new_carrito_item_path %>

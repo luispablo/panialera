@@ -1,0 +1,18 @@
+
+	<% if notice %>
+		<p id="notice"><%= notice %></p>
+	<% end %>
+	
+	<h1>Your Pragmatic Catalog</h1>
+	
+	<% @productos.each do |p| %>
+		<div class="entry">
+			<%= image_tag p.imagen_url if p.imagen? %>
+			<h3><%= p.nombre %></h3>
+			<%= sanitize(p.descripcion) %>
+			<div class="price_line">
+				<span class="price"><%= number_to_currency(p.precio) %></span>
+				<%= button_to 'Agregar al carrito', carrito_items_path(producto_id: p), remote: true %>
+			</div>
+		</div>
+	<% end %>

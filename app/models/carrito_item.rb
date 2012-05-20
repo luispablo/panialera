@@ -1,17 +1,19 @@
 # == Schema Information
 #
-# Table name: venta_detalles
+# Table name: carrito_items
 #
 #  id          :integer         not null, primary key
-#  venta_id    :integer
 #  producto_id :integer
-#  cantidad    :float
-#  precio      :float
+#  carrito_id  :integer
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
 #
 
-class VentaDetalle < ActiveRecord::Base
-  belongs_to :venta
+class CarritoItem < ActiveRecord::Base
   belongs_to :producto
+  belongs_to :carrito
+  
+  def precio_total
+    producto.precio * cantidad
+  end
 end

@@ -1,19 +1,17 @@
 # == Schema Information
 #
-# Table name: compra_detalles
+# Table name: carrito_items
 #
 #  id          :integer         not null, primary key
-#  compra_id   :integer
 #  producto_id :integer
-#  cantidad    :float
-#  precio      :float
+#  carrito_id  :integer
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
 #
 
 require 'test_helper'
 
-class CompraDetalleTest < ActiveSupport::TestCase
+class CarritoItemTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

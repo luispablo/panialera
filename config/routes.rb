@@ -1,5 +1,9 @@
 Panialera::Application.routes.draw do
 
+  resources :carrito_items
+
+  resources :carritos
+
   match '/ventas/agregar_detalle', :to => 'ventas#agregar_detalle'
   match '/ventas/quitar_detalle/:id', :to => 'ventas#quitar_detalle'
   resources :ventas
@@ -33,7 +37,7 @@ Panialera::Application.routes.draw do
   
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'categorias#index'
+  root to: 'tienda#index', as: 'tienda'
 
   resources :categorias
 

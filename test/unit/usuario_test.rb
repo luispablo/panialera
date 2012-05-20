@@ -11,6 +11,7 @@
 #  email          :string(255)
 #  created_at     :datetime        not null
 #  updated_at     :datetime        not null
+#  tel_laboral    :string(255)
 #
 
 require 'test_helper'

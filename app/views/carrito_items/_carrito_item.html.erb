@@ -1,0 +1,6 @@
+
+	<tr>
+		<td><%= carrito_item.cantidad %>&times;</td>
+		<td><%= carrito_item.producto.nombre %></td>
+		<td class="item_price"><%= number_to_currency(carrito_item.precio_total) %></td>
+	</tr>

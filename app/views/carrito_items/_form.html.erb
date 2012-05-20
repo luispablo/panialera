@@ -1,0 +1,25 @@
+<%= form_for(@carrito_item) do |f| %>
+  <% if @carrito_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@carrito_item.errors.count, "error") %> prohibited this carrito_item from being saved:</h2>
+
+      <ul>
+      <% @carrito_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :producto %><br />
+    <%= f.text_field :producto %>
+  </div>
+  <div class="field">
+    <%= f.label :carrito %><br />
+    <%= f.text_field :carrito %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

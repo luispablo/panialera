@@ -11,10 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120519205546) do
+ActiveRecord::Schema.define(:version => 20120519224750) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "carrito_items", :force => true do |t|
+    t.integer  "producto_id"
+    t.integer  "carrito_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.float    "cantidad"
+  end
+
+  add_index "carrito_items", ["carrito_id"], :name => "index_carrito_items_on_carrito_id"
+  add_index "carrito_items", ["producto_id"], :name => "index_carrito_items_on_producto_id"
+
+  create_table "carritos", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

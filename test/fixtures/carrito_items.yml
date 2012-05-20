@@ -1,12 +1,10 @@
 # == Schema Information
 #
-# Table name: venta_detalles
+# Table name: carrito_items
 #
 #  id          :integer         not null, primary key
-#  venta_id    :integer
 #  producto_id :integer
-#  cantidad    :float
-#  precio      :float
+#  carrito_id  :integer
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
 #
@@ -14,13 +12,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  venta: 
   producto: 
-  cantidad: 1.5
-  precio: 1.5
+  carrito: 
 
 two:
-  venta: 
   producto: 
-  cantidad: 1.5
-  precio: 1.5
+  carrito: 

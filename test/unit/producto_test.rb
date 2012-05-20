@@ -15,6 +15,10 @@
 #  updated_at  :datetime        not null
 #  marca_id    :integer
 #  imagen      :string(255)
+#  stock       :integer
+#  talle       :string(255)
+#  peso_bebe   :string(255)
+#  edad_bebe   :string(255)
 #
 
 require 'test_helper'
