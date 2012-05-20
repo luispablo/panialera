@@ -128,14 +128,23 @@ text-decoration: none;
 	{
 		float: left;
 		background-color: white;
+		margin-top: 3px;
 	}
 	div#contenido div#menu_izquierdo
 	{
-		width: 220px;
+		width: 180px;
 		float: left;
 		padding-top: 15px;
 		text-align: left;
-		padding-left: 20px;
+		padding-left: 10px;
+	}
+	div#contenido div#carrito
+	{
+		float: right;
+		width: 170px;
+		text-align: right;
+		padding-right: 10px;
+		padding-top: 15px;
 	}
 	div#contenido div#menu_izquierdo ul
 	{
@@ -148,54 +157,65 @@ text-decoration: none;
 	{
 		list-style: none;
 	}
-	div#contenido div#cuerpo_principal
-	{
-		padding-top: 5px;
-		width: 710px;
-		float: left;
-	}
-	
 	div#contenido div#cuerpo_principal p
 	{
 		font-family: Century Gothic;
 		font-size: 10pt;
 		color: #3d2711;
 	}
-	
+	ul#destacados
+	{
+		width: 100%;
+		padding-left: 0px;
+		float: left;
+	}
 	ul#destacados li
 	{
 		list-style: none;
-		float: left;
+		display: inline-block;
 		font-family: Century Gothic;
 		font-size: 12pt;
 		color: #3d2711;
 		text-decoration: none;
-		margin-right: 40px;
-		margin-left: 40px;
+		margin-right: 20px;
+		margin-left: 20px;
 	}
 	ul#destacados li p
 	{
 		margin: 0 0 0 0;
+	}
+	img#titulo_destacados
+	{
+		margin-top: 20px;
+		margin-left: 130px;
+		display: block;
 	}
 	div#cuerpo_principal img#foto
 	{
 		margin-top: 3px;
 		float: left;
 	}
+	div#contenido div#cuerpo_principal
+	{
+		padding-top: 5px;
+		width: 575px;
+		float: left;
+		margin-right: 5px;
+	}	
 	div#cuerpo_principal ul#botones_grandes
 	{
 		margin-top: 0px;
 		height: 300px;
 		float: right;
-		width: 240px;
 		padding-left: 0px;
 	}
 	div#cuerpo_principal ul#botones_grandes li
 	{
 		list-style: none;
-		width: 235px;
+		width: 193px;
 		text-align: right;
-		height: 102px;
+		height: 81px;
+		margin-right: 5px;
 		margin-bottom: 2px;
 	}
 	div#footer

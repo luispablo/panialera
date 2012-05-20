@@ -10,7 +10,7 @@
 		<li><%= image_tag 'en_venta.png' %></li>
 		<li><%= image_tag 'mas_vendidos.png' %></li>
 	</ul>
-	
+	<!--
 	<p>
 		Welcome to&nbsp;<strong>Vanilla Creme  Green</strong>&nbsp;boutique web design template! The header will be 
 		customized with your business name and optional tagline/slogan. All links located at top and in left hand 
@@ -20,34 +20,9 @@
 	<p>
 		Free installation is always included when using a compatible web host!</strong>
 	</p>
-	
-	<%= image_tag 'productos_destacados.png' %>
+	-->
+	<%= image_tag 'productos_destacados.png', id: 'titulo_destacados' %>
 	<ul id="destacados">
-		<li>
-			<%= image_tag 'thumb.png' %>
-			<p>Nombre Producto</p>
-			<p>Precio</p>
-		</li>
-		<li>
-			<%= image_tag 'thumb.png' %>
-			<p>Nombre Producto</p>
-			<p>Precio</p>
-		</li>
-		<li>
-			<%= image_tag 'thumb.png' %>
-			<p>Nombre Producto</p>
-			<p>Precio</p>
-		</li>
+		<%= render partial: '/productos/destacado', collection: @productos_destacados %>
 	</ul>
 	
-	<% @productos.each do |p| %>
-		<div class="entry">
-			<%= image_tag p.imagen_url if p.imagen? %>
-			<h3><%= p.nombre %></h3>
-			<%= sanitize(p.descripcion) %>
-			<div class="price_line">
-				<span class="price"><%= number_to_currency(p.precio) %></span>
-				<%= button_to 'Agregar al carrito', carrito_items_path(producto_id: p), remote: true %>
-			</div>
-		</div>
-	<% end %>

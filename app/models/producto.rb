@@ -34,6 +34,10 @@ class Producto < ActiveRecord::Base
   
   validates :codigo, :nombre, :precio, :presence => { :message => "es un campo requerido." }
   
+  def self.destacados
+    Producto.where(destacado: true)
+  end
+  
 private
   def ensure_not_referenced_by_any_carrito_item
     if carrito_items.empty?

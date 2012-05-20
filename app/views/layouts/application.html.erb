@@ -18,10 +18,7 @@
 					<div id="menu_items">
 						<ul>
 							<li>
-								<a href="#"><%= image_tag "item_menu_inicio.png" %></a>
-							</li>
-							<li>
-								<a href="#"><%= image_tag "item_menu_inicio.png" %></a>
+								<%= link_to image_tag("item_menu_inicio.png"), tienda_url %>
 							</li>
 						</ul>
 					</div>
@@ -45,24 +42,20 @@
 
 					<%= image_tag 'categorias.png' %>					
 					<ul class="nav1">
-						<li><a href="#">Item 1</a></li>
-						<li><a href="#">Item 1</a></li>
-						<li><a href="#">Item 1</a></li>
-						<li><a href="#">Item 1</a></li>
+						<% @categorias.each do |c| %>
+							<li><a href="#"><%= c.nombre %></a></li>
+						<% end %>
 					</ul>					
 					<br/>
 
-					<%= image_tag 'tu_compra.png' %>
-					<%= render @carrito %>
-					<ul class="nav1">
-						<li><a href="#">view cart</a></li>
-						<li><a href="#">order details</a></li>
-					</ul>	
-					
 				</div>
 				
 				<div id="cuerpo_principal">
 					<%= yield %>
+				</div>
+				
+				<div id="carrito">
+					<%= render @carrito %>
 				</div>
 				
 				<div id="footer">&nbsp;</div>

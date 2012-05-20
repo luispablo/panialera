@@ -1,13 +1,10 @@
-
-	<div class="cart_title">Your Cart</div>
-
-	<table>
-		<%= render(carrito.carrito_items) %>
-		
-		<tr class="total_line">
-			<td colspan="2">Total</td>
-			<td class="total_cell"><%= number_to_currency(carrito.precio_total) %></td>
-		</tr>
-	</table>
+					
+	<%= image_tag 'tu_compra.png' %>
 	
-	<%= button_to 'Empty cart', carrito, method: :delete, confirm: '¿Estás seguro?', remote: true %>
+	<ul class="nav1">
+		<%= render(carrito.carrito_items) %>
+		<br/>
+		Total <%= number_to_currency(carrito.precio_total) %>
+	</ul>						
+
+	<%= button_to 'Vaciar carrito', carrito, method: :delete, confirm: '¿Estás seguro?', remote: true %>

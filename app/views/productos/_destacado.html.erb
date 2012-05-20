@@ -1,0 +1,10 @@
+
+	<li>
+		<% if destacado.imagen? %>
+			<%= image_tag destacado.imagen_url(:thumb) %>
+		<% else %>
+			<%= image_tag 'thumb.png' %>
+		<% end %>
+		<p><%= destacado.marca.nombre %>&nbsp;<%= destacado.nombre %></p>
+		<p><%= number_to_currency(destacado.precio) %></p>
+	</li>

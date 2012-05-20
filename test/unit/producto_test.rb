@@ -19,6 +19,7 @@
 #  talle       :string(255)
 #  peso_bebe   :string(255)
 #  edad_bebe   :string(255)
+#  destacado   :boolean
 #
 
 require 'test_helper'
