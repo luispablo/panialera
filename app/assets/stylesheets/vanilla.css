@@ -156,6 +156,9 @@ text-decoration: none;
 	div#contenido div#menu_izquierdo li
 	{
 		list-style: none;
+		font-family: Century Gothic;
+		font-size: 13pt;
+		color: #3d2711;		
 	}
 	div#contenido div#cuerpo_principal p
 	{
