@@ -236,4 +236,13 @@ text-decoration: none;
 		font-size: 10pt;
 		color: #3d2711;
 	}
-	
+	div#mi_cuenta
+	{
+		font-family: Century Gothic;
+		font-size: 12pt;
+		color: #3d2711;
+		margin-top: 20px;
+		float: right;
+		text-align: right;
+		margin-right: 15px;
+	}

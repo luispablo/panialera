@@ -4,6 +4,14 @@ Panialera::Application.routes.draw do
 
   resources :carritos
 
+  get 'admin' => 'admin#index'
+
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
   match '/ventas/agregar_detalle', :to => 'ventas#agregar_detalle'
   match '/ventas/quitar_detalle/:id', :to => 'ventas#quitar_detalle'
   resources :ventas

@@ -9,6 +9,7 @@
 #  categoria_id :integer
 #  created_at   :datetime        not null
 #  updated_at   :datetime        not null
+#  publicado    :boolean
 #
 
 class Categoria < ActiveRecord::Base

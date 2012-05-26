@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120520230836) do
+ActiveRecord::Schema.define(:version => 20120521001107) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -154,9 +154,11 @@ ActiveRecord::Schema.define(:version => 20120520230836) do
     t.string   "tel_particular"
     t.string   "tel_celular"
     t.string   "email"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "tel_laboral"
+    t.string   "password_digest"
+    t.boolean  "administrador"
   end
 
   create_table "vales", :force => true do |t|

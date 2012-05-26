@@ -1,0 +1,19 @@
+
+	<%= image_tag 'mi_cuenta.png' %>
+	
+	<% if @usuario %>
+		<p>Bienvenida/o, <%= @usuario.nombre %>.</p>
+		
+		<% if @usuario.administrador? %>
+			<%= link_to 'Ir a administración', admin_url, class: 'nav1' %><br/>
+		<% end %>
+		<%= link_to 'Salir', logout_url, method: :delete, class: 'nav1' %>
+	<% else %>
+		<%= form_tag(controller: 'sessions', action: 'create') do %>
+			<%= label_tag :email, 'e-mail' %><br/>
+			<%= text_field_tag :email, nil, size: 15 %><br/>
+			<%= label_tag :password, 'Contraseña' %><br/>
+			<%= password_field_tag :password, nil, size: 15 %><br/>
+			<%= submit_tag 'Ingresar' %>
+		<% end %>
+	<% end %>

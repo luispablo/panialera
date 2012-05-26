@@ -11,6 +11,7 @@
 			    <th>Tel&eacute;fono celular</th>
 			    <th>Tel&eacute;fono laboral</th>
 			    <th>e-mail</th>
+			    <th>Administrador</th>
 			    <th colspan="3"></th>
   			</tr>
 		</thead>
@@ -24,6 +25,7 @@
 				    <td><%= usuario.tel_celular %></td>
 				    <td><%= usuario.tel_laboral %></td>
 				    <td><%= usuario.email %></td>
+				    <td><%= usuario.administrador? ? "Si": 'No' %></td>
 				    <td><%= link_to 'Ver', usuario %></td>
 				    <td><%= link_to 'Editar', edit_usuario_path(usuario) %></td>
 				    <td><%= link_to 'Destruir', usuario, confirm: '¿Estás seguro?', method: :delete %></td>
