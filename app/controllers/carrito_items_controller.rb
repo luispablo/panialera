@@ -85,11 +85,13 @@
   # DELETE /carrito_items/1
   # DELETE /carrito_items/1.json
   def destroy
+    @carrito = carrito_actual
     @carrito_item = CarritoItem.find(params[:id])
     @carrito_item.destroy
 
     respond_to do |format|
       format.html { redirect_to carrito_items_url }
+      format.js
       format.json { head :no_content }
     end
   end
