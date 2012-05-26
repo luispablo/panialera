@@ -18,7 +18,8 @@
 					<%= p.referencia %><br/>
 					<%= number_to_currency(p.precio) %><br/>
 					<%= link_to 'Ver Detalles', controller: :tienda, action: :detalle_producto, codigo: p.codigo %>
-					<%= link_to 'Agergar al carrito' %>
+
+					<%= button_to 'Agergar al carrito', carrito_items_path(producto_id: p), remote: true %>
 				</div>				
 			</li>
 		<% end %>

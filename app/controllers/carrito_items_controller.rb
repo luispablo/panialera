@@ -40,11 +40,19 @@
   # POST /carrito_items
   # POST /carrito_items.json
   def create
+    unless params[:carrito_item].nil?
+      producto_id = params[:carrito_item][:producto_id]
+      cantidad = params[:carrito_item][:cantidad].to_i 
+    else
+      producto_id = params[:producto_id]
+      cantidad = 1
+    end
+                  
     @carrito = carrito_actual
-    producto = Producto.find(params[:carrito_item][:producto_id])
+    producto = Producto.find(producto_id)
     
     # Esto es importante porque lo crea o trae el que existe
-    @carrito_item = @carrito.agregar_producto(producto.id, params[:carrito_item][:cantidad].to_i)
+    @carrito_item = @carrito.agregar_producto(producto.id, cantidad)
 
     respond_to do |format|
       if @carrito_item.save
