@@ -14,13 +14,13 @@ class Carrito < ActiveRecord::Base
     carrito_items.to_a.sum { |item| item.precio_total }
   end
   
-  def agregar_producto(producto_id)
+  def agregar_producto(producto_id, cantidad)
     item_actual = carrito_items.find_by_producto_id(producto_id)
     
     if item_actual
-      item_actual.cantidad += 1
+      item_actual.cantidad += cantidad
     else
-      item_actual = carrito_items.build(producto_id: producto_id, cantidad: 1)
+      item_actual = carrito_items.build(producto_id: producto_id, cantidad: cantidad)
     end
 
     item_actual

@@ -1,3 +1,6 @@
+/*
+ *= require jquery-ui-1.8.20.custom.css
+ */
 body {
 	background-color: #f8ecc9;
 	margin-left: 0px;
@@ -252,7 +255,9 @@ text-decoration: none;
 		list-style: none;
 		margin-bottom: 5px;
 		float: left;
-		width: 100%;
+		width: 90%;
+		background-color: #f6efdb;
+		border-bottom: dotted 1px #948455;
 	}
 	li.listado_productos div.imagen
 	{
@@ -276,5 +281,74 @@ text-decoration: none;
 		color: #3d2711;
 		text-align: left;
 		border-bottom: dotted 1px #3d2711;
-		margin-right: 80px; 
+		margin-right: 40px; 
 	}
+
+	div.detalle_producto
+	{
+		float: left;
+		background-color: #f6efdb;
+	}
+	div.detalle_producto div.imagen
+	{
+		float: left;
+		margin: 15px 15px 15px 15px;		
+	}
+	div.detalle_producto div.descripcion
+	{
+		float: left;
+		margin: 5px 5px 5px 5px;
+		text-align: left;
+		font-family: Century Gothic;
+		font-size: 12pt;
+		color: #3d2711;
+		margin: 15px 15px 15px 15px;
+		width: 65%;		
+	}
+	div.detalle_producto div.descripcion p
+	{
+		float: left;
+	}
+	div.detalle_producto input[type=number]
+	{
+		width: 40px;
+	}
+	
+	div#carrito table
+	{
+		margin-left: 10%;
+	}
+	div#carrito table td.linea
+	{
+		border-bottom: dotted 1px;
+	}
+	div#carrito table td
+	{
+		font-family: Century Gothic;
+		font-size: 10pt;
+		color: #3d2711;
+		text-align: left;
+	}
+
+	/* Estilo de los links. */
+	a
+	{
+		text-decoration: underline;		
+	}	
+	a:link 
+	{
+		color: #e18122;
+	}
+	a:visited 
+	{
+		color: #e18122;
+	}
+	a:hover 
+	{
+		color: #879E34;
+	}
+	a:active 
+	{
+		color: #3d2711;
+	}
+

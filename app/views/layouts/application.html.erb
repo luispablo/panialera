@@ -44,7 +44,7 @@
 					<%= image_tag 'categorias.png' %>					
 					<ul class="nav1">
 						<% @categorias.each do |c| %>
-							<li><%= link_to c.nombre, controller: :tienda, action: :productos_categoria, codigo: c.codigo %></li>
+							<li><%= link_to_unless c.productos.empty?, c.nombre, controller: :tienda, action: :productos_categoria, codigo: c.codigo %></li>
 						<% end %>
 					</ul>					
 					<br/>

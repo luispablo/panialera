@@ -8,6 +8,10 @@ class TiendaController < ApplicationController
   def productos_categoria
     @categoria = Categoria.find_by_codigo(params[:codigo])
   end
+
+  def detalle_producto
+    @producto = Producto.find_by_codigo(params[:codigo])
+  end
   
 private
   def cargar_carrito

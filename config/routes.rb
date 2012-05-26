@@ -48,6 +48,7 @@ Panialera::Application.routes.draw do
 
   controller :tienda do
     get 'productos_categoria/:codigo' => :productos_categoria
+    get 'detalle_producto/:codigo' => :detalle_producto
   end
 
   resources :categorias

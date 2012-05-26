@@ -1,0 +1,52 @@
+
+	<div class="detalle_producto">
+		<div class="imagen">
+			<a class="popup" href="#" onclick="pop();">
+				<% if @producto.imagen? %>
+					<%= image_tag @producto.imagen_url(:thumb) %>
+				<% else %>
+					<%= image_tag 'thumb.png' %>
+				<% end %>
+				<br/>
+				(clic para agrandar)
+			</a>
+		</div>
+		<div class="descripcion">
+			<strong><%= @producto.nombre %></strong><br/>
+			c&oacute;digo: <%= @producto.codigo %><br/><br/>
+			<em><%= @producto.descripcion %></em><br/>
+			<%= "Talle #{@producto.talle}" unless @producto.talle.nil? or @producto.talle.empty? %> <%= "(#{@producto.peso_bebe})" unless @producto.peso_bebe.nil? or @producto.peso_bebe.empty? %><br/>
+			<%= @producto.referencia %><br/>
+			
+			<p><%= @producto.detalle %></p>
+			
+			Precio:&nbsp;<%= number_to_currency(@producto.precio) %><br/>
+			<br/>
+			
+			<%= form_for(CarritoItem.new(cantidad: 1, producto: @producto), remote: true) do |f| %>
+				<%= f.hidden_field :producto_id %>
+				<%= label_tag :cantidad %>:
+				<%= f.number_field :cantidad, size: '1' %>
+				<%= button_to 'Agregar al carrito' %>
+			<% end %>
+		</div>
+	</div>
+
+	<div id="dialog" title="Imagen de <%= @producto.nombre %>" style="display: none;">
+		<%= image_tag @producto.imagen_url %>
+	</div>
+
+	<script>
+		function pop()
+		{
+			$('#dialog').dialog(
+			{
+  				show: "blind",
+  				closeOnEscape: true,
+  				modal: true,
+  				closeText: "Cerrar",
+  				width: 'auto',
+  				title: '<%= @producto.codigo %> - <%= @producto.nombre %> - <%= "Talle #{@producto.talle}" unless @producto.talle.nil? or @producto.talle.empty? %> <%= "(#{@producto.peso_bebe})" unless @producto.peso_bebe.nil? or @producto.peso_bebe.empty? %>'
+			});
+		}
+	</script>
