@@ -16,6 +16,7 @@ class Categoria < ActiveRecord::Base
   belongs_to :categoria
   
   has_many :cat_productos
-  has_many :categorias, :through => :cat_productos
-  
+  has_many :productos, :through => :cat_productos
+
+  validates :codigo, uniqueness: true, presence: true
 end

@@ -246,3 +246,35 @@ text-decoration: none;
 		text-align: right;
 		margin-right: 15px;
 	}
+
+	li.listado_productos
+	{
+		list-style: none;
+		margin-bottom: 5px;
+		float: left;
+		width: 100%;
+	}
+	li.listado_productos div.imagen
+	{
+		float: left;
+		margin: 5px 5px 5px 5px;
+	}
+	li.listado_productos div.descripcion
+	{
+		float: left;
+		margin: 5px 5px 5px 5px;
+		text-align: left;
+		font-family: Century Gothic;
+		font-size: 12pt;
+		color: #3d2711;
+	}
+
+	h2
+	{
+		font-family: Century Gothic;
+		font-size: 16pt;
+		color: #3d2711;
+		text-align: left;
+		border-bottom: dotted 1px #3d2711;
+		margin-right: 80px; 
+	}

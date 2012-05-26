@@ -30,7 +30,6 @@ Panialera::Application.routes.draw do
 
   resources :detalles_compras
 
-
   resources :hijos
 
   resources :vales
@@ -46,6 +45,10 @@ Panialera::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root to: 'tienda#index', as: 'tienda'
+
+  controller :tienda do
+    get 'productos_categoria/:codigo' => :productos_categoria
+  end
 
   resources :categorias
 

@@ -1,0 +1,25 @@
+
+	<h2>Categor&iacute;a "<%= @categoria.nombre %>"</h2>
+
+	<ul>
+		<% @categoria.productos.each do |p| %>
+			<li class="listado_productos">
+				<div class="imagen">
+					<% if p.imagen? %>
+						<%= image_tag p.imagen_url(:thumb) %>
+					<% else %>
+						<%= image_tag 'thumb.png' %>
+					<% end %>
+				</div>
+				<div class="descripcion">
+					<strong><%= p.nombre %></strong><br/>
+					<em><%= p.descripcion %></em><br/>
+					<%= "Talle #{p.talle}" unless p.talle.nil? or p.talle.empty? %> <%= "(#{p.peso_bebe})" unless p.peso_bebe.nil? or p.peso_bebe.empty? %><br/>
+					<%= p.referencia %><br/>
+					<%= number_to_currency(p.precio) %><br/>
+					<%= link_to 'Ver Detalles' %>
+					<%= link_to 'Agergar al carrito' %>
+				</div>				
+			</li>
+		<% end %>
+	</ul>
