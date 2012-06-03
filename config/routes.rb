@@ -56,6 +56,8 @@ Panialera::Application.routes.draw do
     get 'mi_cuenta/pedidos/:id' => :pedidos
     get 'mi_cuenta/domicilios/:id' => :domicilios
     get 'mi_cuenta/vales/:id' => :vales
+    get 'mi_cuenta/cambio_clave/:id' => :cambio_clave
+    post 'mi_cuenta/cambio_clave/:id' => :cambio_clave
   end
 
   resources :categorias

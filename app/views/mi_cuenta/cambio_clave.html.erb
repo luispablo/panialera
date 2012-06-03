@@ -1,0 +1,21 @@
+
+	<style>
+		form label { width: 200px; }
+	</style>
+
+	<%= render 'mi_cuenta/menu' %>
+	
+	<h3>Cambio de contrase&ntilde;a</h3>
+	
+	<%= form_tag( { action: :cambio_clave }, { remote: true, class: 'formulario' } ) do %>
+		<%= label_tag :email, 'e-mail', class: 'etiqueta' %>
+		<%= email_field_tag :email %><br/>
+		<%= label_tag :password, 'Contraseña', class: 'etiqueta' %>
+		<%= password_field_tag :password %><br/>
+		<%= label_tag :confirmation, 'Confirmar contraseña', class: 'etiqueta'%>
+		<%= password_field_tag :confirmation %><br/>
+		<br/>
+		
+		<%= label_tag ' ', ' ', class: 'etiqueta' %>
+		<%= submit_tag 'Cambiar contraseña' %>
+	<% end %>
