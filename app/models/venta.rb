@@ -15,4 +15,8 @@ class Venta < ActiveRecord::Base
   belongs_to :domicilio
   
   has_many :venta_detalles, dependent: :destroy
+  
+  def monto_total
+    venta_detalles.map{ |d| d.precio_total }.sum
+  end
 end

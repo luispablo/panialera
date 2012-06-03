@@ -51,6 +51,10 @@ Panialera::Application.routes.draw do
     get 'detalle_producto/:codigo' => :detalle_producto
   end
 
+  controller :mi_cuenta do
+    get 'mi_cuenta/resumen/:id' => :resumen
+  end
+
   resources :categorias
 
   # The priority is based upon order of creation:

@@ -14,4 +14,8 @@
 class VentaDetalle < ActiveRecord::Base
   belongs_to :venta
   belongs_to :producto
+  
+  def precio_total
+    precio * cantidad
+  end
 end

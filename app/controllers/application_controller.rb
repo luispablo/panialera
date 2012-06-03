@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   before_filter :cargar_categorias, :cargar_usuario
   
 private
+  def cargar_carrito
+    @carrito = carrito_actual
+  end
+  
   def cargar_categorias
     @categorias = Categoria.where(publicado: true)
   end

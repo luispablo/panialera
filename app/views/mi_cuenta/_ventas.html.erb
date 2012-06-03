@@ -1,0 +1,10 @@
+
+	<h3>Historial de pedidos</h3>
+	
+	<ul>
+		<% usuario.ventas.sort{ |a, b| b.fecha <=> a.fecha }.each do |v| %>
+			<li>
+				<%= v.fecha %> - <%= number_to_currency(v.monto_total) %> - <%= v.domicilio.descripcion %>
+			</li>
+		<% end %>
+	</ul>

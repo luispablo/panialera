@@ -19,4 +19,8 @@
 class Domicilio < ActiveRecord::Base
   belongs_to :barrio
   belongs_to :usuario
+  
+  def descripcion
+    "#{calle} #{numero} #{piso} #{depto}"
+  end
 end

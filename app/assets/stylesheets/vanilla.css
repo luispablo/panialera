@@ -284,6 +284,17 @@ text-decoration: none;
 		margin-right: 40px; 
 	}
 
+	h3
+	{
+		font-family: Century Gothic;
+		font-size: 13pt;
+		color: #3d2711;
+		margin-left: 20px;
+		text-align: left;
+		border-bottom: dotted 1px #3d2711;
+		margin-right: 40px; 
+	}
+	
 	div.detalle_producto
 	{
 		float: left;

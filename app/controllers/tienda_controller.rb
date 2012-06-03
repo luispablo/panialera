@@ -13,8 +13,4 @@ class TiendaController < ApplicationController
     @producto = Producto.find_by_codigo(params[:codigo])
   end
   
-private
-  def cargar_carrito
-    @carrito = carrito_actual
-  end
 end
