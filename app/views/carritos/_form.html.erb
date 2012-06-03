@@ -1,17 +1,19 @@
-<%= form_for(@carrito) do |f| %>
-  <% if @carrito.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@carrito.errors.count, "error") %> prohibited this carrito from being saved:</h2>
 
-      <ul>
-      <% @carrito.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<%= form_for(@carrito) do |f| %>
+  		<% if @carrito.errors.any? %>
+  			<div class="row">
+  				<div class="span6 offset3">
+					<% @carrito.errors.full_messages.each do |msg| %>
+						<span class="label label-important"><%= msg %></span><br/>
+					<% end %>
+  				</div>
+  			</div>
+			<br/>
+		<% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+		<%= render partial: 'carrito_items/carrito_item_grande', collection: @carrito.carrito_items, as: :item, locals: {f: f} %>
+
+  		<div class="actions">
+    		<%= f.submit %>
+  		</div>
+	<% end %>

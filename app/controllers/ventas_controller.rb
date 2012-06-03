@@ -1,4 +1,4 @@
-class VentasController < AdminController
+﻿class VentasController < ApplicationController
   before_filter :cargar_referencias, :only =>['new', 'edit']
   before_filter :cargar_productos, :only => ['show', 'agregar_detalle', 'quitar_detalle']
   
@@ -27,6 +27,13 @@ class VentasController < AdminController
   # GET /ventas/new
   # GET /ventas/new.json
   def new
+    @carrito = carrito_actual
+    
+    if @carrito.carrito_items.empty?
+      redirect_to tienda_url, notice: 'El carrito está vacío'
+      return
+    end
+    
     @venta = Venta.new(:fecha => Date.today)
 
     respond_to do |format|

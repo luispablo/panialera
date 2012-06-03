@@ -1,4 +1,4 @@
-					
+
 	<%= image_tag 'mi_carrito.png' %>
 	
 	<table width="90%" cellpadding="0" cellspacing="0" id="tabla_carrito">
@@ -14,4 +14,5 @@
 		</tr>
 	</table>
 
+	<%= button_to 'Checkout', carrito, method: :get %>
 	<%= button_to 'Vaciar carrito', carrito, method: :delete, confirm: '¿Estás seguro?', remote: true %>

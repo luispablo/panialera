@@ -1,6 +1,6 @@
 
-	<% if notice %>
-		<p id="notice"><%= notice %></p>
-	<% end %>
+	<h2>Mi Carrito</h2>
 	
-	<%= render @carrito %>
+	<div id="carrito_grande">
+		<%= render partial: 'carritos/carrito_grande', locals: {carrito: @carrito} %>
+	</div>

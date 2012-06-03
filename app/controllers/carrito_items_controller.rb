@@ -74,6 +74,7 @@
     respond_to do |format|
       if @carrito_item.update_attributes(params[:carrito_item])
         format.html { redirect_to @carrito_item, notice: 'Carrito item was successfully updated.' }
+        format.js
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

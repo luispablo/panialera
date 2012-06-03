@@ -20,6 +20,7 @@
 						<ul>
 							<li>
 								<%= link_to image_tag("item_menu_inicio.png"), tienda_url %>
+								<%= link_to image_tag("item_menu_carrito.png")%>
 							</li>
 						</ul>
 					</div>
@@ -54,9 +55,10 @@
 				<div id="cuerpo_principal">
 					<%= yield %>
 				</div>
-				
+								
+				<!-- Sólo mostrar el carrito lateral cuando no se está editando el carrito -->
 				<div id="carrito">
-					<%= render @carrito %>
+					<%= render @carrito unless params[:controller] == 'carritos' %>
 				</div>
 				
 				<div id="mi_cuenta">
