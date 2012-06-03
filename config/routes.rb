@@ -52,7 +52,10 @@ Panialera::Application.routes.draw do
   end
 
   controller :mi_cuenta do
-    get 'mi_cuenta/resumen/:id' => :resumen
+    get 'mi_cuenta/datos_personales/:id' => :datos_personales
+    get 'mi_cuenta/pedidos/:id' => :pedidos
+    get 'mi_cuenta/domicilios/:id' => :domicilios
+    get 'mi_cuenta/vales/:id' => :vales
   end
 
   resources :categorias

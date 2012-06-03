@@ -1,0 +1,30 @@
+
+	<style>
+		form label { width: 100px; }
+	</style>
+
+	<%= render 'mi_cuenta/menu' %>
+	
+	<h3>Mis datos personales</h3>
+	
+	<%= form_for(@usuario, remote: true, html: {class: 'formulario'}, validate: true) do |f| %>
+		<%= f.label :nombre, class: 'etiqueta' %>
+		<%= f.text_field :nombre %>*<br/>
+		<%= f.label :apellido, class: 'etiqueta' %>
+		<%= f.text_field :apellido %>*<br/>
+		<%= f.label :email, 'e-mail', class: 'etiqueta' %>
+		<%= f.email_field :email %>*<br/>
+		<%= f.label :sexo, class: 'etiqueta' %>
+		<%= f.select :sexo, [['Masculino', 'M'], ['Femenino', 'F']] %><br/>
+		<%= f.label :tel_particular, 'Tel. particular', class: 'etiqueta' %>
+		<%= f.telephone_field :tel_particular %><br/>
+		<%= f.label :tel_celular, 'Tel. celular', class: 'etiqueta' %>
+		<%= f.telephone_field :tel_celular %><br/>
+		<%= f.label :tel_laboral, 'Tel. laboral', class: 'etiqueta' %>
+		<%= f.telephone_field :tel_laboral %>
+		<br/><br/>
+		
+		<%= f.label ' ', class: 'etiqueta' %>
+		<%= f.submit 'Grabar' %>
+	<% end %>
+

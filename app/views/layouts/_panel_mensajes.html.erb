@@ -1,0 +1,10 @@
+
+	<% if flash[:notice] %>
+		<span class="mensaje info"><%= flash[:notice] %></span>
+	<% end %>
+    <% if flash[:warn] %>
+		<span class="mensaje warn"><%= flash[:warn] %></span>
+	<% end %>
+    <% if flash[:error] %>
+    	<span class="mensaje error"><%= flash[:error] %></span>
+	<% end %>

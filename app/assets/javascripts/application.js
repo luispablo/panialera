@@ -16,3 +16,4 @@
 //= require jquery-ui
 //= require jquery.purr
 //= require best_in_place
+//= require rails.validations

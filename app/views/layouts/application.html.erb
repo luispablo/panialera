@@ -21,7 +21,7 @@
 							<li>
 								<%= link_to image_tag("item_menu_inicio.png"), tienda_url %>
 								<%= link_to image_tag("item_menu_carrito.png"), carritos_url %>
-								<%= link_to image_tag("item_menu_mi_cuenta.png"), url_for(controller: :mi_cuenta, action: :resumen, id: session[:usuario_id]) if usuario_logueado? %>
+								<%= link_to image_tag("item_menu_mi_cuenta.png"), url_for(controller: :mi_cuenta, action: :datos_personales, id: session[:usuario_id]) if usuario_logueado? %>
 							</li>
 						</ul>
 					</div>
@@ -54,16 +54,22 @@
 				</div>
 				
 				<div id="cuerpo_principal">
+					<div id="panel_mensajes">
+						<%= render 'layouts/panel_mensajes' %>
+					</div>
+					
 					<%= yield %>
 				</div>
 								
-				<!-- Sólo mostrar el carrito lateral cuando no se está editando el carrito -->
-				<div id="carrito">
-					<%= render @carrito unless params[:controller] == 'carritos' %>
-				</div>
-				
-				<div id="mi_cuenta">
-					<%= render partial: 'sessions/session' %>
+				<div id="columna_derecha">
+					<!-- Sólo mostrar el carrito lateral cuando no se está editando el carrito -->
+					<div id="carrito">
+						<%= render @carrito unless params[:controller] == 'carritos' %>
+					</div>
+					
+					<div id="mi_cuenta">
+						<%= render partial: 'sessions/session' %>
+					</div>
 				</div>
 				
 				<div id="footer">&nbsp;</div>

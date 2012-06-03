@@ -1,4 +1,6 @@
 ﻿class SessionsController < ApplicationController
+  before_filter :cargar_carrito
+  
   def new
   end
 

@@ -1,4 +1,4 @@
-class UsuariosController < AdminController
+﻿class UsuariosController < AdminController
   # GET /usuarios
   # GET /usuarios.json
   def index
@@ -60,10 +60,14 @@ class UsuariosController < AdminController
 
     respond_to do |format|
       if @usuario.update_attributes(params[:usuario])
-        format.html { redirect_to usuarios_url, notice: "Usuario #{@usuario.email} was successfully updated." }
+        flash[:notice] = "La información se actualizó con éxito."
+        
+        format.html { redirect_to usuarios_url }
+        format.js 
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
+        format.js
         format.json { render json: @usuario.errors, status: :unprocessable_entity }
       end
     end

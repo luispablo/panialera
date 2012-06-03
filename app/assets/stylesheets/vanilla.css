@@ -141,14 +141,31 @@ text-decoration: none;
 		text-align: left;
 		padding-left: 10px;
 	}
-	div#contenido div#carrito
+	
+	div#contenido div#columna_derecha
 	{
+		font-family: Century Gothic;
+		font-size: 12pt;
+		color: #3d2711;
 		float: right;
 		width: 170px;
 		text-align: right;
 		padding-right: 10px;
 		padding-top: 15px;
+	}	
+	div#contenido div#columna_derecha div#carrito
+	{
+		float: right;
+		text-align: right;
 	}
+	div#contenido div#columna_derecha div#mi_cuenta
+	{
+		margin-top: 20px;
+		float: right;
+		text-align: right;
+	}
+	
+	
 	div#contenido div#menu_izquierdo ul
 	{
 		margin-top: 0px;
@@ -238,16 +255,6 @@ text-decoration: none;
 		font-family: Century Gothic;
 		font-size: 10pt;
 		color: #3d2711;
-	}
-	div#mi_cuenta
-	{
-		font-family: Century Gothic;
-		font-size: 12pt;
-		color: #3d2711;
-		margin-top: 20px;
-		float: right;
-		text-align: right;
-		margin-right: 15px;
 	}
 
 	li.listado_productos
@@ -363,3 +370,68 @@ text-decoration: none;
 		color: #3d2711;
 	}
 
+	/* Formularios */
+	form.formulario
+	{
+		font-family: Century Gothic;
+		font-size: 10pt;
+		color: #3d2711;
+		text-align: left;
+	}
+	form.formulario label.etiqueta
+	{
+		display: block;
+		float: left;
+		text-align: right;
+		padding-right: 7px;
+		padding-top: 3px;
+	}
+	.field_with_errors 
+	{
+  		display: inline;
+	}
+	.field_with_errors .message 
+	{
+  		color: #D00;
+  		padding-left: 5px;
+  		font-size: 12px;
+	}
+	form.formulario label.client_side_validation
+	{
+		color: red;
+	}
+	form.formulario div.field_with_errors input[type=text], 
+		form.formulario div.field_with_errors input[type=email], 
+		form.formulario div.field_with_errors input[type=tel]
+	{
+		background-color: #ec9d9d;
+	}
+	form.formulario input[type=text], form input[type=email], form input[type=tel]
+	{
+		/*
+		border: none;
+		border-bottom: dotted 1px;
+		border-color: #3d2711;
+		*/
+	}
+
+	/* Panel de mensajes*/
+	div#panel_mensajes
+	{
+		font-family: Century Gothic;
+		font-size: 12pt;
+	}
+	div#panel_mensajes span.mensaje
+	{
+		display: block;
+	}
+	div#panel_mensajes span.error
+	{
+		background-color: #ec9d9d;
+		color: #492b0d;
+	}
+	div#panel_mensajes span.info
+	{
+		background-color: #879e34;
+		color: #492b0d;
+	}
