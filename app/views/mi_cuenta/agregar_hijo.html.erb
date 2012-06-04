@@ -1,0 +1,25 @@
+
+	<style>
+		form label { width: 200px; }
+	</style>
+
+	<%= render 'mi_cuenta/menu' %>
+	
+	<h3>Mi hijo / a</h3>
+	
+	<%= form_for(@hijo, url: mi_cuenta_agregar_hijo_path, html: {class: 'formulario'}, validate: true) do |f| %>
+		<%= f.label :nombre, class: 'etiqueta'%>
+		<%= f.text_field :nombre %><br/>
+		<%= f.label :apellido, class: 'etiqueta'%>
+		<%= f.text_field :apellido %><br/>
+		<%= f.label :fecha_nacimiento, 'Fecha de nacimiento', class: 'etiqueta'%>
+		<%= f.date_select :fecha_nacimiento %><br/>
+		<%= f.label :sexo, class: 'etiqueta' %>
+		<%= f.select :sexo, [['Masculino', 'M'], ['Femenino', 'F']] %><br/>
+		<%= f.label :usa_paniales, 'Usa pañales', class: 'etiqueta' %>
+	    <%= f.check_box :usa_paniales %><br/>
+	    <br/>
+	    
+		<%= f.label ' ', class: 'etiqueta' %>
+		<%= f.submit 'Grabar' %>	    
+	<% end %>

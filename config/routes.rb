@@ -52,12 +52,14 @@ Panialera::Application.routes.draw do
   end
 
   controller :mi_cuenta do
-    get 'mi_cuenta/datos_personales/:id' => :datos_personales
-    get 'mi_cuenta/pedidos/:id' => :pedidos
-    get 'mi_cuenta/domicilios/:id' => :domicilios
-    get 'mi_cuenta/vales/:id' => :vales
-    get 'mi_cuenta/cambio_clave/:id' => :cambio_clave
-    post 'mi_cuenta/cambio_clave/:id' => :cambio_clave
+    get 'mi_cuenta/datos_personales' => :datos_personales
+    get 'mi_cuenta/pedidos' => :pedidos
+    get 'mi_cuenta/domicilios' => :domicilios
+    get 'mi_cuenta/vales' => :vales
+    get 'mi_cuenta/cambio_clave' => :cambio_clave
+    post 'mi_cuenta/cambio_clave' => :cambio_clave
+    get 'mi_cuenta/agregar_hijo' => :agregar_hijo
+    post 'mi_cuenta/agregar_hijo' => :agregar_hijo
   end
 
   resources :categorias

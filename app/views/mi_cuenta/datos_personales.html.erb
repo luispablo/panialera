@@ -28,3 +28,11 @@
 		<%= f.submit 'Grabar' %>
 	<% end %>
 
+	<h3>Mis hijos</h3>
+	
+	<%= link_to 'Agregar hijo/a', action: :agregar_hijo %>
+	
+	<div id="hijos">
+		<%= render @usuario.hijos %>
+	</div>
+	

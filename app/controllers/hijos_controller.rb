@@ -77,6 +77,7 @@ class HijosController < AdminController
 
     respond_to do |format|
       format.html { redirect_to hijos_url }
+      format.js { @usuario = @hijo.usuario }
       format.json { head :no_content }
     end
   end

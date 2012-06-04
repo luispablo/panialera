@@ -18,6 +18,7 @@
 class Usuario < ActiveRecord::Base
   has_many :domicilios
   has_many :ventas
+  has_many :hijos
   
   validates :nombre, :apellido, :email, :presence => { :message => ' es un campo requerido.'}
   validates :email, uniqueness: true
