@@ -1,0 +1,12 @@
+
+	<%= render 'mi_cuenta/menu' %>
+	
+	<h3>Mis domicilios</h3>
+	
+	<div style="text-align: right; margin-right: 50px; margin-bottom: 25px;">
+		<%= link_to 'Agregar domicilio', action: :new_domicilio %>
+	</div>
+
+	<div id="domicilios">	
+		<%= render @usuario.domicilios %>
+	</div>

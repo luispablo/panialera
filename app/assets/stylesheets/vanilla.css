@@ -435,3 +435,39 @@ text-decoration: none;
 		background-color: #879e34;
 		color: #492b0d;
 	}
+
+	/* Cajitas de los domicilios*/
+	div.caja_domicilio
+	{
+		background-color: #ecdeb3;
+		font-family: Century Gothic;
+		font-size: 12pt;
+		color: #3d2711;
+		text-align: left;
+		margin-left: 20px;
+		margin-right: 40px;
+		padding: 5px 5px 5px 5px;
+		margin-bottom: 5px;
+	}
+	div.caja_domicilio div.header
+	{
+		border-bottom: dotted;
+		border-width: 1px;
+		border-color: #3d2711;
+	}
+	div.caja_domicilio p
+	{
+		margin-bottom: 0px;
+	}
+	div.caja_domicilio h4
+	{
+		margin-top: 0px;
+		margin-bottom: 5px;
+		float: left;
+	}
+
+	span.right
+	{
+		display: block;
+		text-align: right;
+	}

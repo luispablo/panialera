@@ -2,6 +2,47 @@
   before_filter :cargar_carrito
   before_filter :cargar_usuario
 
+  def domicilios
+    
+  end
+  
+  def new_domicilio
+    @domicilio = Domicilio.new(usuario: @usuario)
+    
+    render 'domicilio'
+  end
+  
+  def create_domicilio
+    @domicilio = Domicilio.new(params[:domicilio])
+    @domicilio.usuario = @usuario
+
+    respond_to do |format|
+      if @domicilio.save
+        format.html { redirect_to mi_cuenta_domicilios_url, notice: "Se ha grabado la información." }
+      else
+        format.html { flash[:error] = "No se puede grabar la información." }
+      end
+    end    
+  end
+  
+  def edit_domicilio
+    @domicilio = Domicilio.find(params[:dom_id])
+    
+    render 'domicilio'
+  end
+  
+  def update_domicilio
+    @domicilio = Domicilio.find(params[:dom_id])
+
+    respond_to do |format|
+      if @domicilio.update_attributes(params[:domicilio])
+        format.html { redirect_to mi_cuenta_domicilios_url, notice: "Se ha grabado la información." }
+      else
+        format.html { flash[:error] = "No se puede grabar la información." }
+      end
+    end    
+  end
+
   def new_hijo
     @hijo = Hijo.new(usuario: @usuario)
     
@@ -68,10 +109,6 @@
   end
   
   def vales
-    
-  end
-  
-  def domicilios
     
   end
   

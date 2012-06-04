@@ -54,7 +54,6 @@ Panialera::Application.routes.draw do
   controller :mi_cuenta do
     get 'mi_cuenta/datos_personales' => :datos_personales
     get 'mi_cuenta/pedidos' => :pedidos
-    get 'mi_cuenta/domicilios' => :domicilios
     get 'mi_cuenta/vales' => :vales
     get 'mi_cuenta/cambio_clave' => :cambio_clave
     post 'mi_cuenta/cambio_clave' => :cambio_clave
@@ -63,6 +62,12 @@ Panialera::Application.routes.draw do
     get 'mi_cuenta/hijos/:hijo_id' => :edit_hijo
     post 'mi_cuenta/hijos' => :create_hijo
     put 'mi_cuenta/hijos/:hijo_id' => :update_hijo
+    
+    get 'mi_cuenta/domicilios' => :domicilios
+    get 'mi_cuenta/domicilios/new' => :new_domicilio
+    post 'mi_cuenta/domicilios' => :create_domicilio
+    get 'mi_cuenta/domicilios/:dom_id' => :edit_domicilio
+    put 'mi_cuenta/domicilios/:dom_id' => :update_domicilio
   end
 
   resources :categorias

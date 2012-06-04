@@ -1,0 +1,30 @@
+
+	<style>
+		form label { width: 200px; }
+	</style>
+
+	<%= render 'mi_cuenta/menu' %>
+	
+	<h3>Domicilio</h3>
+	
+	<%= form_for(@domicilio, url: "#{mi_cuenta_domicilios_path}/#{@domicilio.id}", html: {class: 'formulario'}, validate: true) do |f| %>
+		<%= f.label :nombre, class: 'etiqueta' %>
+		<%= f.text_field :nombre %><br/>
+		<%= f.label :calle, class: 'etiqueta' %>
+		<%= f.text_field :calle %><br/>
+		<%= f.label :numero, class: 'etiqueta' %>
+		<%= f.number_field :numero %><br/>
+		<%= f.label :piso, class: 'etiqueta' %>
+		<%= f.text_field :piso %><br/>
+		<%= f.label :depto, 'Departamento', class: 'etiqueta' %>
+		<%= f.text_field :depto %><br/>
+		<%= f.label :entre_calles, class: 'etiqueta' %>
+		<%= f.text_field :entre_calles %><br/>
+		<%= f.label :codigo_postal, 'Código postal', class: 'etiqueta' %>
+		<%= f.text_field :codigo_postal %><br/>
+		<%= f.label :barrio, class: 'etiqueta' %>
+		<%= f.select :barrio_id, Barrio.order(:nombre).map{ |b| [b.nombre, b.id] } %><br/>
+		<br/>
+		<%= f.label ' ', class: 'etiqueta'%>
+		<%= f.submit 'Grabar' %>
+	<% end %>

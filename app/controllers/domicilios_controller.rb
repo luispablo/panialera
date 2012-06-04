@@ -77,6 +77,7 @@ class DomiciliosController < AdminController
 
     respond_to do |format|
       format.html { redirect_to domicilios_url }
+      format.js { @usuario = @domicilio.usuario }
       format.json { head :no_content }
     end
   end
