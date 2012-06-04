@@ -2,21 +2,41 @@
   before_filter :cargar_carrito
   before_filter :cargar_usuario
 
-  def agregar_hijo
-    if request.post?
-      @hijo = Hijo.new(params[:hijo])
-      @hijo.usuario = @usuario
+  def new_hijo
+    @hijo = Hijo.new(usuario: @usuario)
+    
+    render 'hijo'
+  end
+  
+  def edit_hijo
+    @hijo = Hijo.find(params[:hijo_id])
+    
+    render 'hijo'
+  end
 
-      respond_to do |format|
-        if @hijo.save
-          format.html { redirect_to mi_cuenta_datos_personales_url, notice: "Se ha grabado la información." }
-        else
-          format.html { flash[:error] = "No se puede grabar la información." }
-        end
-      end    
-    else              
-      @hijo = Hijo.new(usuario: @usuario)
+  def update_hijo
+    @hijo = Hijo.find(params[:hijo_id])
+
+    respond_to do |format|
+      if @hijo.update_attributes(params[:hijo])
+        format.html { redirect_to mi_cuenta_datos_personales_url, notice: "Se ha grabado la información." }
+      else
+        format.html { flash[:error] = "No se puede grabar la información." }
+      end
     end
+  end
+
+  def create_hijo
+    @hijo = Hijo.new(params[:hijo])
+    @hijo.usuario = @usuario
+
+    respond_to do |format|
+      if @hijo.save
+        format.html { redirect_to mi_cuenta_datos_personales_url, notice: "Se ha grabado la información." }
+      else
+        format.html { flash[:error] = "No se puede grabar la información." }
+      end
+    end    
   end
 
   def cambio_clave

@@ -3,6 +3,6 @@
 	naci&oacute; el <%= hijo.fecha_nacimiento.day %> del <%= hijo.fecha_nacimiento.month %> de <%= hijo.fecha_nacimiento.year %>,&nbsp;
 	y <%= "no " unless hijo.usa_paniales %>usa pa&ntilde;ales.
 	
-	&nbsp;-&nbsp;
-	
+	&nbsp;-&nbsp;	
+	<%= link_to 'Editar', "#{mi_cuenta_hijos_path}/#{hijo.id}" %>&nbsp;-&nbsp;
 	<%= link_to 'Borrar', hijo, confirm: '¿Estás seguro?', method: :delete, remote: true %><br/>

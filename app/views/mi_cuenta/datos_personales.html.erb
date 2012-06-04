@@ -30,7 +30,9 @@
 
 	<h3>Mis hijos</h3>
 	
-	<%= link_to 'Agregar hijo/a', action: :agregar_hijo %>
+	<div style="text-align: left; margin-left: 25px; margin-bottom: 25px;">
+		<%= link_to 'Agregar hijo/a', action: :new_hijo %>
+	</div>
 	
 	<div id="hijos">
 		<%= render @usuario.hijos %>
