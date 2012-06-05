@@ -13,6 +13,7 @@
 			<td><strong><%= number_to_currency(carrito.precio_total) %></strong></td>
 		</tr>
 	</table>
+	<br/>
 
-	<%= button_to 'Checkout', carrito, method: :get %>
-	<%= button_to 'Vaciar carrito', carrito, method: :delete, confirm: '¿Estás seguro?', remote: true %>
+	<%= button_to 'Vaciar', carrito, method: :delete, confirm: '¿Estás seguro?', remote: true, style: 'float: right;' %>
+	<%= button_to 'Comprar', carrito, method: :get, style: 'float: right;' %>
