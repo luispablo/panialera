@@ -13,12 +13,14 @@
 #  updated_at      :datetime        not null
 #  tel_laboral     :string(255)
 #  password_digest :string(255)
+#  administrador   :boolean
 #
 
 class Usuario < ActiveRecord::Base
   has_many :domicilios
   has_many :ventas
   has_many :hijos
+  has_many :vales
   
   validates :nombre, :apellido, :email, :presence => { :message => ' es un campo requerido.'}
   validates :email, uniqueness: true

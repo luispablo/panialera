@@ -13,6 +13,7 @@
 #  updated_at      :datetime        not null
 #  tel_laboral     :string(255)
 #  password_digest :string(255)
+#  administrador   :boolean
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

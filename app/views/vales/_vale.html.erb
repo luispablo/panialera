@@ -1,0 +1,11 @@
+
+	<div class="vale">
+		<div class="header">
+			<h4>[<%= vale.codigo %>]&nbsp;<%= vale.nombre %></h4>
+			<span class="right">&nbsp;</span>
+		</div>
+		<p>
+			<%= vale.descripcion %><br/>
+			<u>Valor</u>:&nbsp;<strong><%= number_to_currency(vale.valor) %></strong>
+		</p>
+	</div>

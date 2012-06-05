@@ -437,7 +437,7 @@ text-decoration: none;
 	}
 
 	/* Cajitas de los domicilios*/
-	div.caja_domicilio
+	div.caja_domicilio, div.vale
 	{
 		background-color: #ecdeb3;
 		font-family: Century Gothic;
@@ -449,17 +449,17 @@ text-decoration: none;
 		padding: 5px 5px 5px 5px;
 		margin-bottom: 5px;
 	}
-	div.caja_domicilio div.header
+	div.caja_domicilio div.header, div.vale div.header
 	{
 		border-bottom: dotted;
 		border-width: 1px;
 		border-color: #3d2711;
 	}
-	div.caja_domicilio p
+	div.caja_domicilio p, div.vale p
 	{
 		margin-bottom: 0px;
 	}
-	div.caja_domicilio h4
+	div.caja_domicilio h4, div.vale h4
 	{
 		margin-top: 0px;
 		margin-bottom: 5px;

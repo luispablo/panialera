@@ -9,6 +9,7 @@
 #  valor       :float
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
+#  usuario_id  :integer
 #
 
 require 'test_helper'

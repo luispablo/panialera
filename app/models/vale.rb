@@ -9,7 +9,9 @@
 #  valor       :float
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
+#  usuario_id  :integer
 #
 
 class Vale < ActiveRecord::Base
+  belongs_to :usuario
 end
