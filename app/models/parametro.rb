@@ -22,5 +22,14 @@ class Parametro < ActiveRecord::Base
       monto_minimo_sin_envio: '120'
   }
   
-  validates :valor, presence: { message: ' el campo es requerido.' } 
+  validates :valor, presence: { message: ' el campo es requerido.' }
+  validates :codigo, uniqueness: true
+  
+  def self.precio_envio
+    Parametro.find_by_codigo(CODIGOS[:precio_envio]).valor.to_f
+  end 
+  
+  def self.monto_minimo_sin_envio
+    Parametro.find_by_codigo(CODIGOS[:monto_minimo_sin_envio]).valor.to_f
+  end
 end
