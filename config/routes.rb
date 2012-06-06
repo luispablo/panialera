@@ -1,5 +1,7 @@
 Panialera::Application.routes.draw do
 
+  resources :parametros
+
   resources :carrito_items
 
   resources :carritos

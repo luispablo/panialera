@@ -1,0 +1,23 @@
+
+	<legend>Listando par&aacute;metros</legend>
+
+	<table class="table table-bordered table-striped span6">
+		<thead>
+  			<tr>
+			    <th>C&oacute;digo</th>
+			    <th>Nombre</th>
+			    <th>Valor</th>
+			    <th></th>
+  			</tr>
+		</thead>
+		<tbody>
+			<% @parametros.each do |parametro| %>
+			  	<tr>
+				    <td><%= parametro.codigo %></td>
+				    <td><%= parametro.nombre %></td>
+				    <td><%= parametro.valor %></td>
+				    <td><%= link_to 'Editar', edit_parametro_path(parametro) %></td>
+			  	</tr>
+			<% end %>
+		</tbody>
+	</table>

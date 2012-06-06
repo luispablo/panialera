@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605002723) do
+ActiveRecord::Schema.define(:version => 20120605234406) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -123,6 +123,14 @@ ActiveRecord::Schema.define(:version => 20120605002723) do
 
   create_table "marcas", :force => true do |t|
     t.string   "nombre"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "parametros", :force => true do |t|
+    t.string   "codigo"
+    t.string   "nombre"
+    t.string   "valor"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
