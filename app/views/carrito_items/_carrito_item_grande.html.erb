@@ -11,7 +11,7 @@
 				<%= item.producto.referencia %> 
 				(<%= f.number_field :cantidad, in: 1..100, onchange: "$('#edit_carrito_item_#{item.id}').submit();" %> &times; <%= number_to_currency(item.producto.precio) %>)
 			</td>
-			<td valign="top" class="linea"><%= number_to_currency(item.precio_total) %></td>
+			<td valign="top" class="linea" id="<%= "precio_total_#{item.id}" %>"><%= number_to_currency(item.precio_total) %></td>
 			<td class="linea">
 				<%= link_to image_tag('trash_can_25x25.png'), item, confirm: '¿Quitar este ítem del carrito?', method: :delete, remote: true %>		
 			</td>
