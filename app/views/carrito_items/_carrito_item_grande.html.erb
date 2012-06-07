@@ -1,19 +1,24 @@
 
 	<tr>
-		<%= form_for(item, remote: true) do |f| %>
-			<td>
-				<% if item.producto.imagen? %>
-					<%= image_tag item.producto.imagen_url(:thumb) %>
-				<% end %>
-			</td>			
-			<td class="linea">
+		<td valign="top" align="left">
+			<% if item.producto.imagen? %>
+				<%= image_tag item.producto.imagen_url(:thumb) %>
+			<% end %>
+		</td>			
+		<td class="linea">
+			<p>
 				<%= item.producto.marca.nombre %>&nbsp;<%= item.producto.nombre %>&nbsp;<%= item.producto.descripcion %><br/>
 				<%= item.producto.referencia %> 
-				(<%= f.number_field :cantidad, in: 1..100, onchange: "$('#edit_carrito_item_#{item.id}').submit();" %> &times; <%= number_to_currency(item.producto.precio) %>)
-			</td>
-			<td valign="top" class="linea" id="<%= "precio_total_#{item.id}" %>"><%= number_to_currency(item.precio_total) %></td>
-			<td class="linea">
-				<%= link_to image_tag('trash_can_25x25.png'), item, confirm: '¿Quitar este ítem del carrito?', method: :delete, remote: true %>		
-			</td>
-		<% end %>
+			</p>
+			<br/>
+			
+			<%= form_for(item, remote: true, html: { method: :put, style: 'display: inline;' }) do |f| %>
+				<%= f.number_field :cantidad, in: 1..100, onchange: "$('#edit_carrito_item_#{item.id}').submit();" %> &times;
+			<% end %>
+						 
+			<%= number_to_currency(item.producto.precio) %> = <span id="<%= "precio_total_#{item.id}" %>" class="precio_total_linea"><%= number_to_currency(item.precio_total) %></span>
+		</td>
+		<td class="linea">
+			<%= link_to image_tag('trash_can_25x25.png'), item, confirm: '¿Quitar este ítem del carrito?', method: :delete, remote: true %>		
+		</td>		
 	</tr>

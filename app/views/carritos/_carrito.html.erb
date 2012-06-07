@@ -4,14 +4,16 @@
 	<table width="90%" cellpadding="0" cellspacing="0" id="tabla_carrito">
 		<%= render(carrito.carrito_items) %>
 		<tr><td colspan="2">&nbsp;</td></tr>
-		<tr id="entrega">
-			<td><strong>Delivery</strong></td>
-			<td><strong><%= number_to_currency(carrito.costo_envio) %></strong></td>
-		</tr>
-		<tr id="total">
-			<td><strong>Total</strong></td>
-			<td><strong><%= number_to_currency(carrito.precio_total) %></strong></td>
-		</tr>
+		<tfoot>
+			<tr id="entrega">
+				<td><strong>Delivery</strong></td>
+				<td colspan="2" nowrap><%= number_to_currency(carrito.costo_envio) %></td>
+			</tr>
+			<tr id="total">
+				<td><strong>Total</strong></td>
+				<td colspan="2" nowrap><%= number_to_currency(carrito.precio_total) %></td>
+			</tr>
+		</tfoot>
 	</table>
 	<br/>
 

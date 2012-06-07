@@ -1,11 +1,11 @@
 
-<tr <%= "id='item_actual'" if carrito_item == @item_actual %>>
-	<td class="linea">
-		<%= carrito_item.producto.nombre %><br/> 
-		(<%= carrito_item.cantidad %> &times; <%= number_to_currency(carrito_item.producto.precio) %>)
-	</td>
-	<td valign="top" class="linea"><%= number_to_currency(carrito_item.precio_total) %></td>
-	<td class="linea">
-		<%= link_to image_tag('trash_can_25x25.png'), carrito_item, confirm: '¿Quitar este ítem del carrito?', method: :delete, remote: true %>		
-	</td>
-</tr>
+	<tr <%= "id='item_actual'" if carrito_item == @item_actual %>>
+		<td class="linea">
+			<%= carrito_item.producto.nombre %><br/> 
+			(<%= carrito_item.cantidad %> &times; <%= number_to_currency(carrito_item.producto.precio) %>)
+		</td>
+		<td valign="top" class="linea" nowrap><%= number_to_currency(carrito_item.precio_total) %></td>
+		<td class="linea">
+			<%= link_to image_tag('trash_can_25x25.png'), carrito_item, confirm: '¿Quitar este ítem del carrito?', method: :delete, remote: true %>		
+		</td>
+	</tr>

@@ -471,3 +471,38 @@ text-decoration: none;
 		display: block;
 		text-align: right;
 	}
+
+	/* Estilo del carrito de compras al comprar */
+	table#tabla_carrito_grande
+	{
+		font-family: Century Gothic;
+		font-size: 12pt;
+		color: #3d2711;
+	}
+	table#tabla_carrito_grande td
+	{
+		background-color: #ecdeb3;
+		padding: 5px 5px 5px 5px;
+
+		border-bottom: solid 5px white;
+	}
+	table#tabla_carrito_grande tr#total td
+	{
+		color: #ecdeb3;
+		background-color: #3D2711;
+	}
+	div#contenido div#cuerpo_principal table#tabla_carrito_grande tr td p
+	{
+		font-size: 12pt;
+		text-align: left;
+	}
+	table#tabla_carrito_grande span.precio_total_linea
+	{
+		font-weight: bold;
+		vertical-align: middle;
+	}
+	table#tabla_carrito_grande tfoot tr td, table#tabla_carrito tfoot tr td
+	{
+		font-weight: bold;
+		text-align: right;
+	}
