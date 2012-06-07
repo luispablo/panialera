@@ -85,7 +85,7 @@
 
   # DELETE /carrito_items/1
   # DELETE /carrito_items/1.json
-  def destroy
+  def destroy    
     @carrito = carrito_actual
     @carrito_item = CarritoItem.find(params[:id])
     @carrito_item.destroy
