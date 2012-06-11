@@ -1,11 +1,23 @@
 
 	<h2>Revis&aacute; tu compra antes de terminar, por favor</h2>
 
-	<p>
-  		<b>Fecha:</b><%= @venta.fecha %>
-	</p>
-			
-	<p>
-		<b>Domicilio:</b><%= @venta.domicilio.descripcion %>
-	</p>
+	<p><b>Domicilio:</b><%= @venta.domicilio.descripcion %></p>
+	
+	<p><b>Fecha de entrega:</b><%= @venta.fecha_entrega %> (<%= DIAS_SEMANA[@venta.fecha_entrega.wday].capitalize %>)</p>
+	
+	<p><b>Horario de entrega:</b>de <%= @venta.hora_desde_entrega.strftime('%H:%M') %> a <%= @venta.hora_hasta_entrega.strftime('%H:%M') %></p>
+	
+	<p><b>Forma de pago:</b>Efectivo (contra envío)</p>
+	
+	<h3>Productos</h3>
 
+	<% @carrito.carrito_items.each do |i| %>
+		<%= i.producto.marca.nombre %> <%= i.producto.descripcion %> - <%= i.cantidad %> &times; <%= number_to_currency(i.producto.precio) %> = <%= number_to_currency(i.precio_total) %>
+		<br/>
+	<% end %>
+	
+	<p><b>Envio:</b><%= number_to_currency(@carrito.costo_envio) %></p>
+	
+	<p><b>Importe total:</b><%= number_to_currency(@carrito.precio_total)%></p>
+	
+	<%= button_to 'Confirmar', "/confirmar_venta/#{@venta.id}", method: :get %>

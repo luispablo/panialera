@@ -11,15 +11,19 @@ class Carrito < ActiveRecord::Base
   has_many :carrito_items, dependent: :destroy
 
   def costo_envio
-    if self.precio_total >= Parametro.monto_minimo_sin_envio
+    if carrito_items.empty? or self.precio_total_items >= Parametro.monto_minimo_sin_envio
       0
     else
       Parametro.precio_envio
     end    
   end
 
-  def precio_total
+  def precio_total_items
     carrito_items.to_a.sum { |item| item.precio_total }
+  end
+
+  def precio_total
+    precio_total_items + costo_envio
   end
   
   def agregar_producto(producto_id, cantidad)

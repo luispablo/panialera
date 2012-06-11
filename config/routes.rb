@@ -24,6 +24,7 @@ Panialera::Application.routes.draw do
   
   controller :ventas do
     get 'cambiar_domicilio_entrega/:from/:to' => :cambiar_domicilio_entrega
+    get '/confirmar_venta/:id' => :confirmar
   end
 
   match '/compras/agregar_detalle', :to => 'compras#agregar_detalle'

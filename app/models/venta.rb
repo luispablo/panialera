@@ -25,4 +25,10 @@ class Venta < ActiveRecord::Base
   def monto_total
     venta_detalles.map{ |d| d.precio_total }.sum
   end
+  
+  def cargar_items_carrito(carrito)
+    carrito.carrito_items.each do |i|
+      VentaDetalle.create(venta: self, producto: i.producto, cantidad: i.cantidad, precio: i.producto.precio)
+    end
+  end
 end

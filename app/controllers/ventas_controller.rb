@@ -2,6 +2,15 @@
   before_filter :cargar_carrito
   before_filter :cargar_referencias, :only =>['new', 'edit']
   before_filter :cargar_productos, :only => ['show', 'agregar_detalle', 'quitar_detalle']
+
+  def confirmar
+    @venta = Venta.find(params[:id])    
+    @venta.cargar_items_carrito(@carrito)
+    @venta.confirmada = true
+    @venta.save
+    
+    @carrito.destroy
+  end
   
   # GET /ventas
   # GET /ventas.json
