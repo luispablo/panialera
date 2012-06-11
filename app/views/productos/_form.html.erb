@@ -83,12 +83,12 @@
 		  			<div class="controls"><%= f.text_field :edad_bebe %></div>
 		  		</div>
 		  		<div class="control-group">
-		  			<%= f.label 'Categorías', :class => 'control-label' %>
-		  			<div class="controls">
-		  				<% if @producto.persisted? %>
-		  					<%= link_to nombres_categorias(@producto), producto_path(@producto)+"/categorias" %>
-		  				<% end %>		  				
-		  			</div>	  				
+	  				<% if @producto.persisted? %>
+		  				<%= link_to 'Categorías', producto_path(@producto)+"/categorias", class: 'control-label' %>
+  					<% else %>
+			  			<%= f.label 'Categorías', :class => 'control-label' %>
+	  				<% end %>		  				
+		  			<div class="controls"><%= nombres_categorias(@producto) %></div>
 		  		</div>
 			</div>
 		</div>
