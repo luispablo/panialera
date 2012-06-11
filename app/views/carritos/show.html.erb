@@ -1,6 +1,11 @@
 
 	<h2>Mi Carrito</h2>
 	
+	<%= button_to 'Seleccionar dirección de entrega', new_venta_path, method: :get %>
+	
 	<div id="carrito_grande">
 		<%= render partial: 'carritos/carrito_grande', locals: {carrito: @carrito} %>
 	</div>
+
+	
+	

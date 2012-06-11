@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605234406) do
+ActiveRecord::Schema.define(:version => 20120610225811) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -101,12 +101,22 @@ ActiveRecord::Schema.define(:version => 20120605234406) do
     t.string   "entre_calles"
     t.string   "codigo_postal"
     t.integer  "barrio_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.integer  "usuario_id"
+    t.boolean  "ultima_entrega"
   end
 
   add_index "domicilios", ["barrio_id"], :name => "index_domicilios_on_barrio_id"
+
+  create_table "entregas", :force => true do |t|
+    t.integer  "wday"
+    t.time     "desde"
+    t.time     "hasta"
+    t.boolean  "disponible"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "hijos", :force => true do |t|
     t.string   "nombre"
@@ -195,8 +205,12 @@ ActiveRecord::Schema.define(:version => 20120605234406) do
     t.date     "fecha"
     t.integer  "usuario_id"
     t.integer  "domicilio_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.boolean  "confirmada"
+    t.date     "fecha_entrega"
+    t.time     "hora_desde_entrega"
+    t.time     "hora_hasta_entrega"
   end
 
   add_index "ventas", ["domicilio_id"], :name => "index_ventas_on_domicilio_id"

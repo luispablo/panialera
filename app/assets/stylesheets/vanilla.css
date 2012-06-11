@@ -506,3 +506,19 @@ text-decoration: none;
 		font-weight: bold;
 		text-align: right;
 	}
+
+	div.fila
+	{
+		width: 100%;
+		float: left;
+	}
+	div.fila div.columna_izquierda
+	{
+		float: left;
+		width: 49%;
+	}
+	div.fila div.columna_derecha
+	{
+		float: right;
+		width: 49%;
+	}

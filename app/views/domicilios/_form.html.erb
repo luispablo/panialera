@@ -11,50 +11,24 @@
 			<br/>
   		<% end %>
 
-		<div class="row">
-			<div class="span6">
-				<div class="control-group">
-		    		<%= f.label :nombre, :class => 'control-label' %>
-		    		<div class="controls"><%= f.text_field :nombre %></div>
-		  		</div>
-				<div class="control-group">
-		    		<%= f.label :calle, :class => 'control-label' %>
-		    		<div class="controls"><%= f.text_field :calle %></div>
-		  		</div>
-				<div class="control-group">
-		    		<%= f.label :numero, :class => 'control-label' %>
-		    		<div class="controls"><%= f.number_field :numero %></div>
-		  		</div>
-				<div class="control-group">
-		    		<%= f.label :piso, :class => 'control-label' %>
-		    		<div class="controls"><%= f.text_field :piso %></div>
-		  		</div>
-		  		<div class="control-group">
-		  			<%= f.label :usuario, :class => 'control-label' %>
-		  			<div class="controls"><%= f.select :usuario_id, Usuario.all.map { |u| [u.apellido, u.id] } %></div>
-		  		</div>
-			</div>
-			<div class="span6">
-				<div class="control-group">
-		    		<%= f.label :depto, :class => 'control-label' %>
-		    		<div class="controls"><%= f.text_field :depto %></div>
-		  		</div>
-				<div class="control-group">
-		    		<%= f.label :entre_calles, :class => 'control-label' %>
-		    		<div class="controls"><%= f.text_field :entre_calles %></div>
-		  		</div>
-				<div class="control-group">
-		    		<%= f.label :codigo_postal, :class => 'control-label' %>
-		    		<div class="controls"><%= f.text_field :codigo_postal %></div>
-		  		</div>
-				<div class="control-group">
-		    		<%= f.label :barrio, :class => 'control-label' %>
-		    		<div class="controls"><%= f.select :barrio_id, Barrio.all.map { |b| [b.nombre, b.id] } %></div>
-		  		</div>
-			</div>
-		</div>
+		<%= f.label :nombre %>
+		<%= f.text_field :nombre %><br/>
+		<%= f.label :calle %>
+		<%= f.text_field :calle %><br/>
+		<%= f.label :numero %>
+		<%= f.text_field :numero, size: 3 %>
+		<%= f.label :piso %>
+		<%= f.text_field :piso, size: 1 %>
+		<%= f.label :depto %>
+		<%= f.text_field :depto, size: 1 %><br/>
+		<%= f.label :entre_calles %>
+		<%= f.text_field :entre_calles %><br/>
+		<%= f.label :codigo_postal %>
+		<%= f.text_field :codigo_postal, size: 3 %>
+		<%= f.label :barrio %>
+		<%= f.select :barrio_id, Barrio.all.map { |b| [b.nombre, b.id] } %><br/>
   		
   		<div class="form-actions">
-    		<%= f.submit 'Grabar', :class => 'btn btn-primary' %>
+    		<%= f.submit 'Siguiente', :class => 'btn btn-primary' %>
   		</div>
 	<% end %>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Wday:</b>
+  <%= @entrega.wday %>
+</p>
+
+<p>
+  <b>Desde:</b>
+  <%= @entrega.desde %>
+</p>
+
+<p>
+  <b>Hasta:</b>
+  <%= @entrega.hasta %>
+</p>
+
+<p>
+  <b>Disponible:</b>
+  <%= @entrega.disponible %>
+</p>
+
+
+<%= link_to 'Edit', edit_entrega_path(@entrega) %> |
+<%= link_to 'Back', entregas_path %>

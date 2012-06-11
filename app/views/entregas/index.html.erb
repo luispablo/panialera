@@ -1,0 +1,31 @@
+
+	<legend>Listando entregas</legend>
+
+	<table class="table table-bordered table-striped">
+		<thead>
+  			<tr>
+			    <th>D&iacute;a de la semana</th>
+			    <th>Desde</th>
+			    <th>Hasta</th>
+			    <th>Disponible</th>
+			    <th colspan="3"></th>
+  			</tr>
+		</thead>
+		<tbody>
+			<% @entregas.each do |entrega| %>
+			  	<tr>
+				    <td><%= DIAS_SEMANA[entrega.wday].capitalize %></td>
+				    <td><%= entrega.desde.strftime('%H:%M') %></td>
+				    <td><%= entrega.hasta.strftime('%H:%M') %></td>
+				    <td><%= (entrega.disponible?? 'Si': 'No') %></td>
+				    <td><%= link_to 'Ver', entrega %></td>
+				    <td><%= link_to 'Editar', edit_entrega_path(entrega) %></td>
+				    <td><%= link_to 'Destruir', entrega, confirm: '¿Estás segura?', method: :delete %></td>
+			  	</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<div class="form-actions">
+		<%= link_to 'Nueva Entrega', new_entrega_path, class: 'btn btn-primary' %>
+	</div>

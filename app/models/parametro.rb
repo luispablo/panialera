@@ -13,17 +13,23 @@
 class Parametro < ActiveRecord::Base
   CODIGOS = 
   {
+      dias_disponibles_entrega: 'DIAS_DISP_ENTREGA',
       precio_envio: 'PRECIO_ENVIO', 
       monto_minimo_sin_envio: 'MONTO_MINIMO_SIN_ENVIO'
   }
   VALORES_POR_DEFECTO =
   {
+      dias_disponibles_entrega: '3',
       precio_envio: '15',
       monto_minimo_sin_envio: '120'
   }
   
   validates :valor, presence: { message: ' el campo es requerido.' }
   validates :codigo, uniqueness: true
+  
+  def self.dias_disponibles_entrega
+    Parametro.find_by_codigo(CODIGOS[:dias_disponibles_entrega]).valor.to_i
+  end
   
   def self.precio_envio
     Parametro.find_by_codigo(CODIGOS[:precio_envio]).valor.to_f

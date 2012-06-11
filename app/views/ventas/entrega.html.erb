@@ -1,0 +1,12 @@
+
+	<h2>Ahora eleg&iacute; cu&aacute;ndo quer&eacute;s recibir tu compra</h2>
+	
+	<%= form_for(@venta) do |f| %>
+		<% @entregas.each do |e| %>
+			<%= f.radio_button(:entrega, e.descripcion) %>
+			<%= f.label("entrega_#{e.descripcion}", e.descripcion) %><br/>
+		<% end %>
+		
+		<br/>
+		<%= button_to 'Siguiente' %>
+	<% end %>

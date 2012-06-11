@@ -1,31 +1,11 @@
-<p id="notice"><%= notice %></p>
 
-	<div class="row">
-		<div class="span8 well">
-			<p>
-			  <b>Fecha:</b>
-			  <%= @venta.fecha %>
-			</p>
+	<h2>Revis&aacute; tu compra antes de terminar, por favor</h2>
+
+	<p>
+  		<b>Fecha:</b><%= @venta.fecha %>
+	</p>
 			
-			<p>
-			  <b>Usuario:</b>
-			  <%= @venta.usuario.apellido unless @venta.usuario.nil? %>
-			</p>
-			
-			<p>
-			  <b>Domicilio:</b>
-			  <%= @venta.domicilio.nombre unless @venta.domicilio.nil? %>
-			</p>
-		</div>
-	</div>
-	<div class="row">
-		<%= render 'ventas/detalles' %>
-	</div>
-	<div class="row">
-		<div class="span8">
-			<div class="form-actions">
-				<%= link_to 'Editar cabecera', edit_venta_path(@venta), :class => 'btn' %>
-				<%= link_to 'Volver', ventas_path, :class => 'btn' %>
-			</div>
-		</div>
-	</div>
+	<p>
+		<b>Domicilio:</b><%= @venta.domicilio.descripcion %>
+	</p>
+

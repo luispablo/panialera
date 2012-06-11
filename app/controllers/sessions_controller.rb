@@ -1,6 +1,10 @@
 ﻿class SessionsController < ApplicationController
   before_filter :cargar_carrito
   
+  def login_or_register
+    
+  end
+  
   def new
   end
 
@@ -9,7 +13,7 @@
     
     if usuario and usuario.authenticate(params[:password])
       session[:usuario_id] = usuario.id
-      redirect_to tienda_url
+      redirect_to params[:redirect_to] || tienda_url
     else
       redirect_to login_url, alert: "Combinación usuarios / contraseña inválida."
     end

@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: entregas
+#
+#  id         :integer         not null, primary key
+#  wday       :integer
+#  desde      :time
+#  hasta      :time
+#  disponible :boolean
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  wday: 1
+  desde: 2012-06-10 19:14:21
+  hasta: 2012-06-10 19:14:21
+  disponible: false
+
+two:
+  wday: 1
+  desde: 2012-06-10 19:14:21
+  hasta: 2012-06-10 19:14:21
+  disponible: false

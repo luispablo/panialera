@@ -12,6 +12,10 @@ private
     @categorias = Categoria.where(publicado: true)
   end
 
+  def usuario_logueado?
+    not session[:usuario_id].nil?
+  end
+
   def cargar_usuario
     if session[:usuario_id]
       @usuario = Usuario.find(session[:usuario_id])

@@ -26,4 +26,19 @@ class Usuario < ActiveRecord::Base
   validates :email, uniqueness: true
   
   has_secure_password
+  
+  def domicilio_ultima_entrega
+    unless domicilios.nil? or domicilios.empty?
+      domicilios.each do |d|
+        return d if d.ultima_entrega
+      end
+      
+      domicilio_ultima_entrega = domicilios.first
+      domicilio_ultima_entrega.ultima_entrega = true
+      domicilio_ultima_entrega
+    else
+      Domicilio.new(usuario: self, ultima_entrega: true)
+    end
+  end
+    
 end

@@ -60,7 +60,13 @@ class DomiciliosController < AdminController
 
     respond_to do |format|
       if @domicilio.update_attributes(params[:domicilio])
-        format.html { redirect_to @domicilio, notice: 'Domicilio was successfully updated.' }
+        format.html do
+          unless request.referrer.include?('ventas')
+            redirect_to @domicilio, notice: 'Domicilio was successfully updated.'
+          else
+            redirect_to Venta.create(fecha: Date.today, usuario: @usuario, domicilio: @domicilio, confirmada: false)
+          end
+        end
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

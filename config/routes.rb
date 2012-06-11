@@ -1,5 +1,7 @@
 Panialera::Application.routes.draw do
 
+  resources :entregas
+
   resources :parametros
 
   resources :carrito_items
@@ -12,12 +14,17 @@ Panialera::Application.routes.draw do
     get 'login' => :new
     post 'login' => :create
     delete 'logout' => :destroy
+    get 'login_or_register' => :login_or_register
   end
 
   match '/ventas/agregar_detalle', :to => 'ventas#agregar_detalle'
   match '/ventas/quitar_detalle/:id', :to => 'ventas#quitar_detalle'
   resources :ventas
   resources :venta_detalles
+  
+  controller :ventas do
+    get 'cambiar_domicilio_entrega/:from/:to' => :cambiar_domicilio_entrega
+  end
 
   match '/compras/agregar_detalle', :to => 'compras#agregar_detalle'
   match '/compras/quitar_detalle/:id', :to => 'compras#quitar_detalle'

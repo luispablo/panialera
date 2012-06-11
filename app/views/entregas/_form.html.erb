@@ -1,0 +1,33 @@
+
+	<%= form_for(@entrega, html: {class: 'form-horizontal'}) do |f| %>
+  		<% if @entrega.errors.any? %>
+    		<div id="error_explanation">
+      			<h2><%= pluralize(@entrega.errors.count, "error") %> prohibited this entrega from being saved:</h2>
+      			<ul>
+      				<% @entrega.errors.full_messages.each do |msg| %>
+        				<li><%= msg %></li>
+      				<% end %>
+      			</ul>
+    		</div>
+  		<% end %>
+
+  		<div class="control-group">
+    		<%= f.label :wday, 'Día de la semana', class: 'control-label' %>
+    		<div class="controls"><%= f.select :wday, DIAS_SEMANA.each_with_index.collect { |nombre, index| [nombre, index] } %></div>
+  		</div>
+  		<div class="control-group">
+    		<%= f.label :desde, class: 'control-label' %>
+    		<div class="controls"><%= f.time_select :desde, {}, {:class => 'span1'}  %></div>
+  		</div>
+  		<div class="control-group">
+    		<%= f.label :hasta, class: 'control-label' %>
+    		<div class="controls"><%= f.time_select :hasta, {}, {:class => 'span1'}  %></div>
+  		</div>
+  		<div class="control-group">
+    		<%= f.label :disponible, class: 'control-label' %>
+    		<div class="controls"><%= f.check_box :disponible %></div>
+  		</div>
+  		<div class="form-actions">
+    		<%= f.submit 'Grabar', class: 'btn btn-primary'%>
+  		</div>
+	<% end %>
