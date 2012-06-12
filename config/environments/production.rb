@@ -1,4 +1,17 @@
 Panialera::Application.configure do
+  # Configuración del envío de mail
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = 
+  {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "gmail.com",
+    authentication: "plain",
+    user_name: "panialeradigital",
+    password: "lascornudas",
+    enable_starttls_auto: true
+  }
+  
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests

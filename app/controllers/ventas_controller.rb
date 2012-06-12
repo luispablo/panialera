@@ -6,10 +6,13 @@
   def confirmar
     @venta = Venta.find(params[:id])    
     @venta.cargar_items_carrito(@carrito)
+    @venta.costo_envio = @carrito.costo_envio
     @venta.confirmada = true
-    @venta.save
+    @venta.save!
     
     @carrito.destroy
+    
+    VentaNotifier.confirmada(@venta).deliver
   end
   
   # GET /ventas

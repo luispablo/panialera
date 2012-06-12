@@ -12,6 +12,7 @@
 #  fecha_entrega      :date
 #  hora_desde_entrega :time
 #  hora_hasta_entrega :time
+#  costo_envio        :float
 #
 
 class Venta < ActiveRecord::Base
@@ -23,6 +24,10 @@ class Venta < ActiveRecord::Base
   attr_accessor :entrega
   
   def monto_total
+    monto_total_lineas + costo_envio
+  end
+  
+  def monto_total_lineas
     venta_detalles.map{ |d| d.precio_total }.sum
   end
   

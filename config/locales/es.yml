@@ -1,23 +1,4 @@
 es:
-  titulo:
-    lugares: Listado de lugares
-    artistas: Listado de artistas
-    usuarios: Listado de usuarios
-    eventos: Listado de eventos
-    importar: Importación
-    nueva_importacion: Ingresar nueva información al sistema
-    ultimos_importados: Últimos registros importados
-    tareas_importacion: Tareas de importación
-    edicion_lugar: Editando lugar
-    sincronizacion:
-      artistas: Sincronización de artistas
-      artistas_nuevos: Artistas nuevos
-      artistas_existentes: Artistas existentes
-      lugares: Sincronización de lugares
-      lugares_nuevos: Lugares nuevos
-      lugares_existentes: Lugares existentes
-      eventos: Sincronización de eventos
-
   # Etiquetas genéricas
   apellido: apellido
   archivo_impo: Archivo a importar
@@ -256,5 +237,6 @@ es:
     formats:
       default: ! '%A, %d de %B de %Y %H:%M:%S %z'
       long: ! '%d de %B de %Y %H:%M'
-      short: ! '%d de %b %H:%M'
+      short: ! '%d de %B %H:%M'
+      hora: ! '%H:%M'
     pm: pm

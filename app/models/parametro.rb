@@ -1,4 +1,4 @@
-# == Schema Information
+﻿# == Schema Information
 #
 # Table name: parametros
 #
@@ -15,17 +15,23 @@ class Parametro < ActiveRecord::Base
   {
       dias_disponibles_entrega: 'DIAS_DISP_ENTREGA',
       precio_envio: 'PRECIO_ENVIO', 
-      monto_minimo_sin_envio: 'MONTO_MINIMO_SIN_ENVIO'
+      monto_minimo_sin_envio: 'MONTO_MINIMO_SIN_ENVIO',
+      remitente_mails: 'REMITENTE_MAILS'
   }
   VALORES_POR_DEFECTO =
   {
       dias_disponibles_entrega: '3',
       precio_envio: '15',
-      monto_minimo_sin_envio: '120'
+      monto_minimo_sin_envio: '120',
+      remitente_mails: '"Pañalera Digital" <panialeradigital@gmail.com>'
   }
   
   validates :valor, presence: { message: ' el campo es requerido.' }
   validates :codigo, uniqueness: true
+  
+  def self.remitente_mails
+    Parametro.find_by_codigo(CODIGOS[:remitente_mails]).valor
+  end
   
   def self.dias_disponibles_entrega
     Parametro.find_by_codigo(CODIGOS[:dias_disponibles_entrega]).valor.to_i

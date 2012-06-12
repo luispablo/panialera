@@ -12,6 +12,7 @@
 #  fecha_entrega      :date
 #  hora_desde_entrega :time
 #  hora_hasta_entrega :time
+#  costo_envio        :float
 #
 
 require 'test_helper'

@@ -1,0 +1,22 @@
+Estimada/o <%= @venta.usuario.nombre %>:
+
+Este correo electrónico es para confirmarte tu compra del día <%=l @venta.fecha, format: :short %>.
+
+Has comprado:
+
+----------------------------------------------------------------------------------------------------------------------
+<% @venta.venta_detalles.each do |d| %>
+- <%= d.producto.marca.nombre %> <%= d.producto.nombre %>: <%= d.cantidad %> x <%= number_to_currency(d.producto.precio) %> = <%= number_to_currency(d.precio_total) %>	
+<% end %>
+
+<%= "- Delivery #{number_to_currency(@venta.costo_envio)}" unless @venta.costo_envio.nil? if @venta.costo_envio > 0 %>
+
+Precio total: <%= number_to_currency(@venta.monto_total) %>
+----------------------------------------------------------------------------------------------------------------------
+
+El pedido será entregado en <%= @venta.domicilio.descripcion %> el <%=l @venta.fecha_entrega, format: :short %> entre las <%=l @venta.hora_desde_entrega, format: :hora %> y las <%=l @venta.hora_hasta_entrega, format: :hora %>.
+
+Un vez más te agradecemos por tu compra.
+Un saludo cordial,
+
+Pañalera Digital 
