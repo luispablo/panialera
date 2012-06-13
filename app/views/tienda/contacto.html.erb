@@ -1,0 +1,26 @@
+
+	<h2>Contacto</h2>
+
+	<%= form_tag do %>
+		<%= label_tag :nombre, 'Nombre y apellido' %>
+		<%= text_field_tag :nombre %><br/>
+		<%= label_tag :como_llego, 'Cómo llegó a nosotros:'%>
+		<%= radio_button_tag :como_llego, :web %>
+		<%= label_tag :como_llego_web, 'Internet' %><br/>
+		<%= radio_button_tag :como_llego, :referido %>
+		<%= label_tag :como_llego_referido, 'Recomendación' %><br/>
+		<%= radio_button_tag :como_llego, :volantes %>
+		<%= label_tag :como_llego_volantes, 'Volantes' %><br/>
+		<%= radio_button_tag :como_llego, :otros %>
+		<%= label_tag :como_llego_otros, 'Otros' %>
+		<%= text_field_tag :otros %><br/>
+		<%= label_tag :email, 'e-mail' %>
+		<%= text_field_tag :email %><br/>
+		<%= label_tag :consulta, 'Consulta'%>
+		<%= text_area_tag :consulta %><br/>
+		<%= label_tag :recibir_novedades, '¿Desea recibir novedades?' %>
+		<%= check_box_tag :recibir_novedades, 'si', true %><br/>
+		
+		<%= submit_tag 'Enviar consulta' %>
+		
+	<% end %>

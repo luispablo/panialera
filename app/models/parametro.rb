@@ -14,6 +14,7 @@ class Parametro < ActiveRecord::Base
   CODIGOS = 
   {
       dias_disponibles_entrega: 'DIAS_DISP_ENTREGA',
+      email_admin: 'EMAIL_ADMIN',
       precio_envio: 'PRECIO_ENVIO', 
       monto_minimo_sin_envio: 'MONTO_MINIMO_SIN_ENVIO',
       remitente_mails: 'REMITENTE_MAILS'
@@ -21,6 +22,7 @@ class Parametro < ActiveRecord::Base
   VALORES_POR_DEFECTO =
   {
       dias_disponibles_entrega: '3',
+      email_admin: 'panialeradigital@gmail.com',
       precio_envio: '15',
       monto_minimo_sin_envio: '120',
       remitente_mails: '"Pañalera Digital" <panialeradigital@gmail.com>'
@@ -28,6 +30,10 @@ class Parametro < ActiveRecord::Base
   
   validates :valor, presence: { message: ' el campo es requerido.' }
   validates :codigo, uniqueness: true
+  
+  def self.email_admin
+    Parametro.find_by_codigo(CODIGOS[:email_admin]).valor
+  end
   
   def self.remitente_mails
     Parametro.find_by_codigo(CODIGOS[:remitente_mails]).valor
