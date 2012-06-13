@@ -20,4 +20,46 @@
 	
 	<p><b>Importe total:</b><%= number_to_currency(@carrito.precio_total)%></p>
 	
-	<%= button_to 'Confirmar', "/confirmar_venta/#{@venta.id}", method: :get %>
+	<p>
+		<a href="#" onclick="javascript: $('#dialog-modal').dialog('open');">T&eacute;rminos y condiciones de la compra</a>
+	</p>
+	
+	<%= button_to 'Aceptar los términos y confirmar la compra', "/confirmar_venta/#{@venta.id}", method: :get %>
+
+	<script>
+	$(function() {
+		$( "#dialog-modal" ).dialog({
+			width: 700,
+			height: 400,
+			autoOpen: false,
+			modal: true
+		});
+	});
+	</script>
+	
+	<div id="dialog-modal" title="Basic modal dialog">
+		<p>
+			No se aceptan devoluciones de productos comprados a través de Panalera.com con la excepción 
+			de cualquier artículo que llegue a tu casa dañado. En dicho caso se debe notificar inmediatamente 
+			a Servicio al Cliente y se realizará una investigación para cerciorar que el daño fue previo a 
+			la entrega.
+			La entrega a domicilio será al siguiente día para cualquier pedido recibido y pagado antes de las 
+			2pm. Los pedidos recibidos después de esta hora serán procesados al siguiente día hábil.
+			En el caso que se seleccione el servicio de entrega de Pañalera, este será realizado por el personal 
+			de Pañalera. Esta opción está disponible únicamente para las zonas 1, 4, 5, 9, 10, 11, 12, 13, 14, 
+			15, 16 y Carr. El Salvador﻿ dentro de la Ciudad de Guatemala. La entrega a otras zonas dentro de la 
+			Ciudad de Guatemala serán realizadas por un servicio de Courier contratado por Pañalera. El costo de 
+			este servicio es gratuito para compras iguales o mayores de Q500. Cualquier compra realizada en la que 
+			el cliente opte por el servicio gratuito de Pañalera a una zona fuera de las especificadas no será 
+			realizada a dicha zona, sinó que deberá cambiar el modo de entrega y realizarse el pago del Courier si 
+			aplican cargos. El escoger un servicio de Entrega no disponible para su área no será considerado motivo 
+			para devolución.
+			En Pañalera.com hemos tomado medidas de seguridad para proteger su información y prevenir el fraude en 
+			línea, según los estándares definidos por Credomatic. Nuestro sistema nunca retendrá sus datos de tarjeta 
+			sinó que estos deberán ser ingresados en cada compra, por su seguridad. Sin embargo, Pañalera.com no se 
+			puede hacer responsable por el uso indebido de tarjetas que han pasado las revisiones de seguridad. Si 
+			tiene algún reclamo respecto a un cobro que no reconoce, por favor comuníquese con su proveedor de tarjeta 
+			de crédito.
+			Cualquier duda sobre su pedido, por favor comunicarse con Servicio al Cliente a info@panalera.com.
+		</p>
+	</div>
