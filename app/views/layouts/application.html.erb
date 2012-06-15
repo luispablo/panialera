@@ -3,19 +3,34 @@
 <html>
 	<head>
 		<title>Pa&ntilde;alera Digital</title>
-  		<%= stylesheet_link_tag    "vanilla", :media => "all" %>
-  		<%= javascript_include_tag "application" %>
-  		<%= csrf_meta_tags %>
+		<%= stylesheet_link_tag    "vanilla", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-32690649-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script');
+				ga.type = 'text/javascript';
+				ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(ga, s);
+			})();
+
+		</script>
 	</head>
-	
+
 	<body>
-	
+
 		<div id="main">
 
 			<div id="menu_superior">
 				<div id="top">
-					<%= image_tag "logo.png", :id => 'logo' %>					
-					
+					<%= image_tag "logo.png", :id => 'logo' %>
+
 					<div id="menu_items">
 						<ul>
 							<li>
@@ -28,53 +43,59 @@
 					</div>
 				</div>
 				<div id="bottom">
-					<div id="linea">&nbsp;</div>
+					<div id="linea">
+						&nbsp;
+					</div>
 
-					<%= image_tag "slogan.png", :id => 'slogan' %>					
+					<%= image_tag "slogan.png", :id => 'slogan' %>
 				</div>
 			</div>
-			
+
 			<div id="contenido">
-			
+
 				<div id="menu_izquierdo">
 					<%= image_tag 'buscar.png' %>
 					<form method="post" action="http://thischickdesigns.com/catalog.htm" style="margin:0">
-						<input type="text" name="keyword" size="12"> 
+						<input type="text" name="keyword" size="12">
 						<input type="submit" value="Ir" class="formbutton">
 					</form>
 					<br/>
 
-					<%= image_tag 'categorias.png' %>					
+					<%= image_tag 'categorias.png' %>
 					<ul class="nav1">
 						<% @categorias.each do |c| %>
-							<li><%= link_to_unless c.productos.empty?, c.nombre, controller: :tienda, action: :productos_categoria, codigo: c.codigo %></li>
+						<li>
+							<%= link_to_unless c.productos.empty?, c.nombre, controller: :tienda, action: :productos_categoria, codigo: c.codigo %>
+						</li>
 						<% end %>
-					</ul>					
+					</ul>
 					<br/>
 
 				</div>
-				
+
 				<div id="cuerpo_principal">
 					<div id="panel_mensajes">
 						<%= render 'layouts/panel_mensajes' %>
 					</div>
-					
+
 					<%= yield %>
 				</div>
-								
+
 				<div id="columna_derecha">
 					<!-- Sólo mostrar el carrito lateral cuando no se está editando el carrito -->
 					<div id="carrito">
 						<%= render @carrito unless params[:controller] == 'carritos' or params[:controller] == 'ventas' %>
 					</div>
-					
+
 					<div id="mi_cuenta">
 						<%= render partial: 'sessions/session' %>
 					</div>
 				</div>
-				
-				<div id="footer">&nbsp;</div>
-				
+
+				<div id="footer">
+					&nbsp;
+				</div>
+
 			</div>
 
 			<div id="copyright">
@@ -82,9 +103,9 @@
 				<br/>
 				&copy;2012 Pa&ntilde;alera Digital. Todos los derechos reservados. Powered by Me. Web Design by Me.
 			</div>
-			
-		</div>	
-		
+
+		</div>
+
 	</body>
-	
+
 </html>
