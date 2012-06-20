@@ -1,5 +1,5 @@
 
-	<li>
+	<div class="span2 well mini-shadow">
 		<% if destacado.imagen? %>
 			<%= image_tag destacado.imagen_url(:thumb) %>
 		<% else %>
@@ -10,6 +10,6 @@
 
 		<p>
 			<%= link_to 'Ver Detalles', controller: :tienda, action: :detalle_producto, codigo: destacado.codigo %>
-			<%= button_to 'Agergar al carrito', carrito_items_path(producto_id: destacado), remote: true %>
+			<%= button_to 'Agergar al carrito', carrito_items_path(producto_id: destacado), remote: true, class: 'btn btn-danger' %>
 		</p>				
-	</li>
+	</div>

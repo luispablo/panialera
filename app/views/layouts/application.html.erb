@@ -3,93 +3,99 @@
 <html>
 	<head>
 		<title>Pa&ntilde;alera Digital</title>
-		<%= stylesheet_link_tag    "vanilla", :media => "all" %>
+		<%= stylesheet_link_tag    "bootstrap", :media => "all" %>
+		<%= stylesheet_link_tag    "panialera", :media => "all" %>
+		
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
 
 	</head>
 
 	<body>
-
-		<div id="main">
-
-			<div id="menu_superior">
-				<div id="top">
-					<%= image_tag "logo.png", :id => 'logo' %>
-
-					<div id="menu_items">
-						<ul>
-							<li>
-								<%= link_to image_tag("item_menu_inicio.png"), tienda_url %>
-								<%= link_to image_tag("item_menu_carrito.png"), @carrito %>
-								<%= link_to image_tag("item_menu_mi_cuenta.png"), url_for(controller: :mi_cuenta, action: :datos_personales, id: session[:usuario_id]) if usuario_logueado? %>
-								<%= link_to 'Contacto', url_for(controller: :tienda, action: :contacto) %>
-							</li>
-						</ul>
-					</div>
+		<div id="tira">
+		</div>
+		<br/>
+	
+		<div class="container">
+			<div class="row">
+				<div class="span7">
+					<div class="page-header">
+						<h1>
+							Pa&ntilde;alera <small>Digital</small>
+						</h1>
+					</div>					
 				</div>
-				<div id="bottom">
-					<div id="linea">
-						&nbsp;
+				<div class="span7">
+					<div class="row">
+						<div class="pull-right">
+						<!--
+							<a>toto</a>&nbsp;<a>tata</a>
+							-->
+						</div>
 					</div>
-
-					<%= image_tag "slogan.png", :id => 'slogan' %>
+					<br/>
+					<div class="row">
+						<div id="busqueda" class="well span4 offset1">
+						
+							<form class="form-horizontal">
+								<div class="input-append">
+									<input placeholder="Búsqueda de productos" class="span3" type="text" id="appendedInputButton" /><button class="btn btn-danger" type="button">Buscar</button>
+								</div>
+							</form>
+						
+						</div>
+					</div>
 				</div>
 			</div>
-
-			<div id="contenido">
-
-				<div id="menu_izquierdo">
-					<%= image_tag 'buscar.png' %>
-					<form method="post" action="http://thischickdesigns.com/catalog.htm" style="margin:0">
-						<input type="text" name="keyword" size="12">
-						<input type="submit" value="Ir" class="formbutton">
-					</form>
-					<br/>
-
-					<%= image_tag 'categorias.png' %>
-					<ul class="nav1">
+			
+				<div class="navbar">
+					<div class="navbar-inner">
+						<div class="container">
+							<ul class="nav">
+								<li><%= link_to 'Inicio', tienda_url %></li>
+								<li><%= link_to 'Mi Carrito', @carrito %></li>
+								<li><%= link_to 'Mi Cuenta', url_for(controller: :mi_cuenta, action: :datos_personales, id: session[:usuario_id]) if usuario_logueado? %></li>
+								<li><%= link_to 'Contacto', url_for(controller: :tienda, action: :contacto) %></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			
+			<!-- Cuerpo principal -->
+			<div class="row">
+				<!-- Columna izquierda -->
+				<div class="span3">
+					<ul class="nav nav-list well" id="categorias">
+						<h3>Categor&iacute;as</h3>
 						<% @categorias.each do |c| %>
-						<li>
-							<%= link_to_unless c.productos.empty?, c.nombre, controller: :tienda, action: :productos_categoria, codigo: c.codigo %>
-						</li>
+							<li>								
+								<%= link_to_unless c.productos.empty?, raw("<i class='icon-asterisk icon-white'></i> #{c.nombre}"), controller: :tienda, action: :productos_categoria, codigo: c.codigo %>
+							</li>
 						<% end %>
 					</ul>
-					<br/>
-
 				</div>
-
-				<div id="cuerpo_principal">
-					<div id="panel_mensajes">
-						<%= render 'layouts/panel_mensajes' %>
-					</div>
+				<!-- Columna central (principal) -->
+				<div class="span8">
+					<%= render 'layouts/panel_mensajes' %>
 
 					<%= yield %>
-				</div>
 
-				<div id="columna_derecha">
+					<footer class="footer">
+						<p>&copy;2012 Pa&ntilde;alera Digital. Todos los derechos reservados.</p>
+					</footer>
+				</div>
+				<!-- Columna derecha -->
+				<div class="span3">
 					<!-- Sólo mostrar el carrito lateral cuando no se está editando el carrito -->
-					<div id="carrito">
+					<div class="well" id="carrito">
 						<%= render @carrito unless params[:controller] == 'carritos' or params[:controller] == 'ventas' %>
 					</div>
 
-					<div id="mi_cuenta">
+					<div class="well" id="mi_cuenta">
 						<%= render partial: 'sessions/session' %>
-					</div>
+					</div>					
 				</div>
-
-				<div id="footer">
-					&nbsp;
-				</div>
-
 			</div>
-
-			<div id="copyright">
-				&nbsp;
-				<br/>
-				&copy;2012 Pa&ntilde;alera Digital. Todos los derechos reservados. Powered by Me. Web Design by Me.
-			</div>
-
 		</div>
 
 	</body>

@@ -1,19 +1,19 @@
 
-	<%= image_tag 'mi_cuenta.png' %>
+	<h3>Mi Cuenta</h3>
 	
 	<% if @usuario %>
 		<p>Bienvenida/o, <%= @usuario.nombre %>.</p>
 		
 		<% if @usuario.administrador? %>
-			<%= link_to 'Ir a administración', admin_url, class: 'nav1' %><br/>
+			<%= link_to raw("<i class='icon-wrench'></i> Administrar"), admin_url, class: 'btn' %>
 		<% end %>
-		<%= link_to 'Salir', logout_url, method: :delete, class: 'nav1' %>
+		<%= link_to raw("<i class='icon-share'></i> Salir"), logout_url, method: :delete, class: 'btn' %>
 	<% else %>
 		<%= form_tag(controller: 'sessions', action: 'create') do %>
-			<%= label_tag :email, 'e-mail' %><br/>
-			<%= text_field_tag :email, nil, size: 15 %><br/>
-			<%= label_tag :password, 'Contraseña' %><br/>
-			<%= password_field_tag :password, nil, size: 15 %><br/>
-			<%= submit_tag 'Ingresar' %>
+			<%= label_tag :email, 'e-mail' %>
+			<%= text_field_tag :email, nil, class: 'span2' %>
+			<%= label_tag :password, 'Contraseña' %>
+			<%= password_field_tag :password, nil, class: 'span2' %>
+			<%= submit_tag 'Ingresar', class: 'btn btn-primary' %>
 		<% end %>
 	<% end %>
