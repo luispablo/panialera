@@ -45,14 +45,15 @@
 			<h3>Mis hijos</h3>
 		</div>
 		
-		<table class="table table-striped">
-			<tbody>
-				<%= render @usuario.hijos %>	
-			</tbody>			
-		</table>
+		<div class="row">
+			<div class="span2">
+				<%= link_to 'Agregar hijo/a', {action: :new_hijo}, {class: 'btn pull-right'} %>
+			</div>
+			<div class="span5">
+				<%= render @usuario.hijos %>
+			</div>
+		</div>
 		
-		<%= link_to 'Agregar hijo/a', {action: :new_hijo}, {class: 'btn pull-right'} %>
-	
 	</div>
 </div>	
 	

@@ -1,12 +1,11 @@
 
-<tr>
-	<td>
-		<%= hijo.nombre %>&nbsp;<%= hijo.apellido %>,&nbsp;
-		naci&oacute; el <%= hijo.fecha_nacimiento.day %> del <%= hijo.fecha_nacimiento.month %> de <%= hijo.fecha_nacimiento.year %>,&nbsp;
-		y <%= "no " unless hijo.usa_paniales %>usa pa&ntilde;ales.
-	</td>
-	<td>
-		<%= link_to 'Editar', "#{mi_cuenta_hijos_path}/#{hijo.id}" %>
-		<%= link_to 'Borrar', hijo, confirm: '¿Estás seguro?', method: :delete, remote: true %>
-	</td>	
-</tr>
+	<div class="well shadow ">
+		<p>
+			<em><%= hijo.nombre %>&nbsp;<%= hijo.apellido %></em><br/>
+			
+			Naci&oacute; el <%= hijo.fecha_nacimiento.day %> del <%= hijo.fecha_nacimiento.month %> de <%= hijo.fecha_nacimiento.year %>,&nbsp;
+			y <%= "no " unless hijo.usa_paniales %>usa pa&ntilde;ales.
+		</p>		
+		<%= link_to raw("<i class='icon-pencil icon-white'></i> Editar"), "#{mi_cuenta_hijos_path}/#{hijo.id}", class: 'btn btn-info' %>
+		<%= link_to raw("<i class='icon-trash icon-white'></i> Borrar"), hijo, confirm: '¿Estás seguro?', method: :delete, remote: true, class: 'btn btn-danger' %>
+	</div>	
