@@ -1,7 +1,12 @@
 
 	<%= render 'mi_cuenta/menu' %>
+
+	<div class="tab-content">
+
+		<div class="well titulo_naranja">
+			<h3>Historial de pedidos</h3>
+		</div>	
 	
-	<h3>Historial de pedidos</h3>
 	
 	<ul>
 		<% @usuario.ventas.sort{ |a, b| b.fecha <=> a.fecha }.each do |v| %>
@@ -10,3 +15,6 @@
 			</li>
 		<% end %>
 	</ul>
+	
+	</div>
+</div>

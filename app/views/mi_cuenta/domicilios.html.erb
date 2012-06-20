@@ -1,12 +1,21 @@
 
+
 	<%= render 'mi_cuenta/menu' %>
 	
-	<h3>Mis domicilios</h3>
-	
-	<div style="text-align: right; margin-right: 50px; margin-bottom: 25px;">
-		<%= link_to 'Agregar domicilio', action: :new_domicilio %>
-	</div>
+	<div class="tab-content">
 
-	<div id="domicilios">	
-		<%= render @usuario.domicilios %>
+		<div class="well titulo_naranja">
+			<h3>Mis domicilios</h3>
+		</div>
+				
+		<div class="row">
+			<div class="span5 offset1">	
+				<%= render @usuario.domicilios %>
+			</div>
+			<div class="span1">
+				<%= link_to 'Agregar domicilio', {action: :new_domicilio}, {class: 'btn'} %>
+			</div>
+		</div>		
 	</div>
+	
+</div>

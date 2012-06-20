@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def tab(etiqueta, path)
+    raw("<li #{"class='active'" if request.fullpath.include?(path)}>#{link_to(etiqueta, path)}</li>")
+  end
+
   def trunc(texto, longitud, sufijo)
     "#{texto.slice(0, longitud).strip}#{sufijo if (texto.length > longitud)}"
   end

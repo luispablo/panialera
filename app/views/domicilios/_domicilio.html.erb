@@ -1,17 +1,23 @@
 
-	<div class="caja_domicilio">
-		<div class="header">
+<div class="well shadow">
+	<div class="row">
+		<div class="span2">
 			<h4><%= domicilio.nombre %></h4>
-			<span class="right">
-				<%= link_to 'Editar', "#{mi_cuenta_domicilios_path}/#{domicilio.id}" %>&nbsp;
-				<%= link_to 'Borrar', domicilio, confirm: '¿Estás seguro?', method: :delete, remote: true %>
-			</span>
 		</div>
-		<p>
-			<%= domicilio.calle %>&nbsp;<%= domicilio.numero %>&nbsp;<%= domicilio.piso %>&nbsp;<%= domicilio.depto %>
-			&nbsp;<%= "(entre #{domicilio.entre_calles})" unless domicilio.entre_calles.nil? or domicilio.entre_calles.empty? %>
-			<br/>
-			<%= domicilio.barrio.nombre %><br/>
-			C&oacute;digo Postal <%= domicilio.codigo_postal %>	
-		</p>
+		<div class=" pull-right">
+			<%= link_to raw("<i class='icon-pencil icon-white'></i> Editar"), "#{mi_cuenta_domicilios_path}/#{domicilio.id}", class: 'btn btn-info' %>&nbsp;
+			<%= link_to raw("<i class='icon-trash icon-white'></i> Borrar"), domicilio, confirm: '¿Estás seguro?', method: :delete, remote: true, class: 'btn btn-danger' %>
+		</div>
 	</div>
+	<div class="row">
+		<div class="span5">
+			<p>
+				<%= domicilio.calle %>&nbsp;<%= domicilio.numero %>&nbsp;<%= domicilio.piso %>&nbsp;<%= domicilio.depto %>
+				&nbsp;<%= "(entre #{domicilio.entre_calles})" unless domicilio.entre_calles.nil? or domicilio.entre_calles.empty? %>
+				<br/>
+				<%= domicilio.barrio.nombre %><br/>
+				C&oacute;digo Postal <%= domicilio.codigo_postal %>	
+			</p>
+		</div>
+	</div>	
+</div>

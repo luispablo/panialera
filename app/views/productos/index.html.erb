@@ -24,17 +24,17 @@
 		<tbody>
 			<% @productos.each do |producto| %>
 	  			<tr>
-	  				<td><%= image_tag producto.imagen_url() if producto.imagen? %></td>
+	  				<td nowrap><%= image_tag producto.imagen_url(:thumb) if producto.imagen? %></td>
 					<td><%= producto.codigo %></td>
 					<td><%= producto.marca.nombre unless producto.marca.nil? %></td>
 					<td><%= producto.nombre %></td>
 					<td><%= producto.descripcion %></td>
 					<td><% producto.categorias.each { |c| %><span class="label"><%= c.nombre %></span>&nbsp;<% } %></td>
-					<td><%= producto.detalle %></td>
+					<td><%= trunc(producto.detalle, 10, '...') %></td>
 					<td><%= producto.precio %></td>
 					<td><%= producto.referencia %></td>
-					<td><%= producto.disponible %></td>
-					<td><%= producto.publicado %></td>
+					<td><%= producto.disponible ? 'SI' : '-' %></td>
+					<td><%= producto.publicado ? 'SI' : '-' %></td>
 					<td><%= producto.stock %></td>
 					<td><%= producto.talle %></td>
 					<td><%= producto.peso_bebe %></td>

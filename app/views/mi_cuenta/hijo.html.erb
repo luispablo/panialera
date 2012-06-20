@@ -1,25 +1,33 @@
-
-	<style>
-		form label { width: 200px; }
-	</style>
-
+<!--
 	<%= render 'mi_cuenta/menu' %>
-	
-	<h3>Mi hijo / a</h3>
-	
-	<%= form_for(@hijo, url: "#{mi_cuenta_hijos_path}/#{@hijo.id}", html: {class: 'formulario'}, validate: true) do |f| %>
-		<%= f.label :nombre, class: 'etiqueta'%>
-		<%= f.text_field :nombre %><br/>
-		<%= f.label :apellido, class: 'etiqueta'%>
-		<%= f.text_field :apellido %><br/>
-		<%= f.label :fecha_nacimiento, 'Fecha de nacimiento', class: 'etiqueta'%>
-		<%= f.date_select :fecha_nacimiento %><br/>
-		<%= f.label :sexo, class: 'etiqueta' %>
-		<%= f.select :sexo, [['Masculino', 'M'], ['Femenino', 'F']] %><br/>
-		<%= f.label :usa_paniales, 'Usa pañales', class: 'etiqueta' %>
-	    <%= f.check_box :usa_paniales %><br/>
-	    <br/>
-	    
-		<%= f.label ' ', class: 'etiqueta' %>
-		<%= f.submit 'Grabar' %>	    
+-->
+	<div class="well titulo_azul">
+		<h3>Mi hijo / a</h3>	
+	</div>
+		
+	<%= form_for(@hijo, url: "#{mi_cuenta_hijos_path}/#{@hijo.id}", html: {class: 'form-horizontal'}, validate: true) do |f| %>
+		<div class="control-group">
+			<%= f.label :nombre, class: 'control-label'%>
+			<div class="controls"><%= f.text_field :nombre %></div>
+		</div>
+		<div class="control-group">
+			<%= f.label :apellido, class: 'control-label'%>
+			<div class="controls"><%= f.text_field :apellido %></div>
+		</div>
+		<div class="control-group">
+			<%= f.label :fecha_nacimiento, 'Fecha de nacimiento', class: 'control-label'%>
+			<div class="controls"><%= f.date_select :fecha_nacimiento,{}, class: 'span1' %></div>
+		</div>
+		<div class="control-group">
+			<%= f.label :sexo, class: 'control-label' %>
+			<div class="controls"><%= f.select :sexo, [['Masculino', 'M'], ['Femenino', 'F']] %></div>
+		</div>
+		<div class="control-group">
+			<%= f.label :usa_paniales, 'Usa pañales', class: 'control-label' %>
+		    <div class="controls"><%= f.check_box :usa_paniales %></div>
+		</div>
+	    <div class="form-actions">
+			<%= f.submit 'Grabar', class: 'btn btn-primary' %>
+			<%= link_to 'Volver', mi_cuenta_datos_personales_path, class: 'btn' %>	
+		</div>    
 	<% end %>

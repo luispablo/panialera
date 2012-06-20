@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<title>Pa&ntilde;alera Digital - ADMINISTRACI&Oacute;N</title>
-  		<%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
+  		<%= stylesheet_link_tag    "bootstrap", :media => "all" %>
   		<%= javascript_include_tag "application" %>
   		<%= csrf_meta_tags %>
   		<style type="text/css">
@@ -43,7 +43,7 @@
       		</div>
     	</div>
 		
-		<div class="container">
+		<div class="container-fluid">
 			<%= yield %>
 		</div>
 	</body>

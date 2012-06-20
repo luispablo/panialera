@@ -65,7 +65,7 @@ ul#categorias li a:hover
 	color: #ed3968;
 }
 
-ul.nav li a
+.navbar ul.nav li a
 {
 	font-size: 16px;
 	font-weight: bold;
@@ -126,9 +126,23 @@ div#mi_cuenta h3
 	margin-bottom: 10px;
 }
 
-div#titulo
+div.titulo_azul
 {
 	background-color: #14376B;
+	color: white;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+div.titulo_verde
+{
+	background-color: #9EAA4F;
+	color: white;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+div.titulo_naranja
+{
+	background-color: #F2BA1B;
 	color: white;
 	padding-top: 5px;
 	padding-bottom: 5px;
