@@ -7,14 +7,24 @@
 			<h3>Historial de pedidos</h3>
 		</div>	
 	
-	
-	<ul>
-		<% @usuario.ventas.sort{ |a, b| b.fecha <=> a.fecha }.each do |v| %>
-			<li>
-				<%= v.fecha %> - <%= number_to_currency(v.monto_total) %> - <%= v.domicilio.descripcion %>
-			</li>
-		<% end %>
-	</ul>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Fecha</th>
+					<th>Monto total</th>
+					<th>Domicilio de entrega</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @usuario.ventas.sort{ |a, b| b.fecha <=> a.fecha }.each do |v| %>
+					<tr>
+						<td><%= v.fecha %></td>
+						<td><%= number_to_currency(v.monto_total) %></td>
+						<td><%= v.domicilio.descripcion %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
 	
 	</div>
 </div>

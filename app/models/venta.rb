@@ -24,7 +24,7 @@ class Venta < ActiveRecord::Base
   attr_accessor :entrega
   
   def monto_total
-    monto_total_lineas + costo_envio
+    monto_total_lineas + (costo_envio.nil? ? 0: costo_envio)
   end
   
   def monto_total_lineas
