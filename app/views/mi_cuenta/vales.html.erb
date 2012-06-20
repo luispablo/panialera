@@ -1,8 +1,24 @@
 
 	<%= render 'mi_cuenta/menu' %>
 	
-	<h3>Mis vales de descuento</h3>
+	<div class="tab-content">
+
+		<div class="well titulo_azul">
+			<h3>Vales de descuento</h3>
+		</div>	
 	
-	<div id="vales">
-		<%= render @usuario.vales %>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Identificaci&oacute;n</th>
+					<th>Descripci&oacute;n</th>
+					<th>Valor</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%= render @usuario.vales %>
+			</tbody>
+		</table>
+
 	</div>
+</div>
