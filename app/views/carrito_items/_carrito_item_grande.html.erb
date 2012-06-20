@@ -13,12 +13,12 @@
 			<br/>
 			
 			<%= form_for(item, remote: true, html: { method: :put, style: 'display: inline;' }) do |f| %>
-				<%= f.number_field :cantidad, in: 1..100, onchange: "$('#edit_carrito_item_#{item.id}').submit();" %> &times;
+				<%= f.number_field :cantidad, in: 1..100, onchange: "$('#edit_carrito_item_#{item.id}').submit();", class: 'span1' %> &times;
 			<% end %>
 						 
 			<%= number_to_currency(item.producto.precio) %> = <span id="<%= "precio_total_#{item.id}" %>" class="precio_total_linea"><%= number_to_currency(item.precio_total) %></span>
 		</td>
 		<td class="linea">
-			<%= link_to image_tag('trash_can_25x25.png'), item, confirm: '¿Quitar este ítem del carrito?', method: :delete, remote: true %>		
+			<%= link_to raw("<i class='icon-trash icon-white'></i> Quitar"), item, confirm: '¿Quitar este ítem del carrito?', method: :delete, remote: true, class: 'btn btn-danger' %>		
 		</td>		
 	</tr>

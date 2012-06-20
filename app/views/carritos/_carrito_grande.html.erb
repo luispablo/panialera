@@ -1,13 +1,13 @@
 
-	<table width="90%" cellpadding="0" cellspacing="0" id="tabla_carrito_grande">
+	<table width="90%" cellpadding="0" cellspacing="0" id="tabla_carrito_grande" class="table table-striped">
 		<%= render partial: 'carrito_items/carrito_item_grande', collection: carrito.carrito_items, as: :item %>
 		<tfoot>
 			<tr id="entrega">
-				<td colspan="2">Delivery&nbsp;&nbsp;</td>
+				<td colspan="2" style="text-align: right;"><strong>Delivery</strong>&nbsp;&nbsp;</td>
 				<td nowrap><span id="costo_envio"><%= number_to_currency(carrito.costo_envio) %></span></td>
 			</tr>
 			<tr id="total">
-				<td colspan="2">Total&nbsp;&nbsp;</td>
+				<td colspan="2" style="text-align: right;"><strong>Total</strong>&nbsp;&nbsp;</td>
 				<td nowrap><span id="precio_total"><%= number_to_currency(carrito.precio_total) %></span></td>
 			</tr>
 		</tfoot>	
