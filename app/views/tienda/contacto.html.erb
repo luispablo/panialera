@@ -1,26 +1,38 @@
 
+<div class="well" id="titulo">
 	<h2>Contacto</h2>
+</div>
 
-	<%= form_tag do %>
-		<%= label_tag :nombre, 'Nombre y apellido' %>
-		<%= text_field_tag :nombre %><br/>
-		<%= label_tag :como_llego, 'Cómo llegó a nosotros:'%>
-		<%= radio_button_tag :como_llego, :web %>
-		<%= label_tag :como_llego_web, 'Internet' %><br/>
-		<%= radio_button_tag :como_llego, :referido %>
-		<%= label_tag :como_llego_referido, 'Recomendación' %><br/>
-		<%= radio_button_tag :como_llego, :volantes %>
-		<%= label_tag :como_llego_volantes, 'Volantes' %><br/>
-		<%= radio_button_tag :como_llego, :otros %>
-		<%= label_tag :como_llego_otros, 'Otros' %>
-		<%= text_field_tag :otros %><br/>
-		<%= label_tag :email, 'e-mail' %>
-		<%= text_field_tag :email %><br/>
-		<%= label_tag :consulta, 'Consulta'%>
-		<%= text_area_tag :consulta %><br/>
-		<%= label_tag :recibir_novedades, '¿Desea recibir novedades?' %>
-		<%= check_box_tag :recibir_novedades, 'si', true %><br/>
-		
-		<%= submit_tag 'Enviar consulta' %>
-		
-	<% end %>
+<%= form_tag({}, {class: 'form-horizontal'}) do %>
+	<div class="control-group">
+		<%= label_tag :nombre, 'Nombre y apellido', class: 'control-label' %>
+		<div class="controls"><%= text_field_tag :nombre %></div>	
+	</div>
+	<div class="control-group">	
+		<%= label_tag :como_llego, 'Cómo llegó a nosotros', class: 'control-label'%>
+		<div class="controls">
+			<%= label_tag :como_llego_web, raw("#{radio_button_tag(:como_llego, :web)} Internet"), class: 'radio' %>		
+			<%= label_tag :como_llego_referido, raw("#{radio_button_tag(:como_llego, :referido)} Recomendación"), class: 'radio' %>
+			<%= label_tag :como_llego_volantes, raw("#{radio_button_tag(:como_llego, :volantes)} Volantes"), class: 'radio' %>
+			<%= label_tag :como_llego_otros, raw("#{radio_button_tag(:como_llego, :otros)} Otros"), class: 'radio' %>
+			
+			<%= text_field_tag :otros %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= label_tag :email, 'e-mail', class: 'control-label' %>
+		<div class="controls"><%= text_field_tag :email %></div>
+	</div>
+	<div class="control-group">
+		<%= label_tag :consulta, 'Consulta', class: 'control-label' %>
+		<div class="controls"><%= text_area_tag :consulta, nil, {rows: 10, cols: 30} %></div>
+	</div>
+	<div class="control-group">
+		<%= label_tag :recibir_novedades, '¿Desea recibir novedades?', class: 'control-label' %>
+		<div class="controls"><%= check_box_tag :recibir_novedades, 'si', true %></div>
+	</div>
+	<div class="form-actions">
+		<%= submit_tag 'Enviar consulta', class: 'btn btn-primary' %>
+	</div>
+	
+<% end %>
