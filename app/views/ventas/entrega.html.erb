@@ -1,12 +1,26 @@
 
-	<h2>Ahora eleg&iacute; cu&aacute;ndo quer&eacute;s recibir tu compra</h2>
-	
-	<%= form_for(@venta) do |f| %>
-		<% @entregas.each do |e| %>
-			<%= f.radio_button(:entrega, e.descripcion) %>
-			<%= f.label("entrega_#{e.descripcion}", e.descripcion) %><br/>
-		<% end %>
+	<div class="well titulo_verde">
+		<h3>Ahora eleg&iacute; cu&aacute;ndo quer&eacute;s recibir tu compra</h3>	
+	</div>
 		
-		<br/>
-		<%= button_to 'Siguiente' %>
-	<% end %>
+	<div class="well shadow">
+		<%= form_for(@venta, html: {class: 'form-horizontal'}) do |f| %>
+			<div class="control-group">
+				<label class="control-label">Fechas disponibles</label>
+				<% @entregas.each do |e| %>
+					<div class="controls">
+						<label class="radio">
+							<%= f.radio_button(:entrega, e.descripcion) %>
+							<%= e.descripcion %>
+						</label>
+					</div>
+				<% end %>
+			</div>			
+
+			<div class="row">
+				<div class="pull-right">
+					<%= button_to '¡ Comprar !', nil, class: 'btn btn-info' %>
+				</div>						
+			</div>
+		<% end %>
+	</div>

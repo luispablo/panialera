@@ -1,19 +1,9 @@
 
-	<h2>Domicilio de entrega</h2>
-
-	<%= render 'domicilios/form' %>
+	<div class="well titulo_azul">
+		<h3>Domicilio de entrega</h3>	
+	</div>
 	
-	<h2>Otros domicilios tuyos registrados</h2>
+	<div class="well shadow">
+		<%= render 'domicilios/form' %>
+	</div>	
 	
-	<table border="1">
-		<thead>
-			<tr>
-				<td>Nombre</td>
-				<td>Detalle</td>
-				<td>&nbsp;</td>
-			</tr>
-		</thead>
-		<tbody>
-			<%= render partial: 'ventas/domicilio_entrega', locals: {id_actual: @domicilio.id}, collection: @usuario.domicilios.reject { |d| d == @domicilio }, as: :domicilio %>
-		</tbody>
-	</table>	

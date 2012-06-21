@@ -1,6 +1,6 @@
 
 	<tr>
-		<td><%= domicilio.nombre %></td>
+		<td><strong><%= domicilio.nombre %></strong></td>
 		<td><%= domicilio.descripcion %></td>
-		<td><%= link_to 'Seleccionar', "/cambiar_domicilio_entrega/#{id_actual}/#{domicilio.id}" %></td>
+		<td><%= link_to raw("<i class='icon-ok icon-white'></i> Quiero recibirlo aquí"), "/cambiar_domicilio_entrega/#{id_actual}/#{domicilio.id}", class: 'btn btn-success' %></td>
 	</tr>
