@@ -1,30 +1,88 @@
 
-	<h2>Revis&aacute; tu compra antes de terminar, por favor</h2>
-
-	<p><b>Domicilio:</b><%= @venta.domicilio.descripcion %></p>
+	<div class="well titulo_azul">
+		<h3>Revis&aacute; tu compra antes de terminar, por favor</h3>	
+	</div>
 	
-	<p><b>Fecha de entrega:</b><%= @venta.fecha_entrega %> (<%= DIAS_SEMANA[@venta.fecha_entrega.wday].capitalize %>)</p>
-	
-	<p><b>Horario de entrega:</b>de <%= @venta.hora_desde_entrega.strftime('%H:%M') %> a <%= @venta.hora_hasta_entrega.strftime('%H:%M') %></p>
-	
-	<p><b>Forma de pago:</b>Efectivo (contra envío)</p>
-	
-	<h3>Productos</h3>
-
-	<% @carrito.carrito_items.each do |i| %>
-		<%= i.producto.marca.nombre %> <%= i.producto.descripcion %> - <%= i.cantidad %> &times; <%= number_to_currency(i.producto.precio) %> = <%= number_to_currency(i.precio_total) %>
+	<div class="well shadow">
+		<div class="row">
+			<div class="span2">
+				<strong>Domicilio:</strong>
+			</div>
+			<div class="span4">
+				<%= @venta.domicilio.descripcion %>
+			</div>
+		</div>
 		<br/>
-	<% end %>
+		<div class="row">
+			<div class="span2">
+				<strong>Fecha de entrega:</strong>
+			</div>
+			<div class="span4">
+				<%= @venta.fecha_entrega %> (<%= DIAS_SEMANA[@venta.fecha_entrega.wday].capitalize %>)
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="span2">
+				<strong>Horario de entrega:</strong>
+			</div>
+			<div class="span4">
+				de <%= @venta.hora_desde_entrega.strftime('%H:%M') %> a <%= @venta.hora_hasta_entrega.strftime('%H:%M') %>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="span2">
+				<strong>Forma de pago:</strong>
+			</div>
+			<div class="span4">
+				Efectivo (contra envío)
+			</div>
+		</div>	
+		<br/>
 	
-	<p><b>Envio:</b><%= number_to_currency(@carrito.costo_envio) %></p>
+		<div class="well titulo_azul">
+			<h3>Productos</h3>
+		</div>
+		
+		<table class="table table-striped">
+			<tbody>
+				<% @carrito.carrito_items.each do |i| %>
+					<tr>
+						<td>
+							<%= i.producto.marca.nombre %> <%= i.producto.descripcion %> - <%= i.cantidad %> &times; <%= number_to_currency(i.producto.precio) %> = <%= number_to_currency(i.precio_total) %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+		<div class="row">
+			<div class="span2">
+				<strong>Envio:</strong>
+			</div>
+			<div class="span4">
+				<%= number_to_currency(@carrito.costo_envio) %>
+			</div>
+		</div>	
+		<br/>
+		<div class="row">
+			<div class="span2">
+				<strong>IMPORTE TOTAL:</strong>
+			</div>
+			<div class="span4">
+				<strong><%= number_to_currency(@carrito.precio_total)%></strong>
+			</div>
+		</div>	
+		<br/>
 	
-	<p><b>Importe total:</b><%= number_to_currency(@carrito.precio_total)%></p>
+		<div style="text-align: center;">
+			<a href="#" onclick="javascript: $('#dialog-modal').dialog('open');">Ver los t&eacute;rminos y condiciones de la compra</a>
+			<br/>	
+			<br/>	
+			<%= link_to raw("<i class='icon-ok icon-white'></i> Aceptar los términos y confirmar la compra"), "/confirmar_venta/#{@venta.id}", class: 'btn btn-success' %>
+		</div>
 	
-	<p>
-		<a href="#" onclick="javascript: $('#dialog-modal').dialog('open');">T&eacute;rminos y condiciones de la compra</a>
-	</p>
-	
-	<%= button_to 'Aceptar los términos y confirmar la compra', "/confirmar_venta/#{@venta.id}", method: :get %>
 
 	<script>
 	$(function() {
@@ -37,7 +95,7 @@
 	});
 	</script>
 	
-	<div id="dialog-modal" title="Basic modal dialog">
+	<div id="dialog-modal" title="Términos y condiciones de la compra">
 		<p>
 			No se aceptan devoluciones de productos comprados a través de Panalera.com con la excepción 
 			de cualquier artículo que llegue a tu casa dañado. En dicho caso se debe notificar inmediatamente 
@@ -62,4 +120,5 @@
 			de crédito.
 			Cualquier duda sobre su pedido, por favor comunicarse con Servicio al Cliente a info@panalera.com.
 		</p>
+	</div>
 	</div>
