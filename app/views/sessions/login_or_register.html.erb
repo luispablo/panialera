@@ -1,26 +1,35 @@
 
-	<h2>Una cosa m&aacute;s antes de seguir...</h2>
-	
-	<p>
-		La operaci&oacute;n que intent&aacute;s realizar requiere que antes 
-		ingreses con tu usuario, o te registres si no lo has 
-		hecho antes.
-	</p>
-	
-	<div class="fila">
-		<div class="columna_izquierda">
-			<h2>Ingresar</h2>
-			
-			<%= form_tag(controller: 'sessions', action: 'create') do %>
-				<%= hidden_field_tag :redirect_to, new_venta_url %>
-				<%= label_tag :email, 'e-mail' %>
-				<%= text_field_tag :email, nil, size: 15 %><br/>
-				<%= label_tag :password, 'Contraseña' %>
-				<%= password_field_tag :password, nil, size: 15 %><br/>
-				<%= submit_tag 'Ingresar' %>
-			<% end %>			
-		</div>
-		<div class="columna_derecha">
-			<h2>Registrarse</h2>
-		</div>
+	<div class="well titulo_azul">
+		<h3>Una cosa m&aacute;s antes de seguir...</h3>	
 	</div>
+	
+	<div class="well shadow">
+		<p>
+			<em>La operaci&oacute;n que intent&aacute;s realizar requiere que antes 
+			ingreses con tu usuario, o te registres si no lo has 
+			hecho antes.</em>
+		</p>
+		
+		<div class="row">
+			<div class="span4">
+				<div class="well titulo_verde">
+					<h3>Ingresar</h3>
+				</div>
+				
+				<%= form_tag(controller: 'sessions', action: 'create') do %>
+					<%= hidden_field_tag :redirect_to, new_venta_url %>
+					<%= label_tag :email, 'e-mail' %>
+					<%= text_field_tag :email, nil, size: 15 %><br/>
+					<%= label_tag :password, 'Contraseña' %>
+					<%= password_field_tag :password, nil, size: 15 %><br/>
+					<%= submit_tag 'Ingresar', class: 'btn btn-primary' %>
+				<% end %>			
+			</div>
+			<div class="span3">
+				<div class="well titulo_naranja">
+					<h3>Registrarse</h3>
+				</div>
+				
+			</div>
+		</div>
+	</div>	

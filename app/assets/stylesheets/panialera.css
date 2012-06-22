@@ -147,3 +147,8 @@ div.titulo_naranja
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+
+div.titulo_naranja h3
+{
+	color: #33332D;
+}
