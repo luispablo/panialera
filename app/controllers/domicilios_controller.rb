@@ -41,10 +41,17 @@ class DomiciliosController < AdminController
   # POST /domicilios.json
   def create
     @domicilio = Domicilio.new(params[:domicilio])
+    @domicilio.usuario = @usuario
 
     respond_to do |format|
       if @domicilio.save
-        format.html { redirect_to @domicilio, notice: 'Domicilio was successfully created.' }
+        format.html do
+          unless request.referrer.include?('ventas')
+            redirect_to @domicilio, notice: 'Domicilio was successfully created.'
+          else
+            redirect_to Venta.create(fecha: Date.today, usuario: @usuario, domicilio: @domicilio, confirmada: false)
+          end          
+        end
         format.json { render json: @domicilio, status: :created, location: @domicilio }
       else
         format.html { render action: "new" }
