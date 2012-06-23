@@ -46,10 +46,10 @@ class DomiciliosController < AdminController
     respond_to do |format|
       if @domicilio.save
         format.html do
-          unless request.referrer.include?('ventas')
+          unless request.referrer.include?('nueva_compra')
             redirect_to @domicilio, notice: 'Domicilio was successfully created.'
           else
-            redirect_to Venta.create(fecha: Date.today, usuario: @usuario, domicilio: @domicilio, confirmada: false)
+            redirect_to controller: :tienda, action: :entrega, domicilio_id: @domicilio.id 
           end          
         end
         format.json { render json: @domicilio, status: :created, location: @domicilio }
@@ -68,10 +68,10 @@ class DomiciliosController < AdminController
     respond_to do |format|
       if @domicilio.update_attributes(params[:domicilio])
         format.html do
-          unless request.referrer.include?('ventas')
+          unless request.referrer.include?('nueva_compra')
             redirect_to @domicilio, notice: 'Domicilio was successfully updated.'
           else
-            redirect_to Venta.create(fecha: Date.today, usuario: @usuario, domicilio: @domicilio, confirmada: false)
+            redirect_to controller: :tienda, action: :entrega, domicilio_id: @domicilio.id
           end
         end
         format.json { head :no_content }

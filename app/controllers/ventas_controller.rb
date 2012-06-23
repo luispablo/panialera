@@ -3,18 +3,6 @@
   before_filter :cargar_referencias, :only =>['new', 'edit']
   before_filter :cargar_productos, :only => ['show', 'agregar_detalle', 'quitar_detalle']
 
-  def confirmar
-    @venta = Venta.find(params[:id])    
-    @venta.cargar_items_carrito(@carrito)
-    @venta.costo_envio = @carrito.costo_envio
-    @venta.confirmada = true
-    @venta.save!
-    
-    @carrito.destroy
-    
-    VentaNotifier.confirmada(@venta).deliver
-  end
-  
   # GET /ventas
   # GET /ventas.json
   def index
@@ -34,7 +22,6 @@
     respond_to do |format|
       format.html do
         if @venta.fecha_entrega.nil? 
-          @entregas = Entrega.entregas_disponibles
           render 'entrega'
         end
       end# show.html.erb
@@ -58,17 +45,6 @@
   # GET /ventas/new
   # GET /ventas/new.json
   def new
-    if @carrito.carrito_items.empty?
-      redirect_to tienda_url, notice: 'El carrito está vacío'
-      return
-    end
-    
-    unless usuario_logueado?
-      redirect_to "/login_or_register"
-      return
-    end
-    
-    @domicilio = @usuario.domicilio_ultima_entrega
     @venta = Venta.new(:fecha => Date.today)
 
     respond_to do |format|
@@ -102,22 +78,6 @@
   # PUT /ventas/1.json
   def update
     @venta = Venta.find(params[:id])
-
-    unless params[:venta][:entrega].nil?
-      entregas = Entrega.entregas_disponibles
-      
-      entregas.each do |e|
-        if e.descripcion == params[:venta][:entrega]
-          @venta.fecha_entrega = e.fecha
-          @venta.hora_desde_entrega = e.desde
-          @venta.hora_hasta_entrega = e.hasta
-          @venta.save
-        end
-      end
-      
-      redirect_to @venta
-      return
-    end
 
     respond_to do |format|
       if @venta.update_attributes(params[:venta])

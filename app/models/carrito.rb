@@ -2,13 +2,19 @@
 #
 # Table name: carritos
 #
-#  id         :integer         not null, primary key
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
+#  id                 :integer         not null, primary key
+#  created_at         :datetime        not null
+#  updated_at         :datetime        not null
+#  domicilio_id       :integer
+#  fecha_entrega      :date
+#  hora_desde_entrega :time
+#  hora_hasta_entrega :time
 #
 
 class Carrito < ActiveRecord::Base
   has_many :carrito_items, dependent: :destroy
+  
+  belongs_to :domicilio
 
   def costo_envio
     if carrito_items.empty? or self.precio_total_items >= Parametro.monto_minimo_sin_envio

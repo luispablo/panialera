@@ -5,13 +5,14 @@
 		
 	<div class="well shadow">
 		<% unless @entregas.nil? %>
-			<%= form_for(@venta, html: {class: 'form-horizontal'}) do |f| %>
+			<%= form_tag({controller: :tienda, action: :resumen}, {class: 'form-horizontal'}) do |f| %>
+				<%= hidden_field_tag :domicilio_id, @domicilio.id %>
 				<div class="control-group">
 					<label class="control-label">Fechas disponibles</label>
 					<% @entregas.each do |e|  %>
 						<div class="controls">
 							<label class="radio">
-								<%= f.radio_button(:entrega, e.descripcion) %>
+								<%= radio_button_tag(:entrega, e.descripcion) %>
 								<%= e.descripcion %>
 							</label>
 						</div>

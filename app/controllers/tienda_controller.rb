@@ -1,6 +1,54 @@
 ﻿class TiendaController < ApplicationController
   before_filter :cargar_carrito
 
+  def confirmar
+    @venta = Venta.crear_desde_carrito(@carrito, @usuario)
+    @venta.save!
+    
+    @carrito.destroy
+    
+    VentaNotifier.confirmada(@venta).deliver
+    
+    redirect_to tienda_url, notice: 'Su compra se ha completado con éxito. Recibirá un e-mail con el detalle de la misma. Gracias por confiar en nosotros.'
+  end
+  
+  def resumen
+    @carrito.domicilio_id = params[:domicilio_id]
+    
+    entregas = Entrega.entregas_disponibles
+      
+    entregas.each do |e|
+      if e.descripcion == params[:entrega]
+        @carrito.fecha_entrega = e.fecha
+        @carrito.hora_desde_entrega = e.desde
+        @carrito.hora_hasta_entrega = e.hasta
+        @carrito.save!
+      end
+    end      
+  end
+
+  def entrega
+    @domicilio = Domicilio.find(params[:domicilio_id])
+    @entregas = Entrega.entregas_disponibles
+    
+    Venta.create(fecha: Date.today, usuario: @usuario, domicilio: @domicilio, confirmada: false)
+  end
+
+  def seleccionar_domicilio
+    if @carrito.carrito_items.empty?
+      redirect_to tienda_url, notice: 'El carrito está vacío'
+      return
+    end
+    
+    unless usuario_logueado?
+      redirect_to "/login_or_register"
+      return
+    end
+    
+    @domicilio = @usuario.domicilio_ultima_entrega
+    @venta = Venta.new(:fecha => Date.today)    
+  end
+
   def contacto
     if request.post?
       if params[:nombre].nil? or params[:nombre].empty?

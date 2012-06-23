@@ -63,6 +63,10 @@ Panialera::Application.routes.draw do
     get 'detalle_producto/:codigo' => :detalle_producto
     get 'contacto' => :contacto
     post 'contacto' => :contacto
+    get 'nueva_compra/seleccionar_domicilio' => :seleccionar_domicilio
+    get 'nueva_compra/entrega/:domicilio_id' => :entrega
+    post 'nueva_compra/resumen' => :resumen
+    get 'nueva_compra/confirmar' => :confirmar
   end
 
   controller :mi_cuenta do
