@@ -11,9 +11,9 @@
 				<th>Categor&iacute;as</th>
 				<th>Detalle</th>
 				<th>Precio</th>
-				<th>Referencia</th>
-				<th>Disponible</th>
-				<th>Publicado</th>
+				<th>Ref.</th>
+				<th>Dispo- nible</th>
+				<th>Publi- cado</th>
 				<th>Stock</th>
 				<th>Talle</th>
 				<th>Peso del beb&eacute;</th>
@@ -33,8 +33,8 @@
 					<td><%= trunc(producto.detalle, 10, '...') %></td>
 					<td><%= producto.precio %></td>
 					<td><%= producto.referencia %></td>
-					<td><%= producto.disponible ? 'SI' : '-' %></td>
-					<td><%= producto.publicado ? 'SI' : '-' %></td>
+					<td><%= (producto.disponible ? '<i class="icon-ok"></i>' : '<i class="icon-remove"></i>').html_safe %></td>
+					<td><%= (producto.publicado ? '<i class="icon-ok"></i>' : '<i class="icon-remove"></i>').html_safe %></td>
 					<td><%= producto.stock %></td>
 					<td><%= producto.talle %></td>
 					<td><%= producto.peso_bebe %></td>
