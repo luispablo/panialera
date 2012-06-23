@@ -19,5 +19,6 @@
 
 	<%= render 'compras/detalles' %>
 
-	<%= link_to 'Editar cabecera', edit_compra_path(@compra) %> |
-	<%= link_to 'Volver', compras_path %>
+<%= link_to "<i class='icon-pencil icon-white'></i> Editar cabecera".html_safe, edit_compra_path(@compra), class: 'btn btn-primary' %>
+<%= link_to "<i class='icon-chevron-left icon-white'></i> Volver".html_safe, compras_path, class: 'btn btn-info' %>
+<%= link_to "<i class='icon-plus icon-white'></i> Nuevo".html_safe, new_compra_path, class: 'btn btn-success' %>

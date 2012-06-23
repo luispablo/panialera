@@ -21,5 +21,6 @@
 </p>
 
 
-<%= link_to 'Editar', edit_vale_path(@vale) %> |
-<%= link_to 'Volver', vales_path %>
+<%= link_to "<i class='icon-pencil icon-white'></i> Editar".html_safe, edit_vale_path(@vale), class: 'btn btn-primary' %>
+<%= link_to "<i class='icon-chevron-left icon-white'></i> Volver".html_safe, vales_path, class: 'btn btn-info' %>
+<%= link_to "<i class='icon-plus icon-white'></i> Nuevo".html_safe, new_vale_path, class: 'btn btn-success' %>

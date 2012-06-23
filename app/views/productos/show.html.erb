@@ -63,5 +63,6 @@
 </p>
 
 
-<%= link_to 'Editar', edit_producto_path(@producto) %> |
-<%= link_to 'Volver', productos_path %>
+<%= link_to "<i class='icon-pencil icon-white'></i> Editar".html_safe, edit_producto_path(@producto), class: 'btn btn-primary' %>
+<%= link_to "<i class='icon-chevron-left icon-white'></i> Volver".html_safe, productos_path, class: 'btn btn-info' %>
+<%= link_to "<i class='icon-plus icon-white'></i> Nuevo".html_safe, new_producto_path, class: 'btn btn-success' %>
