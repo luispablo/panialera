@@ -88,7 +88,9 @@
 				<!-- Columna derecha -->
 				<div class="span3">
 					<!-- Sólo mostrar el carrito lateral cuando no se está editando el carrito -->
-					<%= render @carrito unless params[:controller] == 'carritos' or params[:controller] == 'ventas' %>
+					<div class="well" id="carrito">
+						<%= render @carrito unless params[:controller] == 'carritos' or params[:controller] == 'ventas' %>
+					</div>
 
 					<div class="well" id="mi_cuenta">
 						<%= render partial: 'sessions/session' %>
