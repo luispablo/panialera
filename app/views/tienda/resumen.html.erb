@@ -42,38 +42,45 @@
 		<br/>
 	
 		<div class="well titulo_azul">
-			<h3>Productos</h3>
+			<h3>Detalle de tu compra</h3>
 		</div>
 		
-		<table class="table table-striped">
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Marca</th>
+					<th>Nombre</th>
+					<th>Talle</th>
+					<th>Referencia</th>
+					<th>Cantidad</th>
+					<th>Precio unitario</th>
+					<th>Precio total</th>
+				</tr>
+			</thead>
 			<tbody>
 				<% @carrito.carrito_items.each do |i| %>
 					<tr>
-						<td>
-							<%= i.producto.marca.nombre %> <%= i.producto.descripcion %> - <%= i.cantidad %> &times; <%= number_to_currency(i.producto.precio) %> = <%= number_to_currency(i.precio_total) %>
-						</td>
+						<td><%= i.producto.marca.nombre %></td>
+						<td><%= i.producto.nombre %> <%= i.producto.descripcion %></td>
+						<td><%= i.producto.talle %></td>
+						<td><%= i.producto.referencia %></td>
+						<td><%= pretty_number(i.cantidad) %></td>
+						<td><%= number_to_currency(i.producto.precio) %></td>
+						<td><%= number_to_currency(i.precio_total) %></td>
 					</tr>
 				<% end %>
 			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="6" align="right">Costo de env&iacute;o</td>
+					<td><%= number_to_currency(@carrito.costo_envio) %></td>
+				</tr>
+				<tr>
+					<td colspan="6" align="right"><strong>Importe total de la compra</strong></td>
+					<td><strong><%= number_to_currency(@carrito.precio_total)%></strong></td>
+				</tr>
+			</tfoot>
 		</table>
-
-		<div class="row">
-			<div class="span2">
-				<strong>Envio:</strong>
-			</div>
-			<div class="span4">
-				<%= number_to_currency(@carrito.costo_envio) %>
-			</div>
-		</div>	
-		<br/>
-		<div class="row">
-			<div class="span2">
-				<strong>IMPORTE TOTAL:</strong>
-			</div>
-			<div class="span4">
-				<strong><%= number_to_currency(@carrito.precio_total)%></strong>
-			</div>
-		</div>	
 		<br/>
 	
 		<div style="text-align: center;">
