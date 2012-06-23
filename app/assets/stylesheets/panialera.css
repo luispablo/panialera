@@ -152,3 +152,18 @@ div.titulo_naranja h3
 {
 	color: #33332D;
 }
+
+/* Colores para validaciones */
+div.field_with_errors input[type=text], 
+	div.field_with_errors input[type=password], 
+		div.field_with_errors input[type=email],
+			div.field_with_errors input[type=tel]			
+{
+	border-color: red;
+	background-color: #ffefef;
+}
+span.client_side_validation
+{
+	color: red;
+	padding-left: 10px;
+}
