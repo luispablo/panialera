@@ -36,6 +36,8 @@ class Entrega < ActiveRecord::Base
       
       return entregas unless entregas.empty?
     end
+    
+    return nil
   end
   
 end
