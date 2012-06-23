@@ -56,6 +56,7 @@
 								<li><%= link_to 'Mi Carrito', @carrito %></li>
 								<li><%= link_to 'Mi Cuenta', url_for(controller: :mi_cuenta, action: :datos_personales, id: session[:usuario_id]) if usuario_logueado? %></li>
 								<li><%= link_to 'Contacto', url_for(controller: :tienda, action: :contacto) %></li>
+								<li><%= link_to '¡Registrarme!', url_for(controller: :sessions, action: :registro) unless usuario_logueado? %></li>
 							</ul>
 						</div>
 					</div>

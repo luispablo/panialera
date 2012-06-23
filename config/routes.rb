@@ -15,6 +15,8 @@ Panialera::Application.routes.draw do
     post 'login' => :create
     delete 'logout' => :destroy
     get 'login_or_register' => :login_or_register
+    get 'registro' => :registro
+    post 'registrarme' => :create_usuario
   end
 
   match '/ventas/agregar_detalle', :to => 'ventas#agregar_detalle'

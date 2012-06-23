@@ -1,7 +1,7 @@
 
 	<h3>Mi Cuenta</h3>
 	
-	<% if @usuario %>
+	<% if @usuario and not @usuario.new_record? %>
 		<p>Bienvenida/o, <%= @usuario.nombre %>.</p>
 		
 		<% if @usuario.administrador? %>

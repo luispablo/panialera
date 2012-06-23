@@ -22,7 +22,7 @@ class Usuario < ActiveRecord::Base
   has_many :hijos
   has_many :vales
   
-  validates :nombre, :apellido, :email, :presence => { :message => ' es un campo requerido.'}
+  validates :nombre, :apellido, :email, :tel_particular, :tel_celular, :presence => { :message => ' es un campo requerido.'}
   validates :email, uniqueness: true
   
   has_secure_password
