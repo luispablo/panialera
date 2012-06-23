@@ -9,7 +9,13 @@
     
     VentaNotifier.confirmada(@venta).deliver
     
-    redirect_to tienda_url, notice: 'Su compra se ha completado con éxito. Recibirá un e-mail con el detalle de la misma. Gracias por confiar en nosotros.'
+    mensaje = '¡Muchas gracias por tu compra! Recibirás un e-mail con el detalle de la misma.'
+    
+    if @usuario.ventas.size == 1
+      mensaje << '<br/>IMPORTANTE: Como es la primera vez que comprás, estaremos llamándote por teléfono para confirmar tus datos.'
+    end
+    
+    redirect_to tienda_url, notice: mensaje
   end
   
   def resumen
@@ -30,8 +36,6 @@
   def entrega
     @domicilio = Domicilio.find(params[:domicilio_id])
     @entregas = Entrega.entregas_disponibles
-    
-    Venta.create(fecha: Date.today, usuario: @usuario, domicilio: @domicilio, confirmada: false)
   end
 
   def seleccionar_domicilio

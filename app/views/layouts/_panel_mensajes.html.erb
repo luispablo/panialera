@@ -2,7 +2,7 @@
 	<% if flash[:notice] %>
 		<div class="alert alert-success">
 			<button class="close" data-dismiss="alert">×</button>
-			<strong><%= flash[:notice] %></strong>
+			<strong><%= flash[:notice].html_safe %></strong>
 		</div>
 	<% end %>
     <% if flash[:warn] %>
