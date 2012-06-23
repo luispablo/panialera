@@ -1,5 +1,17 @@
 module ApplicationHelper
 
+  def pretty_number(number)
+    if number > 0
+      if (number - number.to_i) == 0
+        number.to_i
+      else
+        number
+      end 
+    else
+        '-'
+    end
+  end
+
   def control_group_class(objeto, campo)
     %{control-group #{'error' unless objeto.read_attribute(campo).nil? or objeto.valid?(campo)}}
   end

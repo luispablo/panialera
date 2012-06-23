@@ -30,6 +30,7 @@ class Producto < ActiveRecord::Base
   has_many :cat_productos
   has_many :categorias, :through => :cat_productos
   has_many :carrito_items
+  has_many :compra_detalles
 
   mount_uploader :imagen, ImagenUploader
   
@@ -37,6 +38,14 @@ class Producto < ActiveRecord::Base
   
   def self.destacados
     Producto.where(destacado: true)
+  end
+  
+  def cantidad_total_comprada
+    compra_detalles.map { |d| d.cantidad }.sum
+  end
+  
+  def monto_total_comprado
+    compra_detalles.map { |d| d.precio_total }.sum
   end
   
 private

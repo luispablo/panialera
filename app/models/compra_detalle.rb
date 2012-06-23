@@ -13,5 +13,10 @@
 
 class CompraDetalle < ActiveRecord::Base
   belongs_to :compra
-  belongs_to :producto
+  belongs_to :producto  
+  
+  def precio_total
+    cantidad * precio
+  end
+  
 end

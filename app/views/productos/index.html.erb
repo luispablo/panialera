@@ -16,6 +16,7 @@
 				<th>Publi- cado</th>
 				<th>Stock</th>
 				<th>Talle</th>
+				<th>Total comprado</th>
 				<th>Peso del beb&eacute;</th>
 				<th>Edad del beb&eacute;</th>
 				<th colspan="3"></th>
@@ -37,6 +38,7 @@
 					<td><%= (producto.publicado ? '<i class="icon-ok"></i>' : '<i class="icon-remove"></i>').html_safe %></td>
 					<td><%= producto.stock %></td>
 					<td><%= producto.talle %></td>
+					<td><%= pretty_number(producto.cantidad_total_comprada) %></td>
 					<td><%= producto.peso_bebe %></td>
 					<td><%= producto.edad_bebe %></td>
 					<td><%= link_to 'Ver', producto %></td>

@@ -15,14 +15,6 @@
     		<%= f.label :fecha, :class => 'control-label' %>
     		<div class="controls"><%= f.date_select :fecha, {:include_blank => true}, {:class => 'span1'} %></div>
   		</div>
-  		<div class="control-group">
-    		<%= f.label :usuario, :class => 'control-label' %>
-    		<div class="controls"><%= f.select :usuario_id, Usuario.all.map { |u| [u.apellido, u.id]} %></div>
-  		</div>
-  		<div class="control-group">
-    		<%= f.label :domicilio, :class => 'control-label' %>
-    		<div class="controls"><%= f.select :domicilio_id, Domicilio.all.map { |d| [d.nombre, d.id]} %></div>
-  		</div>
   		
   		<div class="form-actions">
     		<%= f.submit 'Grabar', :class => 'btn btn-primary' %>
