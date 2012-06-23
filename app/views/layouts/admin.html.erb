@@ -24,18 +24,27 @@
           			
           			<div class="nav-collapse">
 						<ul class="nav">
-							<%= item_menu 'parametros', parametros_path %>
-							<%= item_menu 'entregas', entregas_path %>
-							<%= item_menu 'productos', productos_path %>
+							<li class="dropdown">
+    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuraci&oacute;n<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<%= item_menu 'parametros', parametros_path %>
+									<%= item_menu 'barrios', barrios_path %>
+									<%= item_menu 'entregas', entregas_path %>
+								</ul>
+  							</li>
+							<li class="dropdown">
+    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Cat&aacute;logo<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<%= item_menu 'categorias', categorias_path %>
+									<%= item_menu 'marcas', marcas_path %>
+									<%= item_menu 'productos', productos_path %>
+								</ul>
+  							</li>
 							<%= item_menu 'compras', compras_path %>
-							<%= item_menu 'categorias', categorias_path %>
-							<%= item_menu 'marcas', marcas_path %>
 							<%= item_menu 'usuarios', usuarios_path %>
-							<%= item_menu 'barrios', barrios_path %>
 							<%= item_menu 'domicilios', domicilios_path %>
 							<%= item_menu 'vales', vales_path %>
 							<%= item_menu 'hijos', hijos_path %>
-							<%= item_menu 'ventas', ventas_path %>
 							<%= item_menu 'inicio', tienda_url %>
 						</ul>
           			</div>
