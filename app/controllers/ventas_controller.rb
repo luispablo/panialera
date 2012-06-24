@@ -1,4 +1,4 @@
-﻿class VentasController < ApplicationController
+﻿class VentasController < AdminController
   before_filter :cargar_carrito
   before_filter :cargar_referencias, :only =>['new', 'edit']
   before_filter :cargar_productos, :only => ['show', 'agregar_detalle', 'quitar_detalle']

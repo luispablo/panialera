@@ -40,7 +40,13 @@
 									<%= item_menu 'productos', productos_path %>
 								</ul>
   							</li>
-							<%= item_menu 'compras', compras_path %>
+							<li class="dropdown">
+    							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Operaciones<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<%= item_menu 'compras', compras_path %>
+									<%= item_menu 'ventas', ventas_path %>
+								</ul>
+  							</li>
 							<%= item_menu 'usuarios', usuarios_path %>
 							<%= item_menu 'domicilios', domicilios_path %>
 							<%= item_menu 'vales', vales_path %>

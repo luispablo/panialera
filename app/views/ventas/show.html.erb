@@ -1,124 +1,38 @@
 
-	<div class="well titulo_azul">
-		<h3>Revis&aacute; tu compra antes de terminar, por favor</h3>	
-	</div>
-	
-	<div class="well shadow">
-		<div class="row">
-			<div class="span2">
-				<strong>Domicilio:</strong>
-			</div>
-			<div class="span4">
-				<%= @venta.domicilio.descripcion %>
-			</div>
-		</div>
-		<br/>
-		<div class="row">
-			<div class="span2">
-				<strong>Fecha de entrega:</strong>
-			</div>
-			<div class="span4">
-				<%= @venta.fecha_entrega %> (<%= DIAS_SEMANA[@venta.fecha_entrega.wday].capitalize %>)
-			</div>
-		</div>
-		<br/>
-		<div class="row">
-			<div class="span2">
-				<strong>Horario de entrega:</strong>
-			</div>
-			<div class="span4">
-				de <%= @venta.hora_desde_entrega.strftime('%H:%M') %> a <%= @venta.hora_hasta_entrega.strftime('%H:%M') %>
-			</div>
-		</div>
-		<br/>
-		<div class="row">
-			<div class="span2">
-				<strong>Forma de pago:</strong>
-			</div>
-			<div class="span4">
-				Efectivo (contra envío)
-			</div>
-		</div>	
-		<br/>
-	
-		<div class="well titulo_azul">
-			<h3>Productos</h3>
-		</div>
-		
-		<table class="table table-striped">
-			<tbody>
-				<% @carrito.carrito_items.each do |i| %>
-					<tr>
-						<td>
-							<%= i.producto.marca.nombre %> <%= i.producto.descripcion %> - <%= i.cantidad %> &times; <%= number_to_currency(i.producto.precio) %> = <%= number_to_currency(i.precio_total) %>
-						</td>
-					</tr>
-				<% end %>
-			</tbody>
-		</table>
+	<p id="notice"><%= notice %></p>
 
+	<div class="span6 offset3">
 		<div class="row">
-			<div class="span2">
-				<strong>Envio:</strong>
+			<div class="span8 well">
+				<p>
+				  <b>Fecha:</b>
+				  <%= @venta.fecha %>
+				</p>				
+				<p>
+				  <b>Usuario:</b>
+				  <%= @venta.usuario.apellido unless @venta.usuario.nil? %>
+				</p>				
+				<p>
+				  <b>Domicilio:</b>
+				  <%= @venta.domicilio.nombre unless @venta.domicilio.nil? %>
+				</p>
+				<p>
+					<b>Fecha de entrega:</b>
+					<%= @venta.fecha_entrega %>&nbsp;
+					de <%= @carrito.hora_desde_entrega.strftime('%H:%M') %> a <%= @carrito.hora_hasta_entrega.strftime('%H:%M') %>.
+				</p>
 			</div>
-			<div class="span4">
-				<%= number_to_currency(@carrito.costo_envio) %>
-			</div>
-		</div>	
-		<br/>
-		<div class="row">
-			<div class="span2">
-				<strong>IMPORTE TOTAL:</strong>
-			</div>
-			<div class="span4">
-				<strong><%= number_to_currency(@carrito.precio_total)%></strong>
-			</div>
-		</div>	
-		<br/>
-	
-		<div style="text-align: center;">
-			<a href="#" onclick="javascript: $('#dialog-modal').dialog('open');">Ver los t&eacute;rminos y condiciones de la compra</a>
-			<br/>	
-			<br/>	
-			<%= link_to raw("<i class='icon-ok icon-white'></i> Aceptar los términos y confirmar la compra"), "/confirmar_venta/#{@venta.id}", class: 'btn btn-success' %>
 		</div>
-	
-
-	<script>
-	$(function() {
-		$( "#dialog-modal" ).dialog({
-			width: 700,
-			height: 400,
-			autoOpen: false,
-			modal: true
-		});
-	});
-	</script>
-	
-	<div id="dialog-modal" title="Términos y condiciones de la compra">
-		<p>
-			No se aceptan devoluciones de productos comprados a través de Panalera.com con la excepción 
-			de cualquier artículo que llegue a tu casa dañado. En dicho caso se debe notificar inmediatamente 
-			a Servicio al Cliente y se realizará una investigación para cerciorar que el daño fue previo a 
-			la entrega.
-			La entrega a domicilio será al siguiente día para cualquier pedido recibido y pagado antes de las 
-			2pm. Los pedidos recibidos después de esta hora serán procesados al siguiente día hábil.
-			En el caso que se seleccione el servicio de entrega de Pañalera, este será realizado por el personal 
-			de Pañalera. Esta opción está disponible únicamente para las zonas 1, 4, 5, 9, 10, 11, 12, 13, 14, 
-			15, 16 y Carr. El Salvador﻿ dentro de la Ciudad de Guatemala. La entrega a otras zonas dentro de la 
-			Ciudad de Guatemala serán realizadas por un servicio de Courier contratado por Pañalera. El costo de 
-			este servicio es gratuito para compras iguales o mayores de Q500. Cualquier compra realizada en la que 
-			el cliente opte por el servicio gratuito de Pañalera a una zona fuera de las especificadas no será 
-			realizada a dicha zona, sinó que deberá cambiar el modo de entrega y realizarse el pago del Courier si 
-			aplican cargos. El escoger un servicio de Entrega no disponible para su área no será considerado motivo 
-			para devolución.
-			En Pañalera.com hemos tomado medidas de seguridad para proteger su información y prevenir el fraude en 
-			línea, según los estándares definidos por Credomatic. Nuestro sistema nunca retendrá sus datos de tarjeta 
-			sinó que estos deberán ser ingresados en cada compra, por su seguridad. Sin embargo, Pañalera.com no se 
-			puede hacer responsable por el uso indebido de tarjetas que han pasado las revisiones de seguridad. Si 
-			tiene algún reclamo respecto a un cobro que no reconoce, por favor comuníquese con su proveedor de tarjeta 
-			de crédito.
-			Cualquier duda sobre su pedido, por favor comunicarse con Servicio al Cliente a info@panalera.com.
-		</p>
-	</div>
+		<div class="row">
+			<div class="span8">
+				<%= render 'ventas/detalles' %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span8">
+				<div class="form-actions">
+					<%= link_to 'Volver', ventas_path, :class => 'btn' %>
+				</div>
+			</div>
+		</div>
 	</div>

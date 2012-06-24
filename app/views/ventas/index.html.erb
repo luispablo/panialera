@@ -1,14 +1,12 @@
 
 	<legend>Listando ventas</legend>
 
-	<table class="table table-stripped">
+	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
 			    <th>Fecha</th>
 			    <th>Usuario</th>
 			    <th>Domicilio</th>
-			    <th></th>
-			    <th></th>
 			    <th></th>
 			</tr>
 		</thead>
@@ -18,14 +16,15 @@
 				    <td><%= venta.fecha %></td>
 				    <td><%= venta.usuario.apellido unless venta.usuario.nil? %></td>
 				    <td><%= venta.domicilio.nombre unless venta.domicilio.nil? %></td>
-				    <td><%= link_to 'Detalle', venta %></td>
-				    <td><%= link_to 'Editar', edit_venta_path(venta) %></td>
-				    <td><%= link_to 'Destruir', venta, confirm: '¿Estás seguro?', method: :delete %></td>
+				    <td>
+				    	<%= link_to 'Detalle <i class="icon-edit icon-white"></i>'.html_safe, venta, class: 'btn btn-info' %>
+				    	<%= link_to 'Destruir <i class="icon-remove icon-white"></i>'.html_safe, venta, confirm: '¿Estás seguro?', method: :delete, class: 'btn btn-danger' %>
+			    	</td>
 				</tr>
 			<% end %>
 		</tbody>
 	</table>
 
 	<div class="form-actions">
-		<%= link_to 'Nueva Venta', new_venta_path, :class => 'btn btn-primary' %>
+		<%= link_to 'Nueva Venta <i class="icon-plus icon-white"></i>'.html_safe, new_venta_path, :class => 'btn btn-primary' %>
 	</div>
