@@ -9,7 +9,7 @@ private
   end
   
   def cargar_categorias
-    @categorias = Categoria.where(publicado: true)
+    @categorias = Categoria.categorias_madre_publicadas
   end
 
   def usuario_logueado?

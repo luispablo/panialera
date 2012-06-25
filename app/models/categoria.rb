@@ -19,4 +19,8 @@ class Categoria < ActiveRecord::Base
   has_many :productos, :through => :cat_productos
 
   validates :codigo, uniqueness: true, presence: true
+  
+  def self.categorias_madre_publicadas
+    Categoria.where(publicado: true, categoria_id: nil)
+  end
 end
