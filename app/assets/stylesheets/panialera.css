@@ -16,20 +16,17 @@ div#busqueda
 	padding-bottom: 0px;
 	margin-top: 40px;
 }
-div#busqueda button
+div#busqueda input[type=submit]
 {
 	font-size: 14px;
 	font-weight: bold;
+	height: 35px;
 }
-div#busqueda input
+div#busqueda input[type=text]
 {
 	height: 25px;
 	padding-left: 10px;
 	margin-left: 0px;
-}
-div#busqueda button
-{
-	height: 35px;
 }
 
 div#carrito

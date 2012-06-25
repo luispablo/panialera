@@ -1,29 +1,6 @@
 
-<div class="well titulo_azul">
-	<h3>Categor&iacute;a "<%= @categoria.nombre %>"</h3>
-</div>
+	<div class="well titulo_azul">
+		<h3>Categor&iacute;a "<%= @categoria.nombre %>"</h3>
+	</div>
 
-<% @categoria.productos.each do |p| %>
-	<div class="well shadow">
-		<div class="row">
-			<div class="span2">
-				<% if p.imagen? %>
-					<%= image_tag p.imagen_url(:thumb) %>
-				<% else %>
-					<%= image_tag 'thumb.png' %>
-				<% end %>
-			</div>
-			<div class="span4">
-				<strong><%= p.nombre %></strong><br/>
-				<em><%= p.descripcion %></em><br/>
-				<%= "Talle #{p.talle}" unless p.talle.nil? or p.talle.empty? %> <%= "(#{p.peso_bebe})" unless p.peso_bebe.nil? or p.peso_bebe.empty? %><br/>
-				<%= p.referencia %><br/>
-				<%= number_to_currency(p.precio) %><br/>
-				<%= link_to 'Ver Detalles', controller: :tienda, action: :detalle_producto, codigo: p.codigo %>
-			</div>
-			<div class="span1" style="margin-left: 0px">
-				<%= button_to 'Agergar al carrito', carrito_items_path(producto_id: p), remote: true, class: 'btn btn-danger' %>
-			</div>
-		</div>				
-	</div>	
-<% end %>
+	<%= render @categoria.productos %>

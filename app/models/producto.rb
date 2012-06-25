@@ -36,6 +36,10 @@ class Producto < ActiveRecord::Base
   
   validates :codigo, :nombre, :precio, :presence => { :message => "es un campo requerido." }
   
+  def self.buscar(texto)
+    Producto.joins(:marca).where(" productos.nombre like '%#{texto}%' or descripcion like '%#{texto}%' or detalle like '%#{texto}%' or marcas.nombre like '%#{texto}%' ")
+  end
+  
   def self.destacados
     Producto.where(destacado: true)
   end

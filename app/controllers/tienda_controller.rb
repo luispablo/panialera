@@ -1,6 +1,10 @@
 ﻿class TiendaController < ApplicationController
   before_filter :cargar_carrito
 
+  def busqueda
+    @productos = Producto.buscar(params[:texto])
+  end
+
   def confirmar
     @venta = Venta.crear_desde_carrito(@carrito, @usuario)
     @venta.save!

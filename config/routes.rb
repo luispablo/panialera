@@ -67,6 +67,7 @@ Panialera::Application.routes.draw do
     get 'nueva_compra/entrega/:domicilio_id' => :entrega
     post 'nueva_compra/resumen' => :resumen
     get 'nueva_compra/confirmar' => :confirmar
+    post 'busqueda' => :busqueda
   end
 
   controller :mi_cuenta do
