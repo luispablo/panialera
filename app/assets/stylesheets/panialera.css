@@ -110,6 +110,11 @@ div.page-header h1 small
 	box-shadow:         1px 1px 3px 2px #ccc;
 }
 
+div.destacado
+{
+	padding-bottom: 0px;
+}
+
 div#promos
 {
 	height: 180px;
@@ -123,6 +128,13 @@ div#destacados div#titulo
 	padding-top: 10px;
 	font-size: 16px;
 	font-weight: bold;
+}
+div.imagen_destacado
+{
+	height: 125px;
+	text-align: center;
+	display:table-cell;
+   	vertical-align:middle;	
 }
 
 div#mi_cuenta
