@@ -66,14 +66,7 @@
 			<div class="row">
 				<!-- Columna izquierda -->
 				<div class="span3">
-					<ul class="nav nav-list well" id="categorias">
-						<h3>Categor&iacute;as</h3>
-						<% @categorias.each do |c| %>
-							<li>								
-								<%= link_to_unless c.productos.empty?, raw("<i class='icon-asterisk icon-white'></i> #{c.nombre}"), controller: :tienda, action: :productos_categoria, codigo: c.codigo %>
-							</li>
-						<% end %>
-					</ul>
+					<%= render partial: 'layouts/panel_categorias', locals: {categorias: @categorias, categoria: @categoria} %>
 				</div>
 				<!-- Columna central (principal) -->
 				<div class="span8">

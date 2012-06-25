@@ -62,6 +62,19 @@ ul#categorias li a:hover
 {
 	color: #ed3968;
 }
+ul#categorias .nav-list > .active > a 
+{
+	background-color: #F2BA1B;
+	font-weight: bold;
+}
+ul#categorias li.active a
+{
+	color: #000000;
+}
+ul#categorias li.active a:hover
+{
+	background-color: #CCCCCC;
+}
 
 .navbar ul.nav li a
 {

@@ -1,0 +1,18 @@
+
+	<ul class="nav nav-list well" id="categorias">
+		<h3>Categor&iacute;as</h3>
+		
+		<% categorias.each do |c| %>
+			<li <%= "class='active'" if c.seleccionada?(categoria) %>>								
+				<%= link_to raw("<i class='icon-asterisk icon-white'></i> #{c.nombre}"), controller: :tienda, action: :productos_categoria, codigo: c.codigo %>
+				
+				<% if c.seleccionada?(categoria) or c.hija_seleccionada?(categoria) %>
+					<ul class="nav nav-list" style="padding-left: 10px;">
+						<% c.categorias.each do |hija| %>
+							<li <%= "class='active'" if hija.seleccionada?(categoria) %>><%= link_to "<i class='icon-cog icon-white'></i> #{hija.nombre}".html_safe, controller: :tienda, action: :productos_categoria, codigo: hija.codigo %></li>
+						<% end %>
+					</ul>
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
