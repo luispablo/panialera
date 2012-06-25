@@ -40,6 +40,14 @@ class Venta < ActiveRecord::Base
     venta    
   end
   
+  def hora_desde
+    hora_desde_entrega.strftime('%H:%M')    
+  end
+  
+  def hora_hasta
+    hora_hasta_entrega.strftime('%H:%M')
+  end
+  
   def monto_total
     monto_total_lineas + (costo_envio.nil? ? 0: costo_envio)
   end

@@ -45,7 +45,7 @@
   # GET /ventas/new
   # GET /ventas/new.json
   def new
-    @venta = Venta.new(:fecha => Date.today)
+    @venta = Venta.new(:fecha => Date.today, confirmada: true)
 
     respond_to do |format|
       format.html # new.html.erb

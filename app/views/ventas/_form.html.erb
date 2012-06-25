@@ -17,13 +17,28 @@
 	  	</div>
 		<div class="control-group">
 	    	<%= f.label :usuario, :class => 'control-label' %>
-	    	<div class="controls"><%= f.select :usuario_id, @usuarios.map { |u| [u.apellido, u.id]} %></div>
+	    	<div class="controls"><%= f.select :usuario_id, @usuarios.map { |u| ["#{u.nombre} #{u.apellido}", u.id]} %></div>
+	  	</div>
+	  	<div class="control-group">
+	  		<%= f.label :confirmada, class: 'control-label' %>
+	  		<div class="controls"><%= f.check_box :confirmada %></div>
 	  	</div>
 		<div class="control-group">
-	    	<%= f.label :domicilio, :class => 'control-label' %>
-	    	<div class="controls"><%= f.select :domicilio_id, @domicilios.map { |d| [d.nombre, d.id]} %></div>
+	    	<%= f.label :fecha_entrega, :class => 'control-label' %>
+	    	<div class="controls"><%= f.date_select :fecha_entrega, {:include_blank => true}, {:class => 'span1'} %></div>
 	  	</div>
-	  	
+		<div class="control-group">
+	    	<%= f.label :hora_desde_entrega, :class => 'control-label' %>
+	    	<div class="controls"><%= f.time_select :hora_desde_entrega, {:include_blank => true}, {:class => 'span1'} %></div>
+	  	</div>
+		<div class="control-group">
+	    	<%= f.label :hora_hasta_entrega, :class => 'control-label' %>
+	    	<div class="controls"><%= f.time_select :hora_hasta_entrega, {:include_blank => true}, {:class => 'span1'} %></div>
+	  	</div>
+	  	<div class="control-group">
+	  		<%= f.label :costo_envio, class: 'control-label' %>
+	  		<div class="controls"><%= f.number_field :costo_envio, class: 'span2' %></div>
+  		</div>
 	  	<div class="form-actions">
 	    	<%= f.submit 'Grabar', :class => 'btn btn-primary' %>
 	  	</div>

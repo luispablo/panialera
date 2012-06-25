@@ -6,11 +6,11 @@
 			<div class="span8 well">
 				<p>
 				  <b>Fecha:</b>
-				  <%= @venta.fecha %>
+				  <%= best_in_place @venta, :fecha %>
 				</p>				
 				<p>
 				  <b>Usuario:</b>
-				  <%= @venta.usuario.apellido unless @venta.usuario.nil? %>
+				  <%= best_in_place(@venta, :usuario_id, type: :select, collection: Usuario.all.map {|u| [u.id, "#{u.nombre} #{u.apellido}"]}) unless @venta.usuario.nil? %>
 				</p>				
 				<p>
 				  <b>Domicilio:</b>
@@ -18,8 +18,16 @@
 				</p>
 				<p>
 					<b>Fecha de entrega:</b>
-					<%= @venta.fecha_entrega %>&nbsp;
-					de <%= @carrito.hora_desde_entrega.strftime('%H:%M') %> a <%= @carrito.hora_hasta_entrega.strftime('%H:%M') %>.
+					<%= best_in_place @venta, :fecha_entrega %>&nbsp;
+					de <%= best_in_place @venta, :hora_desde_entrega, display_as: :hora_desde %> a <%= best_in_place @venta, :hora_hasta_entrega, display_as: :hora_hasta %>.
+				</p>
+				<p>
+					<b>Costo de env&iacute;o:</b>
+					<%= best_in_place @venta, :costo_envio %>
+				</p>
+				<p>
+					<b>Confirmada:</b>
+					<%= best_in_place @venta, :confirmada, type: :checkbox, collection: ['true', 'false'] %>
 				</p>
 			</div>
 		</div>
