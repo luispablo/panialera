@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120623223054) do
+ActiveRecord::Schema.define(:version => 20120629221022) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -105,10 +105,11 @@ ActiveRecord::Schema.define(:version => 20120623223054) do
     t.string   "entre_calles"
     t.string   "codigo_postal"
     t.integer  "barrio_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "usuario_id"
     t.boolean  "ultima_entrega"
+    t.boolean  "valido_delivery"
   end
 
   add_index "domicilios", ["barrio_id"], :name => "index_domicilios_on_barrio_id"
