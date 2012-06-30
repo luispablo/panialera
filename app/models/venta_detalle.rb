@@ -16,6 +16,6 @@ class VentaDetalle < ActiveRecord::Base
   belongs_to :producto
   
   def precio_total
-    precio * cantidad
+    (precio * cantidad unless precio.nil? or cantidad.nil?) || 0
   end
 end

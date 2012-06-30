@@ -19,12 +19,10 @@
   def show
     @venta = Venta.find(params[:id])
 
+    @domicilios = Domicilio.where(usuario_id: @venta.usuario.id)
+
     respond_to do |format|
-      format.html do
-        if @venta.fecha_entrega.nil? 
-          render 'entrega'
-        end
-      end# show.html.erb
+      format.html # show.html.erb
       format.json { render json: @venta }
     end
   end
@@ -106,7 +104,7 @@
     @venta = Venta.find(params[:venta_id])
     VentaDetalle.create(:venta_id => @venta.id, :producto_id => params[:producto_id])
     
-    render 'show'
+    redirect_to venta_path(@venta)
   end
   
   def quitar_detalle
@@ -114,7 +112,7 @@
     @venta = @detalle.venta
     @detalle.destroy
     
-    render 'show'
+    redirect_to venta_path(@venta)
   end
   
 private

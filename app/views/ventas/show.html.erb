@@ -14,7 +14,7 @@
 				</p>				
 				<p>
 				  <b>Domicilio:</b>
-				  <%= @venta.domicilio.nombre unless @venta.domicilio.nil? %>
+				  <%= best_in_place(@venta, :domicilio_id, type: :select, collection: @domicilios.map {|d| [d.id, "#{d.descripcion}"]}) unless @venta.domicilio.nil? %> 
 				</p>
 				<p>
 					<b>Fecha de entrega:</b>
@@ -28,6 +28,10 @@
 				<p>
 					<b>Confirmada:</b>
 					<%= best_in_place @venta, :confirmada, type: :checkbox, collection: ['true', 'false'] %>
+				</p>
+				<p>
+					<b>Monto total:</b>
+					<%= number_to_currency(@venta.monto_total) %>
 				</p>
 			</div>
 		</div>
