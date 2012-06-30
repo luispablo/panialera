@@ -49,7 +49,7 @@ class ProductosController < AdminController
 
     respond_to do |format|
       if @producto.save
-        format.html { redirect_to @producto, notice: 'Producto was successfully created.' }
+        format.html { redirect_to producto_path(@producto)+"/categorias", notice: 'Producto was successfully created.' }
         format.json { render json: @producto, status: :created, location: @producto }
       else
         format.html { render action: "new" }
