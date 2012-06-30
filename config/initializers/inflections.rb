@@ -10,6 +10,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'compra_detalle', 'compra_detalles'
   inflect.irregular 'venta', 'ventas'
   inflect.irregular 'venta_detalle', 'venta_detalles'
+  inflect.irregular 'proveedor', 'proveedores'
   
 #   inflect.uncountable %w( fish sheep )
 end

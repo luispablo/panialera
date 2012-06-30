@@ -1,5 +1,7 @@
 Panialera::Application.routes.draw do
 
+  resources :proveedores
+
   resources :entregas
 
   resources :parametros

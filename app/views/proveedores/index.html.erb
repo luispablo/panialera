@@ -1,0 +1,32 @@
+<legend>Listando proveedores</legend>
+
+<table class="table table-bordered table-condensed table-striped">
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Direcci&oacute;n</th>
+			<th>Tel&eacute;fono</th>
+			<th>e-mail</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @proveedores.each do |proveedor| %>
+  			<tr>
+			    <td><%= proveedor.nombre %></td>
+			    <td><%= proveedor.direccion %></td>
+			    <td><%= proveedor.telefono %></td>
+			    <td><%= proveedor.email %></td>
+			    <td>
+			    	<%= link_to 'Ver <i class="icon-eye-open icon-white"></i>'.html_safe, proveedor, class: 'btn btn-info' %>
+			    	<%= link_to 'Editar <i class="icon-pencil icon-white"></i>'.html_safe, edit_proveedor_path(proveedor), class: 'btn btn-primary' %>
+			    	<%= link_to 'Borrar <i class="icon-trash icon-white"></i>'.html_safe, proveedor, confirm: 'Are you sure?', method: :delete, class: 'btn btn-danger' %>
+		    	</td>
+  			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<div class="form-actions">
+	<%= link_to 'Nuevo Proveedor <i class="icon-plus icon-white"></i>'.html_safe, new_proveedor_path, class: 'btn btn-primary' %>
+</div>
