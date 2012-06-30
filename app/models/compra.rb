@@ -4,15 +4,13 @@
 #
 #  id           :integer         not null, primary key
 #  fecha        :datetime
-#  usuario_id   :integer
-#  domicilio_id :integer
 #  created_at   :datetime        not null
 #  updated_at   :datetime        not null
+#  proveedor_id :integer
 #
 
 class Compra < ActiveRecord::Base
-  belongs_to :usuario
-  belongs_to :domicilio
+  belongs_to :proveedor
   
-  has_many :compra_detalles, dependent: :destroy
+  has_many :compra_detalles, dependent: :destroy  
 end

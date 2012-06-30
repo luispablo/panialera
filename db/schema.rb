@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120630171150) do
+ActiveRecord::Schema.define(:version => 20120630174235) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -75,14 +75,10 @@ ActiveRecord::Schema.define(:version => 20120630171150) do
 
   create_table "compras", :force => true do |t|
     t.datetime "fecha"
-    t.integer  "usuario_id"
-    t.integer  "domicilio_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "proveedor_id"
   end
-
-  add_index "compras", ["domicilio_id"], :name => "index_compras_on_domicilio_id"
-  add_index "compras", ["usuario_id"], :name => "index_compras_on_usuario_id"
 
   create_table "detalles_compras", :force => true do |t|
     t.integer  "compra_id"

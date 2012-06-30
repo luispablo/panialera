@@ -5,8 +5,7 @@
 		<thead>
   			<tr>
 			    <th>Fecha</th>
-			    <th>Usuario</th>
-			    <th>Domicilio</th>
+			    <th>Proveedor</th>
 			    <th colspan="3"></th>
   			</tr>
 		</thead>
@@ -14,16 +13,15 @@
 			<% @compras.each do |compra| %>
   				<tr>
 				    <td><%= compra.fecha %></td>
-				    <td><%= compra.usuario.apellido unless compra.usuario.nil? %></td>
-				    <td><%= compra.domicilio.nombre unless compra.domicilio.nil? %></td>
-				    <td><%= link_to 'Detalle', compra %></td>
-				    <td><%= link_to 'Editar', edit_compra_path(compra) %></td>
-				    <td><%= link_to 'Destruir', compra, confirm: '¿Estás seguro?', method: :delete %></td>
+				    <td><%= compra.proveedor.nombre unless compra.proveedor.nil? %></td>
+				    <td><%= link_to '<i class="icon-eye-open icon-white"></i> &nbsp;Detalle'.html_safe, compra, class: 'btn btn-info' %></td>
+				    <td><%= link_to '<i class="icon-pencil icon-white"></i> &nbsp;Editar'.html_safe, edit_compra_path(compra), class: 'btn btn-primary' %></td>
+				    <td><%= link_to '<i class="icon-trash icon-white"></i> &nbsp;Borrar'.html_safe, compra, confirm: '¿Estás seguro?', method: :delete, class: 'btn btn-danger' %></td>
   				</tr>
 			<% end %>
 		</tbody>
 	</table>
 
 	<div class="form-actions">
-		<%= link_to 'Nueva Compra', new_compra_path, :class => 'btn btn-primary' %>
+		<%= link_to '<i class="icon-plus icon-white"></i> &nbsp;Nueva'.html_safe, new_compra_path, :class => 'btn btn-success' %>
 	</div>
