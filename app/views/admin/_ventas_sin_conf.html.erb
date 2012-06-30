@@ -1,0 +1,22 @@
+
+<h4>Ventas con domicilios no confirmados</h4>
+<br/>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Cliente</th>
+			<th>Domicilio</th>
+			<th>Importe</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% ventas.each do |v| %>
+			<tr>
+				<td><%= v.usuario.nombre %>, <%= v.usuario.apellido %></td>
+				<td><%= v.domicilio.descripcion %></td>
+				<td><%= v.monto_total %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

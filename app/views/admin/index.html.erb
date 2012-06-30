@@ -1,3 +1,12 @@
 
-	<h2>Bienvenido a la administraci&oacute;n del sitio</h2>
+	<legend>Panel de control</legend>
+	
+	<div class="row-fluid">
+		<div class="span6">
+			<%= render partial: 'admin/domicilios_sin_conf', locals: {domicilios: @domicilios} %>
+		</div>
+		<div class="span6">
+			<%= render partial: 'admin/ventas_sin_conf', locals: {ventas: @ventas_sin_conf} %>
+		</div>
+	</div>
 	

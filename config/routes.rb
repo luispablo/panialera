@@ -10,6 +10,11 @@ Panialera::Application.routes.draw do
 
   get 'admin' => 'admin#index'
 
+  controller :admin do
+    get '/admin/domicilio_valido/:id' => :validar_domicilio
+    get '/admin/domicilio_invalido/:id' => :invalidar_domicilio
+  end
+
   controller :sessions do
     get 'login' => :new
     post 'login' => :create

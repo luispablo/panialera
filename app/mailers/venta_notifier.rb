@@ -1,10 +1,13 @@
 ﻿class VentaNotifier < ActionMailer::Base
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.venta_notifier.confirmada.subject
-  #
+  def pendiente_conf_domicilio(venta)
+    @venta = venta
+    @usuario = venta.usuario
+    @domicilio = venta.domicilio
+    
+    mail to: venta.usuario.email, from: Parametro.remitente_mails, subject: 'Compra pendiente de confirmación'    
+  end
+  
   def confirmada(venta)
     @venta = venta
 

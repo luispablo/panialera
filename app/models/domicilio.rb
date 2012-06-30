@@ -21,8 +21,31 @@
 class Domicilio < ActiveRecord::Base
   belongs_to :barrio
   belongs_to :usuario
+
+  has_many :ventas
   
   after_save :notificar_domicilio_a_validar
+  
+  def invalidar_para_delivery
+    self.valido_delivery = false
+    save
+    
+    AdminMailer.domicilio_invalido(self).deliver    
+  end
+  
+  def validar_para_delivery
+    self.valido_delivery = true
+    save
+    
+    if ventas.nil? or ventas.empty?
+      AdminMailer.domicilio_valido(self).deliver
+    else
+      ventas.each do |v|
+        VentaNotifier.confirmada(v).deliver
+      end
+    end
+    
+  end
   
   def descripcion
     "#{calle} #{numero} #{piso} #{depto}"
@@ -30,7 +53,7 @@ class Domicilio < ActiveRecord::Base
   
 protected
   def notificar_domicilio_a_validar
-    if valido_delivery.nil?
+    if self.valido_delivery.nil?
       Usuario.where(administrador: true).each do |admin|
         unless admin.email.nil?
           AdminMailer.domicilio_a_validar(self, admin.email).deliver

@@ -11,7 +11,11 @@
     
     @carrito.destroy
     
-    VentaNotifier.confirmada(@venta).deliver
+    unless @venta.domicilio.valido_delivery.nil?
+      VentaNotifier.confirmada(@venta).deliver
+    else
+      VentaNotifier.pendiente_conf_domicilio(@venta).deliver
+    end
     
     mensaje = '¡Muchas gracias por tu compra! Recibirás un e-mail con el detalle de la misma.'
     
