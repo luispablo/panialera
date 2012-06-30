@@ -34,6 +34,14 @@ class Entrega < ActiveRecord::Base
     (fecha..fecha.next_day(6)).each do |f|
       entregas = Entrega.where(wday: f.wday).each { |e| e.fecha = f }
       
+      if f == Date.today
+        hora_desde = Time.now + Parametro.horas_cierre_entrega.hour
+        
+        entregas.each do |e|          
+          entregas.delete(e) unless e.desde.hour > hora_desde.hour or e.desde.hour == hora_desde.hour and e.desde.min > hora_desde.min
+        end
+      end       
+      
       return entregas unless entregas.empty?
     end
     

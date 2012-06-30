@@ -15,6 +15,7 @@ class Parametro < ActiveRecord::Base
   {
       dias_disponibles_entrega: 'DIAS_DISP_ENTREGA',
       email_admin: 'EMAIL_ADMIN',
+      horas_cierre_entrega: 'HORAS_CIERRE_ENTREGA',
       precio_envio: 'PRECIO_ENVIO', 
       monto_minimo_sin_envio: 'MONTO_MINIMO_SIN_ENVIO',
       remitente_mails: 'REMITENTE_MAILS'
@@ -23,6 +24,7 @@ class Parametro < ActiveRecord::Base
   {
       dias_disponibles_entrega: '3',
       email_admin: 'panialeradigital@gmail.com',
+      horas_cierre_entrega: '3',
       precio_envio: '15',
       monto_minimo_sin_envio: '120',
       remitente_mails: '"Pañalera Digital" <panialeradigital@gmail.com>'
@@ -30,6 +32,10 @@ class Parametro < ActiveRecord::Base
   
   validates :valor, presence: { message: ' el campo es requerido.' }
   validates :codigo, uniqueness: true
+  
+  def self.horas_cierre_entrega
+    Parametro.find_by_codigo(CODIGOS[:horas_cierre_entrega]).valor.to_i
+  end
   
   def self.email_admin
     Parametro.find_by_codigo(CODIGOS[:email_admin]).valor
