@@ -1,0 +1,33 @@
+
+	<div class="well shadow">
+		<blockquote>Este es nuestro radio actual de alcance para las entregas: Av. San Mart&iacute;n, Av. Gaona, Av. Juan B. Justo y Av. Gral. Paz.</blockquote>
+
+		<blockquote>Si no est&aacute;s dentro del mapa por favor avisanos, ¡as&iacute; nos ponemos a trabajar para llegar a tu casa!</blockquote>
+
+		<center>
+			<a class="popup" href="#" onclick="pop();">
+				(clic para agrandar)<br/>
+				<%= image_tag 'mapa_cobertura_chico.jpg' %>
+			</a>
+		</center>		
+	</div>
+
+	<div id="dialog" title="Mapa de cobertura de la Pañalera Digital" style="display: none;">
+		<%= image_tag 'mapa_cobertura_grande.jpg' %>
+	</div>
+	
+	<script>
+		function pop()
+		{
+			$('#dialog').dialog(
+			{
+  				show: "blind",
+  				closeOnEscape: true,
+  				modal: true,
+  				closeText: "Cerrar",
+  				width: 'auto',
+  				title: 'Mapa de cobertura de la Pañalera Digital'
+			});
+		}
+	</script>
+		

@@ -1,6 +1,10 @@
 ﻿class TiendaController < ApplicationController
   before_filter :cargar_carrito
 
+  def alcance
+    
+  end
+
   def busqueda
     @productos = Producto.buscar(params[:texto])
   end
