@@ -1,8 +1,10 @@
 class ProductosController < AdminController
+  helper_method :sort_column, :sort_direction
+  
   # GET /productos
   # GET /productos.json
   def index
-    @productos = Producto.all
+    @productos = Producto.search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: Parametro.items_por_pagina, page: params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -103,5 +105,13 @@ class ProductosController < AdminController
     @cat_producto.destroy
     
     render 'categorias'
+  end
+  
+private
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+  def sort_column
+    Producto.column_names.include?(params[:sort]) ? params[:sort] : "nombre"
   end
 end

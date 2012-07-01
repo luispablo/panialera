@@ -1,5 +1,12 @@
 module ApplicationHelper
 
+  def sortable(column, title = nil)
+    title ||= column.titleize
+    icono = (column == sort_column) ? "<i class='icon-chevron-#{(sort_direction == 'asc') ? 'up': 'down'}'></i>" : ''
+    direction = (column == sort_column && sort_direction == "asc") ? "desc" : "asc"
+    link_to "#{title} #{icono}".html_safe, params.merge(:sort => column, :direction => direction, :page => nil) 
+  end
+
   def pretty_number(number)
     if number > 0
       if (number - number.to_i) == 0

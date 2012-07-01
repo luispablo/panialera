@@ -1,25 +1,39 @@
 
-	<legend>Listando productos</legend>
+	<legend>
+		<div class="row">
+			<div class="span10">Listando productos</div>
+			<div class="span4">
+				<%= form_tag productos_path, :method => 'get' do %>
+			  		<%= hidden_field_tag :direction, params[:direction] %>
+			  		<%= hidden_field_tag :sort, params[:sort] %>
+			  		
+					<div class="input-append">
+						<%= text_field_tag :search, params[:search], id: 'appendedInputButton' %><%= submit_tag "Buscar", :name => nil, class: 'btn' %>
+					</div>  				    		
+				<% end %>
+			</div>
+		</div>
+	</legend>
 
-	<table class="table table-bordered table-stripped">
+	<table class="table table-bordered table-striped table-condensed">
 		<thead>
 	  		<tr>
-				<th colspan="2">C&oacute;digo</th>
+				<th colspan="2"><%= sortable 'codigo', 'Código' %></th>
 	  			<th>Marca</th>	  			
-				<th>Nombre</th>
-				<th>Descripci&oacute;n</th>
+				<th><%= sortable 'nombre' %></th>
+				<th><%= sortable 'descripcion', 'Descripción' %></th>
 				<th>Categor&iacute;as</th>
-				<th>Detalle</th>
-				<th>Precio</th>
-				<th>Ref.</th>
-				<th>Dispo- nible</th>
-				<th>Publi- cado</th>
+				<th><%= sortable 'detalle' %></th>
+				<th><%= sortable 'precio' %></th>
+				<th><%= sortable 'referencia', 'Ref.' %></th>
+				<th><%= sortable 'disponible', 'Dispo- nible' %></th>
+				<th><%= sortable 'publicado', 'Publi- cado' %></th>
 				<th>Stock</th>
 				<th>Talle</th>
 				<th>Total comprado</th>
 				<th>Peso del beb&eacute;</th>
 				<th>Edad del beb&eacute;</th>
-				<th colspan="3"></th>
+				<th></th>
 	  		</tr>
 		</thead>
 		<tbody>
@@ -41,12 +55,21 @@
 					<td><%= pretty_number(producto.cantidad_total_comprada) %></td>
 					<td><%= producto.peso_bebe %></td>
 					<td><%= producto.edad_bebe %></td>
-					<td><%= link_to 'Ver', producto %></td>
-					<td><%= link_to 'Editar', edit_producto_path(producto) %></td>
-					<td><%= link_to 'Destruir', producto, confirm: '¿Estás seguro?', method: :delete %></td>
+					<td nowrap>
+						<%= link_to '<i class="icon-eye-open icon-white"></i>'.html_safe, producto, class: 'btn btn-info btn-mini' %>
+						<%= link_to '<i class="icon-pencil icon-white"></i>'.html_safe, edit_producto_path(producto), class: 'btn btn-primary btn-mini' %>
+						<%= link_to '<i class="icon-trash icon-white"></i>'.html_safe, producto, confirm: '¿Estás seguro?', method: :delete, class: 'btn btn-danger btn-mini' %>
+					</td>
 	  			</tr>
 			<% end %>
 		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="17" align="center">
+					<%= will_paginate @productos %>
+				</td>
+			</tr>
+		</tfoot>
 	</table>
 
 	<div class="form-actions">

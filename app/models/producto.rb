@@ -52,6 +52,14 @@ class Producto < ActiveRecord::Base
     compra_detalles.map { |d| d.precio_total }.sum
   end
   
+  def self.search(search)
+    if search
+      where('nombre LIKE :search OR descripcion LIKE :search OR detalle LIKE :search OR codigo LIKE :search', search: "%#{search}%")
+    else
+      scoped
+    end
+  end
+
 private
   def ensure_not_referenced_by_any_carrito_item
     if carrito_items.empty?

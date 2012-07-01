@@ -1,4 +1,8 @@
 es:
+  will_paginate:
+    next_label: siguiente
+    previous_label: anterior
+    
   # Etiquetas genéricas
   apellido: apellido
   archivo_impo: Archivo a importar
