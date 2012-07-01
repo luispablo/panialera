@@ -41,11 +41,11 @@ class Producto < ActiveRecord::Base
   end
   
   def self.buscar(texto)
-    Producto.joins(:marca).where(" productos.nombre like '%#{texto}%' or descripcion like '%#{texto}%' or detalle like '%#{texto}%' or marcas.nombre like '%#{texto}%' ")
+    Producto.joins(:marca).where(" productos.publicado = :publicado AND (productos.nombre like '%#{texto}%' or descripcion like '%#{texto}%' or detalle like '%#{texto}%' or marcas.nombre like '%#{texto}%') ", publicado: true)
   end
   
   def self.destacados
-    Producto.where(destacado: true)
+    Producto.where(destacado: true, publicado: true)
   end
   
   def cantidad_total_comprada
