@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Producto:</b>
+  <%= @combo_detalle.producto %>
+</p>
+
+<p>
+  <b>Cantidad:</b>
+  <%= @combo_detalle.cantidad %>
+</p>
+
+
+<%= link_to 'Edit', edit_combo_detalle_path(@combo_detalle) %> |
+<%= link_to 'Back', combo_detalles_path %>

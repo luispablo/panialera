@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: combos
+#
+#  id         :integer         not null, primary key
+#  codigo     :string(255)
+#  precio     :float
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  codigo: MyString
+  precio: 1.5
+
+two:
+  codigo: MyString
+  precio: 1.5

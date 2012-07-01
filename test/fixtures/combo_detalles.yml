@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: combo_detalles
+#
+#  id          :integer         not null, primary key
+#  producto_id :integer
+#  cantidad    :integer
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
+#  combo_id    :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  producto: 
+  cantidad: 
+
+two:
+  producto: 
+  cantidad: 

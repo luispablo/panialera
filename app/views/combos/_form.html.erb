@@ -1,0 +1,26 @@
+
+	<%= form_for(@combo, html: {class: 'form-horizontal'}) do |f| %>
+	  <% if @combo.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@combo.errors.count, "error") %> prohibited this combo from being saved:</h2>
+	
+	      <ul>
+	      <% @combo.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+
+		<div class="control-group">
+    		<%= f.label :codigo, class: 'control-label' %>
+    		<div class="controls"><%= f.text_field :codigo %></div>
+  		</div>
+  		<div class="control-group">
+    		<%= f.label :precio, class: 'control-label' %>
+    		<div class="controls"><%= f.text_field :precio %></div>
+  		</div>
+  		<div class="form-actions">
+    		<%= f.submit 'Grabar', class: 'btn btn-primary'%>
+  		</div>
+	<% end %>

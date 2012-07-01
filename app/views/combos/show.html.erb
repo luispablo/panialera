@@ -1,0 +1,60 @@
+
+	<p id="notice"><%= notice %></p>
+
+	<div class="row">
+		<div class="span6 well offset2">
+			<div class="row">
+				<div class="span5">
+					<b>Codigo:</b>
+						<%= best_in_place(@combo, :codigo, type: :input) %>
+					</p>
+				</div>
+				<div class="span1">
+					<%= link_to 'Volver', combos_path, class: 'btn' %>
+				</div>
+			</div>
+			<p>
+	  			<b>Precio:</b>
+	  			<%= best_in_place @combo, :precio, display_with: :number_to_currency %>
+			</p>
+			<p>
+				<b>Precio real calculado:</b>
+				<%= number_to_currency(@combo.precio_real) %>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span6 well offset2">
+			<%= form_tag({:controller => 'combos', :action => 'agregar_detalle'}, :method => 'post', :class => 'form-horizontal') do %>
+				<legend>Items del combo</legend>
+				<%= hidden_field_tag :combo_id, @combo.id %>
+				<div class="control-group">
+					<%= select_tag :producto_id, options_for_select(@productos.map { |p| [p.label_combos, p.id]}) %>
+					<%= submit_tag 'Agregar', :class => 'btn' %>
+				</div>
+			<% end %>			
+			
+			<table class="table table-bordered table-condensed table-striped">
+				<thead>
+					<tr>
+						<th>Producto</th>
+						<th>Precio</th>
+						<th>Cantidad</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<%= render @combo.combo_detalles %>
+				</tbody>
+			</table>
+		</div>
+	</div>	
+
+	<script>
+		$(document).ready(function() 
+		{
+  			/* Activating Best In Place */
+  			jQuery(".best_in_place").best_in_place();
+		});
+	</script>

@@ -1,0 +1,33 @@
+
+	<legend>Listando combos</legend>
+
+	<table class="table table-bordered table-condensed table-striped">
+		<thead>
+			<tr>
+			    <th>C&oacute;digo</th>
+			    <th>Precio</th>
+			    <th>Precio real</th>
+			    <th>Detalle</th>
+			    <th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @combos.each do |combo| %>
+  				<tr>
+				    <td><%= combo.codigo %></td>
+				    <td><%= number_to_currency(combo.precio) %></td>
+				    <td><%= number_to_currency(combo.precio_real) %></td>
+				    <td><%= combo.detalle %></td>
+				    <td nowrap>
+				    	<%= link_to '<i class="icon-eye-open icon-white"></i>'.html_safe, combo, class: 'btn btn-info' %>
+				    	<%= link_to '<i class="icon-pencil icon-white"></i>'.html_safe, edit_combo_path(combo), class: 'btn btn-primary' %>
+				    	<%= link_to '<i class="icon-trash icon-white"></i>'.html_safe, combo, confirm: '¿Estás seguro?', method: :delete, class: 'btn btn-danger' %>
+			    	</td>
+  				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<div class="form-actions">
+		<%= link_to '<i class="icon-plus icon-white"></i> &nbsp;Nuevo'.html_safe, new_combo_path, class: 'btn btn-success' %>
+	</div>

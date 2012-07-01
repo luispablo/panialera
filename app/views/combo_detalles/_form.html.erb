@@ -1,0 +1,25 @@
+<%= form_for(@combo_detalle) do |f| %>
+  <% if @combo_detalle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@combo_detalle.errors.count, "error") %> prohibited this combo_detalle from being saved:</h2>
+
+      <ul>
+      <% @combo_detalle.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :producto %><br />
+    <%= f.text_field :producto %>
+  </div>
+  <div class="field">
+    <%= f.label :cantidad %><br />
+    <%= f.text_field :cantidad %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

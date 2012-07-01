@@ -1,5 +1,14 @@
 Panialera::Application.routes.draw do
 
+  resources :combo_detalles
+
+  resources :combos
+
+  controller :combos do
+    post '/combos/agregar_detalle' => :agregar_detalle
+    delete '/combos/quitar_detalle/:id' => :quitar_detalle
+  end
+
   resources :proveedores
 
   resources :entregas
