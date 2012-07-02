@@ -3,15 +3,10 @@
 	</div>
 	<div id="destacados" class="well shadow">
 		<div id="titulo" class="well">
-			<h3>Ofertas</h3>
+			<h3>Productos destacados</h3>
 		</div>
 		<div class="row">
-			<%= render partial: '/tienda/oferta', collection: @ofertas %>
-		</div>
-		<div class="row">
-			<div class="span2 offset3">
-				<%= link_to 'Ver todas las ofertas...', ofertas_url %>
-			</div>
+			<%= render partial: '/productos/destacado', collection: @productos_destacados %>
 		</div>
 	</div>
 	

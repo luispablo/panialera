@@ -1,15 +1,7 @@
 
 	<legend>
 		<div class="row">
-			<div class="span5">
-				Listando productos
-			</div>
-			<div class="span2">
-				<div class="ref ofertas">&nbsp;</div>&nbsp;<small>Oferta</small>
-			</div>
-			<div class="span3">				
-				<div class="ref no_publicado">&nbsp;</div>&nbsp;<small>No publicado</small>
-			</div>	
+			<div class="span10">Listando productos</div>
 			<div class="span4">
 				<%= form_tag productos_path, :method => 'get' do %>
 			  		<%= hidden_field_tag :direction, params[:direction] %>
@@ -34,6 +26,8 @@
 				<th><%= sortable 'detalle' %></th>
 				<th><%= sortable 'precio' %></th>
 				<th><%= sortable 'referencia', 'Ref.' %></th>
+				<th><%= sortable 'disponible', 'Dispo- nible' %></th>
+				<th><%= sortable 'publicado', 'Publi- cado' %></th>
 				<th>Stock</th>
 				<th>Talle</th>
 				<th>Total comprado</th>
@@ -44,16 +38,18 @@
 		</thead>
 		<tbody>
 			<% @productos.each do |producto| %>
-	  			<tr class="<%= "oferta" if producto.oferta? %> <%= "no_publicado" unless producto.publicado? %>">
+	  			<tr>
 	  				<td nowrap><%= image_tag producto.imagen_url(:thumb) if producto.imagen? %></td>
 					<td><%= producto.codigo %></td>
 					<td><%= producto.marca.nombre unless producto.marca.nil? %></td>
 					<td><%= producto.nombre %></td>
 					<td><%= producto.descripcion %></td>
-					<td><%= producto.categorias.map { |c| c.nombre }.join(', ') %></td>
+					<td><% producto.categorias.each { |c| %><span class="label"><%= c.nombre %></span>&nbsp;<% } %></td>
 					<td><%= trunc(producto.detalle, 10, '...') %></td>
 					<td><%= producto.precio %></td>
 					<td><%= producto.referencia %></td>
+					<td><%= (producto.disponible ? '<i class="icon-ok"></i>' : '<i class="icon-remove"></i>').html_safe %></td>
+					<td><%= (producto.publicado ? '<i class="icon-ok"></i>' : '<i class="icon-remove"></i>').html_safe %></td>
 					<td><%= producto.stock %></td>
 					<td><%= producto.talle %></td>
 					<td><%= pretty_number(producto.cantidad_total_comprada) %></td>

@@ -20,7 +20,6 @@
 #  peso_bebe   :string(255)
 #  edad_bebe   :string(255)
 #  destacado   :boolean
-#  oferta      :boolean
 #
 
 class Producto < ActiveRecord::Base

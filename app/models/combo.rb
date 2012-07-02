@@ -20,7 +20,7 @@ class Combo < ActiveRecord::Base
   end
   
   def detalle
-    combo_detalles.map {|cd| "#{cd.cantidad} #{cd.producto.nombre}"}.join(' + ')
+    combo_detalles.map {|cd| cd.producto.nombre}.join(' + ')
   end
   
 end
