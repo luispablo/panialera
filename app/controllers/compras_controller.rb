@@ -14,7 +14,7 @@ class ComprasController < AdminController
   # GET /compras/1.json
   def show
     @compra = Compra.find(params[:id])
-    @productos = Producto.all
+    @productos = Producto.order(:nombre)
 
     respond_to do |format|
       format.html # show.html.erb
