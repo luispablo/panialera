@@ -13,6 +13,7 @@
 #  hora_desde_entrega :time
 #  hora_hasta_entrega :time
 #  costo_envio        :float
+#  comentarios        :string(255)
 #
 
 class Venta < ActiveRecord::Base

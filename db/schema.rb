@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702152254) do
+ActiveRecord::Schema.define(:version => 20120702164443) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -243,6 +243,7 @@ ActiveRecord::Schema.define(:version => 20120702152254) do
     t.time     "hora_desde_entrega"
     t.time     "hora_hasta_entrega"
     t.float    "costo_envio"
+    t.string   "comentarios"
   end
 
   add_index "ventas", ["domicilio_id"], :name => "index_ventas_on_domicilio_id"

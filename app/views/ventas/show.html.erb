@@ -33,6 +33,10 @@
 					<b>Monto total:</b>
 					<%= number_to_currency(@venta.monto_total) %>
 				</p>
+				<p>
+					<b>Comentarios:</b>
+					<%= best_in_place @venta, :comentarios, type: :textarea %>
+				</p>
 			</div>
 		</div>
 		<div class="row">
