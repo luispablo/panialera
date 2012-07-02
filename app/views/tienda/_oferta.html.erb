@@ -9,7 +9,10 @@
 		</div>
 		
 		<% if oferta.kind_of? Producto %>
-			<p><%= oferta.marca.nombre %>&nbsp;<%= oferta.nombre %></p>
+			<p>
+				<%= oferta.marca.nombre %>&nbsp;<%= oferta.nombre %><br/>
+				<%= oferta.talle %>&times;<%= oferta.referencia.split(' ')[0] %>
+			</p>
 			<p><%= number_to_currency(oferta.precio) %></p>
 	
 			<p>
