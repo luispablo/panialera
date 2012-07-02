@@ -9,7 +9,7 @@ private
   end
   
   def cargar_categorias
-    @categorias = Categoria.categorias_madre_publicadas
+    @categorias = Categoria.categorias_madre_publicadas.find_all { |c| !c.todos_productos.empty? }
   end
 
   def usuario_logueado?

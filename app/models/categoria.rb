@@ -21,7 +21,7 @@ class Categoria < ActiveRecord::Base
 
   validates :codigo, uniqueness: true, presence: true
   
-  def todos_productos(orden)
+  def todos_productos(orden = nil)
     productos = self.productos.find_all { |p| p.publicado } 
     
     categorias.each do |hija|

@@ -66,14 +66,18 @@ class Producto < ActiveRecord::Base
   end
 
   def comparar(otro, orden)
-    if orden == 'nombre asc'
-      self.nombre <=> otro.nombre
-    elsif orden == 'nombre desc'
-      otro.nombre <=> self.nombre
-    elsif orden == 'precio asc'
-      self.precio <=> otro.precio
-    elsif orden == 'precio desc'
-      otro.precio <=> self.precio
+    unless orden.nil?
+      if orden == 'nombre asc'
+        self.nombre <=> otro.nombre
+      elsif orden == 'nombre desc'
+        otro.nombre <=> self.nombre
+      elsif orden == 'precio asc'
+        self.precio <=> otro.precio
+      elsif orden == 'precio desc'
+        otro.precio <=> self.precio
+      end
+    else
+      0
     end
   end
 
