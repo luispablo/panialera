@@ -20,7 +20,7 @@
 				<%= "#{@producto.talle}" unless @producto.talle.nil? or @producto.talle.empty? %> <%= "(#{@producto.peso_bebe})" unless @producto.peso_bebe.nil? or @producto.peso_bebe.empty? %><br/>
 				<%= @producto.referencia %><br/>
 				
-				<p><%= @producto.detalle %></p>
+				<p><%= @producto.detalle.html_safe %></p>
 				
 				Precio:&nbsp;<%= number_to_currency(@producto.precio) %><br/>
 				<br/>

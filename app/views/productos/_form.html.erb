@@ -30,8 +30,8 @@
 		    		<div class="controls"><%= f.text_field :descripcion %></div>
 		  		</div>
 		  		<div class="control-group">
-		    		<%= f.label :detalle, :class => 'control-label' %>
-		    		<div class="controls"><%= f.text_field :detalle %></div>
+		    		<%= f.label :detalle, 'Detalle (HTML)', :class => 'control-label' %>
+		    		<div class="controls"><%= f.text_area :detalle, rows: 5 %></div>
 		  		</div>
  				<div class="control-group">
  					<%= f.label :imagen, :class => 'control-label'%>
