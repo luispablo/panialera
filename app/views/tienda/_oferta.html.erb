@@ -1,0 +1,27 @@
+
+	<div class="span2 well mini-shadow destacado">
+		<div class="imagen_destacado">
+			<% if oferta.imagen? %>
+				<%= image_tag oferta.imagen_url(:thumb) %>
+			<% else %>
+				<%= image_tag 'thumb.png' %>
+			<% end %>
+		</div>
+		
+		<% if oferta.kind_of? Producto %>
+			<p><%= oferta.marca.nombre %>&nbsp;<%= oferta.nombre %></p>
+			<p><%= number_to_currency(oferta.precio) %></p>
+	
+			<p>
+				<%= link_to 'Ver Detalles', controller: :tienda, action: :detalle_producto, codigo: oferta.codigo %>
+				<%= button_to 'Agregar al carrito', carrito_items_path(producto_id: oferta), remote: true, class: 'btn btn-danger' %>
+			</p>
+		<% else %>
+			<p><%= oferta.detalle %></p>
+			<p><%= number_to_currency(oferta.precio) %></p>
+			
+			<p>
+				<%= button_to 'Agregar al carrito', carrito_items_path(combo_id: oferta), remote: true, class: 'btn btn-danger' %>				
+			</p>
+		<% end %>				
+	</div>

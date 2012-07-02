@@ -20,6 +20,7 @@
 #  peso_bebe   :string(255)
 #  edad_bebe   :string(255)
 #  destacado   :boolean
+#  oferta      :boolean
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

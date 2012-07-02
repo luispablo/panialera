@@ -14,3 +14,31 @@ div.pagination span, div.pagination em
   border: 1px solid #DDD;
   border-left-width: 0;
 }
+
+
+table.table-striped tbody tr.oferta td
+{
+  background-color: #acffaa;
+}
+table.table-striped tbody tr.no_publicado td
+{
+  background-color: #d89595;
+}
+
+div.ref
+{
+  margin-top: 10px;
+  float: left;
+  width: 20px;
+  height: 20px;
+  border: solid 1px #DDDDDD;
+}
+
+div.ofertas
+{
+  background-color: #acffaa;
+}
+div.no_publicado
+{
+  background-color: #d89595;
+}
