@@ -47,13 +47,20 @@ div#carrito p
 ul#categorias
 {
 	background-color: #ed3968;
+}
+ul#regalos
+{
+	background-color: #4FB0E2;
+}
+ul#categorias, ul#regalos
+{
 	color: white;
 }
-ul#categorias h3
+ul#categorias h3, ul#regalos h3
 {
 	margin-bottom: 10px;
 }
-ul#categorias li a
+ul#categorias li a, ul#regalos li a
 {
 	font-size: 12px;
 	color: white;
