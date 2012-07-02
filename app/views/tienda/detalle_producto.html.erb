@@ -16,9 +16,8 @@
 				</a>
 			</div>
 			<div class="span5">
-				c&oacute;digo: <%= @producto.codigo %><br/><br/>
 				<em><%= @producto.descripcion %></em><br/>
-				<%= "Talle #{@producto.talle}" unless @producto.talle.nil? or @producto.talle.empty? %> <%= "(#{@producto.peso_bebe})" unless @producto.peso_bebe.nil? or @producto.peso_bebe.empty? %><br/>
+				<%= "#{@producto.talle}" unless @producto.talle.nil? or @producto.talle.empty? %> <%= "(#{@producto.peso_bebe})" unless @producto.peso_bebe.nil? or @producto.peso_bebe.empty? %><br/>
 				<%= @producto.referencia %><br/>
 				
 				<p><%= @producto.detalle %></p>
