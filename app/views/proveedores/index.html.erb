@@ -7,6 +7,7 @@
 			<th>Direcci&oacute;n</th>
 			<th>Tel&eacute;fono</th>
 			<th>e-mail</th>
+			<th>P&aacute;gina web</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -17,6 +18,7 @@
 			    <td><%= proveedor.direccion %></td>
 			    <td><%= proveedor.telefono %></td>
 			    <td><%= proveedor.email %></td>
+			    <td><%= link_to_unless proveedor.pagina_web.nil?, proveedor.pagina_web, proveedor.pagina_web %></td>
 			    <td>
 			    	<%= link_to 'Ver <i class="icon-eye-open icon-white"></i>'.html_safe, proveedor, class: 'btn btn-info' %>
 			    	<%= link_to 'Editar <i class="icon-pencil icon-white"></i>'.html_safe, edit_proveedor_path(proveedor), class: 'btn btn-primary' %>

@@ -9,6 +9,7 @@
 #  email      :string(255)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
+#  pagina_web :string(255)
 #
 
 require 'test_helper'
