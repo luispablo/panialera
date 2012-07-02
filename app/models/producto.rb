@@ -38,7 +38,7 @@ class Producto < ActiveRecord::Base
   validates :codigo, :nombre, :precio, :presence => { :message => "es un campo requerido." }
   
   def label_combos
-    "[#{self.codigo}] #{self.nombre} #{self.descripcion} #{self.talle}"
+    "[#{self.codigo}] #{self.nombre} #{self.descripcion} #{self.talle} [x#{self.referencia.split(' ')[0]}]"
   end
   
   def self.buscar(texto)

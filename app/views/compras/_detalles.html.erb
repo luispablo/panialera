@@ -13,7 +13,7 @@
 				<legend>Detalles de la compra</legend>
 				<%= hidden_field_tag :compra_id, @compra.id %>
 				<div class="control-group">
-					<%= select_tag :producto_id, options_for_select(@productos.map { |p| ["[#{p.codigo}] #{p.nombre} #{p.descripcion} #{p.talle} [x#{p.referencia.split(' ')[0]}]", p.id]}), class: 'span6' %>
+					<%= select_tag :producto_id, options_for_select(@productos.map { |p| [p.label_combos, p.id]}), class: 'span6' %>
 					<%= submit_tag 'Agregar', :class => 'btn' %>
 				</div>
 			<% end %>			
