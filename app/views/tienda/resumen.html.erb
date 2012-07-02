@@ -27,7 +27,7 @@
 				<strong>Horario de entrega:</strong>
 			</div>
 			<div class="span4">
-				de <%= @carrito.hora_desde_entrega.strftime('%H:%M') %> a <%= @carrito.hora_hasta_entrega.strftime('%H:%M') %>
+				entre las <%= @carrito.hora_desde_entrega.strftime('%H:%M') %> y las <%= @carrito.hora_hasta_entrega.strftime('%H:%M') %> hs.
 			</div>
 		</div>
 		<br/>

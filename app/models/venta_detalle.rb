@@ -17,6 +17,14 @@ class VentaDetalle < ActiveRecord::Base
   belongs_to :producto
   belongs_to :combo
   
+  def precio_unitario
+    unless producto.nil?
+      producto.precio
+    else
+      combo.precio
+    end
+  end
+  
   def precio_total
     (precio * cantidad unless precio.nil? or cantidad.nil?) || 0
   end

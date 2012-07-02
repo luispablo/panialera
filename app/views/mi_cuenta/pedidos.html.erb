@@ -11,20 +11,35 @@
 			<thead>
 				<tr>
 					<th>Fecha</th>
-					<th>Monto total</th>
+					<th>Horario entrega</th>
 					<th>Domicilio de entrega</th>
+					<th>&nbsp;</th>
 				</tr>
 			</thead>
 			<tbody>
-				<% @usuario.ventas.sort{ |a, b| b.fecha <=> a.fecha }.each do |v| %>
+				<% @pedidos.each do |v| %>
 					<tr>
-						<td><%= v.fecha %></td>
-						<td><%= number_to_currency(v.monto_total) %></td>
+						<td rowspan="2" width="13%"><%= v.fecha %></td>
+						<td width="30%"><%= v.hora_desde_entrega.strftime('%H:%M') %> - <%= v.hora_hasta_entrega.strftime('%H:%M') %> hs.</td>
 						<td><%= v.domicilio.descripcion %></td>
+						<td><%= link_to 'Detalle', "#{mi_cuenta_pedidos_url}/#{v.id}", remote: true, class: 'btn' %></td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<div id="pedido_<%= v.id %>" style="display: inline;">
+								tata
+							</div>
+						</td>
 					</tr>
 				<% end %>
 			</tbody>
 		</table>
+	
+		<script>
+			<% @pedidos.each do |v| %>
+				$('#pedido_<%= v.id %>').hide('');
+			<% end %>
+		</script>
 	
 	</div>
 </div>

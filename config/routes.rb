@@ -92,6 +92,7 @@ Panialera::Application.routes.draw do
   controller :mi_cuenta do
     get 'mi_cuenta/datos_personales' => :datos_personales
     get 'mi_cuenta/pedidos' => :pedidos
+    get 'mi_cuenta/pedidos/:venta_id' => :pedido
     get 'mi_cuenta/vales' => :vales
     get 'mi_cuenta/cambio_clave' => :cambio_clave
     post 'mi_cuenta/cambio_clave' => :cambio_clave

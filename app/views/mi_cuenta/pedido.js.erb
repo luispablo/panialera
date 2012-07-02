@@ -1,0 +1,4 @@
+
+	$('#pedido_<%= @venta.id %>').hide();
+	$('#pedido_<%= @venta.id %>').html('<%=j render(@venta) %>');
+	$('#pedido_<%= @venta.id %>').show('scale');

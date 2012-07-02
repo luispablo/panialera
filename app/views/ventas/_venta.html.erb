@@ -1,0 +1,42 @@
+
+	<table class="table table-condensed table-bordered">
+		<thead>
+			<tr>
+				<th>Marca</th>
+				<th>Nombre</th>
+				<th>Talle</th>
+				<th>Referencia</th>
+				<th>Cantidad</th>
+				<th>Precio unitario</th>
+				<th>Precio total</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% venta.venta_detalles.each do |d| %>
+				<tr>
+					<% unless d.producto.nil? %>
+						<td><%= d.producto.marca.nombre %></td>
+						<td><%= d.producto.nombre %> <%= d.producto.descripcion %></td>
+						<td><%= d.producto.talle %></td>
+						<td><%= d.producto.referencia %></td>
+					<% else %>
+						<td colspan="4"><%= d.combo.detalle %></td>
+					<% end %>
+					<td><%= pretty_number(d.cantidad) %></td>
+					<td><%= number_to_currency(d.precio_unitario) %></td>
+					<td><%= number_to_currency(d.precio_total) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="6" align="right">Costo de env&iacute;o</td>
+				<td><%= number_to_currency(venta.costo_envio) %></td>
+			</tr>
+			<tr>
+				<td colspan="6" align="right"><strong>Importe total de la compra</strong></td>
+				<td><strong><%= number_to_currency(venta.monto_total)%></strong></td>
+			</tr>
+		</tfoot>
+	</table>
+

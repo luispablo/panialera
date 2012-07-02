@@ -112,8 +112,12 @@
     
   end
   
+  def pedido
+    @venta = Venta.find(params[:venta_id])
+  end
+  
   def pedidos
-    
+    @pedidos = @usuario.ventas.sort{ |a, b| b.fecha <=> a.fecha }
   end
   
 private
