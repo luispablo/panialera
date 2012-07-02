@@ -21,14 +21,14 @@ class Categoria < ActiveRecord::Base
 
   validates :codigo, uniqueness: true, presence: true
   
-  def todos_productos
+  def todos_productos(orden)
     productos = self.productos.find_all { |p| p.publicado } 
     
     categorias.each do |hija|
-      productos += hija.todos_productos
+      productos += hija.todos_productos(orden)
     end
     
-    return productos
+    return productos.sort { |a, b| a.comparar(b, orden) }
   end
   
   def seleccionada?(sel)
@@ -52,4 +52,5 @@ class Categoria < ActiveRecord::Base
   def self.categorias_madre_publicadas
     Categoria.where(publicado: true, categoria_id: nil)
   end
+  
 end

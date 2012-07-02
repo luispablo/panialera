@@ -76,6 +76,7 @@ Panialera::Application.routes.draw do
 
   controller :tienda do
     get 'productos_categoria/:codigo' => :productos_categoria
+    post 'productos_categoria/:codigo' => :productos_categoria
     get 'detalle_producto/:codigo' => :detalle_producto
     get 'contacto' => :contacto
     post 'contacto' => :contacto

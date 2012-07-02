@@ -65,6 +65,18 @@ class Producto < ActiveRecord::Base
     end
   end
 
+  def comparar(otro, orden)
+    if orden == 'nombre asc'
+      self.nombre <=> otro.nombre
+    elsif orden == 'nombre desc'
+      otro.nombre <=> self.nombre
+    elsif orden == 'precio asc'
+      self.precio <=> otro.precio
+    elsif orden == 'precio desc'
+      otro.precio <=> self.precio
+    end
+  end
+
 private
   def ensure_not_referenced_by_any_carrito_item
     if carrito_items.empty?

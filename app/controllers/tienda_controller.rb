@@ -99,11 +99,22 @@
   end
   
   def productos_categoria
-    @categoria = Categoria.find_by_codigo(params[:codigo])
+    @categoria = Categoria.find_by_codigo(params[:codigo])    
+    @opciones_orden = opciones_orden_categoria
+    @orden = params[:orden] || 'nombre asc'
   end
 
   def detalle_producto
     @producto = Producto.find_by_codigo(params[:codigo])
   end
-  
+
+private
+  def opciones_orden_categoria
+    [
+      ['Más baratos primero', 'precio asc'],
+      ['Más caros primero', 'precio desc'],
+      ['Desde la A a la Z', 'nombre asc'],
+      ['Desde la Z a la A', 'nombre desc']
+    ]    
+  end
 end

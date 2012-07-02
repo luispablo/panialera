@@ -1,6 +1,13 @@
 
 	<div class="well titulo_azul">
-		<h3>Categor&iacute;a "<%= @categoria.nombre %>"</h3>
+		<h2 style="float: left;">Categor&iacute;a "<%= @categoria.nombre %>"</h2>
+		<div class="span3 offset1" style="margin-top: 5px;">
+			<%= form_tag({}, {id: 'form'}) do %>
+				Ordenar por&nbsp;
+				<%= select_tag :orden, options_for_select(@opciones_orden, @orden), class: 'span2', onchange: '$("form").submit();' %>
+			<% end %>
+		</div>
+		<h2>&nbsp;</h2>
 	</div>
 
-	<%= render @categoria.todos_productos %>
+	<%= render @categoria.todos_productos(@orden) %>
