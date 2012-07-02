@@ -1,0 +1,33 @@
+
+<div class="span8 offset2">
+	<legend>Excepciones de horarios de entrega</legend>
+
+	<table class="table table-bordered table-condensed table-striped">
+		<thead>
+			<tr>
+			    <th>Fecha</th>
+			    <th>Hora desde</th>
+			    <th>Hora hasta</th>
+				<th>&nbsp;</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @excepcion_entregas.each do |excepcion_entrega| %>
+			  	<tr>
+				    <td><%= excepcion_entrega.fecha.strftime('%d/%m/%Y') %></td>
+				    <td><%= excepcion_entrega.hora_desde.strftime('%H:%M') unless excepcion_entrega.hora_desde.nil? %></td>
+				    <td><%= excepcion_entrega.hora_hasta.strftime('%H:%M') unless excepcion_entrega.hora_hasta.nil? %></td>
+				    <td>
+			    		<%= link_to '<i class="icon-eye-open icon-white"></i>'.html_safe, excepcion_entrega, class: 'btn btn-info' %>
+				    	<%= link_to '<i class="icon-pencil icon-white"></i>'.html_safe, edit_excepcion_entrega_path(excepcion_entrega), class: 'btn btn-primary' %>
+				    	<%= link_to '<i class="icon-trash icon-white"></i>'.html_safe, excepcion_entrega, confirm: '¿Estás seguro?', method: :delete, class: 'btn btn-danger' %>
+			    	</td>
+			  	</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<div class="form-actions">
+		<%= link_to '<i class="icon-plus icon-white"></i> Nueva'.html_safe, new_excepcion_entrega_path, class: 'btn btn-success' %>
+	</div>
+</div>

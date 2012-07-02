@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @excepcion_entrega.fecha %>
+</p>
+
+<p>
+  <b>Hora desde:</b>
+  <%= @excepcion_entrega.hora_desde %>
+</p>
+
+<p>
+  <b>Hora hasta:</b>
+  <%= @excepcion_entrega.hora_hasta %>
+</p>
+
+
+<%= link_to 'Edit', edit_excepcion_entrega_path(@excepcion_entrega) %> |
+<%= link_to 'Back', excepcion_entregas_path %>

@@ -1,5 +1,7 @@
 Panialera::Application.routes.draw do
 
+  resources :excepcion_entregas
+
   resources :combo_detalles
 
   resources :combos

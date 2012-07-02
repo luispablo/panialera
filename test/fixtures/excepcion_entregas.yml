@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: excepcion_entregas
+#
+#  id         :integer         not null, primary key
+#  fecha      :date
+#  hora_desde :time
+#  hora_hasta :time
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fecha: 2012-07-02
+  hora_desde: 2012-07-02 19:52:03
+  hora_hasta: 2012-07-02 19:52:03
+
+two:
+  fecha: 2012-07-02
+  hora_desde: 2012-07-02 19:52:03
+  hora_hasta: 2012-07-02 19:52:03

@@ -1,0 +1,30 @@
+
+	<%= form_for(@excepcion_entrega, html: {class: 'form-horizontal'}) do |f| %>
+		  <% if @excepcion_entrega.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@excepcion_entrega.errors.count, "error") %> prohibited this excepcion_entrega from being saved:</h2>
+		
+		      <ul>
+		      <% @excepcion_entrega.errors.full_messages.each do |msg| %>
+		        <li><%= msg %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+
+		<div class="control-group">
+    		<%= f.label :fecha, class: 'control-label' %>
+    		<div class="controls"><%= f.date_select :fecha, {}, {:class => 'span1'} %></div>
+  		</div>
+  		<div class="control-group">
+    		<%= f.label :hora_desde, class: 'control-label' %>
+    		<div class="controls"><%= f.time_select :hora_desde, {:include_blank => true}, {:class => 'span1'} %></div>
+  		</div>
+  		<div class="control-group">
+    		<%= f.label :hora_hasta, class: 'control-label' %>
+    		<div class="controls"><%= f.time_select :hora_hasta, {:include_blank => true}, {:class => 'span1'} %></div>
+  		</div>
+  		<div class="form-actions">
+    		<%= f.submit 'Grabar', class: 'btn btn-primary'%>
+  		</div>
+	<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702223541) do
+ActiveRecord::Schema.define(:version => 20120702225202) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -134,6 +134,14 @@ ActiveRecord::Schema.define(:version => 20120702223541) do
     t.time     "desde"
     t.time     "hasta"
     t.boolean  "disponible"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "excepcion_entregas", :force => true do |t|
+    t.date     "fecha"
+    t.time     "hora_desde"
+    t.time     "hora_hasta"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -32,7 +32,8 @@
 								<ul class="dropdown-menu">
 									<%= item_menu 'parametros', parametros_path %>
 									<%= item_menu 'barrios', barrios_path %>
-									<%= item_menu 'entregas', entregas_path %>
+									<%= item_menu 'entregas', entregas_path, '<i class="icon-map-marker"></i>&nbsp; Entregas'.html_safe %>
+									<%= item_menu 'excepcion_entregas', excepcion_entregas_path, '<i class="icon-warning-sign"></i>&nbsp; Excepciones de entrega' %>
 								</ul>
   							</li>
 							<li class="dropdown">
@@ -40,7 +41,7 @@
 								<ul class="dropdown-menu">
 									<%= item_menu 'categorias', categorias_path %>
 									<%= item_menu 'marcas', marcas_path %>
-									<%= item_menu 'productos', productos_path %>
+									<%= item_menu 'productos', productos_path, '<i class="icon-barcode"></i> Productos'.html_safe %>
 									<%= item_menu 'combos', combos_path %>
 								</ul>
   							</li>
