@@ -13,14 +13,22 @@
 					<%= link_to 'Volver', combos_path, class: 'btn' %>
 				</div>
 			</div>
-			<p>
-	  			<b>Precio:</b>
-	  			<%= best_in_place @combo, :precio, display_with: :number_to_currency %>
-			</p>
-			<p>
-				<b>Precio real calculado:</b>
-				<%= number_to_currency(@combo.precio_real) %>
-			</p>
+			<div class="row">
+				<div class="span5">
+					<p>
+			  			<b>Precio:</b>
+			  			<%= best_in_place @combo, :precio, display_with: :number_to_currency %>
+					</p>
+					<p>
+						<b>Precio real calculado:</b>
+						<%= number_to_currency(@combo.precio_real) %>
+					</p>
+				</div>
+				<div class="span1">
+					<br/>
+					<%= link_to 'Editar', edit_combo_path(@combo), class: 'btn btn-info'%>
+				</div>
+			</div>
 		</div>
 	</div>
 

@@ -9,6 +9,7 @@
 #  precio      :float
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
+#  combo_id    :integer
 #
 
 require 'test_helper'

@@ -19,16 +19,16 @@ module ApplicationHelper
     end
   end
 
+  def trunc(texto, longitud, sufijo)
+    "#{texto.slice(0, longitud).strip}#{sufijo if (texto.length > longitud)}"
+  end
+  
   def control_group_class(objeto, campo)
     %{control-group #{'error' unless objeto.read_attribute(campo).nil? or objeto.valid?(campo)}}
   end
 
   def tab(etiqueta, path)
     raw("<li #{"class='active'" if request.fullpath.include?(path)}>#{link_to(etiqueta, path)}</li>")
-  end
-
-  def trunc(texto, longitud, sufijo)
-    "#{texto.slice(0, longitud).strip}#{sufijo if (texto.length > longitud)}"
   end
 
   def usuario_logueado?

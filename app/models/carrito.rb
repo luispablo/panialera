@@ -32,15 +32,28 @@ class Carrito < ActiveRecord::Base
     precio_total_items + costo_envio
   end
   
-  def agregar_producto(producto_id, cantidad)
-    item_actual = carrito_items.find_by_producto_id(producto_id)
+  def agregar_combo(combo_id, cantidad)
+    item = carrito_items.find_by_combo_id(combo_id)
     
-    if item_actual
-      item_actual.cantidad += cantidad
+    if item
+      item.agregar(cantidad)
     else
-      item_actual = carrito_items.build(producto_id: producto_id, cantidad: cantidad)
+      item = carrito_items.build(combo_id: combo_id, cantidad: cantidad)      
     end
-
-    item_actual
+    
+    item
   end
+  
+  def agregar_producto(producto_id, cantidad)
+    item = carrito_items.find_by_producto_id(producto_id)
+    
+    if item
+      item.agregar(cantidad)
+    else
+      item = carrito_items.build(producto_id: producto_id, cantidad: cantidad)
+    end
+    
+    item
+  end
+  
 end

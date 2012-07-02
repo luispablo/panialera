@@ -1,14 +1,13 @@
 
 	<tr>
 		<td valign="top" align="left">
-			<% if item.producto.imagen? %>
-				<%= image_tag item.producto.imagen_url(:thumb) %>
+			<% if item.imagen? %>
+				<%= image_tag item.imagen_url(:thumb) %>
 			<% end %>
 		</td>			
 		<td class="linea">
 			<p>
-				<%= item.producto.marca.nombre %>&nbsp;<%= item.producto.nombre %>&nbsp;<%= item.producto.descripcion %><br/>
-				<%= item.producto.referencia %> 
+				<%= item.descripcion %>
 			</p>
 			<br/>
 			
@@ -16,7 +15,7 @@
 				<%= f.number_field :cantidad, in: 1..100, onchange: "$('#edit_carrito_item_#{item.id}').submit();", class: 'span1' %> &times;
 			<% end %>
 						 
-			<%= number_to_currency(item.producto.precio) %> = <span id="<%= "precio_total_#{item.id}" %>" class="precio_total_linea"><%= number_to_currency(item.precio_total) %></span>
+			<%= number_to_currency(item.precio_unitario) %> = <span id="<%= "precio_total_#{item.id}" %>" class="precio_total_linea"><%= number_to_currency(item.precio_total) %></span>
 		</td>
 		<td class="linea">
 			<%= link_to raw("<i class='icon-trash icon-white'></i> Quitar"), item, confirm: '¿Quitar este ítem del carrito?', method: :delete, remote: true, class: 'btn btn-danger' %>		

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120701194727) do
+ActiveRecord::Schema.define(:version => 20120702020018) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20120701194727) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.float    "cantidad"
+    t.integer  "combo_id"
   end
 
   add_index "carrito_items", ["carrito_id"], :name => "index_carrito_items_on_carrito_id"
@@ -76,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20120701194727) do
     t.float    "precio"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "imagen"
   end
 
   create_table "compra_detalles", :force => true do |t|
@@ -223,6 +225,7 @@ ActiveRecord::Schema.define(:version => 20120701194727) do
     t.float    "precio"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "combo_id"
   end
 
   add_index "venta_detalles", ["producto_id"], :name => "index_venta_detalles_on_producto_id"

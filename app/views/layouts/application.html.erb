@@ -54,11 +54,15 @@
 						<div class="container">
 							<ul class="nav">
 								<li><%= link_to 'Inicio', tienda_url %></li>
-								<li><%= link_to 'Mi Carrito', @carrito %></li>
-								<li><%= link_to 'Mi Cuenta', url_for(controller: :mi_cuenta, action: :datos_personales, id: session[:usuario_id]) if usuario_logueado? %></li>
 								<li><%= link_to 'Contacto', url_for(controller: :tienda, action: :contacto) %></li>
 								<li><%= link_to '¡Registrarme!', url_for(controller: :sessions, action: :registro) unless usuario_logueado? %></li>
 								<li><%= link_to '¿Dónde entregamos?', alcance_url %></li>
+								<li class="ofertas"><%= link_to '¡OFERTAS!', ofertas_url %></li>
+							</ul>
+							<ul class="nav pull-right">
+								<li class="divider-vertical"></li>
+								<li><%= link_to 'Mi Carrito', @carrito %></li>
+								<li><%= link_to 'Mi Cuenta', url_for(controller: :mi_cuenta, action: :datos_personales, id: session[:usuario_id]) if usuario_logueado? %></li>
 							</ul>
 						</div>
 					</div>

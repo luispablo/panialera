@@ -1,0 +1,37 @@
+
+	<div class="well shadow">
+		<div class="row">
+			<div class="span2">
+				<% if combo.imagen? %>
+					<%= image_tag combo.imagen_url(:thumb) %>
+				<% else %>
+					<%= image_tag 'thumb.png' %>
+				<% end %>
+			</div>
+			<div class="span5">
+				<div class="row">
+					<div class="span3">
+						<strong><%= combo.detalle %></strong><br/>
+					</div>
+					<div class="span2" style="text-align: right;">
+						<h3><%= number_to_currency(combo.precio) %></h3><br/>				
+					</div>
+				</div>
+				<div class="row">
+					<div class="span3">
+						<ul>
+							<% combo.combo_detalles.each do |cd| %>
+								<li>
+									<%= cd.cantidad %>&nbsp;
+									<%= link_to "#{cd.producto.marca.nombre} #{cd.producto.nombre}", controller: :tienda, action: :detalle_producto, codigo: cd.producto.codigo %>
+								</li>
+							<% end %>
+						</ul>
+					</div>
+					<div class="span2" style="text-align: right">						
+						<%= button_to 'Agregar al carrito', carrito_items_path(combo_id: combo), remote: true, class: 'btn btn-danger' %>				
+					</div>
+				</div>
+			</div>
+		</div>				
+	</div>

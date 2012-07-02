@@ -40,20 +40,24 @@
   # POST /carrito_items
   # POST /carrito_items.json
   def create
-    unless params[:carrito_item].nil?
-      producto_id = params[:carrito_item][:producto_id]
-      cantidad = params[:carrito_item][:cantidad].to_i 
-    else
-      producto_id = params[:producto_id]
-      cantidad = 1
-    end
-                  
     @carrito = carrito_actual
-    producto = Producto.find(producto_id)
     
-    # Esto es importante porque lo crea o trae el que existe
-    @carrito_item = @carrito.agregar_producto(producto.id, cantidad)
+    if params[:carrito_item].nil?
+      cantidad = 1
+      producto_id = params[:producto_id]
+      combo_id = params[:combo_id]
+    else
+      cantidad = params[:carrito_item][:cantidad].to_i
+      producto_id = params[:carrito_item][:producto_id]
+      combo_id = params[:carrito_item][:combo_id]      
+    end
 
+    if producto_id.nil?
+      @carrito_item = @carrito.agregar_combo(combo_id, cantidad)
+    else
+      @carrito_item = @carrito.agregar_producto(producto_id, cantidad)
+    end    
+                  
     respond_to do |format|
       if @carrito_item.save
         format.html { redirect_to tienda_url }

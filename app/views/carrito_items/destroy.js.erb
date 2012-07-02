@@ -2,12 +2,12 @@
 	if ($('#carrito').html().trim() != '')
 	{
 		$('#carrito').html("<%=j render @carrito %>");
-		$('#tabla_carrito').css({'background-color':'#d5ed7d'}).animate({'background-color':'#ffffff'}, 2000);
+		$('#tabla_carrito').css({'background-color':'#d5ed7d'}).animate({'background-color':'#9EAA4F'}, 2000);
 	}
 	else
 	{
 		$('#carrito_grande').html("<%=j render(partial: 'carritos/carrito_grande', locals: {carrito: @carrito}) %>");
-		$('#tabla_carrito_grande').css({'background-color':'#d5ed7d'}).animate({'background-color':'#ffffff'}, 2000);
+		$('#tabla_carrito_grande').css({'background-color':'#d5ed7d'}).animate({'background-color':'#9EAA4F'}, 2000);
 	}
 	
 	

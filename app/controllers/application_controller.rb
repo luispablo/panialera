@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
+
   before_filter :cargar_categorias, :cargar_usuario
-  
+    
 private
   def cargar_carrito
     @carrito = carrito_actual

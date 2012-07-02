@@ -60,12 +60,16 @@
 			<tbody>
 				<% @carrito.carrito_items.each do |i| %>
 					<tr>
-						<td><%= i.producto.marca.nombre %></td>
-						<td><%= i.producto.nombre %> <%= i.producto.descripcion %></td>
-						<td><%= i.producto.talle %></td>
-						<td><%= i.producto.referencia %></td>
+						<% unless i.producto.nil? %>
+							<td><%= i.producto.marca.nombre %></td>
+							<td><%= i.producto.nombre %> <%= i.producto.descripcion %></td>
+							<td><%= i.producto.talle %></td>
+							<td><%= i.producto.referencia %></td>
+						<% else %>
+							<td colspan="4"><%= i.combo.detalle %></td>
+						<% end %>
 						<td><%= pretty_number(i.cantidad) %></td>
-						<td><%= number_to_currency(i.producto.precio) %></td>
+						<td><%= number_to_currency(i.precio_unitario) %></td>
 						<td><%= number_to_currency(i.precio_total) %></td>
 					</tr>
 				<% end %>

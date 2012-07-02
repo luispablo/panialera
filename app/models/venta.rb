@@ -58,7 +58,7 @@ class Venta < ActiveRecord::Base
   
   def cargar_items_carrito(carrito)
     carrito.carrito_items.each do |i|
-      VentaDetalle.create(venta: self, producto: i.producto, cantidad: i.cantidad, precio: i.producto.precio)
+      VentaDetalle.create(venta: self, producto: i.producto, cantidad: i.cantidad, precio: i.precio_unitario, combo: i.combo)
     end
   end
 end

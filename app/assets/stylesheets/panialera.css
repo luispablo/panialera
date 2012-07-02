@@ -184,3 +184,8 @@ span.client_side_validation
 	color: red;
 	padding-left: 10px;
 }
+
+.navbar .nav > li.ofertas > a 
+{
+	color: yellow;
+}

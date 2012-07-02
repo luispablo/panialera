@@ -1,6 +1,10 @@
 ﻿class TiendaController < ApplicationController
   before_filter :cargar_carrito
 
+  def ofertas
+    @combos = Combo.all
+  end
+
   def alcance
     
   end

@@ -20,6 +20,13 @@
     		<%= f.label :precio, class: 'control-label' %>
     		<div class="controls"><%= f.text_field :precio %></div>
   		</div>
+		<div class="control-group">
+			<%= f.label :imagen, :class => 'control-label'%>
+			<div class="controls">
+				<%= image_tag @combo.imagen_url(:thumb) if @combo.imagen? %>
+				<%= f.file_field :imagen %>
+			</div>
+		</div>  		
   		<div class="form-actions">
     		<%= f.submit 'Grabar', class: 'btn btn-primary'%>
   		</div>
