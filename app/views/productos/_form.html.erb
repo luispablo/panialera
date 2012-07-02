@@ -12,10 +12,10 @@
   		<% end %>
 
 		<div class="row">
-			<div class="span4">
+			<div class="span5">
 				<div class="control-group">
 					<%= f.label :marca, :class => 'control-label' %>
-					<div class="controls"><%= f.select :marca_id, Marca.all.map { |m| [m.nombre, m.id] } %></div>
+					<div class="controls"><%= f.select :marca_id, Marca.order(:nombre).map { |m| [m.nombre, m.id] } %></div>
 				</div>
 		  		<div class="control-group">
 		    		<%= f.label :codigo, :class => 'control-label' %>

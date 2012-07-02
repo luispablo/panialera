@@ -14,7 +14,7 @@ class ProductosController < AdminController
 
   def categorias
     @producto = Producto.find(params[:id])
-    @categorias = Categoria.all
+    @categorias = Categoria.order(:nombre)
   end
 
   # GET /productos/1
