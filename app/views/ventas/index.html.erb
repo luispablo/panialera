@@ -13,7 +13,7 @@
 		<tbody>
 			<% @ventas.each do |venta| %>
 				<tr>
-				    <td><%= venta.fecha %></td>
+				    <td><%= venta.fecha.strftime('%d/%m/%Y') %></td>
 				    <td><%= venta.usuario.apellido unless venta.usuario.nil? %></td>
 				    <td><%= venta.domicilio.nombre unless venta.domicilio.nil? %></td>
 				    <td>

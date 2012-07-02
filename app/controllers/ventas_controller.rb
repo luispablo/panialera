@@ -6,7 +6,7 @@
   # GET /ventas
   # GET /ventas.json
   def index
-    @ventas = Venta.all
+    @ventas = Venta.order("fecha desc")
 
     respond_to do |format|
       format.html # index.html.erb
