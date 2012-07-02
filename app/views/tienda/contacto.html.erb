@@ -1,38 +1,47 @@
-
-<div class="well titulo_azul">
-	<h2>Contacto</h2>
-</div>
-
-<%= form_tag({}, {class: 'form-horizontal'}) do %>
-	<div class="control-group">
-		<%= label_tag :nombre, 'Nombre y apellido', class: 'control-label' %>
-		<div class="controls"><%= text_field_tag :nombre %></div>	
-	</div>
-	<div class="control-group">	
-		<%= label_tag :como_llego, 'Cómo llegó a nosotros', class: 'control-label'%>
-		<div class="controls">
-			<%= label_tag :como_llego_web, raw("#{radio_button_tag(:como_llego, :web)} Internet"), class: 'radio' %>		
-			<%= label_tag :como_llego_referido, raw("#{radio_button_tag(:como_llego, :referido)} Recomendación"), class: 'radio' %>
-			<%= label_tag :como_llego_volantes, raw("#{radio_button_tag(:como_llego, :volantes)} Volantes"), class: 'radio' %>
-			<%= label_tag :como_llego_otros, raw("#{radio_button_tag(:como_llego, :otros)} Otros"), class: 'radio' %>
-			
-			<%= text_field_tag :otros %>
-		</div>
-	</div>
-	<div class="control-group">
-		<%= label_tag :email, 'e-mail', class: 'control-label' %>
-		<div class="controls"><%= text_field_tag :email %></div>
-	</div>
-	<div class="control-group">
-		<%= label_tag :consulta, 'Consulta', class: 'control-label' %>
-		<div class="controls"><%= text_area_tag :consulta, nil, {rows: 10, cols: 30} %></div>
-	</div>
-	<div class="control-group">
-		<%= label_tag :recibir_novedades, '¿Desea recibir novedades?', class: 'control-label' %>
-		<div class="controls"><%= check_box_tag :recibir_novedades, 'si', true %></div>
-	</div>
-	<div class="form-actions">
-		<%= submit_tag 'Enviar consulta', class: 'btn btn-primary' %>
+	
+	<div class="well titulo_azul">
+		<h2>Contacto</h2>
 	</div>
 	
-<% end %>
+	<div class="row">
+		<div class="offset1">
+			<strong>(Todos los campos son obligatorios)</strong>
+		</div>
+	</div>
+	<br/>
+	
+	<div class="row">
+		<%= form_tag({}, {class: 'form-horizontal'}) do %>
+			<div class="control-group">
+				<%= label_tag :nombre, 'Nombre y apellido', class: 'control-label' %>
+				<div class="controls"><%= text_field_tag :nombre %></div>	
+			</div>
+			<div class="control-group">	
+				<%= label_tag :como_llego, 'Cómo llegó a nosotros', class: 'control-label'%>
+				<div class="controls">
+					<%= label_tag :como_llego_web, raw("#{radio_button_tag(:como_llego, :web)} Internet"), class: 'radio' %>		
+					<%= label_tag :como_llego_referido, raw("#{radio_button_tag(:como_llego, :referido)} Recomendación"), class: 'radio' %>
+					<%= label_tag :como_llego_volantes, raw("#{radio_button_tag(:como_llego, :volantes)} Marketing en vía pública (volantes)"), class: 'radio' %>
+					<%= label_tag :como_llego_otros, raw("#{radio_button_tag(:como_llego, :otros)} Otros"), class: 'radio' %>
+					
+					<%= text_field_tag :otros %>
+				</div>
+			</div>
+			<div class="control-group">
+				<%= label_tag :email, 'e-mail', class: 'control-label' %>
+				<div class="controls"><%= text_field_tag :email %></div>
+			</div>
+			<div class="control-group">
+				<%= label_tag :consulta, 'Consulta', class: 'control-label' %>
+				<div class="controls"><%= text_area_tag :consulta, nil, {rows: 10, cols: 30} %></div>
+			</div>
+			<div class="control-group">
+				<%= label_tag :recibir_novedades, '¿Desea recibir novedades?', class: 'control-label' %>
+				<div class="controls"><%= check_box_tag :recibir_novedades, 'si', true %></div>
+			</div>
+			<div class="form-actions">
+				<%= submit_tag 'Enviar consulta', class: 'btn btn-primary' %>
+			</div>
+			
+		<% end %>
+	</div>
