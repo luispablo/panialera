@@ -15,7 +15,7 @@ class Entrega < ActiveRecord::Base
   attr_accessor :fecha
   
   def descripcion
-    "#{DIAS_SEMANA[wday]} #{fecha.day} de #{desde.strftime('%H:%M')} a #{hasta.strftime('%H:%M')}"
+    "Este #{DIAS_SEMANA[wday]} (#{fecha.day}/#{fecha.month}) entre las #{desde.strftime('%H:%M')} y las #{hasta.strftime('%H:%M')} hs."
   end
   
   def self.entregas_disponibles
