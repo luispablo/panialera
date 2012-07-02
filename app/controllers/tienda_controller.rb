@@ -3,6 +3,7 @@
 
   def ofertas
     @combos = Combo.all
+    @productos = Producto.where(oferta: true)
   end
 
   def alcance
@@ -90,8 +91,11 @@
     end
   end
   
-  def index
-    @productos_destacados = Producto.destacados
+  def index    
+    combos = Combo.all
+    productos = Producto.where(oferta: true)
+    
+    @ofertas = (combos + productos).first(3)
   end
   
   def productos_categoria
