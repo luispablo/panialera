@@ -50,7 +50,7 @@ class Producto < ActiveRecord::Base
   end
   
   def cantidad_total_comprada
-    compra_detalles.map { |d| d.cantidad }.sum
+    compra_detalles.map { |d| d.cantidad.nil? ? 0 : d.cantidad }.sum
   end
   
   def monto_total_comprado
