@@ -8,6 +8,7 @@
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #  imagen     :string(255)
+#  nombre     :string(255)
 #
 
 class Combo < ActiveRecord::Base
@@ -18,9 +19,13 @@ class Combo < ActiveRecord::Base
   def precio_real
     combo_detalles.map {|cd| cd.precio_real }.sum
   end
+
+  def contenido
+    combo_detalles.map {|cd| "#{cd.cantidad} #{cd.producto.nombre}"}.join(' + ')
+  end
   
   def detalle
-    combo_detalles.map {|cd| "#{cd.cantidad} #{cd.producto.nombre}"}.join(' + ')
+    nombre || contenido
   end
   
 end

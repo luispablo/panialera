@@ -8,6 +8,7 @@
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #  imagen     :string(255)
+#  nombre     :string(255)
 #
 
 require 'test_helper'
