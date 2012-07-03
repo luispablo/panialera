@@ -30,6 +30,12 @@ class Domicilio < ActiveRecord::Base
     self.valido_delivery = false
     save
     
+    unless ventas.nil? or ventas.empty?
+      ventas.each do |v|
+        v.destroy
+      end
+    end
+    
     AdminMailer.domicilio_invalido(self).deliver    
   end
   

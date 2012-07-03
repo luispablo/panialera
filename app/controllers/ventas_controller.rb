@@ -104,7 +104,7 @@
     @venta = Venta.find(params[:venta_id])
     producto = Producto.find(params[:producto_id])
     
-    VentaDetalle.create(:venta_id => @venta.id, :producto_id => producto.id, precio: producto.precio)
+    VentaDetalle.create(venta_id: @venta.id, producto_id: producto.id, precio: producto.precio, cantidad: params[:cantidad])
     
     redirect_to venta_path(@venta)
   end

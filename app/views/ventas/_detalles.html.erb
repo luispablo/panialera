@@ -9,14 +9,6 @@
 
 	<div class="row">
 		<div class="span8">
-			<%= form_tag({:controller => 'ventas', :action => 'agregar_detalle'}, :method => 'post', :class => 'form-horizontal') do %>
-				<legend>Detalles de la venta</legend>
-				<%= hidden_field_tag :venta_id, @venta.id %>
-				<div class="control-group">
-					<%= select_tag :producto_id, options_for_select(@productos.map { |p| [p.label_combos, p.id]}), class: 'span6' %>
-					<%= submit_tag 'Agregar', :class => 'btn' %>
-				</div>
-			<% end %>			
 		</div>
 	</div>
 	<div class="row">
@@ -31,13 +23,25 @@
 						<th>&nbsp;</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody>					
+					<%= form_tag({:controller => 'ventas', :action => 'agregar_detalle'}, :method => 'post', :class => 'form-horizontal') do %>
+						<%= hidden_field_tag :venta_id, @venta.id %>
+						<tr>
+							<td><%= select_tag :producto_id, options_for_select(@productos.map { |p| [p.label_combos, p.id]}), class: 'span6' %></td>
+							<td><%= text_field_tag :cantidad, 0, class: 'span1'  %></td>
+							<td>-</td>
+							<td><%= submit_tag 'Agregar', :class => 'btn' %></td>
+						</tr>					
+					<% end %>			
 					<% @venta.venta_detalles.each do |d| %>
 						<tr>
-							<td><%= d.producto.nombre %></td>
-							<td><%= best_in_place d, :cantidad, :type => :input, :nil => "Clic aquí" %></td>
-							<td><%= best_in_place d, :precio, :type => :input, :nil => "Clic aquí" %></td>
-							<td><%= link_to 'Quitar', "#{ventas_url}/quitar_detalle/#{d.id}", :class => 'btn'%></td>
+							<td>
+								<%= d.producto.nombre unless d.producto.nil? %>
+								<%= d.combo.detalle unless d.combo.nil? %>
+							</td>
+							<td><%= pretty_number(d.cantidad) %></td>
+							<td nowrap><%= number_to_currency(d.precio) %></td>
+							<td><%= link_to 'Quitar', "#{ventas_url}/quitar_detalle/#{d.id}", :class => 'btn btn-danger'%></td>
 						</tr>
 					<% end %>
 				</tbody>

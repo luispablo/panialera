@@ -16,6 +16,15 @@ class VentaDetalle < ActiveRecord::Base
   belongs_to :venta
   belongs_to :producto
   belongs_to :combo
+
+  before_destroy :agregar_stock
+
+  def quitar_stock
+    unless producto.nil?
+      producto.quitar_stock cantidad
+      producto.save
+    end
+  end
   
   def precio_unitario
     unless producto.nil?
@@ -27,5 +36,13 @@ class VentaDetalle < ActiveRecord::Base
   
   def precio_total
     (precio * cantidad unless precio.nil? or cantidad.nil?) || 0
+  end
+
+private
+  def agregar_stock
+    unless producto.nil? or not venta.entregada?
+      producto.agregar_stock cantidad
+      producto.save!
+    end
   end
 end

@@ -14,6 +14,7 @@
 #  hora_hasta_entrega :time
 #  costo_envio        :float
 #  comentarios        :string(255)
+#  entregada          :boolean
 #
 
 class Venta < ActiveRecord::Base
@@ -21,6 +22,10 @@ class Venta < ActiveRecord::Base
   belongs_to :domicilio
   
   has_many :venta_detalles, dependent: :destroy
+
+  default_value_for :entregada, false
+
+  before_save :actualizar_stock 
   
   attr_accessor :entrega
   
@@ -60,6 +65,21 @@ class Venta < ActiveRecord::Base
   def cargar_items_carrito(carrito)
     carrito.carrito_items.each do |i|
       VentaDetalle.create(venta: self, producto: i.producto, cantidad: i.cantidad, precio: i.precio_unitario, combo: i.combo)
+    end
+  end
+
+  def quitar_stock_detalles
+    unless venta_detalles.nil? or venta_detalles.empty?
+      venta_detalles.each do |vd|
+        vd.quitar_stock
+      end
+    end
+  end
+  
+private
+  def actualizar_stock
+    if entregada? and not entregada_was
+      quitar_stock_detalles
     end
   end
 end

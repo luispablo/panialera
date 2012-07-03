@@ -23,7 +23,7 @@
 				</p>
 				<p>
 					<b>Costo de env&iacute;o:</b>
-					<%= best_in_place @venta, :costo_envio %>
+					<%= best_in_place @venta, :costo_envio, display_with: :number_to_currency %>
 				</p>
 				<p>
 					<b>Confirmada:</b>

@@ -3,6 +3,21 @@ class AdminController < ApplicationController
   
   layout 'admin'
 
+  def venta_entregada
+    venta = Venta.find(params[:venta_id])
+    venta.entregada = true
+    venta.save!
+    
+    redirect_to controller: :admin, action: :index
+  end
+  
+  def venta_cancelada
+    venta = Venta.find(params[:venta_id])
+    venta.destroy
+    
+    redirect_to controller: :admin, action: :index
+  end
+
   def validar_domicilio
     domicilio = Domicilio.find(params[:id])
     domicilio.validar_para_delivery
@@ -20,6 +35,7 @@ class AdminController < ApplicationController
   def index
     @domicilios = Domicilio.where(valido_delivery: nil)
     @ventas_sin_conf = Venta.joins(:domicilio).where('domicilios.valido_delivery' => nil)
+    @ventas_sin_entregar = Venta.where(entregada: false).order('fecha, hora_desde_entrega')
   end
   
 protected

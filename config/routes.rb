@@ -26,6 +26,8 @@ Panialera::Application.routes.draw do
   controller :admin do
     get '/admin/domicilio_valido/:id' => :validar_domicilio
     get '/admin/domicilio_invalido/:id' => :invalidar_domicilio
+    get '/admin/venta_entregada/:venta_id' => :venta_entregada
+    get '/admin/venta_cancelada/:venta_id' => :venta_cancelada
   end
 
   controller :sessions do

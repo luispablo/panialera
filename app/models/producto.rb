@@ -37,12 +37,19 @@ class Producto < ActiveRecord::Base
   
   validates :codigo, :nombre, :precio, :presence => { :message => "es un campo requerido." }
   
-  def comprar(cantidad)
+  def quitar_stock(cantidad)
     if self.stock.nil?
-      logger.debug("el stock ahora es #{cantidad}")
+      self.stock = 0
+    else
+      logger.debug("stock: #{self.stock} - cantidad: #{cantidad}")
+      self.stock -= cantidad
+    end
+  end 
+  
+  def agregar_stock(cantidad)
+    if self.stock.nil?
       self.stock = cantidad
     else
-      logger.debug("sumando #{cantidad} al stock de #{stock}")
       self.stock += cantidad
     end
   end

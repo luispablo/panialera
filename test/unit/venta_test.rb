@@ -14,6 +14,7 @@
 #  hora_hasta_entrega :time
 #  costo_envio        :float
 #  comentarios        :string(255)
+#  entregada          :boolean
 #
 
 require 'test_helper'
