@@ -45,6 +45,21 @@ class Producto < ActiveRecord::Base
     false
   end
   
+  def stock_disponible
+    comprometido = stock_comprometido
+    (stock.nil? ? 0 : stock) - (comprometido.nil? ? 0 : comprometido)
+  end
+  
+  def stock_comprometido
+    detalles_venta = VentaDetalle.find_no_entregadas_by_producto(self)
+    
+    if detalles_venta.nil? || detalles_venta.empty?
+      0
+    else
+      detalles_venta.map { |dv| dv.cantidad }.sum
+    end
+  end
+  
   def quitar_stock(cantidad)
     if self.stock.nil?
       self.stock = 0
