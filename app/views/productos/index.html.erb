@@ -1,25 +1,28 @@
 
 	<legend>
 		<div class="row">
-			<div class="span5">
+			<div class="span3">
 				Listando productos
 			</div>
 			<div class="span2">
 				<div class="ref ofertas">&nbsp;</div>&nbsp;<small>Oferta</small>
 			</div>
-			<div class="span3">				
+			<div class="span2">				
 				<div class="ref no_publicado">&nbsp;</div>&nbsp;<small>No publicado</small>
 			</div>	
-			<div class="span4">
-				<%= form_tag productos_path, :method => 'get' do %>
+			<%= form_tag productos_path, :method => 'get' do %>
+				<div class="span3">
+					<%= select_tag :categoria_id, options_for_select(@categorias, params[:categoria_id]), include_blank: true, onchange: '$(this).closest("form").submit();'%>
+				</div>
+				<div class="span4">
 			  		<%= hidden_field_tag :direction, params[:direction] %>
 			  		<%= hidden_field_tag :sort, params[:sort] %>
 			  		
 					<div class="input-append">
 						<%= text_field_tag :search, params[:search], id: 'appendedInputButton' %><%= submit_tag "Buscar", :name => nil, class: 'btn' %>
 					</div>  				    		
-				<% end %>
-			</div>
+				</div>
+			<% end %>
 		</div>
 	</legend>
 

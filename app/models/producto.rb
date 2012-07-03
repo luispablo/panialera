@@ -37,6 +37,14 @@ class Producto < ActiveRecord::Base
   
   validates :codigo, :nombre, :precio, :presence => { :message => "es un campo requerido." }
   
+  def pertenece_a?(categoria_id)
+    unless categorias.nil? || categorias.empty?
+      categorias.each { |c| return true if c.id == categoria_id }
+    end
+    
+    false
+  end
+  
   def quitar_stock(cantidad)
     if self.stock.nil?
       self.stock = 0
@@ -74,11 +82,19 @@ class Producto < ActiveRecord::Base
     compra_detalles.map { |d| d.precio_total }.sum
   end
   
-  def self.search(search)
+  def self.search(search, categoria_id = nil)
     if search
-      where('nombre LIKE :search OR descripcion LIKE :search OR detalle LIKE :search OR codigo LIKE :search', search: "%#{search}%")
+      if categoria_id.nil? || categoria_id.empty?
+        where('nombre LIKE :search OR descripcion LIKE :search OR detalle LIKE :search OR codigo LIKE :search', search: "%#{search}%")
+      else
+        joins(:cat_productos).where('cat_productos.categoria_id = :cat_id AND (nombre LIKE :search OR descripcion LIKE :search OR detalle LIKE :search OR codigo LIKE :search)', search: "%#{search}%", cat_id: categoria_id)
+      end
     else
-      scoped
+      if categoria_id.nil? || categoria_id.empty?
+        scoped
+      else
+        joins(:cat_productos).where('cat_productos.categoria_id = :cat_id', cat_id: categoria_id)
+      end
     end
   end
 

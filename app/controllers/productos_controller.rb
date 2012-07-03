@@ -4,7 +4,8 @@ class ProductosController < AdminController
   # GET /productos
   # GET /productos.json
   def index
-    @productos = Producto.search(params[:search]).order("#{sort_column} #{sort_direction}").paginate(per_page: Parametro.items_por_pagina, page: params[:page])
+    @categorias = Categoria.all.map { |c| [c.nombre, c.id]}
+    @productos = Producto.search(params[:search], params[:categoria_id]).order("#{sort_column} #{sort_direction}").paginate(per_page: Parametro.items_por_pagina, page: params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
