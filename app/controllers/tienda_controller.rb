@@ -2,7 +2,7 @@
   before_filter :cargar_carrito
 
   def ofertas
-    @combos = Combo.all
+    @combos = Combo.disponibles
     @productos = Producto.where(oferta: true)
   end
 
@@ -98,7 +98,7 @@
   end
   
   def index    
-    combos = Combo.all
+    combos = Combo.disponibles
     productos = Producto.where(oferta: true)
     
     @ofertas = (combos + productos).first(3)

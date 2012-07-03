@@ -9,6 +9,7 @@
 #  updated_at :datetime        not null
 #  imagen     :string(255)
 #  nombre     :string(255)
+#  publicado  :boolean
 #
 
 require 'test_helper'

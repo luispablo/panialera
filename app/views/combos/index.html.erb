@@ -1,5 +1,14 @@
 
-	<legend>Listando combos</legend>
+	<legend>
+		<div class="row">
+			<div class="span5">
+				Listando combos
+			</div>
+			<div class="span3">				
+				<div class="ref no_publicado">&nbsp;</div>&nbsp;<small>No publicado</small>
+			</div>
+		</div>
+	</legend>	
 
 	<table class="table table-bordered table-condensed table-striped">
 		<thead>
@@ -14,7 +23,7 @@
 		</thead>
 		<tbody>
 			<% @combos.each do |combo| %>
-  				<tr>
+  				<tr class="<%= "no_publicado" unless combo.publicado? %>">
 				    <td><%= combo.codigo %></td>
 				    <td><%= combo.nombre %></td>
 				    <td><%= number_to_currency(combo.precio) %></td>

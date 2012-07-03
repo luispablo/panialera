@@ -9,6 +9,7 @@
 #  updated_at :datetime        not null
 #  imagen     :string(255)
 #  nombre     :string(255)
+#  publicado  :boolean
 #
 
 class Combo < ActiveRecord::Base
@@ -16,6 +17,10 @@ class Combo < ActiveRecord::Base
 
   mount_uploader :imagen, ImagenUploader
     
+  def self.disponibles
+    Combo.where(publicado: true)
+  end
+  
   def precio_real
     combo_detalles.map {|cd| cd.precio_real }.sum
   end
