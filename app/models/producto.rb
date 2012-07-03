@@ -15,12 +15,12 @@
 #  updated_at  :datetime        not null
 #  marca_id    :integer
 #  imagen      :string(255)
-#  stock       :integer
 #  talle       :string(255)
 #  peso_bebe   :string(255)
 #  edad_bebe   :string(255)
 #  destacado   :boolean
 #  oferta      :boolean
+#  stock       :float
 #
 
 class Producto < ActiveRecord::Base
@@ -36,6 +36,16 @@ class Producto < ActiveRecord::Base
   mount_uploader :imagen, ImagenUploader
   
   validates :codigo, :nombre, :precio, :presence => { :message => "es un campo requerido." }
+  
+  def comprar(cantidad)
+    if self.stock.nil?
+      logger.debug("el stock ahora es #{cantidad}")
+      self.stock = cantidad
+    else
+      logger.debug("sumando #{cantidad} al stock de #{stock}")
+      self.stock += cantidad
+    end
+  end
   
   def label_combos
     "[#{self.codigo}] #{self.nombre} #{self.descripcion} #{self.talle} [x#{self.referencia.split(' ')[0]}]"

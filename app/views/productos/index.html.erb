@@ -36,7 +36,6 @@
 				<th><%= sortable 'referencia', 'Ref.' %></th>
 				<th>Stock</th>
 				<th>Talle</th>
-				<th>Total comprado</th>
 				<th>Peso del beb&eacute;</th>
 				<th>Edad del beb&eacute;</th>
 				<th></th>
@@ -54,9 +53,8 @@
 					<td><%= trunc(producto.detalle, 10, '...') %></td>
 					<td><%= producto.precio %></td>
 					<td><%= producto.referencia %></td>
-					<td><%= producto.stock %></td>
+					<td><%= pretty_number(producto.stock) %></td>
 					<td><%= producto.talle %></td>
-					<td><%= pretty_number(producto.cantidad_total_comprada) %></td>
 					<td><%= producto.peso_bebe %></td>
 					<td><%= producto.edad_bebe %></td>
 					<td nowrap>

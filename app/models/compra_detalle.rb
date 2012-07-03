@@ -14,9 +14,16 @@
 class CompraDetalle < ActiveRecord::Base
   belongs_to :compra
   belongs_to :producto  
+
+  after_save :actualizar_stock
     
   def precio_total
-    cantidad * precio
+    (cantidad.nil? ? 0 : cantidad) * (precio.nil? ? 0 : precio)
   end
   
+private
+  def actualizar_stock
+    producto.comprar cantidad
+    producto.save!
+  end
 end

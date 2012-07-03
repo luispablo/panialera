@@ -85,7 +85,7 @@ class ComprasController < AdminController
   def agregar_detalle
     @compra = Compra.find(params[:compra_id])
     @productos = Producto.all
-    CompraDetalle.create(:compra_id => @compra.id, :producto_id => params[:producto_id])
+    CompraDetalle.create(compra_id: @compra.id, producto_id: params[:producto_id], cantidad: params[:cantidad], precio: params[:precio])
     
     render 'show'
   end

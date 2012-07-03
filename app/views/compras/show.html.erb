@@ -3,13 +3,19 @@
 		<div class="span10 offset1">
 			<p id="notice"><%= notice %></p>
 		
-			<p>
-			  <b>Fecha:</b>
-			  <%= @compra.fecha %>
-			</p>
-			<p>
-				<b>Proveedor: </b><%= @compra.proveedor.nombre unless @compra.proveedor.nil? %>
-			</p>
+			<div class="well">
+				<p>
+				  <b>Fecha:</b>
+				  <%= @compra.fecha %>
+				</p>
+				<p>
+					<b>Proveedor: </b><%= @compra.proveedor.nombre unless @compra.proveedor.nil? %>
+				</p>
+				<p>
+					<b>Monto total:</b>
+					<%= number_to_currency(@compra.monto_total) %>
+				</p>
+			</div>
 		
 			<%= render 'compras/detalles' %>
 		

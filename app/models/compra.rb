@@ -13,4 +13,8 @@ class Compra < ActiveRecord::Base
   belongs_to :proveedor
   
   has_many :compra_detalles, dependent: :destroy  
+  
+  def monto_total
+    compra_detalles.map { |cd| cd.precio_total }.sum
+  end
 end

@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def pretty_number(number)
-    if number > 0
+    unless number.nil? or number <= 0
       if (number - number.to_i) == 0
         number.to_i
       else

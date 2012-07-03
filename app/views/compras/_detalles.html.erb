@@ -7,35 +7,34 @@
 		});
 	</script>
 
-	<div class="row">
-		<div class="span10">
-			<%= form_tag({:controller => 'compras', :action => 'agregar_detalle'}, :method => 'post', :class => 'form-horizontal') do %>
-				<legend>Detalles de la compra</legend>
-				<%= hidden_field_tag :compra_id, @compra.id %>
-				<div class="control-group">
-					<%= select_tag :producto_id, options_for_select(@productos.map { |p| [p.label_combos, p.id]}), class: 'span6' %>
-					<%= submit_tag 'Agregar', :class => 'btn' %>
-				</div>
-			<% end %>			
-		</div>
-	</div>
-
-	<table class="table table-bordered table-stripped">
+	<table class="table table-bordered table-striped table-condensed">
 		<thead>
 			<tr>
 				<th>Producto</th>
 				<th>Cantidad</th>
 				<th>Precio</th>
-				<th>&nbsp;</th>
+				<th width="1%">&nbsp;</th>
 			</tr>
 		</thead>
 		<tbody>
+			<%= form_tag({:controller => 'compras', :action => 'agregar_detalle'}, :method => 'post', :class => 'form-horizontal') do %>
+				<%= hidden_field_tag :compra_id, @compra.id %>
+				<tr>
+					<td>
+						<%= select_tag :producto_id, options_for_select(@productos.map { |p| [p.label_combos, p.id]}), class: 'span5' %>
+					</td>
+					<td><%= text_field_tag :cantidad, 0, class: 'span1' %></td>
+					<td><%= text_field_tag :precio, 0, class: 'span1' %></td>
+					<td><%= submit_tag 'Agregar', :class => 'btn' %></td>
+				</tr>
+			<% end %>			
+			
 			<% @compra.compra_detalles.each do |d| %>
 				<tr>
 					<td>[<%= d.producto.codigo %>] <%= d.producto.nombre %> <%= d.producto.descripcion %> <%= d.producto.talle %></td>
-					<td><%= best_in_place d, :cantidad, :type => :input, :nil => "¡Cliqueá para agregar contenido!" %></td>
-					<td><%= best_in_place d, :precio, :type => :input, :nil => "¡Cliqueá para agregar contenido!" %></td>
-					<td><%= link_to 'Quitar', "#{compras_url}/quitar_detalle/#{d.id}"%></td>
+					<td align="right"><%= pretty_number(d.cantidad) %></td>
+					<td align="right"><%= number_to_currency(d.precio) %></td>
+					<td><%= link_to 'Quitar', "#{compras_url}/quitar_detalle/#{d.id}", class: 'btn btn-danger' %></td>
 				</tr>
 			<% end %>
 		</tbody>
