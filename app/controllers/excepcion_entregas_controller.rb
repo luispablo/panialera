@@ -56,7 +56,7 @@ class ExcepcionEntregasController < AdminController
   # PUT /excepcion_entregas/1
   # PUT /excepcion_entregas/1.json
   def update
-    @excepcion_entrega = ExcepcionEntrega.find(params[:id])
+    @excepcion_entrega = ExcepcionEntrega.find(params[:id])  
 
     respond_to do |format|
       if @excepcion_entrega.update_attributes(params[:excepcion_entrega])

@@ -52,7 +52,13 @@
 
   def entrega
     @domicilio = Domicilio.find(params[:domicilio_id])
-    @entregas = Entrega.entregas_disponibles
+    
+    entregas_disponibles = Entrega.entregas_disponibles 
+    excepciones = ExcepcionEntrega.aplicables
+    @entregas = entregas_disponibles.find_all do |ed|
+       excepciones.find_all { |ex| ex.incluye_entrega?(ed)  }.empty?
+    end 
+    
   end
 
   def seleccionar_domicilio

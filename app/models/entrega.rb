@@ -14,6 +14,14 @@
 class Entrega < ActiveRecord::Base
   attr_accessor :fecha
   
+  def fecha_hora_desde
+    DateTime.new(fecha.year, fecha.month, fecha.day, desde.hour, desde.min)
+  end
+  
+  def fecha_hora_hasta
+    DateTime.new(fecha.year, fecha.month, fecha.day, hasta.hour, hasta.min)
+  end
+  
   def descripcion
     "Este #{DIAS_SEMANA[wday]} (#{fecha.day}/#{fecha.month}) entre las #{desde.strftime('%H:%M')} y las #{hasta.strftime('%H:%M')} hs."
   end
