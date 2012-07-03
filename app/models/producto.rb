@@ -85,9 +85,9 @@ class Producto < ActiveRecord::Base
   def self.search(search, categoria_id = nil)
     if search
       if categoria_id.nil? || categoria_id.empty?
-        where('nombre LIKE :search OR descripcion LIKE :search OR detalle LIKE :search OR codigo LIKE :search', search: "%#{search}%")
+        joins(:marca).where('marcas.nombre LIKE :search OR productos.nombre LIKE :search OR descripcion LIKE :search OR detalle LIKE :search OR codigo LIKE :search', search: "%#{search}%")
       else
-        joins(:cat_productos).where('cat_productos.categoria_id = :cat_id AND (nombre LIKE :search OR descripcion LIKE :search OR detalle LIKE :search OR codigo LIKE :search)', search: "%#{search}%", cat_id: categoria_id)
+        joins(:marca).joins(:cat_productos).where('cat_productos.categoria_id = :cat_id AND (marcas.nombre LIKE :search OR productos.nombre LIKE :search OR descripcion LIKE :search OR detalle LIKE :search OR codigo LIKE :search)', search: "%#{search}%", cat_id: categoria_id)
       end
     else
       if categoria_id.nil? || categoria_id.empty?
