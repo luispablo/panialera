@@ -10,6 +10,7 @@
 #  imagen     :string(255)
 #  nombre     :string(255)
 #  publicado  :boolean
+#  stock      :float
 #
 
 require 'test_helper'

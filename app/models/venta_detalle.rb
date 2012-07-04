@@ -19,6 +19,14 @@ class VentaDetalle < ActiveRecord::Base
 
   before_destroy :agregar_stock
 
+  def self.no_entregados
+    joins(:venta).where('ventas.entregada = :entregada', entregada: false)
+  end
+
+  def self.find_no_entregadas_by_combo(combo)
+    joins(:venta).where("ventas.entregada = :no_entregada AND venta_detalles.combo_id = #{combo.id}", no_entregada: false)
+  end
+  
   def self.find_no_entregadas_by_producto(producto)
     joins(:venta).where("ventas.entregada = :no_entregada AND venta_detalles.producto_id = #{producto.id}", no_entregada: false)
   end
@@ -27,6 +35,9 @@ class VentaDetalle < ActiveRecord::Base
     unless producto.nil?
       producto.quitar_stock cantidad
       producto.save
+    else
+      combo.quitar_stock cantidad
+      combo.save
     end
   end
   

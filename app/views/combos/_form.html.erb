@@ -29,6 +29,10 @@
   			<div class="controls"><%= f.check_box :publicado %></div>
 		</div>
 		<div class="control-group">
+			<%= f.label :stock, class: 'control-label' %>
+			<div class="controls"><%= f.number_field :stock %></div>
+		</div>
+		<div class="control-group">
 			<%= f.label :imagen, :class => 'control-label'%>
 			<div class="controls">
 				<%= image_tag @combo.imagen_url(:thumb) if @combo.imagen? %>

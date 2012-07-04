@@ -45,26 +45,45 @@ class Producto < ActiveRecord::Base
     false
   end
   
+  def hay_stock?
+    stock_disponible > 0
+  end
+  
   def stock_disponible
     comprometido = stock_comprometido
     (stock.nil? ? 0 : stock) - (comprometido.nil? ? 0 : comprometido)
   end
   
   def stock_comprometido
-    detalles_venta = VentaDetalle.find_no_entregadas_by_producto(self)
-    
-    if detalles_venta.nil? || detalles_venta.empty?
-      0
-    else
-      detalles_venta.map { |dv| dv.cantidad }.sum
+    stock_comprometido = 0
+    det_no_entregados = VentaDetalle.no_entregados
+
+    unless det_no_entregados.nil?
+      # Recorre todos los detalles de venta no entregados
+      det_no_entregados.each do |d|
+        unless d.producto.nil?
+          # Si es un detalle con producto, y es ESTE producto, lo suma
+          stock_comprometido += d.cantidad if d.producto.id == self.id
+        else
+          # En el caso de que sea un combo de productos...
+          unless d.combo.nil? || d.combo.combo_detalles.nil?
+            # Recorre los componentes del combo
+            d.combo.combo_detalles.each do |cd|
+              # Si el componente es ESTE producto, suma la cantidad por la cantidad del detalle
+              stock_comprometido += (cd.cantidad * d.cantidad) if cd.producto_id == self.id
+            end
+          end
+        end        
+      end
     end
+    
+    stock_comprometido    
   end
   
   def quitar_stock(cantidad)
     if self.stock.nil?
       self.stock = 0
     else
-      logger.debug("stock: #{self.stock} - cantidad: #{cantidad}")
       self.stock -= cantidad
     end
   end 

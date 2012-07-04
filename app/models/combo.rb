@@ -10,15 +10,65 @@
 #  imagen     :string(255)
 #  nombre     :string(255)
 #  publicado  :boolean
+#  stock      :float
 #
 
 class Combo < ActiveRecord::Base
-  has_many :combo_detalles
+  has_many :combo_detalles, dependent: :destroy
 
   mount_uploader :imagen, ImagenUploader
     
   def self.disponibles
     Combo.where(publicado: true)
+  end
+
+  def quitar_stock(cantidad)
+    if self.stock.nil?
+      self.stock = 0
+    else
+      # Resta de su stock
+      self.stock -= cantidad
+      # y además debe restar los stocks de los productos que lo componen.
+      unless combo_detalles.nil?
+        combo_detalles.each do |cd| 
+          cd.quitar_stock cantidad          
+        end
+      end
+    end
+  end 
+    
+  def cuantos_se_pueden_armar
+    if combo_detalles.nil?
+      0
+    else
+      combo_detalles.map {|cd| cd.cuantos_se_pueden_armar }.min
+    end
+  end
+  
+  def stock_disponible
+    comprometido = stock_comprometido
+    
+    (stock.nil? ? 0 : stock) - (comprometido.nil? ? 0 : comprometido)
+  end
+  
+  def stock_comprometido
+    detalles = VentaDetalle.find_no_entregadas_by_combo(self)
+    
+    if detalles.nil? || detalles.empty?
+      0
+    else
+      detalles.map {|d| d.cantidad }.sum
+    end
+  end
+  
+  # Indica si hay stock disponible de los productos
+  # que componen el combo como para venderlo.
+  def hay_stock_componentes?
+    unless combo_detalles.nil?
+      combo_detalles.each { |cd| return false unless cd.hay_stock? }
+    end
+    
+    true
   end
   
   def precio_real

@@ -23,6 +23,10 @@
 						<b>Precio real calculado:</b>
 						<%= number_to_currency(@combo.precio_real) %>
 					</p>
+					<p>
+						<b>Stock:</b>
+						<%= best_in_place @combo, :stock %>
+					</p>
 				</div>
 				<div class="span1">
 					<br/>

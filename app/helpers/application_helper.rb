@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def texto_boton_carrito(producto)
+    producto.hay_stock? ? 'Agregar al carrito' : 'Sin stock'
+  end
+
   def sortable(column, title = nil)
     title ||= column.titleize
     icono = (column == sort_column) ? "<i class='icon-chevron-#{(sort_direction == 'asc') ? 'up': 'down'}'></i>" : ''

@@ -13,12 +13,19 @@
 	<table class="table table-bordered table-condensed table-striped">
 		<thead>
 			<tr>
-			    <th>C&oacute;digo</th>
-			    <th>Nombre</th>
-			    <th>Precio</th>
-			    <th>Precio real</th>
-			    <th>Contenido</th>
-			    <th></th>
+			    <th rowspan="2">C&oacute;digo</th>
+			    <th rowspan="2">Nombre</th>
+			    <th rowspan="2">Precio</th>
+			    <th rowspan="2">Precio real</th>
+			    <th rowspan="2">Contenido</th>
+			    <th colspan="3">Stock</th>
+			    <th rowspan="2">Cu&aacute;ntos se pueden armar</th>
+			    <th rowspan="2"></th>
+			</tr>
+			<tr>
+				<td>Real</td>
+				<td>Comp.</td>
+				<td>Disp.</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -29,6 +36,10 @@
 				    <td><%= number_to_currency(combo.precio) %></td>
 				    <td><%= number_to_currency(combo.precio_real) %></td>
 				    <td><%= combo.contenido %></td>
+				    <td><%= pretty_number(combo.stock) %></td>
+				    <td><%= pretty_number(combo.stock_comprometido) %></td>
+				    <td><%= pretty_number(combo.stock_disponible) %></td>
+				    <td><%= pretty_number(combo.cuantos_se_pueden_armar) %></td>
 				    <td nowrap>
 				    	<%= link_to '<i class="icon-eye-open icon-white"></i>'.html_safe, combo, class: 'btn btn-info' %>
 				    	<%= link_to '<i class="icon-pencil icon-white"></i>'.html_safe, edit_combo_path(combo), class: 'btn btn-primary' %>

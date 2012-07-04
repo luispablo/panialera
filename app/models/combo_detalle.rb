@@ -14,6 +14,16 @@ class ComboDetalle < ActiveRecord::Base
   belongs_to :producto
   belongs_to :combo
   
+  def cuantos_se_pueden_armar
+    stock = producto.stock_disponible
+    ((stock.nil? ? 0 : stock) / (cantidad.nil? ? 1 : cantidad)).floor
+  end
+  
+  def quitar_stock(cantidad_combo)
+    producto.quitar_stock cantidad_combo * cantidad
+    producto.save
+  end 
+  
   def precio_real
     unless cantidad.nil?
       producto.precio * cantidad
