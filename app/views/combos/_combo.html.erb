@@ -29,7 +29,7 @@
 						</ul>
 					</div>
 					<div class="span2" style="text-align: right">						
-						<%= button_to 'Agregar al carrito', carrito_items_path(combo_id: combo), remote: true, class: 'btn btn-danger' %>				
+						<%= button_to texto_boton_carrito(combo), carrito_items_path(combo_id: combo), disabled: !combo.hay_stock?, remote: true, class: 'btn btn-danger' %>
 					</div>
 				</div>
 			</div>

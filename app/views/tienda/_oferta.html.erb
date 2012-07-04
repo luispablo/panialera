@@ -24,7 +24,7 @@
 			<p><%= number_to_currency(oferta.precio) %></p>
 			
 			<p>
-				<%= button_to 'Agregar al carrito', carrito_items_path(combo_id: oferta), remote: true, class: 'btn btn-danger' %>				
+				<%= button_to texto_boton_carrito(oferta), carrito_items_path(combo_id: oferta), disabled: !oferta.hay_stock?, remote: true, class: 'btn btn-danger' %>				
 			</p>
 		<% end %>				
 	</div>

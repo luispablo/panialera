@@ -45,10 +45,21 @@ class Combo < ActiveRecord::Base
     end
   end
   
+  def hay_stock?
+    stock_disponible > 0
+  end
+  
   def stock_disponible
     comprometido = stock_comprometido
     
-    (stock.nil? ? 0 : stock) - (comprometido.nil? ? 0 : comprometido)
+    disponible = (stock.nil? ? 0 : stock) - (comprometido.nil? ? 0 : comprometido)
+    se_pueden_armar = self.cuantos_se_pueden_armar
+    
+    if disponible <= se_pueden_armar
+      disponible
+    else
+      se_pueden_armar
+    end
   end
   
   def stock_comprometido
