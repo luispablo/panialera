@@ -88,6 +88,7 @@ Panialera::Application.routes.draw do
     get 'nueva_compra/entrega/:domicilio_id' => :entrega
     post 'nueva_compra/resumen' => :resumen
     get 'nueva_compra/confirmar' => :confirmar
+    post 'nuevo_domicilio' => :nuevo_dom
     post 'busqueda' => :busqueda
     get 'alcance' => :alcance
     get 'ofertas' => :ofertas

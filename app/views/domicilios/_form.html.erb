@@ -53,18 +53,6 @@
 		<div class="well titulo_verde">
 			<h3>O quizás quieras recibirlo en alguno de tus otros domicilios...</h3>	
 		</div>	
-		<table class="table table-striped table-bordered">
-			<tbody>
-				<%= render partial: 'tienda/domicilio_entrega', locals: {id_actual: @domicilio.id}, collection: @usuario.domicilios.reject { |d| d == @domicilio }, as: :domicilio %>
-			</tbody>
-		</table>		
+			
   		
-  		<div class="row">
-  			<div class="span3">
-  				<%= link_to '< Volver a revisar el carrito', @carrito, class: 'btn btn-info'%>
-  			</div>
-  			<div class="pull-right">
-  				<%= f.submit 'Elegir cuándo recibir mi pedido >', class: 'btn btn-info' %>
-  			</div>
-  		</div>
 	<% end %>

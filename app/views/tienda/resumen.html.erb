@@ -87,11 +87,16 @@
 		</table>
 		<br/>
 	
-		<div style="text-align: center;">
-			<a href="#" onclick="javascript: $('#dialog-modal').dialog('open');">Ver los t&eacute;rminos y condiciones de la compra</a>
-			<br/>	
-			<br/>	
-			<%= link_to raw("<i class='icon-ok icon-white'></i> Aceptar los términos y confirmar la compra"), nueva_compra_confirmar_path, class: 'btn btn-success' %>
+		<div class="row">
+			<div class="span2">
+				<%= link_to '< Anterior', "/nueva_compra/entrega/#{@carrito.domicilio.id}", class: 'btn btn-info'%>
+			</div>
+			<div class="pull-right">
+				<a href="#" onclick="javascript: $('#dialog-modal').dialog('open');">Ver los t&eacute;rminos y condiciones de la compra</a>
+				<br/>	
+				<br/>	
+				<%= link_to raw("<i class='icon-ok icon-white'></i> Aceptar los términos y confirmar la compra"), nueva_compra_confirmar_path, class: 'btn btn-success' %>
+			</div>
 		</div>
 	
 

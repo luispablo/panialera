@@ -2,5 +2,5 @@
 	<tr>
 		<td><strong><%= domicilio.nombre %></strong></td>
 		<td><%= domicilio.descripcion %></td>
-		<td><%= link_to raw("<i class='icon-ok icon-white'></i> Quiero recibirlo aquí"), "/cambiar_domicilio_entrega/#{id_actual}/#{domicilio.id}", class: 'btn btn-success' %></td>
+		<td width="180px"><%= link_to raw("<i class='icon-ok icon-white'></i> Quiero recibirlo aquí"), "/nueva_compra/entrega/#{domicilio.id}", class: 'btn btn-success' %></td>
 	</tr>

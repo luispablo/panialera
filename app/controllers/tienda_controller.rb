@@ -61,6 +61,23 @@
     
   end
 
+  def nuevo_dom
+    @dom = Domicilio.new
+    
+    @dom.nombre = params[:nombre]
+    @dom.calle = params[:calle]
+    @dom.numero = params[:numero]
+    @dom.piso = params[:piso]
+    @dom.entre_calles = params[:entre_calles]
+    @dom.codigo_postal = params[:codigo_postal]
+    @dom.barrio_id = params[:barrio_id]
+    @dom.usuario = @usuario
+    @dom.valido_delivery = false
+    @dom.save!
+    
+    redirect_to action: :entrega, domicilio_id: @dom.id
+  end
+
   def seleccionar_domicilio
     if @carrito.carrito_items.empty?
       redirect_to tienda_url, notice: 'El carrito está vacío'

@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+  def link_to_submit(texto, icono = nil, clase)
+    html_icono = "<i class='icon-#{icono} icon-white'></i> " unless icono.nil?
+    link_to_function "#{html_icono unless icono.nil?}#{texto}".html_safe, "$(this).closest('form').submit()", class: "btn #{clase}"
+  end
+
   def texto_boton_carrito(producto)
     producto.hay_stock? ? 'Agregar al carrito' : 'Sin stock'
   end
