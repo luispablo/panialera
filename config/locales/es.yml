@@ -1,4 +1,8 @@
 es:
+  botones:
+    agregar_carrito: Agregar al carrito
+    sin_stock: Sin stock
+  
   will_paginate:
     next_label: siguiente
     previous_label: anterior
