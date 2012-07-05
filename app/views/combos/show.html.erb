@@ -16,6 +16,14 @@
 			<div class="row">
 				<div class="span5">
 					<p>
+						<b>Nombre:</b>
+						<%= best_in_place @combo, :nombre %>
+					</p>
+					<p>
+						<b>Contenido:</b>
+						<%= @combo.contenido %>
+					</p>
+					<p>
 			  			<b>Precio:</b>
 			  			<%= best_in_place @combo, :precio, display_with: :number_to_currency %>
 					</p>

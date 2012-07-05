@@ -91,7 +91,11 @@ class Combo < ActiveRecord::Base
   end
   
   def detalle
-    nombre || contenido
+    if nombre.nil? or nombre.empty?
+      contenido
+    else
+      nombre
+    end
   end
   
 end
