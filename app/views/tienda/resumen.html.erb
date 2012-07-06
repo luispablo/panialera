@@ -38,6 +38,18 @@
 			</div>
 		</div>	
 		<br/>
+		<div class="row">
+			<div class="span2">
+				&nbsp;
+			</div>
+			<div class="span5">				
+				<label for="terminos">
+					<input type="checkbox" id="terminos" name="terminos" checked />
+					Acepto los <a href="#" onclick="javascript: $('#dialog-modal').dialog('open');">t&eacute;rminos y condiciones.</a>
+				</label>
+			</div>
+		</div>
+		<br/>
 	
 		<div class="well titulo_azul">
 			<h3>Detalle de tu compra</h3>
@@ -85,28 +97,38 @@
 		</table>
 		<br/>
 	
-		<div class="row">
-			<div class="span2">
-				<%= link_to '< Anterior', "/nueva_compra/entrega/#{@carrito.domicilio.id}", class: 'btn btn-info'%>
-			</div>
-			<div class="pull-right">
-				<a href="#" onclick="javascript: $('#dialog-modal').dialog('open');">Ver los t&eacute;rminos y condiciones de la compra</a>
-				<br/>	
-				<br/>	
-				<%= link_to raw("<i class='icon-ok icon-white'></i> Aceptar los términos y confirmar la compra"), nueva_compra_confirmar_path, onclick: 'javascript: block("Aguardá un instante mientras procesamos tu compra...");',class: 'btn btn-success' %>
-			</div>
+		<div class="row" style="text-align: center;">
+			<%= link_to "Confirmar la compra", '#', onclick: 'javascript: terminar();', class: 'btn btn-success btn-large' %>
 		</div>
+	</div>
+	
+	<div class="well shadow">
+		<%= link_to '< Anterior', "/nueva_compra/entrega/#{@carrito.domicilio.id}", class: 'btn btn-info'%>
+	</div>
 	
 
 	<script>
-	$(function() {
-		$( "#dialog-modal" ).dialog({
-			width: 700,
-			height: 400,
-			autoOpen: false,
-			modal: true
+		function terminar()
+		{
+			if ($('#terminos').attr('checked'))
+			{
+				block("Aguardá un instante mientras procesamos tu compra...");
+				location.href = '<%= nueva_compra_confirmar_path %>';
+			}
+			else
+			{
+				alert('Por favor aceptá los términos y condiciones.');
+			}
+		}
+	
+		$(function() {
+			$( "#dialog-modal" ).dialog({
+				width: 700,
+				height: 400,
+				autoOpen: false,
+				modal: true
+			});
 		});
-	});
 	</script>
 	
 	<div id="dialog-modal" title="Términos y condiciones de la compra">
@@ -134,5 +156,4 @@
 			de crédito.
 			Cualquier duda sobre su pedido, por favor comunicarse con Servicio al Cliente a info@panalera.com.
 		</p>
-	</div>
 	</div>
