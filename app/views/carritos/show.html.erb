@@ -1,14 +1,16 @@
 
 	<div class="well titulo_verde">
-		<h3>1 - Revis&aacute; lo que pusiste en el carrito</h3>	
+		<h3>Mi Carrito</h3>	
 	</div>
 	
 	<div class="well shadow">
-		<%= render partial: 'carritos/carrito_grande', locals: {carrito: @carrito} %>
+		<span id="carrito_grande">
+			<%= render partial: 'carritos/carrito_grande', locals: {carrito: @carrito} %>
+		</span>
 			
 		<div class="row">
-			<div class="pull-right">
-				<%= link_to raw("Siguiente >"), nueva_compra_seleccionar_domicilio_path, class: 'btn btn-info' %>
+			<div style="text-align: center;">
+				<%= link_to raw('<i class="icon-shopping-cart icon-white"></i> Comprar '), nueva_compra_seleccionar_domicilio_path, class: 'btn btn-success btn-large' %>
 			</div>
 		</div>
 	</div>

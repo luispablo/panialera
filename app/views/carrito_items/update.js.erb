@@ -5,9 +5,9 @@
 
 	// Actualizar el precio total del carrito.
 	$('#precio_total').html("<%= number_to_currency(@carrito_item.carrito.precio_total) %>");
-	$('#precio_total').css({'background-color':'#F2BA1B'}).animate({'background-color':'#ffffff'}, 2000);
+	$('#precio_total').css({'background-color':'#F2BA1B'}).animate({'background-color':'#CCCCCC'}, 2000);
 	
 	// Actualizar el costo de envío.
 	$('#costo_envio').html("<%= number_to_currency(@carrito_item.carrito.costo_envio) %>");
-	$('#costo_envio').css({'background-color':'#F2BA1B'}).animate({'background-color':'#ffffff'}, 2000);
+	$('#costo_envio').css({'background-color':'#F2BA1B'}).animate({'background-color':'#DDDDDD'}, 2000);
 	

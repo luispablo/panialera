@@ -1,8 +1,8 @@
 
 	<tr>
-		<td valign="top" align="left">
+		<td valign="middle" style="text-align: center; vertical-align: middle;">
 			<% if item.imagen? %>
-				<%= image_tag item.imagen_url(:thumb) %>
+				<%= image_tag item.imagen_url(:thumb), border: "1" %>
 			<% end %>
 		</td>			
 		<td class="linea">
@@ -11,13 +11,15 @@
 			</p>
 			<br/>
 			
-			<%= form_for(item, remote: true, html: { method: :put, style: 'display: inline;' }) do |f| %>
-				<%= f.number_field :cantidad, in: 1..100, onchange: "$('#edit_carrito_item_#{item.id}').submit();", class: 'span1' %> &times;
-			<% end %>
-						 
-			<%= number_to_currency(item.precio_unitario) %> = <span id="<%= "precio_total_#{item.id}" %>" class="precio_total_linea"><%= number_to_currency(item.precio_total) %></span>
+			<div style="margin-left: 10px;">
+				<%= form_for(item, remote: true, html: { method: :put, style: 'display: inline;' }) do |f| %>
+					<%= f.number_field :cantidad, in: 1..100, onchange: "$('#edit_carrito_item_#{item.id}').submit();", class: 'span1' %> &times;
+				<% end %>
+							 
+				<%= number_to_currency(item.precio_unitario) %> = <span id="<%= "precio_total_#{item.id}" %>" class="precio_total_linea"><%= number_to_currency(item.precio_total) %></span>
+			</div>
 		</td>
-		<td class="linea">
+		<td style="text-align: center; vertical-align: middle;">
 			<%= link_to raw("<i class='icon-trash icon-white'></i> Quitar"), item, confirm: '¿Quitar este ítem del carrito?', method: :delete, remote: true, class: 'btn btn-danger' %>		
 		</td>		
 	</tr>

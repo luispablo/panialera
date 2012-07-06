@@ -197,3 +197,8 @@ span.client_side_validation
 {
 	color: yellow;
 }
+
+span.precio_total_linea
+{
+	font-weight: bold;
+}
