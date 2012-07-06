@@ -43,21 +43,30 @@ class Entrega < ActiveRecord::Base
       end
     end
     
-    entregas
+    unless entregas.nil?
+      entregas.find_all { |e| not e.cerrada? }
+    else
+      nil
+    end
+  end
+  
+  # Valida que la entrega del mismo día todavía le falten más de las
+  # horas definidas por parámetro para estar cerrada.
+  def cerrada?    
+    # Desde que hora todavía se puede hacer entrega, en base al parámetro
+    hora_desde_valida = Time.now + Parametro.horas_cierre_entrega.hour
+logger.debug("--------------------------------------------------------")
+logger.debug("#{descripcion}.cerrada? : #{fecha == Date.today and (fecha != hora_desde_valida.to_date or desde.hour < hora_desde_valida.hour or (desde.hour == hora_desde_valida.hour and desde.min <= hora_desde_valida.min))}")
+logger.debug("#{fecha} != #{hora_desde_valida.to_date} or #{desde.hour} < #{hora_desde_valida.hour} or #{desde.hour} == #{hora_desde_valida.hour} and #{desde.min} < #{hora_desde_valida.min}")
+logger.debug("--------------------------------------------------------")
+
+    fecha == Date.today and (fecha != hora_desde_valida.to_date or desde.hour < hora_desde_valida.hour or (desde.hour == hora_desde_valida.hour and desde.min <= hora_desde_valida.min))
   end
   
   def self.proximas_entregas(fecha)
     (fecha..fecha.next_day(6)).each do |f|
       entregas = Entrega.where(wday: f.wday).each { |e| e.fecha = f }
-      
-      if f == Date.today
-        hora_desde = Time.now + Parametro.horas_cierre_entrega.hour
-        
-        entregas.each do |e|          
-          entregas.delete(e) unless e.desde.hour > hora_desde.hour or e.desde.hour == hora_desde.hour and e.desde.min > hora_desde.min
-        end
-      end       
-      
+            
       return entregas unless entregas.empty?
     end
     

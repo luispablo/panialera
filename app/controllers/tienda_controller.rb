@@ -54,7 +54,8 @@
   def entrega
     @domicilio = Domicilio.find(params[:domicilio_id])
     
-    entregas_totales = Entrega.entregas_disponibles 
+    entregas_totales = Entrega.entregas_disponibles
+    entregas_totales.each { |e| logger.debug("----------> [#{e.descripcion}]: #{e.cerrada?}") } 
     excepciones = ExcepcionEntrega.aplicables
     entregas_disponibles = entregas_totales.find_all do |ed|
        excepciones.find_all { |ex| ex.incluye_entrega?(ed)  }.empty?

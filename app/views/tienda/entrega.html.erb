@@ -8,7 +8,7 @@
 				<thead>
 					<tr>
 						<% @entregas.keys.each do |dia| %>
-							<th>Este <%= dia %></th>
+							<th>Este <%= dia %> (<%= @entregas[dia].last.fecha.strftime('%d/%m') %>)</th>
 						<% end %>
 					</tr>
 				</thead>
