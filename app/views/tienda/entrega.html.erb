@@ -1,8 +1,6 @@
 
-	<div class="well titulo_verde">
-		<h3>3 - ¿Cu&aacute;ndo quer&eacute;s recibir tu compra?</h3>	
-	</div>
-		
+	<%= render partial: 'header_compra', locals: {activo: 2} %>
+			
 	<div class="well shadow">
 		<% unless @entregas.nil? %>
 			<%= form_tag({controller: :tienda, action: :resumen}, {class: 'form-horizontal'}) do |f| %>

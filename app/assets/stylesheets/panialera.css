@@ -151,6 +151,20 @@ div#mi_cuenta h3
 	margin-bottom: 10px;
 }
 
+div.titulo_gris
+{	
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #DDDDDD;
+	color: #AAAAAA;
+}
+div.titulo_activo
+{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: #FFFFFF;
+	background-color: #F2BA1B;
+}
 div.titulo_azul
 {
 	background-color: #14376B;
