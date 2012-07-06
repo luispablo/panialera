@@ -39,5 +39,6 @@
 	
 	<div class="form-actions">
 		<%= link_to "<i class='icon-plus icon-white'></i> Nuevo Producto".html_safe, new_producto_path, class: 'btn btn-success' %>
+		<%= link_to '<i class="icon-repeat icon-white"></i> Copiar'.html_safe, "#{productos_path}/copiar/#{@producto.id}", class: 'btn btn-inverse' %>
 	</div>
 </div>
