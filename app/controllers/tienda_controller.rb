@@ -53,11 +53,20 @@
   def entrega
     @domicilio = Domicilio.find(params[:domicilio_id])
     
-    entregas_disponibles = Entrega.entregas_disponibles 
+    entregas_totales = Entrega.entregas_disponibles 
     excepciones = ExcepcionEntrega.aplicables
-    @entregas = entregas_disponibles.find_all do |ed|
+    entregas_disponibles = entregas_totales.find_all do |ed|
        excepciones.find_all { |ex| ex.incluye_entrega?(ed)  }.empty?
-    end 
+    end
+    
+    @entregas = Hash.new
+    
+    unless entregas_disponibles.nil? or entregas_disponibles.empty?
+      entregas_disponibles.each do |e|
+        @entregas[DIAS_SEMANA[e.wday]] = Array.new if @entregas[DIAS_SEMANA[e.wday]].nil?
+        @entregas[DIAS_SEMANA[e.wday]] << e
+      end
+    end
     
   end
 

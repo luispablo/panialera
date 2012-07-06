@@ -1,31 +1,31 @@
 
 	<%= render partial: 'header_compra', locals: {activo: 2} %>
-			
-	<div class="well shadow">
-		<% unless @entregas.nil? %>
-			<%= form_tag({controller: :tienda, action: :resumen}, {class: 'form-horizontal'}) do |f| %>
-				<%= hidden_field_tag :domicilio_id, @domicilio.id %>
-				<div class="control-group">
-					<label class="control-label">Fechas disponibles</label>
-					<% @entregas.each do |e|  %>
-						<div class="controls">
-							<label class="radio">
-								<%= radio_button_tag(:entrega, e.descripcion) %>
-								<%= e.descripcion %>
-							</label>
-						</div>
-					<% end %>
-				</div>
 
-				<div class="row">
-					<div class="span3">
-						<%= link_to '< Anterior', nueva_compra_seleccionar_domicilio_path, class: 'btn btn-info'%>
-					</div>
-					<div class="pull-right">
-						<%= button_to 'Siguiente >', nil, class: 'btn btn-info' %>
-					</div>
-				</div>	
-			<% end %>
+	<div class="well shadow">
+		<% unless @entregas.nil? or @entregas.empty? %>
+			
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<% @entregas.keys.each do |dia| %>
+							<th>Este <%= dia %></th>
+						<% end %>
+					</tr>
+				</thead>
+				<% @entregas.map { |dia| dia.size }.max.times do |i| %>
+					<tr>
+						<% @entregas.each do |dia| %>
+							<% e = @entregas[dia[0]][i] %>							
+							<% unless e.nil? %>
+								<td><%= link_to e.horario.html_safe, '', class: 'btn btn-success' %></td>
+							<% else %>
+								<td>&nbsp;</td>
+							<% end %>
+						<% end %>
+					</tr>
+				<% end %>
+			</table>
+		
 		<% else %>
 			<div class="alert alert-info">
 				<p>

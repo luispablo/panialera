@@ -22,8 +22,16 @@ class Entrega < ActiveRecord::Base
     DateTime.new(fecha.year, fecha.month, fecha.day, hasta.hour, hasta.min)
   end
   
+  def horario_corto
+    "entre #{desde.strftime('%H:%M')} y #{hasta.strftime('%H:%M')} hs."
+  end
+  
+  def horario
+    "entre las #{desde.strftime('%H:%M')} y las #{hasta.strftime('%H:%M')}"
+  end
+  
   def descripcion
-    "Este #{DIAS_SEMANA[wday]} (#{fecha.day}/#{fecha.month}) entre las #{desde.strftime('%H:%M')} y las #{hasta.strftime('%H:%M')} hs."
+    "Este #{DIAS_SEMANA[wday]} (#{fecha.day}/#{fecha.month}) #{horario} hs."
   end
   
   def self.entregas_disponibles
