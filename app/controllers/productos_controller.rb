@@ -1,5 +1,12 @@
 class ProductosController < AdminController
   helper_method :sort_column, :sort_direction
+
+  def copiar
+    original = Producto.find(params[:producto_id])
+    @producto = Producto.new(original.attributes)
+    
+    render 'new'
+  end
   
   # GET /productos
   # GET /productos.json
