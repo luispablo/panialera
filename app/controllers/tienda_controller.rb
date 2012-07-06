@@ -36,18 +36,14 @@
   end
   
   def resumen
+    entrega = Entrega.find(params[:entrega_id])
+
     @carrito.domicilio_id = params[:domicilio_id]
+    @carrito.fecha_entrega = Date.strptime(params[:fecha], '%Y%m%d')
+    @carrito.hora_desde_entrega = entrega.desde
+    @carrito.hora_hasta_entrega = entrega.hasta
     
-    entregas = Entrega.entregas_disponibles
-      
-    entregas.each do |e|
-      if e.descripcion == params[:entrega]
-        @carrito.fecha_entrega = e.fecha
-        @carrito.hora_desde_entrega = e.desde
-        @carrito.hora_hasta_entrega = e.hasta
-        @carrito.save!
-      end
-    end      
+    @carrito.save!
   end
 
   def entrega

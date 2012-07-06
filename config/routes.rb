@@ -90,7 +90,7 @@ Panialera::Application.routes.draw do
     post 'contacto' => :contacto
     get 'nueva_compra/seleccionar_domicilio' => :seleccionar_domicilio
     get 'nueva_compra/entrega/:domicilio_id' => :entrega
-    post 'nueva_compra/resumen' => :resumen
+    get 'nueva_compra/resumen/:domicilio_id/:entrega_id/:fecha' => :resumen
     get 'nueva_compra/confirmar' => :confirmar
     post 'nuevo_domicilio' => :nuevo_dom
     post 'busqueda' => :busqueda

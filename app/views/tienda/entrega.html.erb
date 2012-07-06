@@ -15,12 +15,14 @@
 				<% @entregas.map { |dia| dia.size }.max.times do |i| %>
 					<tr>
 						<% @entregas.each do |dia| %>
-							<% e = @entregas[dia[0]][i] %>							
-							<% unless e.nil? %>
-								<td><%= link_to e.horario.html_safe, '', class: 'btn btn-success' %></td>
-							<% else %>
-								<td>&nbsp;</td>
-							<% end %>
+							<% e = @entregas[dia[0]][i] %>
+							<td>							
+								<% unless e.nil? %>
+									<%= link_to e.horario.html_safe, url_for(controller: :tienda, action: :resumen, domicilio_id: @domicilio.id, entrega_id: e.id, fecha: e.fecha.strftime('%Y%m%d')), class: 'btn btn-success' %></td>
+								<% else %>
+									&nbsp;
+								<% end %>
+							</td>
 						<% end %>
 					</tr>
 				<% end %>
