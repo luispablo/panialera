@@ -103,8 +103,10 @@
   def agregar_detalle
     @venta = Venta.find(params[:venta_id])
     producto = Producto.find(params[:producto_id])
+
+	precio = (params[:precio].nil? or params[:precio].empty?) ? producto.precio : params[:precio].to_f
     
-    VentaDetalle.create(venta_id: @venta.id, producto_id: producto.id, precio: producto.precio, cantidad: params[:cantidad])
+    VentaDetalle.create(venta_id: @venta.id, producto_id: producto.id, precio: precio, cantidad: params[:cantidad])
     
     redirect_to venta_path(@venta)
   end
