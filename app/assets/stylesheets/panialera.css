@@ -216,3 +216,14 @@ span.precio_total_linea
 {
 	font-weight: bold;
 }
+
+td.sin_stock
+{
+	background-color: #ffbcb2;
+}
+
+span.error
+{
+	font-weight: bold;
+	color: red;
+}

@@ -42,6 +42,7 @@ es:
   conf_borrado_cascada: Si borrás este item se borrarán sus eventos asociados... ¿Estás seguro?
   login_invalido: e-mail o contraseña inválidos
   mensajes:
+    ya_sin_stock: Ya no hay stock suficiente de este producto.
     tip_carga_archivo_import: El archivo es opcional, si no subís nada, se procesarán los datos pendientes de la base.
     tip_items_nuevos_import: Si algún ítem es incorrecto, seleccioná el correcto de este combo y hacé click en 'Corregir'. Los existentes se ingresarán tal cual están.
     sincro_eventos: Esta es la información que efectivamente se importará al sistema. Eliminá los que no deban importarse. (los regitros que veas duplicados se importarán una sola vez)

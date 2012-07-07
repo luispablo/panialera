@@ -1,4 +1,10 @@
 
-	$('#carrito').html("<%=j render @carrito %>");	
-	$('#item_actual').css({'background-color':'#F2BA1B'}).animate({'background-color':'#9EAA4F'}, 3500);
-	$('#total').css({'background-color':'#ED3968'}).animate({'background-color':'#9EAA4F'}, 3500);
+	<% if @carrito_item.errors.any? %>
+		alert('<%= @carrito_item.errors.values.map {|m| t(m) }.join('. ') %>');
+	<% else %>
+		alert('Se agregó el producto a tu carrito.');
+		
+		$('#carrito').html("<%=j render @carrito %>");	
+		$('#item_actual').css({'background-color':'#F2BA1B'}).animate({'background-color':'#9EAA4F'}, 3500);
+		$('#total').css({'background-color':'#ED3968'}).animate({'background-color':'#9EAA4F'}, 3500);		
+	<% end %>

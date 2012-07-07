@@ -16,7 +16,12 @@
 
   def confirmar
     @venta = Venta.crear_desde_carrito(@carrito, @usuario)
-    @venta.save!
+    
+    unless @venta.save
+      flash[:error] = "No se puede completar la compra, ya que falta stock de algunos de los productos que elegiste."
+      redirect_to @carrito
+      return
+    end
     
     @carrito.destroy
     
@@ -92,6 +97,11 @@
     unless usuario_logueado?
       redirect_to "/login_or_register"
       return
+    end
+    
+    unless @carrito.valid?
+      flash[:error] = "No se puede completar la compra, ya que falta stock de algunos de los productos que elegiste."
+      redirect_to @carrito
     end
     
     @domicilio = @usuario.domicilio_ultima_entrega

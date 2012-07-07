@@ -1,11 +1,13 @@
 
+	<% clase = 'sin_stock' unless item.alcanza_stock? %>
+
 	<tr>
-		<td valign="middle" style="text-align: center; vertical-align: middle;">
+		<td valign="middle" class="<%= clase %>" style="text-align: center; vertical-align: middle;">
 			<% if item.imagen? %>
 				<%= image_tag item.imagen_url(:thumb), border: "1" %>
 			<% end %>
 		</td>			
-		<td class="linea">
+		<td class="linea <%= clase %>">
 			<p>
 				<%= item.descripcion %>
 			</p>
@@ -18,8 +20,11 @@
 							 
 				<%= number_to_currency(item.precio_unitario) %> = <span id="<%= "precio_total_#{item.id}" %>" class="precio_total_linea"><%= number_to_currency(item.precio_total) %></span>
 			</div>
+			<% unless item.alcanza_stock? %>
+				<span class="error">El stock disponible de este producto es de <%= item.stock_disponible %> unidades.</span>
+			<% end %>
 		</td>
-		<td style="text-align: center; vertical-align: middle;">
+		<td style="text-align: center; vertical-align: middle;" class="<%= clase %>">
 			<%= link_to raw("<i class='icon-trash icon-white'></i> Quitar"), item, confirm: '¿Quitar este ítem del carrito?', method: :delete, remote: true, class: 'btn btn-danger' %>		
 		</td>		
 	</tr>

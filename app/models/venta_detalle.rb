@@ -19,6 +19,21 @@ class VentaDetalle < ActiveRecord::Base
 
   before_destroy :agregar_stock
 
+  validate :alcanza_stock_producto
+
+  def stock_disponible
+    if producto.nil?
+      combo.stock_disponible
+    else
+      producto.stock_disponible
+    end
+  end
+
+  def alcanza_stock?
+    logger.debug("cantidad: #{cantidad} vs. stock: #{stock_disponible}")
+    cantidad <= stock_disponible
+  end
+
   def self.no_entregados
     joins(:venta).where('ventas.entregada = :entregada', entregada: false)
   end
@@ -60,4 +75,9 @@ private
       producto.save!
     end
   end
+
+  def alcanza_stock_producto  
+    errors[:base] << 'mensajes.ya_sin_stock' unless alcanza_stock?
+  end  
+  
 end

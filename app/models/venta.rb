@@ -22,13 +22,13 @@ class Venta < ActiveRecord::Base
   belongs_to :domicilio
   
   has_many :venta_detalles, dependent: :destroy
-
+  
   default_value_for :entregada, false
 
   before_save :actualizar_stock 
   
   attr_accessor :entrega
-  
+
   def self.crear_desde_carrito(carrito, usuario)
     venta = Venta.new
     
@@ -64,7 +64,7 @@ class Venta < ActiveRecord::Base
   
   def cargar_items_carrito(carrito)
     carrito.carrito_items.each do |i|
-      VentaDetalle.create(venta: self, producto: i.producto, cantidad: i.cantidad, precio: i.precio_unitario, combo: i.combo)
+      venta_detalles << VentaDetalle.new(venta: self, producto: i.producto, cantidad: i.cantidad, precio: i.precio_unitario, combo: i.combo)
     end
   end
 

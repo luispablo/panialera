@@ -12,7 +12,9 @@
 #
 
 class Carrito < ActiveRecord::Base
-  has_many :carrito_items, dependent: :destroy
+  has_many :carrito_items, dependent: :destroy, autosave: true
+  
+  validates_associated :carrito_items
   
   belongs_to :domicilio
 

@@ -16,6 +16,20 @@ class CarritoItem < ActiveRecord::Base
   belongs_to :carrito
   belongs_to :combo
   
+  validate :alcanza_stock_producto
+  
+  def stock_disponible
+    if producto.nil?
+      combo.stock_disponible
+    else
+      producto.stock_disponible
+    end
+  end
+  
+  def alcanza_stock?
+    cantidad <= stock_disponible
+  end
+  
   def imagen_url(size)
     if self.producto.nil?
       self.combo.imagen_url(size)
@@ -59,5 +73,11 @@ class CarritoItem < ActiveRecord::Base
   def agregar(cantidad)
     self.cantidad += cantidad
   end
-  
+
+private
+  def alcanza_stock_producto    
+    unless alcanza_stock?
+      errors.add(:cantidad, 'mensajes.ya_sin_stock')
+    end
+  end  
 end

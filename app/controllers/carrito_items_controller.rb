@@ -65,6 +65,7 @@
         format.json { render json: @carrito_item, status: :created, location: @carrito_item }
       else
         format.html { render action: "new" }
+        format.js { @item_actual = @carrito_item }
         format.json { render json: @carrito_item.errors, status: :unprocessable_entity }
       end
     end
@@ -82,6 +83,7 @@
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
+        format.js
         format.json { render json: @carrito_item.errors, status: :unprocessable_entity }
       end
     end

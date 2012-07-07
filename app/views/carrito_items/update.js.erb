@@ -1,13 +1,16 @@
 
-	// Actualizar el precio total de la línea.
-	$('<%= "#precio_total_#{@carrito_item.id}" %>').html("<%= number_to_currency(@carrito_item.precio_total) %>");
-	$('<%= "#precio_total_#{@carrito_item.id}" %>').css({'background-color':'#F2BA1B'}).animate({'background-color':'#ffffff'}, 2000);
-
-	// Actualizar el precio total del carrito.
-	$('#precio_total').html("<%= number_to_currency(@carrito_item.carrito.precio_total) %>");
-	$('#precio_total').css({'background-color':'#F2BA1B'}).animate({'background-color':'#CCCCCC'}, 2000);
+	$('#carrito_grande').html("<%=j render(partial: 'carritos/carrito_grande', locals: {carrito: @carrito_item.carrito}) %>");
 	
-	// Actualizar el costo de envío.
-	$('#costo_envio').html("<%= number_to_currency(@carrito_item.carrito.costo_envio) %>");
-	$('#costo_envio').css({'background-color':'#F2BA1B'}).animate({'background-color':'#DDDDDD'}, 2000);
+	<% if @carrito_item.errors.any? %>
+		alert('<%= @carrito_item.errors.values.map {|m| t(m) }.join('. ') %>');
+	<% else %>			
+		// Actualizar el precio total de la línea.
+		$('<%= "#precio_total_#{@carrito_item.id}" %>').css({'background-color':'#F2BA1B'}).animate({'background-color':'#ffffff'}, 2000);
+	
+		// Actualizar el precio total del carrito.
+		$('#precio_total').css({'background-color':'#F2BA1B'}).animate({'background-color':'#CCCCCC'}, 2000);
+		
+		// Actualizar el costo de envío.
+		$('#costo_envio').css({'background-color':'#F2BA1B'}).animate({'background-color':'#DDDDDD'}, 2000);
+	<% end %>
 	
