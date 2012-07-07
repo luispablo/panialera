@@ -44,7 +44,7 @@ class Entrega < ActiveRecord::Base
     end
     
     unless entregas.nil?
-      entregas.find_all { |e| not e.cerrada? }
+      entregas
     else
       nil
     end
@@ -55,10 +55,6 @@ class Entrega < ActiveRecord::Base
   def cerrada?    
     # Desde que hora todavía se puede hacer entrega, en base al parámetro
     hora_desde_valida = Time.now + Parametro.horas_cierre_entrega.hour
-logger.debug("--------------------------------------------------------")
-logger.debug("#{descripcion}.cerrada? : #{fecha == Date.today and (fecha != hora_desde_valida.to_date or desde.hour < hora_desde_valida.hour or (desde.hour == hora_desde_valida.hour and desde.min <= hora_desde_valida.min))}")
-logger.debug("#{fecha} != #{hora_desde_valida.to_date} or #{desde.hour} < #{hora_desde_valida.hour} or #{desde.hour} == #{hora_desde_valida.hour} and #{desde.min} < #{hora_desde_valida.min}")
-logger.debug("--------------------------------------------------------")
 
     fecha == Date.today and (fecha != hora_desde_valida.to_date or desde.hour < hora_desde_valida.hour or (desde.hour == hora_desde_valida.hour and desde.min <= hora_desde_valida.min))
   end
@@ -66,8 +62,9 @@ logger.debug("--------------------------------------------------------")
   def self.proximas_entregas(fecha)
     (fecha..fecha.next_day(6)).each do |f|
       entregas = Entrega.where(wday: f.wday).each { |e| e.fecha = f }
-            
-      return entregas unless entregas.empty?
+      no_cerradas = entregas.find_all { |e| not e.cerrada? }
+      
+      return no_cerradas unless no_cerradas.empty?
     end
     
     return nil
