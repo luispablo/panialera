@@ -23,7 +23,7 @@
 							<% combo.combo_detalles.each do |cd| %>
 								<li>
 									<%= cd.cantidad %>&nbsp;
-									<%= link_to "#{cd.producto.marca.nombre} #{cd.producto.nombre}", controller: :tienda, action: :detalle_producto, codigo: cd.producto.codigo %>
+									<%= link_to "#{cd.producto.descrip_corta}", controller: :tienda, action: :detalle_producto, codigo: cd.producto.codigo %>
 								</li>
 							<% end %>
 						</ul>

@@ -96,6 +96,15 @@ class Producto < ActiveRecord::Base
     end
   end
   
+  def descrip_corta
+    descrip_corta = ""
+    descrip_corta << "#{marca.nombre} " unless marca.nil?
+    descrip_corta << "#{nombre} "
+    descrip_corta << "#{talle}" unless talle.nil? or talle.empty?
+    descrip_corta << "x#{referencia.split(' ')[0]}" unless referencia.nil? or referencia.empty?
+    descrip_corta
+  end
+  
   def label_combos
     "[#{self.codigo}] #{self.nombre} #{self.descripcion} #{self.talle} [x#{self.referencia.split(' ')[0]}]"
   end
