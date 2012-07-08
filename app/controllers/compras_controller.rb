@@ -14,7 +14,7 @@ class ComprasController < AdminController
   # GET /compras/1.json
   def show
     @compra = Compra.find(params[:id])
-    @productos = Producto.order(:nombre)
+    @productos = Producto.order(:codigo)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -87,7 +87,7 @@ class ComprasController < AdminController
     @productos = Producto.all
     CompraDetalle.create(compra_id: @compra.id, producto_id: params[:producto_id], cantidad: params[:cantidad], precio: params[:precio])
     
-    render 'show'
+    redirect_to @compra
   end
   
   def quitar_detalle

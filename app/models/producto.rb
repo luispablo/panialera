@@ -106,7 +106,7 @@ class Producto < ActiveRecord::Base
   end
   
   def label_combos
-    "[#{self.codigo}] #{self.nombre} #{self.descripcion} #{self.talle} [x#{self.referencia.split(' ')[0]}]"
+    "[#{codigo}] #{marca.nombre} #{nombre} #{descripcion}  [#{talle}#{'x' unless referencia.nil? or referencia.empty?}#{referencia.split(' ')[0]}]"
   end
   
   def self.buscar(texto)

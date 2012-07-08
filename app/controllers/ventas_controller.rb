@@ -104,11 +104,11 @@
     @venta = Venta.find(params[:venta_id])
     producto = Producto.find(params[:producto_id])
 
-	precio = (params[:precio].nil? or params[:precio].empty?) ? producto.precio : params[:precio].to_f
+    precio = (params[:precio].nil? or params[:precio].empty?) ? producto.precio : params[:precio].to_f
     
     VentaDetalle.create(venta_id: @venta.id, producto_id: producto.id, precio: precio, cantidad: params[:cantidad])
     
-    redirect_to venta_path(@venta)
+    redirect_to @venta
   end
   
   def quitar_detalle
@@ -121,7 +121,7 @@
   
 private
   def cargar_productos
-    @productos = Producto.all
+    @productos = Producto.order(:codigo)
   end
   
   def cargar_referencias
