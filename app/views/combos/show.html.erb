@@ -74,6 +74,7 @@
 	<div class="row">
 		<div class="span4 offset7">
 			<%= link_to '<i class="icon-plus icon-white"></i> &nbsp;Nuevo'.html_safe, new_combo_path, class: 'btn btn-success' %>
+			<%= link_to '<i class="icon-repeat icon-white"></i> Copiar'.html_safe, "#{combos_path}/copiar/#{@combo.id}", class: 'btn btn-inverse' %>
 		</div>
 	</div>	
 

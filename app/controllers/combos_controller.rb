@@ -1,4 +1,15 @@
 class CombosController < AdminController
+
+  def copiar
+    original = Combo.find(params[:combo_id])
+    @combo = Combo.create(original.attributes)
+    
+    original.combo_detalles.each do |d|
+      @combo.combo_detalles << ComboDetalle.create(d.attributes)
+    end
+    
+    redirect_to @combo
+  end
   
   def agregar_detalle
     @combo = Combo.find(params[:combo_id])

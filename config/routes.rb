@@ -9,6 +9,7 @@ Panialera::Application.routes.draw do
   controller :combos do
     post '/combos/agregar_detalle' => :agregar_detalle
     delete '/combos/quitar_detalle/:id' => :quitar_detalle
+    get '/combos/copiar/:combo_id' => :copiar
   end
 
   resources :proveedores

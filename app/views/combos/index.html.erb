@@ -44,6 +44,7 @@
 				    	<%= link_to '<i class="icon-eye-open icon-white"></i>'.html_safe, combo, class: 'btn btn-info' %>
 				    	<%= link_to '<i class="icon-pencil icon-white"></i>'.html_safe, edit_combo_path(combo), class: 'btn btn-primary' %>
 				    	<%= link_to '<i class="icon-trash icon-white"></i>'.html_safe, combo, confirm: '¿Estás seguro?', method: :delete, class: 'btn btn-danger' %>
+				    	<%= link_to '<i class="icon-repeat icon-white"></i>'.html_safe, "#{combos_path}/copiar/#{combo.id}", class: 'btn btn-inverse' %>
 			    	</td>
   				</tr>
 			<% end %>
