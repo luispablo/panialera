@@ -13,7 +13,7 @@ class CombosController < AdminController
   
   def agregar_detalle
     @combo = Combo.find(params[:combo_id])
-    ComboDetalle.create(combo_id: @combo.id, producto_id: params[:producto_id])
+    ComboDetalle.create(combo_id: @combo.id, producto_id: params[:producto_id], cantidad: 1)
     
     redirect_to @combo
   end
