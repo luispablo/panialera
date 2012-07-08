@@ -1,6 +1,10 @@
 ﻿class TiendaController < ApplicationController
   before_filter :cargar_carrito
 
+  def detalle_combo
+	@oferta = Combo.find(params[:combo_id])
+  end
+  
   def ofertas
     @combos = Combo.disponibles
     @productos = Producto.where(oferta: true)
