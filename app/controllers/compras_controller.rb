@@ -2,7 +2,7 @@ class ComprasController < AdminController
   # GET /compras
   # GET /compras.json
   def index
-    @compras = Compra.all
+    @compras = Compra.order('fecha DESC')
 
     respond_to do |format|
       format.html # index.html.erb

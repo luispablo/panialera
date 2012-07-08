@@ -12,7 +12,7 @@
 		<tbody>
 			<% @compras.each do |compra| %>
   				<tr>
-				    <td><%= compra.fecha %></td>
+				    <td><%= compra.fecha.strftime('%d/%m/%Y') %></td>
 				    <td><%= compra.proveedor.nombre unless compra.proveedor.nil? %></td>
 				    <td><%= link_to '<i class="icon-eye-open icon-white"></i> &nbsp;Detalle'.html_safe, compra, class: 'btn btn-info' %></td>
 				    <td><%= link_to '<i class="icon-pencil icon-white"></i> &nbsp;Editar'.html_safe, edit_compra_path(compra), class: 'btn btn-primary' %></td>
