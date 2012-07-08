@@ -1,9 +1,9 @@
 
 	<div class="well titulo_azul">
 		<h3 style="float: left;"><%= @categoria.nombre %></h3>
-		<div class="span3 offset1" style="margin-top: 5px;">
+		<div class="span2 offset2" style="margin-top: 5px;">
 			<%= form_tag({}, {id: 'form'}) do %>
-				Ordenar por&nbsp;
+				Ordenar&nbsp;
 				<%= select_tag :orden, options_for_select(@opciones_orden, @orden), class: 'span2', onchange: '$("form").submit();' %>
 			<% end %>
 		</div>

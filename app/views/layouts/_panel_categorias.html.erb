@@ -4,7 +4,7 @@
 		
 		<% categorias.each do |c| %>
 			<li <%= "class='active'" if c.seleccionada?(categoria) %>>								
-				<%= link_to raw("<i class='icon-asterisk icon-white'></i> #{c.nombre}"), controller: :tienda, action: :productos_categoria, codigo: c.codigo %>
+				<%= link_to raw("<i class='icon-plus-sign icon-white'></i> #{c.nombre}"), controller: :tienda, action: :productos_categoria, codigo: c.codigo %>
 				
 				<% if c.seleccionada?(categoria) or c.hija_seleccionada?(categoria) %>
 					<ul class="nav nav-list" style="padding-left: 10px;">
