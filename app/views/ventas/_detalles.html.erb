@@ -29,7 +29,7 @@
 						<tr>
 							<td><%= select_tag :producto_id, options_for_select(@productos.map { |p| [p.label_combos, p.id]}), class: 'span6' %></td>
 							<td><%= number_field_tag :cantidad, 0, class: 'span1'  %></td>
-							<td><%= number_field_tag :precio, nil, class: 'span1' %></td>
+							<td><%= text_field_tag :precio, nil, class: 'span1' %></td>
 							<td><%= submit_tag 'Agregar', :class => 'btn' %></td>
 						</tr>					
 					<% end %>			
