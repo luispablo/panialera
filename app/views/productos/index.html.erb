@@ -36,9 +36,9 @@
 				<th rowspan="2">Categor&iacute;as</th>
 				<th rowspan="2"><%= sortable 'detalle' %></th>
 				<th rowspan="2"><%= sortable 'precio' %></th>
+				<th rowspan="2">Talle</th>
 				<th rowspan="2"><%= sortable 'referencia', 'Ref.' %></th>
 				<th colspan="3">Stock</th>
-				<th rowspan="2">Talle</th>
 				<th rowspan="2">Peso del beb&eacute;</th>
 				<th rowspan="2">Edad del beb&eacute;</th>
 				<th rowspan="2"></th>
@@ -60,11 +60,11 @@
 					<td><%= producto.categorias.map { |c| c.nombre }.join(', ') %></td>
 					<td><%= trunc(producto.detalle, 10, '...') %></td>
 					<td><%= producto.precio %></td>
+					<td><%= producto.talle %></td>
 					<td><%= producto.referencia %></td>
 					<td class="strong red"><%= pretty_number(producto.stock) %></td>
 					<td><%= pretty_number(producto.stock_comprometido) %></td>
 					<td><%= pretty_number(producto.stock_disponible) %></td>
-					<td><%= producto.talle %></td>
 					<td><%= producto.peso_bebe %></td>
 					<td><%= producto.edad_bebe %></td>
 					<td nowrap>
