@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703231912) do
+ActiveRecord::Schema.define(:version => 20120709202505) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20120703231912) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.boolean  "publicado"
+    t.integer  "orden"
   end
 
   add_index "categorias", ["categoria_id"], :name => "index_categorias_on_categoria_id"

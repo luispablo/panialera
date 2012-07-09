@@ -2,7 +2,7 @@ class CategoriasController < AdminController
   # GET /categorias
   # GET /categorias.json
   def index
-    @categorias = Categoria.all
+    @categorias = Categoria.order(:orden)
 
     respond_to do |format|
       format.html # index.html.erb

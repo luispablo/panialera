@@ -3,6 +3,7 @@
 <table class="table table-stripped table-bordered">
 	<thead>
 		<tr>
+			<th>Orden</th>
 		    <th>C&oacute;digo</th>
 		    <th>Nombre</th>
 		    <th>Descripci&oacute;n</th>
@@ -14,6 +15,7 @@
 	<tbody>
 <% @categorias.each do |categoria| %>
   <tr>
+	<td><%= best_in_place categoria, :orden %></td>
     <td><%= categoria.codigo %></td>
     <td><%= categoria.nombre %></td>
     <td><%= categoria.descripcion %></td>
@@ -31,4 +33,11 @@
 		<%= link_to 'Nueva categoría', new_categoria_path, :class => 'btn btn-primary' %>		
 	</div>
 
+	<script>
+		$(document).ready(function() 
+		{
+		  /* Activating Best In Place */
+		  jQuery(".best_in_place").best_in_place();
+		});
+	</script>
 

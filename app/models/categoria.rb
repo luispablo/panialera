@@ -10,6 +10,7 @@
 #  created_at   :datetime        not null
 #  updated_at   :datetime        not null
 #  publicado    :boolean
+#  orden        :integer
 #
 
 class Categoria < ActiveRecord::Base
@@ -20,6 +21,10 @@ class Categoria < ActiveRecord::Base
   has_many :productos, :through => :cat_productos
 
   validates :codigo, uniqueness: true, presence: true
+  
+  def hijas
+	Categoria.where(categoria_id: id).order(:orden)
+  end
   
   def todos_productos(orden = nil)
     productos = self.productos 
@@ -50,7 +55,7 @@ class Categoria < ActiveRecord::Base
   end
   
   def self.categorias_madre_publicadas
-    Categoria.where(publicado: true, categoria_id: nil)
+    Categoria.where(publicado: true, categoria_id: nil).order(:orden)
   end
   
 end
