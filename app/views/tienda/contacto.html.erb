@@ -1,6 +1,8 @@
 	
 	<div class="well titulo_azul">
-		<h2>Contacto</h2>
+		<h2 style="float: left;">Contacto</h2>
+		<h3 class="pull-right" style="margin-top: 4px">panialeradigital@gmail.com</h3>
+		<h2>&nbsp;</h2>
 	</div>
 	
 	<div class="row">
@@ -11,30 +13,19 @@
 	<br/>
 	
 	<div class="row">
-		<div class="span5">
+		<div class="span6">
 			<%= form_tag({}, {class: 'form-horizontal'}) do %>
 				<div class="control-group">
 					<%= label_tag :nombre, 'Nombre y apellido', class: 'control-label' %>
-					<div class="controls"><%= text_field_tag :nombre %></div>	
-				</div>
-				<div class="control-group">	
-					<%= label_tag :como_llego, '¿Cómo llegaste a nosotros?', class: 'control-label'%>
-					<div class="controls">
-						<%= label_tag :como_llego_web, raw("#{radio_button_tag(:como_llego, :web)} Internet"), class: 'radio' %>		
-						<%= label_tag :como_llego_referido, raw("#{radio_button_tag(:como_llego, :referido)} Recomendación"), class: 'radio' %>
-						<%= label_tag :como_llego_volantes, raw("#{radio_button_tag(:como_llego, :volantes)} Marketing en vía pública (volantes)"), class: 'radio' %>
-						<%= label_tag :como_llego_otros, raw("#{radio_button_tag(:como_llego, :otros)} Otros"), class: 'radio' %>
-						
-						<%= text_field_tag :otros %>
-					</div>
+					<div class="controls"><%= text_field_tag :nombre, ("#{@usuario.nombre} #{@usuario.apellido}" unless @usuario.nil?) %></div>	
 				</div>
 				<div class="control-group">
 					<%= label_tag :email, 'e-mail', class: 'control-label' %>
-					<div class="controls"><%= text_field_tag :email %></div>
+					<div class="controls"><%= text_field_tag :email, (@usuario.email unless @usuario.nil?) %></div>
 				</div>
 				<div class="control-group">
 					<%= label_tag :consulta, 'Consulta', class: 'control-label' %>
-					<div class="controls"><%= text_area_tag :consulta, nil, {rows: 3, cols: 40} %></div>
+					<div class="controls"><%= text_area_tag :consulta, nil, {rows: 3, cols: 40, id: :consulta} %></div>
 				</div>
 				<div class="control-group">
 					<%= label_tag :recibir_novedades, '¿Desea recibir novedades?', class: 'control-label' %>
@@ -48,3 +39,8 @@
 			<% end %>
 		</div>
 	</div>
+
+	<script>
+		document.getElementById('consulta').focus();
+	</script>
+	

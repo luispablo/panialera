@@ -5,9 +5,8 @@ class TiendaNotifier < ActionMailer::Base
   #
   #   en.tienda_notifier.consulta.subject
   #
-  def consulta(nombre, como_llego, email, consulta, quiere_recibir)
+  def consulta(nombre, email, consulta, quiere_recibir)
     @nombre = nombre
-    @como_llego = como_llego
     @email = email
     @consulta = consulta
     @quiere_recibir = quiere_recibir
