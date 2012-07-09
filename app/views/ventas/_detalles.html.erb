@@ -36,7 +36,7 @@
 					<% @venta.venta_detalles.each do |d| %>
 						<tr>
 							<td>
-								<%= d.producto.nombre unless d.producto.nil? %>
+								<%= d.producto.label_combos unless d.producto.nil? %>
 								<%= d.combo.detalle unless d.combo.nil? %>
 							</td>
 							<td><%= pretty_number(d.cantidad) %></td>
