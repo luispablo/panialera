@@ -19,6 +19,11 @@ class ComboDetalle < ActiveRecord::Base
     ((stock.nil? ? 0 : stock) / (cantidad.nil? ? 1 : cantidad)).floor
   end
   
+  def agregar_stock(cantidad_combo)
+    producto.agregar_stock cantidad_combo * cantidad
+    producto.save  
+  end
+  
   def quitar_stock(cantidad_combo)
     producto.quitar_stock cantidad_combo * cantidad
     producto.save

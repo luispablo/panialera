@@ -27,7 +27,11 @@
 				</p>
 				<p>
 					<b>Confirmada:</b>
-					<%= best_in_place @venta, :confirmada, type: :checkbox, collection: ['true', 'false'] %>
+					<%= best_in_place @venta, :confirmada, type: :checkbox, collection: ['<i class="icon-remove"></i>'.html_safe, '<i class="icon-ok"></i>'.html_safe] %>
+				</p>
+				<p>
+					<b>Entregada:</b>
+					<%= best_in_place @venta, :entregada, type: :checkbox, collection: ['<i class="icon-remove"></i>'.html_safe, '<i class="icon-ok"></i>'.html_safe] %>
 				</p>
 				<p>
 					<b>Monto total:</b>

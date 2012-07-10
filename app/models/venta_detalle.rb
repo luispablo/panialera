@@ -17,6 +17,7 @@ class VentaDetalle < ActiveRecord::Base
   belongs_to :producto
   belongs_to :combo
 
+  after_save :actualizar_stock
   before_destroy :agregar_stock
 
   validate :alcanza_stock_producto
@@ -46,16 +47,6 @@ class VentaDetalle < ActiveRecord::Base
     joins(:venta).where("ventas.entregada = :no_entregada AND venta_detalles.producto_id = #{producto.id}", no_entregada: false)
   end
   
-  def quitar_stock
-    unless producto.nil?
-      producto.quitar_stock cantidad
-      producto.save
-    else
-      combo.quitar_stock cantidad
-      combo.save
-    end
-  end
-  
   def precio_unitario
     unless producto.nil?
       producto.precio
@@ -69,10 +60,31 @@ class VentaDetalle < ActiveRecord::Base
   end
 
 private
+  # Agregar stock a los productos al borrar este detalle  
   def agregar_stock
-    unless producto.nil? or not venta.entregada?
+    if combo.nil?
       producto.agregar_stock cantidad
       producto.save!
+    else
+      combo.agregar_stock cantidad
+      combo.save
+    end
+  end
+  
+  # Actualizar el stock al grabar este detalle
+  def actualizar_stock
+    delta = (cantidad_was.nil? ? 0 : cantidad_was) - cantidad
+    logger.debug("delta #{delta} = cantidad_was #{cantidad_was} - cantidad #{cantidad}")
+    modificar_stock delta
+  end
+
+  def modificar_stock(delta)
+    if producto.nil?
+      combo.modificar_stock delta
+      combo.save
+    else
+      producto.agregar_stock delta
+      producto.save
     end
   end
 

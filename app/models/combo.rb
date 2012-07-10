@@ -22,16 +22,24 @@ class Combo < ActiveRecord::Base
     Combo.where(publicado: true)
   end
 
+  def agregar_stock(cantidad)
+    modificar_stock cantidad
+  end
+  
   def quitar_stock(cantidad)
-    if self.stock.nil?
-      self.stock = 0
+    modificar_stock cantidad * (-1)
+  end
+  
+  def modificar_stock(cantidad)
+    if stock.nil?
+      stock = 0
     else
       # Resta de su stock
-      self.stock -= cantidad
+      stock += cantidad
       # y además debe restar los stocks de los productos que lo componen.
       unless combo_detalles.nil?
         combo_detalles.each do |cd| 
-          cd.quitar_stock cantidad          
+          cd.agregar_stock cantidad          
         end
       end
     end
@@ -49,17 +57,12 @@ class Combo < ActiveRecord::Base
     stock_disponible > 0
   end
   
+  def stock_real
+    stock_disponible + stock_comprometido
+  end
+  
   def stock_disponible
-    comprometido = stock_comprometido
-    
-    disponible = (stock.nil? ? 0 : stock) - (comprometido.nil? ? 0 : comprometido)
-    se_pueden_armar = self.cuantos_se_pueden_armar
-    
-    if disponible <= se_pueden_armar
-      disponible
-    else
-      se_pueden_armar
-    end
+    stock
   end
   
   def stock_comprometido

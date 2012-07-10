@@ -49,9 +49,12 @@ class Producto < ActiveRecord::Base
     stock_disponible > 0
   end
   
+  def stock_real
+    stock_disponible + stock_comprometido
+  end
+  
   def stock_disponible
-    comprometido = stock_comprometido
-    (stock.nil? ? 0 : stock) - (comprometido.nil? ? 0 : comprometido)
+    stock.nil? ? 0 : stock
   end
   
   def stock_comprometido

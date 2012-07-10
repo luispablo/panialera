@@ -25,8 +25,6 @@ class Venta < ActiveRecord::Base
   
   default_value_for :entregada, false
 
-  before_save :actualizar_stock 
-  
   attr_accessor :entrega
 
   def self.crear_desde_carrito(carrito, usuario)
@@ -68,18 +66,4 @@ class Venta < ActiveRecord::Base
     end
   end
 
-  def quitar_stock_detalles
-    unless venta_detalles.nil? or venta_detalles.empty?
-      venta_detalles.each do |vd|
-        vd.quitar_stock
-      end
-    end
-  end
-  
-private
-  def actualizar_stock
-    if entregada? and not entregada_was
-      quitar_stock_detalles
-    end
-  end
 end
