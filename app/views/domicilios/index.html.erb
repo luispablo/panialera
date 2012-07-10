@@ -4,6 +4,7 @@
 	<table class="table table-bordered table-stripped">
 		<thead>
 			<tr>
+				<th>¿V&aacute;lido delivery?</th>
 				<th>Nombre</th>
 				<th>Calle</th>
 				<th>N&uacute;mero</th>
@@ -19,6 +20,7 @@
 		<tbody>
 			<% @domicilios.each do |domicilio| %>
 			  <tr>
+			  	<td><%= best_in_place domicilio, :valido_delivery, type: :checkbox, collection: ['<i class="icon-remove"></i>'.html_safe, '<i class="icon-ok"></i>'.html_safe] %></td>
 			    <td><%= domicilio.nombre %></td>
 			    <td><%= domicilio.calle %></td>
 			    <td><%= domicilio.numero %></td>
@@ -40,3 +42,10 @@
 		<%= link_to 'Nuevo Domicilio', new_domicilio_path, :class => 'btn btn-primary' %>		
 	</div>
 
+	<script>
+		$(document).ready(function() 
+		{
+		  /* Activating Best In Place */
+		  jQuery(".best_in_place").best_in_place();
+		});
+	</script>

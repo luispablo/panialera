@@ -20,20 +20,22 @@ class AdminController < ApplicationController
 
   def validar_domicilio
     domicilio = Domicilio.find(params[:id])
-    domicilio.validar_para_delivery
+    domicilio.valido_delivery = true
+    domicilio.save
     
     redirect_to controller: :admin, action: :index
   end
   
   def invalidar_domicilio
     domicilio = Domicilio.find(params[:id])
-    domicilio.invalidar_para_delivery
+    domicilio.valido_delivery = false
+    domicilio.save
     
     redirect_to controller: :admin, action: :index
   end
 
   def index
-    @domicilios = Domicilio.where(valido_delivery: nil)
+    @domicilios = Domicilio.where('valido_delivery <> ? or valido_delivery IS NULL', true)
     @ventas_sin_conf = Venta.joins(:domicilio).where('domicilios.valido_delivery' => nil)
     @ventas_sin_entregar = Venta.where(entregada: false).order('fecha, hora_desde_entrega')
   end

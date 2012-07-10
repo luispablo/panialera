@@ -24,12 +24,37 @@ class Domicilio < ActiveRecord::Base
 
   has_many :ventas
   
-  after_save :notificar_domicilio_a_validar
+  after_save :notificar
   
-  def invalidar_para_delivery
-    self.valido_delivery = false
-    save
-    
+  def descripcion
+    "#{calle} #{numero} #{piso} #{depto}"
+  end
+  
+protected
+  def notificar
+    if valido_delivery.nil?
+      # Apenas se crea, notificar a los administradores
+      notificar_validacion_pendiente
+    elsif valido_delivery_changed?
+      if valido_delivery?
+        validar
+      else
+        invalidar
+      end
+    end     
+  end
+  
+  def validar
+    if ventas.nil? or ventas.empty?
+      AdminMailer.domicilio_valido(self).deliver
+    else
+      ventas.each do |v|
+        VentaNotifier.confirmada(v).deliver
+      end
+    end
+  end
+  
+  def invalidar
     unless ventas.nil? or ventas.empty?
       ventas.each do |v|
         v.destroy
@@ -39,32 +64,11 @@ class Domicilio < ActiveRecord::Base
     AdminMailer.domicilio_invalido(self).deliver    
   end
   
-  def validar_para_delivery
-    self.valido_delivery = true
-    save
-    
-    if ventas.nil? or ventas.empty?
-      AdminMailer.domicilio_valido(self).deliver
-    else
-      ventas.each do |v|
-        VentaNotifier.confirmada(v).deliver
+  def notificar_validacion_pendiente
+    Usuario.where(administrador: true).each do |admin|
+      unless admin.email.nil?
+        AdminMailer.domicilio_a_validar(self, admin.email).deliver
       end
-    end
-    
-  end
-  
-  def descripcion
-    "#{calle} #{numero} #{piso} #{depto}"
-  end
-  
-protected
-  def notificar_domicilio_a_validar
-    if self.valido_delivery.nil?
-      Usuario.where(administrador: true).each do |admin|
-        unless admin.email.nil?
-          AdminMailer.domicilio_a_validar(self, admin.email).deliver
-        end
-      end
-    end     
+    end    
   end
 end
