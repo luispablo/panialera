@@ -40,6 +40,10 @@ class Categoria < ActiveRecord::Base
     return (not sel.nil? and (id == sel.id))
   end
   
+  def hijas_publicadas
+    hijas.find_all { |hija| hija.publicado? }
+  end
+  
   def hija_seleccionada?(categoria)
     unless categoria.nil?
       unless categorias.nil? or categorias.empty?

@@ -20,7 +20,7 @@
     <td><%= categoria.nombre %></td>
     <td><%= categoria.descripcion %></td>
     <td><%= categoria.categoria.nombre unless categoria.categoria.nil? %></td>
-    <td><%= categoria.publicado?? "Si": "No" %></td>
+  	<td><%= best_in_place categoria, :publicado, type: :checkbox, collection: ['<i class="icon-remove"></i>'.html_safe, '<i class="icon-ok"></i>'.html_safe] %></td>
     <td><%= link_to 'Ver', categoria %></td>
     <td><%= link_to 'Editar', edit_categoria_path(categoria) %></td>
     <td><%= link_to 'Destruir', categoria, confirm: '¿Estás seguro?', method: :delete %></td>
