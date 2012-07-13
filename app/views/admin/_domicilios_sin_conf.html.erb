@@ -16,8 +16,8 @@
 				<td><%= d.usuario.nombre %>, <%= d.usuario.apellido %></td>
 				<td><%= d.descripcion %></td>
 				<td>
-					<%= link_to 'Válido <i class="icon-ok icon-white"></i>'.html_safe, {controller: :admin, action: :validar_domicilio, id: d.id}, class: 'btn btn-success' %>
-					<%= link_to 'Inválido <i class="icon-remove icon-white"></i>'.html_safe, {controller: :admin, action: :invalidar_domicilio, id: d.id}, class: 'btn btn-danger' %>
+					<%= link_to 'Válido <i class="icon-ok icon-white"></i>'.html_safe, {controller: :admin, action: :validar_domicilio, id: d.id}, remote: true, onclick: "block('Enviando mail de confirmación...')", class: 'btn btn-success' %>
+					<%= link_to 'Inválido <i class="icon-remove icon-white"></i>'.html_safe, {controller: :admin, action: :invalidar_domicilio, id: d.id}, remote: true, class: 'btn btn-danger' %>
 				</td>
 			</tr>
 		<% end %>

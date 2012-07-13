@@ -19,11 +19,15 @@ class AdminController < ApplicationController
   end
 
   def validar_domicilio
-    domicilio = Domicilio.find(params[:id])
-    domicilio.valido_delivery = true
-    domicilio.save
+    @domicilio = Domicilio.find(params[:id])
+    @domicilio.valido_delivery = true
+    @domicilio.save
     
-    redirect_to controller: :admin, action: :index
+    @domicilios = Domicilio.where('valido_delivery <> ? or valido_delivery IS NULL', true)
+    
+    respond_to do |format|
+      format.js
+    end
   end
   
   def invalidar_domicilio
