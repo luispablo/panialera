@@ -80,6 +80,7 @@ GEM
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     pg (0.13.1)
+    pg (0.13.1-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -143,6 +144,7 @@ DEPENDENCIES
   client_side_validations
   coffee-rails (~> 3.2.1)
   default_value_for
+  execjs
   jquery-rails
   mini_magick
   pg
