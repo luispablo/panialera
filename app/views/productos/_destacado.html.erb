@@ -1,17 +1,22 @@
 
-	<div class="span2 well mini-shadow destacado">
-		<div class="imagen_destacado">
-			<% if destacado.imagen? %>
-				<%= image_tag destacado.imagen_url(:thumb) %>
-			<% else %>
-				<%= image_tag 'thumb.png' %>
-			<% end %>
-		</div>
+<ul class="nav nav-list well" id="destacado">
+	<h3>Recomendados <br/>D&Iacute;A DEL NI&Ntilde;O</h3>
+	<br/>
+
+	<div class="imagen_destacado well">
+		<% if destacado.imagen? %>
+			<%= image_tag destacado.imagen_url(:thumb) %>
+		<% else %>
+			<%= image_tag 'thumb.png' %>
+		<% end %>
+		<br/>
+		<br/>
+	
 		<p><%= destacado.marca.nombre %>&nbsp;<%= destacado.nombre %></p>
 		<p><%= number_to_currency(destacado.precio) %></p>
 
-		<p>
-			<%= link_to 'Ver Detalles', controller: :tienda, action: :detalle_producto, codigo: destacado.codigo %>
-			<%= button_to 'Agregar al carrito', carrito_items_path(producto_id: destacado), remote: true, class: 'btn btn-danger' %>
-		</p>				
+		<p><%= link_to 'Ver Detalles', controller: :tienda, action: :detalle_producto, codigo: destacado.codigo %></p>
+		<%= button_to 'Agregar al carrito', carrito_items_path(producto_id: destacado), remote: true, class: 'btn btn-danger' %>
 	</div>
+
+</ul>

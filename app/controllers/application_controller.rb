@@ -1,9 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :cargar_categorias, :cargar_usuario
+  before_filter :cargar_categorias, :cargar_usuario, :cargar_destacado
     
 private
+  def cargar_destacado
+    destacados = Producto.where(destacado: true)
+    @destacado = destacados[rand(destacados.size - 1)]
+  end
+
   def cargar_carrito
     @carrito = carrito_actual
   end
