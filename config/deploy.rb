@@ -4,7 +4,7 @@ set :repository,  "git@github.com:luispablo/panialera.git"
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-set :deploy_to, "/opt/apps"
+set :deploy_to, "/opt/apps/panialera"
 
 server "li506-126.members.linode.com", :app, :web, :db, :primary => true
 
