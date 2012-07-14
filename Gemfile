@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
 
+gem 'rvm-capistrano'
 gem 'will_paginate', '~> 3.0.0'
 gem "mini_magick"
 gem "carrierwave"
