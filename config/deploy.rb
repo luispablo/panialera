@@ -1,5 +1,6 @@
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"
+require "bundler/capistrano"
 
 set :application, "panialera"
 set :repository,  "git@github.com:luispablo/panialera.git"
