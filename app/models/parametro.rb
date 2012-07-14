@@ -19,7 +19,8 @@ class Parametro < ActiveRecord::Base
       items_por_pagina: 'ITEMS_POR_PAGINA',
       precio_envio: 'PRECIO_ENVIO', 
       monto_minimo_sin_envio: 'MONTO_MINIMO_SIN_ENVIO',
-      remitente_mails: 'REMITENTE_MAILS'
+      remitente_mails: 'REMITENTE_MAILS',
+      titulo_dest_rotativo: 'TITULO_DEST_ROTATIVO'
   }
   VALORES_POR_DEFECTO =
   {
@@ -29,11 +30,16 @@ class Parametro < ActiveRecord::Base
       items_por_pagina: '20',
       precio_envio: '15',
       monto_minimo_sin_envio: '120',
-      remitente_mails: '"Pañalera Digital" <panialeradigital@gmail.com>'
+      remitente_mails: '"Pañalera Digital" <panialeradigital@gmail.com>',
+      titulo_dest_rotativo: 'Destacados <br/>D&Iacute;A DEL NI&Ntilde;O'
   }
   
   validates :valor, presence: { message: ' el campo es requerido.' }
   validates :codigo, uniqueness: true
+  
+  def self.titulo_destacado_rotativo
+    Parametro.find_by_codigo(CODIGOS[:titulo_dest_rotativo]).valor
+  end
   
   def self.items_por_pagina
     Parametro.find_by_codigo(CODIGOS[:items_por_pagina]).valor.to_i
