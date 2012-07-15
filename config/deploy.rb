@@ -14,6 +14,9 @@ set :rails_env, :production
 
 set :deploy_to, "/opt/apps/panialera"
 
+# Convertir en carpeta compartida por todos los releases la carpeta de los uplods (para las imágenes de carrierwave).
+set :shared_children, shared_children + %w{public/uploads}
+
 server "li506-126.members.linode.com", :app, :web, :db, :primary => true
 
 # adjust if you are using RVM, remove if you are not
