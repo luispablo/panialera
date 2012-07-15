@@ -10,12 +10,12 @@ gem "carrierwave"
 gem "best_in_place"
 gem 'client_side_validations'
 gem "default_value_for"
+gem 'sqlite3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development do
-  gem 'sqlite3'
   gem 'annotate', '~> 2.4.1.beta'
 end
 
