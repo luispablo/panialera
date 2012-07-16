@@ -81,6 +81,7 @@ GEM
     net-ssh (2.5.2)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
+    pg (0.13.1-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -148,6 +149,7 @@ DEPENDENCIES
   jquery-rails
   mini_magick
   mysql
+  pg
   rails (= 3.2.1)
   rvm-capistrano
   sass-rails (~> 3.2.3)
