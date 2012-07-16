@@ -2,7 +2,9 @@
   before_filter :cargar_carrito
 
   def detalle_combo
-	@oferta = Combo.find(params[:combo_id])
+    @oferta = Combo.find(params[:combo_id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to tienda_url, notice: 'La oferta que estás intentando ver no figura actualmente en nuestro catálogo'
   end
   
   def ofertas
@@ -142,10 +144,14 @@
     @categoria = Categoria.find_by_codigo(params[:codigo])    
     @opciones_orden = opciones_orden_categoria
     @orden = params[:orden] || 'nombre asc'
+    
+    redirect_to tienda_url, notice: 'La categoría que estás intentando ver no figura actualmente en nuestro catálogo' unless @categoria
   end
 
   def detalle_producto
     @producto = Producto.find_by_codigo(params[:codigo])
+    
+    redirect_to tienda_url, notice: 'El producto que estás intentando ver no figura actualmente en nuestro catálogo' unless @producto
   end
 
 private
