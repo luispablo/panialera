@@ -20,6 +20,7 @@ test:
 
 production:
   adapter: mysql
+  encoding: utf8
   database: panialera_prod
   username: panialera_prod
   password: HSeeQGLe3f7HxM6v
