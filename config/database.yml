@@ -19,8 +19,8 @@ test:
   timeout: 5000
 
 production:
-  adapter: postgresql
+  adapter: mysql
   database: panialera_prod
   username: panialera_prod
-  password: paniaprod
+  password: HSeeQGLe3f7HxM6v
   host: localhost
