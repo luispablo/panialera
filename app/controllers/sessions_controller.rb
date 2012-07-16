@@ -53,6 +53,6 @@
 
   def destroy
     session[:usuario_id] = nil
-    redirect_to tienda_url, notice: "Logged out"    
+    redirect_to tienda_url, notice: "Sesión cerrada"    
   end
 end

@@ -1,4 +1,4 @@
-class AdminController < ApplicationController
+﻿class AdminController < ApplicationController
   before_filter :authorize
   
   layout 'admin'
@@ -46,8 +46,8 @@ class AdminController < ApplicationController
   
 protected
   def authorize
-    unless session[:usuario_id] and Usuario.find(session[:usuario_id])
-      redirect_to tienda_url, notice: 'Por favor log in'
+    unless @usuario and @usuario.administrador? 
+      redirect_to tienda_url, notice: 'Debe ser administrador para poder ingresar a la administración.'
     end
   end
 end
