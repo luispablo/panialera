@@ -1,6 +1,6 @@
 
 	<tr>
-		<td><%= combo_detalle.producto.label_combos %></td>
+		<td><%= link_to combo_detalle.producto.label_combos, edit_producto_path(combo_detalle.producto) %></td>
 		<td nowrap><%= number_to_currency(combo_detalle.producto.precio) %></td>
 		<td><%= best_in_place(combo_detalle, :cantidad) %></td>
 		<td><%= link_to '<i class="icon-trash icon-white"></i>'.html_safe, "#{combos_url}/quitar_detalle/#{combo_detalle.id}", method: :delete, class: 'btn btn-danger' %></td>

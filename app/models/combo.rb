@@ -62,7 +62,13 @@ class Combo < ActiveRecord::Base
   end
   
   def stock_disponible
-    stock
+    cantidad_armable = cuantos_se_pueden_armar 
+
+    if stock <= cantidad_armable 
+      stock
+    else
+      cantidad_armable
+    end   
   end
   
   def stock_comprometido
