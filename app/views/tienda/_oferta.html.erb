@@ -25,8 +25,7 @@
 			</p>
 			<p><%= number_to_currency(oferta.precio) %></p>
 			
-			<p><%= oferta.hay_stock? %>
-				<%= oferta.stock_disponible %>
+			<p>
 				<%= link_to 'Ver Detalles', controller: :tienda, action: :detalle_combo, combo_id: oferta.id %>
 				<%= button_to texto_boton_carrito(oferta), carrito_items_path(combo_id: oferta), disabled: !oferta.hay_stock?, remote: true, class: 'btn btn-danger' %>				
 			</p>

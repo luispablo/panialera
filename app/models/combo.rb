@@ -64,7 +64,7 @@ class Combo < ActiveRecord::Base
   def stock_disponible
     cantidad_armable = cuantos_se_pueden_armar 
 
-    if stock <= cantidad_armable 
+    if not cantidad_armable.nil? and stock <= cantidad_armable 
       stock
     else
       cantidad_armable
