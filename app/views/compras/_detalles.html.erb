@@ -31,7 +31,10 @@
 			
 			<% @compra.compra_detalles.each do |d| %>
 				<tr>
-					<td>[<%= d.producto.codigo %>] <%= d.producto.nombre %> <%= d.producto.descripcion %> <%= d.producto.talle %></td>
+					<td>
+						<%= d.producto.label_combos unless d.producto.nil? %>
+						<%= "<strong>EL PRODUCTO CON ID [#{d.producto_id}] YA NO EXISTE. ¿QUÉ ES LO QUE ESTÁS HACIENDO?</strong>".html_safe if d.producto.nil? %>
+					</td>
 					<td align="right"><%= pretty_number(d.cantidad) %></td>
 					<td align="right"><%= number_to_currency(d.precio) %></td>
 					<td><%= link_to 'Quitar', "#{compras_url}/quitar_detalle/#{d.id}", class: 'btn btn-danger' %></td>

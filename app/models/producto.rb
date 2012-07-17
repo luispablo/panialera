@@ -24,7 +24,7 @@
 #
 
 class Producto < ActiveRecord::Base
-  before_destroy :ensure_not_referenced_by_any_carrito_item
+  before_destroy :ensure_not_referenced
   
   belongs_to :marca
   
@@ -32,6 +32,7 @@ class Producto < ActiveRecord::Base
   has_many :categorias, :through => :cat_productos
   has_many :carrito_items
   has_many :compra_detalles
+  has_many :venta_detalles
 
   mount_uploader :imagen, ImagenUploader
   
@@ -161,12 +162,29 @@ class Producto < ActiveRecord::Base
   end
 
 private
-  def ensure_not_referenced_by_any_carrito_item
-    if carrito_items.empty?
-      return true
-    else
+  def ensure_not_referenced
+    valido = true
+        
+    unless carrito_items.empty?
       errors.add(:base, "Hay líneas de carrito que lo referencian")
-      return false
+      valido = false
     end
+
+    unless cat_productos.empty?
+      errors.add(:base, "Este producto posee categorías asociadas")
+      valido = false
+    end    
+    
+    unless compra_detalles.empty?
+      errors.add(:base, "Hay compras que referencian a este producto")
+      valido = false
+    end    
+    
+    unless venta_detalles.empty?
+      errors.add(:base, "Hay ventas que referencian a este producto")
+      valido = false
+    end
+    
+    valido
   end 
 end
