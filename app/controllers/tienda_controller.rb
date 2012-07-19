@@ -49,6 +49,9 @@
   def resumen
     entrega = Entrega.find(params[:entrega_id])
 
+		@importe_minimo = Parametro.monto_minimo_sin_envio
+		@costo_envio = Parametro.precio_envio
+
     @carrito.domicilio_id = params[:domicilio_id]
     @carrito.fecha_entrega = Date.strptime(params[:fecha], '%Y%m%d')
     @carrito.hora_desde_entrega = entrega.desde
