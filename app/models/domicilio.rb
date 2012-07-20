@@ -34,11 +34,14 @@ protected
   def notificar
     if valido_delivery.nil?
       # Apenas se crea, notificar a los administradores
+	  logger.debug("No se sabe si es valido delivery, avisar a admins...")
       notificar_validacion_pendiente
     elsif valido_delivery_changed?
       if valido_delivery?
+		logger.debug("Es valido")
         validar
       else
+		logger.debug("No es valido")
         invalidar
       end
     end     
@@ -65,10 +68,16 @@ protected
   end
   
   def notificar_validacion_pendiente
-    Usuario.where(administrador: true).each do |admin|
-      unless admin.email.nil?
-        AdminMailer.domicilio_a_validar(self, admin.email).deliver
-      end
+	logger.debug("Se va a notificar a los admins...")
+    Usuario.where("administrador = 1").each do |admin|
+		logger.debug("Notificando a #{admin.nombre}")
+		
+		unless admin.email.nil?
+			logger.debug("Enviando mail a #{admin.email}")
+			AdminMailer.domicilio_a_validar(self, admin.email).deliver
+		else
+			logger.debug("Este admin no tiene mail")
+		end		
     end    
   end
 end

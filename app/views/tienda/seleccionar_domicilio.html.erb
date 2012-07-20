@@ -1,13 +1,15 @@
 
 	<%= render partial: 'header_compra', locals: {activo: 1} %>
 
-	<div class="well shadow">
-		<table class="table table-bordered">
-			<tbody>
-				<%= render partial: 'tienda/domicilio_entrega', locals: {id_actual: @domicilio.id}, collection: @usuario.domicilios, as: :domicilio %>
-			</tbody>
-		</table>
-	</div>
+	<% unless @usuario.domicilios.nil? or @usuario.domicilios.empty? %>
+		<div class="well shadow">
+			<table class="table table-bordered">
+				<tbody>
+					<%= render partial: 'tienda/domicilio_entrega', locals: {id_actual: @domicilio.id}, collection: @usuario.domicilios, as: :domicilio %>
+				</tbody>
+			</table>
+		</div>
+	<% end %>
 			
 	<div class="well shadow">
 		<div class="well titulo_naranja">
@@ -57,7 +59,7 @@
 			
 			<div class="row">
 				<div style="text-align: center">
-					<%= link_to_submit 'Quiero recibirlo aquí', nil, 'btn-success btn-large' %>
+					<%= link_to_function 'Quiero recibirlo aquí', "block('Aguarde un momento por favor...'); $(this).closest('form').submit();", class: "btn btn-success btn-large" %>
 				</div>
 			</div>	
 		<% end %>

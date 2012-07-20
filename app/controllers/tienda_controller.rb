@@ -92,7 +92,6 @@
     @dom.codigo_postal = params[:codigo_postal]
     @dom.barrio_id = params[:barrio_id]
     @dom.usuario = @usuario
-    @dom.valido_delivery = false
     @dom.save!
     
     redirect_to action: :entrega, domicilio_id: @dom.id

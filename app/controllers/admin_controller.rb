@@ -41,7 +41,7 @@
   def index
     @domicilios = Domicilio.where('valido_delivery <> ? or valido_delivery IS NULL', true)
     @ventas_sin_conf = Venta.joins(:domicilio).where('domicilios.valido_delivery' => nil)
-    @ventas_sin_entregar = Venta.where(entregada: false).order('fecha, hora_desde_entrega')
+    @ventas_sin_entregar = Venta.where(entregada: false).order('fecha, hora_desde_entrega') - @ventas_sin_conf
   end
   
 protected
