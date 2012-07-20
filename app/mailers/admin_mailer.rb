@@ -1,4 +1,4 @@
-class AdminMailer < ActionMailer::Base
+﻿class AdminMailer < ActionMailer::Base
 
   def domicilio_invalido(domicilio)
     @domicilio = domicilio
