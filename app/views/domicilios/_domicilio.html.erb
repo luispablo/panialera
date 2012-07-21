@@ -6,7 +6,7 @@
 		</div>
 		<div class=" pull-right">
 			<%= link_to raw("<i class='icon-pencil icon-white'></i> Editar"), "#{mi_cuenta_domicilios_path}/#{domicilio.id}", class: 'btn btn-info' %>&nbsp;
-			<%= link_to raw("<i class='icon-trash icon-white'></i> Borrar"), domicilio, confirm: '¿Estás seguro?', method: :delete, remote: true, class: 'btn btn-danger' %>
+			<%= link_to raw("<i class='icon-trash icon-white'></i> Borrar"), "#{mi_cuenta_domicilios_path}/#{domicilio.id}", confirm: '¿Estás seguro?', method: :delete, class: 'btn btn-danger' %>
 		</div>
 	</div>
 	<div class="row">

@@ -8,14 +8,18 @@
 			<h3>Mis domicilios</h3>
 		</div>
 				
+		<br/>
 		<div class="row">
-			<div class="span5 offset1">	
-				<%= render @usuario.domicilios %>
+			<div class="span5 offset1">
+				&nbsp;
+				<%= render @usuario.domicilios_en_uso %>
 			</div>
 			<div class="span1">
 				<%= link_to 'Agregar domicilio', {action: :new_domicilio}, {class: 'btn'} %>
 			</div>
 		</div>		
 	</div>
+	<br/>
+	<br/>
 	
 </div>

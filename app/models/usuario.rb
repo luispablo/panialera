@@ -27,6 +27,14 @@ class Usuario < ActiveRecord::Base
   
   has_secure_password
   
+	# Los domicilios sin fecha de baja
+	def domicilios_en_uso
+		domicilios.find_all do |d| 
+			logger.debug("domcilio #{d.id}: #{d.deleted_at}")
+			d.deleted_at.nil? 
+		end
+	end
+
   def domicilio_ultima_entrega
     unless domicilios.nil? or domicilios.empty?
       domicilios.each do |d|

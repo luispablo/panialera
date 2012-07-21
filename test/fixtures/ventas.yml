@@ -5,7 +5,6 @@
 #  id                 :integer         not null, primary key
 #  fecha              :date
 #  usuario_id         :integer
-#  domicilio_id       :integer
 #  created_at         :datetime        not null
 #  updated_at         :datetime        not null
 #  confirmada         :boolean
@@ -15,6 +14,12 @@
 #  costo_envio        :float
 #  comentarios        :string(255)
 #  entregada          :boolean
+#  dom_calle          :string(255)
+#  dom_numero         :integer
+#  dom_piso           :string(255)
+#  dom_depto          :string(255)
+#  dom_entre_calles   :string(255)
+#  barrio_id          :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

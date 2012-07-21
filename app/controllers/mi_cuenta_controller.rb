@@ -43,6 +43,15 @@
     end    
   end
 
+	def delete_domicilio		
+		logger.debug("Borrando domicilio con id #{ params[:dom_id] }")
+		domicilio = @usuario.domicilios.find_all { |d| d.id = params[:dom_id] }.first
+		domicilio.deleted_at = Date.today
+		domicilio.save!
+
+		render 'domicilios'
+	end
+
   def new_hijo
     @hijo = Hijo.new(usuario: @usuario)
     

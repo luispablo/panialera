@@ -116,6 +116,7 @@ Panialera::Application.routes.draw do
     get 'mi_cuenta/domicilios' => :domicilios
     get 'mi_cuenta/domicilios/new' => :new_domicilio
     post 'mi_cuenta/domicilios' => :create_domicilio
+		delete 'mi_cuenta/domicilios/:dom_id' => :delete_domicilio
     get 'mi_cuenta/domicilios/:dom_id' => :edit_domicilio
     put 'mi_cuenta/domicilios/:dom_id' => :update_domicilio
   end

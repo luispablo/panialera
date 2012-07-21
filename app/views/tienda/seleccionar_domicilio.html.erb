@@ -1,11 +1,11 @@
 
 	<%= render partial: 'header_compra', locals: {activo: 1} %>
 
-	<% unless @usuario.domicilios.nil? or @usuario.domicilios.empty? %>
+	<% unless @usuario.domicilios_en_uso.nil? or @usuario.domicilios_en_uso.empty? %>
 		<div class="well shadow">
 			<table class="table table-bordered">
 				<tbody>
-					<%= render partial: 'tienda/domicilio_entrega', locals: {id_actual: @domicilio.id}, collection: @usuario.domicilios, as: :domicilio %>
+					<%= render partial: 'tienda/domicilio_entrega', locals: {id_actual: @domicilio.id}, collection: @usuario.domicilios_en_uso, as: :domicilio %>
 				</tbody>
 			</table>
 		</div>

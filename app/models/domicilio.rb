@@ -16,6 +16,7 @@
 #  usuario_id      :integer
 #  ultima_entrega  :boolean
 #  valido_delivery :boolean
+#  deleted_at      :datetime
 #
 
 class Domicilio < ActiveRecord::Base

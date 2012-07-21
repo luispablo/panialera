@@ -5,6 +5,7 @@
 		<thead>
 			<tr>
 				<th>¿V&aacute;lido delivery?</th>
+				<th>En uso (sin baja l&oacute;gica)</th>
 				<th>Nombre</th>
 				<th>Calle</th>
 				<th>N&uacute;mero</th>
@@ -21,6 +22,7 @@
 			<% @domicilios.each do |domicilio| %>
 			  <tr>
 			  	<td><%= best_in_place domicilio, :valido_delivery, type: :checkbox, collection: ['<i class="icon-remove"></i>'.html_safe, '<i class="icon-ok"></i>'.html_safe] %></td>
+					<td><i class="icon-<%= domicilio.deleted_at.nil? ? 'ok' : 'remove' %>"></i></td>
 			    <td><%= domicilio.nombre %></td>
 			    <td><%= domicilio.calle %></td>
 			    <td><%= domicilio.numero %></td>
