@@ -249,6 +249,7 @@ ActiveRecord::Schema.define(:version => 20120721201403) do
   create_table "ventas", :force => true do |t|
     t.date     "fecha"
     t.integer  "usuario_id"
+    t.integer  "domicilio_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.boolean  "confirmada"
@@ -258,14 +259,9 @@ ActiveRecord::Schema.define(:version => 20120721201403) do
     t.float    "costo_envio"
     t.string   "comentarios"
     t.boolean  "entregada"
-    t.string   "dom_calle"
-    t.integer  "dom_numero"
-    t.string   "dom_piso"
-    t.string   "dom_depto"
-    t.string   "dom_entre_calles"
-    t.integer  "barrio_id"
   end
 
+  add_index "ventas", ["domicilio_id"], :name => "index_ventas_on_domicilio_id"
   add_index "ventas", ["usuario_id"], :name => "index_ventas_on_usuario_id"
 
 end

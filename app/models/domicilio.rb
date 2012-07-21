@@ -25,7 +25,7 @@ class Domicilio < ActiveRecord::Base
 
   has_many :ventas
   
-  after_save :notificar
+  before_save :notificar
   
   def descripcion
     "#{calle} #{numero} #{piso} #{depto}"
@@ -35,16 +35,20 @@ protected
   def notificar
     if valido_delivery.nil?
       # Apenas se crea, notificar a los administradores
-	  logger.debug("No se sabe si es valido delivery, avisar a admins...")
+		  logger.debug("No se sabe si es valido delivery, avisar a admins...")
       notificar_validacion_pendiente
     elsif valido_delivery_changed?
       if valido_delivery?
-		logger.debug("Es valido")
+				logger.debug("Es valido")
         validar
       else
-		logger.debug("No es valido")
+				logger.debug("No es valido")
         invalidar
       end
+		elsif changed?
+			# Si cambio algo (no la validación), volver a dejar pendiente de validación
+			self.valido_delivery = nil
+      notificar_validacion_pendiente
     end     
   end
   
