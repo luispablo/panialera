@@ -28,9 +28,9 @@ class Producto < ActiveRecord::Base
   
   belongs_to :marca
   
-  has_many :cat_productos
+  has_many :cat_productos, dependent: :destroy
   has_many :categorias, :through => :cat_productos
-  has_many :carrito_items
+  has_many :carrito_items, dependent: :destroy
   has_many :compra_detalles
   has_many :venta_detalles
 
@@ -165,16 +165,6 @@ private
   def ensure_not_referenced
     valido = true
         
-    unless carrito_items.empty?
-      errors.add(:base, "Hay líneas de carrito que lo referencian")
-      valido = false
-    end
-
-    unless cat_productos.empty?
-      errors.add(:base, "Este producto posee categorías asociadas")
-      valido = false
-    end    
-    
     unless compra_detalles.empty?
       errors.add(:base, "Hay compras que referencian a este producto")
       valido = false
