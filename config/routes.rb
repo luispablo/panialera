@@ -87,7 +87,7 @@ Panialera::Application.routes.draw do
     get 'productos_categoria/:codigo' => :productos_categoria
     post 'productos_categoria/:codigo' => :productos_categoria
     get 'detalle_producto/:codigo' => :detalle_producto
-	get 'detalle_oferta/:combo_id' => :detalle_combo
+		get 'detalle_oferta/:combo_id' => :detalle_combo
     get 'contacto' => :contacto
     post 'contacto' => :contacto
     get 'nueva_compra/seleccionar_domicilio' => :seleccionar_domicilio
@@ -98,6 +98,8 @@ Panialera::Application.routes.draw do
     post 'busqueda' => :busqueda
     get 'alcance' => :alcance
     get 'ofertas' => :ofertas
+		get 'destacados' => :destacados
+		post 'destacados' => :destacados
   end
 
   controller :mi_cuenta do

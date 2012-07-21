@@ -1,13 +1,7 @@
 
 	<div class="well titulo_azul">
 		<h3 style="float: left;"><%= @categoria.nombre %></h3>
-		<div class="pull-right" style="margin-top: 0px; float: right;">
-			<%= form_tag({}, {id: 'form_orden'}) do %>
-				Ordenar por&nbsp;
-				<%= select_tag :orden, options_for_select(@opciones_orden, @orden), class: 'span2', onchange: '$("#form_orden").submit();' %>
-			<% end %>
-		</div>
-		<h2>&nbsp;</h2>
+		<%= render partial: 'combo_orden' %>
 	</div>
 
 	<%= render @categoria.todos_productos(@orden) %>

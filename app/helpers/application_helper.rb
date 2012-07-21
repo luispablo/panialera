@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+	def quitar_brs(texto)
+		texto.gsub("<br>"," ").gsub("<br/>"," ").gsub("<BR>"," ").gsub("<BR/>"," ")
+	end
+
   def link_to_submit(texto, icono = nil, clase)
     html_icono = "<i class='icon-#{icono} icon-white'></i> " unless icono.nil?
     link_to_function "#{html_icono unless icono.nil?}#{texto}".html_safe, "$(this).closest('form').submit()", class: "btn #{clase}"

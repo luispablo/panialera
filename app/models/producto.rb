@@ -129,6 +129,11 @@ class Producto < ActiveRecord::Base
     compra_detalles.map { |d| d.precio_total }.sum
   end
   
+	# Busca los productos destacados, por orden
+	def self.destacados(orden = nil)
+		return Producto.where(destacado: true).sort { |a, b| a.comparar(b, orden) }
+	end
+
   def self.search(search, categoria_id = nil)
     if search
       if categoria_id.nil? || categoria_id.empty?

@@ -1,5 +1,6 @@
 ﻿class TiendaController < ApplicationController
   before_filter :cargar_carrito
+	before_filter :cargar_variables_orden, only: [:productos_categoria, :destacados]
 
   def detalle_combo
     @oferta = Combo.find(params[:combo_id])
@@ -7,6 +8,10 @@
     redirect_to tienda_url, notice: 'La oferta que estás intentando ver no figura actualmente en nuestro catálogo'
   end
   
+	def destacados
+		@destacados = Producto.destacados(@orden)
+	end
+
   def ofertas
     @combos = Combo.disponibles
     @productos = Producto.where(oferta: true)
@@ -144,8 +149,6 @@
   
   def productos_categoria
     @categoria = Categoria.find_by_codigo(params[:codigo])    
-    @opciones_orden = opciones_orden_categoria
-    @orden = params[:orden] || 'nombre asc'
     
     redirect_to tienda_url, notice: 'La categoría que estás intentando ver no figura actualmente en nuestro catálogo' unless @categoria
   end
@@ -157,6 +160,10 @@
   end
 
 private
+	def cargar_variables_orden
+    @opciones_orden = opciones_orden_categoria
+    @orden = params[:orden] || 'nombre asc'
+	end
   def opciones_orden_categoria
     [
       ['Más baratos primero', 'precio asc'],

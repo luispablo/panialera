@@ -49,6 +49,13 @@ ul#destacado
 	background-color: #4FB0E2;
 	text-align: center;
 }
+ul#destacado a.ver_mas, ul#destacado a.ver_mas:visited
+{
+	color: yellow;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: underline;
+}
 ul#destacado h3
 {
 	color: white;
@@ -195,6 +202,13 @@ div.titulo_verde
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+div.titulo_celeste
+{
+	background-color: #4FB0E2;
+	color: white;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 div.titulo_naranja
 {
 	background-color: #F2BA1B;
@@ -243,3 +257,9 @@ span.error
 	font-weight: bold;
 	color: red;
 }
+
+p.centrado
+{
+	text-align: center;
+}
+
