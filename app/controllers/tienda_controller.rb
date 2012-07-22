@@ -17,6 +17,10 @@
     @productos = Producto.where(oferta: true)
   end
 
+	def nosotros
+	
+	end
+
   def alcance
     
   end

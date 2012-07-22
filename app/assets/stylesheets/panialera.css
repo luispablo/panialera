@@ -273,3 +273,7 @@ p.centrado
 	text-align: center;
 }
 
+div.justify p
+{
+	text-align: justify;
+}

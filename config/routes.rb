@@ -98,6 +98,7 @@ Panialera::Application.routes.draw do
     post 'nuevo_domicilio' => :nuevo_dom
     post 'busqueda' => :busqueda
     get 'alcance' => :alcance
+    get 'nosotros' => :nosotros
     get 'ofertas' => :ofertas
 		get 'destacados' => :destacados
 		post 'destacados' => :destacados
