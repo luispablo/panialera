@@ -209,6 +209,16 @@ div.titulo_celeste
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+div.rosa
+{
+	background-color: #ed3968
+}
+div.titulo
+{
+	color: white;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 div.titulo_naranja
 {
 	background-color: #F2BA1B;
