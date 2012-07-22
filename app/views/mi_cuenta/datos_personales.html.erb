@@ -4,6 +4,19 @@
 	<div class="tab-content">
 
 		<div class="well titulo_naranja">
+			<h3>Mis hijos</h3>
+		</div>
+		
+		<div class="row">
+			<div class="span2">
+				<%= link_to 'Agregar hijo/a', {action: :new_hijo}, {class: 'btn pull-right'} %>
+			</div>
+			<div class="span5">
+				<%= render @usuario.hijos %>
+			</div>
+		</div>
+		
+		<div class="well titulo_naranja">
 			<h3>Mis datos personales</h3>
 		</div>
 		
@@ -41,19 +54,6 @@
 			</div>
 		<% end %>
 	
-		<div class="well titulo_naranja">
-			<h3>Mis hijos</h3>
-		</div>
-		
-		<div class="row">
-			<div class="span2">
-				<%= link_to 'Agregar hijo/a', {action: :new_hijo}, {class: 'btn pull-right'} %>
-			</div>
-			<div class="span5">
-				<%= render @usuario.hijos %>
-			</div>
-		</div>
-		
 	</div>
 </div>	
 	
