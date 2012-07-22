@@ -29,6 +29,7 @@ Panialera::Application.routes.draw do
     get '/admin/domicilio_invalido/:id' => :invalidar_domicilio
     get '/admin/venta_entregada/:venta_id' => :venta_entregada
     get '/admin/venta_cancelada/:venta_id' => :venta_cancelada
+    get '/admin/imprimir_proximas_entregas' => :imprimir_proximas_entregas
   end
 
   controller :sessions do

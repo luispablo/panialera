@@ -1,0 +1,26 @@
+
+	<h2>Pr&oacute;ximas entregas</h2>
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Cliente</th>
+				<th>Domicilio</th>
+				<th>Importe</th>
+				<th>Fecha entrega</th>
+				<th>Horario</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @proximas_entregas.each do |v| %>
+				<tr>
+					<td><%= v.usuario.nombre %>, <%= v.usuario.apellido %></td>
+					<td><%= v.domicilio.descripcion unless v.domicilio.nil? %></td>
+					<td><%= number_to_currency(v.monto_total) %></td>
+					<td><%= v.fecha %></td>
+					<td><%= v.hora_desde_entrega.strftime('%H:%M')%> - <%= v.hora_hasta_entrega.strftime('%H:%M') %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+

@@ -4,6 +4,7 @@
 	before_filter :cargar_domicilios_a_validar, only: :index
   
   layout 'admin'
+  layout 'printable', only: :imprimir_proximas_entregas
 
   def venta_entregada
     venta = Venta.find(params[:venta_id])
@@ -47,6 +48,11 @@
   def index
     @ventas_sin_conf = Venta.joins(:domicilio).where('domicilios.valido_delivery' => nil)
     @ventas_sin_entregar = Venta.where(entregada: false).order('fecha, hora_desde_entrega') - @ventas_sin_conf
+  end
+  
+  def imprimir_proximas_entregas
+    ventas_sin_conf = Venta.joins(:domicilio).where('domicilios.valido_delivery' => nil)
+    @proximas_entregas = Venta.where(entregada: false).order('fecha, hora_desde_entrega') - ventas_sin_conf
   end
   
 protected
