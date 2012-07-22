@@ -24,11 +24,15 @@ class CompraDetalle < ActiveRecord::Base
   
 private
   def quitar_stock
-    producto.quitar_stock cantidad
-    producto.save!
+  	unless producto.nil?
+		  producto.quitar_stock cantidad
+		  producto.save!
+		end
   end
   def agregar_stock
-    producto.agregar_stock cantidad
-    producto.save!
+  	unless producto.nil?
+		  producto.agregar_stock cantidad
+		  producto.save!
+		end
   end
 end
