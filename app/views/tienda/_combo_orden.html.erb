@@ -1,0 +1,9 @@
+
+		<div class="pull-right" style="margin-top: 0px; float: right;">
+			<%= form_tag({}, {id: 'form_orden'}) do %>
+				Ordenar por&nbsp;
+				<%= select_tag :orden, options_for_select(@opciones_orden, @orden), class: 'span2', style: 'margin-top: 3px', onchange: '$("#form_orden").submit();' %>
+			<% end %>
+		</div>
+		<h2>&nbsp;</h2>
+

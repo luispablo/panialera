@@ -1,5 +1,7 @@
 ﻿class AdminController < ApplicationController
   before_filter :authorize
+
+	before_filter :cargar_domicilios_a_validar, only: :index
   
   layout 'admin'
 
@@ -22,8 +24,8 @@
     @domicilio = Domicilio.find(params[:id])
     @domicilio.valido_delivery = true
     @domicilio.save
-    
-    @domicilios = Domicilio.where('valido_delivery <> ? or valido_delivery IS NULL', true)
+
+		cargar_domicilios_a_validar
     
     respond_to do |format|
       format.js
@@ -31,20 +33,26 @@
   end
   
   def invalidar_domicilio
-    domicilio = Domicilio.find(params[:id])
-    domicilio.valido_delivery = false
-    domicilio.save
+    @domicilio = Domicilio.find(params[:id])
+    @domicilio.valido_delivery = false
+    @domicilio.save
     
-    redirect_to controller: :admin, action: :index
+		cargar_domicilios_a_validar
+
+		respond_to do |format|
+			format.js
+		end
   end
 
   def index
-    @domicilios = Domicilio.where('valido_delivery <> ? or valido_delivery IS NULL', true)
     @ventas_sin_conf = Venta.joins(:domicilio).where('domicilios.valido_delivery' => nil)
     @ventas_sin_entregar = Venta.where(entregada: false).order('fecha, hora_desde_entrega') - @ventas_sin_conf
   end
   
 protected
+	def cargar_domicilios_a_validar
+    @domicilios = Domicilio.where('valido_delivery IS NULL')
+	end
   def authorize
     unless @usuario and @usuario.administrador? 
       redirect_to tienda_url, notice: 'Debe ser administrador para poder ingresar a la administración.'
