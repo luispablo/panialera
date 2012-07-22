@@ -17,6 +17,9 @@
     @productos = Producto.where(oferta: true)
   end
 
+	def servicios
+	end
+
 	def nosotros
 	
 	end

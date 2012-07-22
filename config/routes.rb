@@ -102,6 +102,7 @@ Panialera::Application.routes.draw do
     get 'ofertas' => :ofertas
 		get 'destacados' => :destacados
 		post 'destacados' => :destacados
+		get 'servicios' => :servicios
   end
 
   controller :mi_cuenta do
