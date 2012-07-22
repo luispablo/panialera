@@ -31,11 +31,13 @@ class Combo < ActiveRecord::Base
   end
   
   def modificar_stock(cantidad)
-    if stock.nil?
-      stock = 0
+  	logger.debug("---- stock combo '#{detalle}': #{stock}")
+  	
+    if self.stock.nil?
+      self.stock = 0
     else
       # Resta de su stock
-      stock += cantidad
+			self.stock += cantidad
       # y además debe restar los stocks de los productos que lo componen.
       unless combo_detalles.nil?
         combo_detalles.each do |cd| 
