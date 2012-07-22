@@ -97,6 +97,7 @@
     @dom.calle = params[:calle]
     @dom.numero = params[:numero]
     @dom.piso = params[:piso]
+		@dom.depto = params[:depto]    
     @dom.entre_calles = params[:entre_calles]
     @dom.codigo_postal = params[:codigo_postal]
     @dom.barrio_id = params[:barrio_id]
