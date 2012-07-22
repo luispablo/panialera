@@ -49,6 +49,10 @@ ul#destacado
 	background-color: #4FB0E2;
 	text-align: center;
 }
+ul#destacado h3 a, ul#destacado h3 a:visited
+{
+	color: white;
+}
 ul#destacado a.ver_mas, ul#destacado a.ver_mas:visited
 {
 	color: white;
