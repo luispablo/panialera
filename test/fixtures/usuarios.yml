@@ -18,18 +18,9 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  nombre: MyString
-  apellido: MyString
-  sexo: 
-  tel_particular: MyString
-  tel_celular: MyString
-  email: MyString
+admin:
+  nombre: Admin
+  
+cliente:
+  nombre: Cliente
 
-two:
-  nombre: MyString
-  apellido: MyString
-  sexo: 
-  tel_particular: MyString
-  tel_celular: MyString
-  email: MyString

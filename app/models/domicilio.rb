@@ -27,6 +27,10 @@ class Domicilio < ActiveRecord::Base
   
   before_save :notificar
   
+  def self.en_uso(usuario)
+  	Domicilio.where("usuario_id = ? AND deleted_at IS NULL", usuario.id)
+  end
+  
   def descripcion
     "#{calle} #{numero} #{piso} #{depto}"
   end

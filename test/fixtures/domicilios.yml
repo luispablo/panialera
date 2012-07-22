@@ -21,22 +21,12 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  nombre: MyString
-  calle: MyString
-  numero: 1
-  piso: MyString
-  depto: MyString
-  entre_calles: MyString
-  codigo_postal: MyString
-  barrio: 
+casa:
+  nombre: Casa
+  usuario: cliente
 
-two:
-  nombre: MyString
-  calle: MyString
-  numero: 1
-  piso: MyString
-  depto: MyString
-  entre_calles: MyString
-  codigo_postal: MyString
-  barrio: 
+trabajo:
+  nombre: Trabajo
+  usuario: cliente
+  deleted_at: <%= Date.today %>
+

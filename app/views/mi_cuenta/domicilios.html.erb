@@ -12,7 +12,7 @@
 		<div class="row">
 			<div class="span5 offset1">
 				&nbsp;
-				<%= render @usuario.domicilios_en_uso %>
+				<%= render Domicilio.en_uso(@usuario) %>
 			</div>
 			<div class="span1">
 				<%= link_to 'Agregar domicilio', {action: :new_domicilio}, {class: 'btn'} %>

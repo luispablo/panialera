@@ -22,7 +22,11 @@
 require 'test_helper'
 
 class DomicilioTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+	test "recuperar domicilios en uso" do
+		domicilios = Domicilio.en_uso(usuarios(:cliente))
+
+		assert_equal 1, domicilios.size, "Debe traer un solo domicilio"
+	end
+
 end
