@@ -25,6 +25,17 @@
 require 'test_helper'
 
 class VentaTest < ActiveSupport::TestCase
+
+	test "crear venta para carrito para otro dia" do
+		tomorrow = Date.today.next_day
+		
+		carrito = Carrito.new
+		carrito.fecha_entrega = tomorrow
+		
+		venta = Venta.crear_desde_carrito(carrito, nil)
+		
+		assert_equal venta.fecha_entrega, tomorrow, "La venta debe ser para maniana"
+	end
   # test "the truth" do
   #   assert true
   # end

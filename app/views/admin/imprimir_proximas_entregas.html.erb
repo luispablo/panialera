@@ -17,7 +17,7 @@
 					<td><%= v.usuario.nombre %>, <%= v.usuario.apellido %></td>
 					<td><%= v.domicilio.descripcion unless v.domicilio.nil? %></td>
 					<td><%= number_to_currency(v.monto_total) %></td>
-					<td><%= v.fecha %></td>
+					<td><%= v.fecha_entrega %></td>
 					<td><%= v.hora_desde_entrega.strftime('%H:%M')%> - <%= v.hora_hasta_entrega.strftime('%H:%M') %></td>
 				</tr>
 			<% end %>
