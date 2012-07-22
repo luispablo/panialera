@@ -51,7 +51,7 @@ ul#destacado
 }
 ul#destacado a.ver_mas, ul#destacado a.ver_mas:visited
 {
-	color: yellow;
+	color: white;
 	font-size: 14px;
 	font-weight: bold;
 	text-decoration: underline;
