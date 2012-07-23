@@ -39,6 +39,10 @@ div#carrito h3
 {
 	margin-bottom: 10px;
 }
+div#carrito h3 a
+{
+	color: white;
+}
 div#carrito p
 {
 	font-weight: bold;
