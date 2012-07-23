@@ -8,11 +8,11 @@
 			<blockquote>Los campos marcados <i class="icon-asterisk"></i> con son obligatorios.</blockquote>
 			<div class="control-group">
 				<%= f.label :nombre, raw('<i class="icon-asterisk"></i> Nombre'), class: 'control-label' %>
-				<div class="controls"><%= f.text_field :nombre %></div>
+				<div class="controls"><%= f.text_field :nombre, autocomplete: "off" %></div>
 			</div>
 			<div class="control-group">
 				<%= f.label :apellido, raw('<i class="icon-asterisk"></i> Apellido'), class: 'control-label' %>
-				<div class="controls"><%= f.text_field :apellido %></div>
+				<div class="controls"><%= f.text_field :apellido, autocomplete: "off" %></div>
 			</div>
 			<div class="control-group">
 				<%= f.label :sexo, raw('<i class="icon-asterisk"></i> Sexo'), class: 'control-label' %>
@@ -20,19 +20,19 @@
 			</div>
 			<div class="control-group">
 				<%= f.label :email, raw('<i class="icon-asterisk"></i> e-mail'), class: 'control-label' %>
-				<div class="controls"><%= f.email_field :email %></div>
+				<div class="controls"><%= f.email_field :email, autocomplete: "off" %></div>
 			</div>
 			<div class="control-group">
 				<%= f.label :tel_particular, raw('<i class="icon-asterisk"></i> Tel. Particular'), class: 'control-label' %>
-				<div class="controls"><%= f.telephone_field :tel_particular %></div>
+				<div class="controls"><%= f.telephone_field :tel_particular, autocomplete: "off" %></div>
 			</div>
 			<div class="control-group">
-				<%= f.label :tel_celular, raw('<i class="icon-asterisk"></i> Tel. Celular'), class: 'control-label' %>
-				<div class="controls"><%= f.telephone_field :tel_celular %></div>
+				<%= f.label :tel_celular, raw('Tel. Celular'), class: 'control-label' %>
+				<div class="controls"><%= f.telephone_field :tel_celular, autocomplete: "off" %></div>
 			</div>
 			<div class="control-group">
 				<%= f.label :tel_laboral, 'Tel. Laboral', class: 'control-label' %>
-				<div class="controls"><%= f.telephone_field :tel_laboral %></div>
+				<div class="controls"><%= f.telephone_field :tel_laboral, autocomplete: "off" %></div>
 			</div>
 			<div class="control-group">
 				<%= f.label :password, raw('<i class="icon-asterisk"></i> Contraseña'), :class => 'control-label' %>
