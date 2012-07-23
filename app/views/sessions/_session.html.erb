@@ -1,5 +1,11 @@
 
-	<h3>Mi Cuenta</h3>
+	<h3>
+		<% if usuario_logueado? %>
+			<%= link_to 'Mi Cuenta', url_for(controller: :mi_cuenta, action: :datos_personales, id: @usuario.id) %>
+		<% else %>
+			Mi Cuenta
+		<% end %>
+	</h3>
 	
 	<% if @usuario and not @usuario.new_record? %>
 		<p>Bienvenida/o, <%= @usuario.nombre %>.</p>

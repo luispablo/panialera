@@ -181,6 +181,10 @@ div#mi_cuenta h3
 {
 	margin-bottom: 10px;
 }
+div#mi_cuenta h3 a, div#mi_cuenta h3 a:visited
+{
+	color: black;
+}
 
 div.titulo_gris
 {	
