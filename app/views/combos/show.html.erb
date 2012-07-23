@@ -24,6 +24,10 @@
 						<%= @combo.contenido %>
 					</p>
 					<p>
+						<b>¿Es regalo?</b>
+						<%= best_in_place @combo, :regalo, type: :checkbox, collection: ['<i class="icon-remove"></i>'.html_safe, '<i class="icon-ok"></i>'.html_safe] %>
+					</p>
+					<p>
 			  			<b>Precio:</b>
 			  			<%= best_in_place @combo, :precio, display_with: :number_to_currency %>
 					</p>

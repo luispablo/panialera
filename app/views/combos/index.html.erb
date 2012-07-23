@@ -18,6 +18,7 @@
 			    <th rowspan="2">Precio</th>
 			    <th rowspan="2">Precio real</th>
 			    <th rowspan="2">Contenido</th>
+			    <th rowspan="2">¿Es regalo?</th>
 			    <th colspan="3">Stock</th>
 			    <th rowspan="2">Cu&aacute;ntos se pueden armar</th>
 			    <th rowspan="2"></th>
@@ -36,6 +37,7 @@
 				    <td><%= number_to_currency(combo.precio) %></td>
 				    <td><%= number_to_currency(combo.precio_real) %></td>
 				    <td><%= combo.contenido %></td>
+						<td><%= best_in_place combo, :regalo, type: :checkbox, collection: ['<i class="icon-remove"></i>'.html_safe, '<i class="icon-ok"></i>'.html_safe] %></td>
 				    <td><%= pretty_number(combo.stock) %></td>
 				    <td><%= pretty_number(combo.stock_comprometido) %></td>
 				    <td><%= pretty_number(combo.stock_disponible) %></td>
