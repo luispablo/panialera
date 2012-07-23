@@ -221,6 +221,10 @@ div.titulo_celeste
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+div.violeta
+{
+	background-color: #8625E8;
+}
 div.rosa
 {
 	background-color: #ed3968
@@ -261,7 +265,7 @@ span.client_side_validation
 
 .navbar .nav > li.ofertas > a 
 {
-	color: #ED3968;
+	color: #8625E8;
 }
 
 span.precio_total_linea
