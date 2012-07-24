@@ -19,7 +19,7 @@
             
             redirect_to url  
           else
-            redirect_to tienda_url, notice: "Usuario #{@usuario.email} registrado con éxito."
+            redirect_to tienda_url, notice: "Registrado con éxito. ¡Bienvenida/o #{@usuario.nombre}!"
           end
         end
       else

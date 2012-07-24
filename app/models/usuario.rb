@@ -22,6 +22,8 @@ class Usuario < ActiveRecord::Base
   has_many :hijos
   has_many :vales
   
+  before_save :bienvenida
+  
   validates :nombre, :apellido, :email, :tel_particular, :presence => { :message => ' es un campo requerido.'}
   validates :email, uniqueness: true
   
@@ -48,5 +50,12 @@ class Usuario < ActiveRecord::Base
       Domicilio.new(usuario: self, ultima_entrega: true)
     end
   end
-    
+  
+private    
+	def bienvenida
+		# La primera vez que se graba, dar la bienvenida
+		unless self.persisted?
+			UsuarioNotifier.bienvenida(self).deliver
+		end
+	end
 end

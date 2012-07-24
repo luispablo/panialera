@@ -43,7 +43,7 @@
 				<div class="controls"><%= f.password_field :password_confirmation, size: 40 %></div>
 			</div>
 			<div class="form-actions">
-				<%= f.submit 'Aceptar', class: 'btn btn-primary' %>
+				<%= f.submit 'Aceptar', class: 'btn btn-primary', onclick: 'block("Aguarde un momento por favor...");' %>
 			</div>		  		
 		<% end %>
 	</div>
