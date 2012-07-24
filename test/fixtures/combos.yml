@@ -16,10 +16,9 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  codigo: MyString
-  precio: 1.5
+uno:
+  nombre: Combo 1
 
-two:
-  codigo: MyString
-  precio: 1.5
+dos:
+  nombre: Combo 2
+

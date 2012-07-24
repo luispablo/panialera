@@ -25,22 +25,15 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  codigo: MyString
-  nombre: MyString
-  descripcion: MyString
-  detalle: MyString
-  precio: 1.5
-  referencia: MyString
-  disponible: false
-  publicado: false
+uno:
+  nombre: Prueba 1
+  precio: 7
 
-two:
-  codigo: MyString
-  nombre: MyString
-  descripcion: MyString
-  detalle: MyString
-  precio: 1.5
-  referencia: MyString
-  disponible: false
-  publicado: false
+dos:
+  nombre: Prueba 2
+  precio: 15
+
+tres:
+  nombre: Prueba 3
+  precio: 3
+

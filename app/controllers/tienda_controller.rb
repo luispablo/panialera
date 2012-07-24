@@ -1,6 +1,6 @@
 ﻿class TiendaController < ApplicationController
   before_filter :cargar_carrito
-	before_filter :cargar_variables_orden, only: [:productos_categoria, :destacados]
+	before_filter :cargar_variables_orden, only: [:productos_categoria, :destacados, :ofertas]
 
   def detalle_combo
     @oferta = Combo.find(params[:combo_id])
@@ -13,8 +13,9 @@
 	end
 
   def ofertas
-    @combos = Combo.disponibles
-    @productos = Producto.where(oferta: true)
+		combos = Combo.disponibles
+		productos = Producto.where(oferta: true)
+		@ofertas = (combos + productos).sort { |a, b| a.comparar(b, @orden) }
   end
 
 	def servicios

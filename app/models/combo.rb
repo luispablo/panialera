@@ -88,6 +88,24 @@ class Combo < ActiveRecord::Base
     end
   end
   
+	# Realiza la comparación, sin tomar en cuenta el asc o desc.
+	def comparar_campo(otro, orden)
+		if orden.include?('nombre')
+			if otro.kind_of?(Combo)
+				self.detalle <=> otro.detalle
+			elsif otro.kind_of?(Producto)
+				self.detalle <=> otro.nombre
+			end
+		elsif orden.include?('precio')
+			self.precio <=> otro.precio
+		end
+	end
+
+	# Invoca la comparación real y multiplica por -1 luego si es desc.
+  def comparar(otro, orden)
+  	comparar_campo(otro, orden) * (orden.include?('asc')? 1 : -1)
+  end
+  
   # Indica si hay stock disponible de los productos
   # que componen el combo como para venderlo.
   def hay_stock_componentes?

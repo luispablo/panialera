@@ -131,7 +131,7 @@ class Producto < ActiveRecord::Base
   
 	# Busca los productos destacados, por orden
 	def self.destacados(orden = nil)
-		return Producto.where(destacado: true).sort { |a, b| a.comparar(b, orden) }
+		return Producto.where(destacado: true, publicado: true).sort { |a, b| a.comparar(b, orden) }
 	end
 
   def self.search(search, categoria_id = nil)
@@ -150,20 +150,22 @@ class Producto < ActiveRecord::Base
     end
   end
 
+	# Realiza la comparación, sin tomar en cuenta el asc o desc.
+	def comparar_campo(otro, orden)
+		if orden.nil? or orden.include?('nombre')
+			if otro.kind_of?(Producto)
+				self.nombre <=> otro.nombre
+			elsif otro.kind_of?(Combo)
+				self.nombre <=> otro.detalle
+			end
+		elsif orden.include?('precio')
+			self.precio <=> otro.precio
+		end
+	end
+
+	# Invoca la comparación real y multiplica por -1 luego si es desc.
   def comparar(otro, orden)
-    unless orden.nil?
-      if orden == 'nombre asc'
-        self.nombre <=> otro.nombre
-      elsif orden == 'nombre desc'
-        otro.nombre <=> self.nombre
-      elsif orden == 'precio asc'
-        self.precio <=> otro.precio
-      elsif orden == 'precio desc'
-        otro.precio <=> self.precio
-      end
-    else
-      0
-    end
+  	comparar_campo(otro, orden) * ((orden.nil? or orden.include?('asc'))? 1 : -1)
   end
 
 private

@@ -100,6 +100,7 @@ Panialera::Application.routes.draw do
     get 'alcance' => :alcance
     get 'nosotros' => :nosotros
     get 'ofertas' => :ofertas
+    post 'ofertas' => :ofertas
 		get 'destacados' => :destacados
 		post 'destacados' => :destacados
 		get 'servicios' => :servicios
