@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+	def boolean_listado(objeto, campo)
+		best_in_place objeto, campo, type: :checkbox, collection: ['<i class="icon-remove"></i>'.html_safe, '<i class="icon-ok"></i>'.html_safe]
+	end
+
 	def quitar_brs(texto)
 		texto.gsub("<br>"," ").gsub("<br/>"," ").gsub("<BR>"," ").gsub("<BR/>"," ")
 	end
