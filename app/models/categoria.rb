@@ -41,7 +41,7 @@ class Categoria < ActiveRecord::Base
   end
   
   def hijas_publicadas
-    hijas.find_all { |hija| hija.publicado? }
+    hijas.find_all { |hija| hija.publicado? and !hija.todos_productos.empty? }
   end
   
   def hija_seleccionada?(categoria)
