@@ -15,14 +15,23 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  codigo: MyString
-  nombre: MyString
-  descripcion: MyString
-  categoria: 
+madre1:
+  codigo: MADRE1
+  nombre: Madre Uno
+  descripcion: Madre Uno
+  publicado: true
 
-two:
-  codigo: MyString
-  nombre: MyString
-  descripcion: MyString
-  categoria: 
+hija1:
+  codigo: HIJA1
+  nombre: Hija Uno
+  descripcion: Hija Uno
+  publicado: true
+  categoria: madre1
+  
+hija2:
+  codigo: HIJA2
+  nombre: Hija Dos
+  descripcion: Hija Dos
+  publicado: true
+  categoria: madre1
+

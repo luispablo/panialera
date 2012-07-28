@@ -12,9 +12,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  producto: 
-  categoria: 
+  producto: uno
+  categoria: hija1
 
-two:
-  producto: 
-  categoria: 

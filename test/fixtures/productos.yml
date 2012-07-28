@@ -28,6 +28,7 @@
 uno:
   nombre: Prueba 1
   precio: 7
+  publicado: true
 
 dos:
   nombre: Prueba 2

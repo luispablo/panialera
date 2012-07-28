@@ -16,7 +16,11 @@
 require 'test_helper'
 
 class CategoriaTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+	test "mostrar solo subcategorias con productos" do
+		hijas =	categorias(:madre1).hijas_publicadas
+		
+		assert_equal 1, hijas.size, "Debe tener 1 hija, la publicada con productos"
+	end
+	
 end
