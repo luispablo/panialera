@@ -18,6 +18,10 @@ class Carrito < ActiveRecord::Base
   
   belongs_to :domicilio
 
+	def cantidad_agregada(algo)
+		carrito_items.find_all { |item| item.tiene_esto?(algo) }.sum { |item| item.cantidad }
+	end
+	
   def costo_envio
     if carrito_items.empty? or self.precio_total_items >= Parametro.monto_minimo_sin_envio
       0

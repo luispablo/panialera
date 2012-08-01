@@ -14,7 +14,7 @@ module ApplicationHelper
   end
 
   def texto_boton_carrito(producto)
-    producto.hay_stock? ? t('botones.agregar_carrito') : t('botones.sin_stock')
+    puede_comprar?(producto) ? t('botones.agregar_carrito') : t('botones.sin_stock')
   end
 
   def sortable(column, title = nil)

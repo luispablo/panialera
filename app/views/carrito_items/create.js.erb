@@ -8,3 +8,10 @@
 		$('#item_actual').css({'background-color':'#F2BA1B'}).animate({'background-color':'#9EAA4F'}, 3500);
 		$('#total').css({'background-color':'#ED3968'}).animate({'background-color':'#9EAA4F'}, 3500);		
 	<% end %>
+
+	<!-- Apagar el botón si no queda stock -->
+	<% unless @carrito_item.se_pueden_agregar_mas? %>
+		$('#<%= @id_boton %>').val("Sin stock");
+		$('#<%= @id_boton %>').attr('disabled', 'disabled');
+	<% end %>
+

@@ -53,8 +53,10 @@
     end
 
     if producto_id.nil?
+    	@id_boton = "boton_combo_#{combo_id}"    	
       @carrito_item = @carrito.agregar_combo(combo_id, cantidad)
     else
+    	@id_boton = "boton_producto_#{producto_id}"
       @carrito_item = @carrito.agregar_producto(producto_id, cantidad)
     end    
                   

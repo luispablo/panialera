@@ -26,7 +26,7 @@
 						<%= link_to 'Ver Detalle', controller: :tienda, action: :detalle_producto, codigo: producto.codigo %>
 					</div>
 					<div class="span2" style="text-align: right">
-						<%= button_to texto_boton_carrito(producto), carrito_items_path(producto_id: producto), disabled: !producto.hay_stock?, remote: true, class: 'btn btn-danger' %>
+						<%= button_to texto_boton_carrito(producto), carrito_items_path(producto_id: producto), disabled: !puede_comprar?(producto), remote: true, class: 'btn btn-danger', id: "boton_producto_#{producto.id}" %>
 					</div>
 				</div>
 			</div>

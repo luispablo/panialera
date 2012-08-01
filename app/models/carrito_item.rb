@@ -18,12 +18,20 @@ class CarritoItem < ActiveRecord::Base
   
   validate :alcanza_stock_producto
   
+  def tiene_esto?(algo)
+  	(algo.kind_of? Producto and self.producto_id == algo.id) or (algo.kind_of? Combo and self.combo_id == algo.id)
+  end
+  
   def stock_disponible
     if producto.nil?
       combo.stock_disponible
     else
       producto.stock_disponible
     end
+  end
+  
+  def se_pueden_agregar_mas?
+  	cantidad < stock_disponible
   end
   
   def alcanza_stock?

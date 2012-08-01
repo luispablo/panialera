@@ -17,7 +17,7 @@
 	
 			<p>
 				<%= link_to 'Ver Detalles', controller: :tienda, action: :detalle_producto, codigo: oferta.codigo %>
-				<%= button_to texto_boton_carrito(oferta), carrito_items_path(producto_id: oferta), disabled: !oferta.hay_stock?, remote: true, class: 'btn btn-danger' %>
+				<%= button_to texto_boton_carrito(oferta), carrito_items_path(producto_id: oferta), disabled: !puede_comprar?(oferta), remote: true, class: 'btn btn-danger', id: "boton_producto_#{oferta.id}" %>
 			</p>
 		<% else %>
 			<p>
@@ -27,7 +27,8 @@
 			
 			<p>
 				<%= link_to 'Ver Detalles', controller: :tienda, action: :detalle_combo, combo_id: oferta.id %>
-				<%= button_to texto_boton_carrito(oferta), carrito_items_path(combo_id: oferta), disabled: !oferta.hay_stock?, remote: true, class: 'btn btn-danger' %>				
+				<%= button_to texto_boton_carrito(oferta), carrito_items_path(combo_id: oferta), disabled: !puede_comprar?(oferta), remote: true, class: 'btn btn-danger', id: "boton_combo_#{oferta.id}" %>				
 			</p>
 		<% end %>				
 	</div>
+
