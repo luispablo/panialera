@@ -15,7 +15,7 @@
 			<% @ventas.each do |venta| %>
 				<tr>
 				    <td><%= venta.fecha.strftime('%d/%m/%Y') %></td>
-				    <td><%= venta.usuario.apellido unless venta.usuario.nil? %></td>
+				    <td><%= "#{venta.usuario.nombre} #{venta.usuario.apellido}" unless venta.usuario.nil? %></td>
 				    <td><%= venta.domicilio.nombre unless venta.domicilio.nil? %></td>
 				    <td><%= number_to_currency(venta.monto_total) %></td>
 				    <td>
