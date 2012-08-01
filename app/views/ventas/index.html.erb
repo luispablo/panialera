@@ -7,6 +7,7 @@
 			    <th>Fecha</th>
 			    <th>Usuario</th>
 			    <th>Domicilio</th>
+					<th>Importe</th>
 			    <th></th>
 			</tr>
 		</thead>
@@ -16,6 +17,7 @@
 				    <td><%= venta.fecha.strftime('%d/%m/%Y') %></td>
 				    <td><%= venta.usuario.apellido unless venta.usuario.nil? %></td>
 				    <td><%= venta.domicilio.nombre unless venta.domicilio.nil? %></td>
+				    <td><%= number_to_currency(venta.monto_total) %></td>
 				    <td>
 				    	<%= link_to 'Detalle <i class="icon-edit icon-white"></i>'.html_safe, venta, class: 'btn btn-info' %>
 				    	<%= link_to 'Destruir <i class="icon-remove icon-white"></i>'.html_safe, venta, confirm: '¿Estás seguro?', method: :delete, class: 'btn btn-danger' %>
