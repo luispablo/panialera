@@ -65,7 +65,7 @@
 					<td><%= producto.descripcion %></td>
 					<td><%= producto.categorias.map { |c| c.nombre }.join(', ') %></td>
 					<td><%= trunc(producto.detalle, 10, '...') %></td>
-					<td><%= producto.precio %></td>
+					<td nowrap><%= best_in_place producto, :precio, display_with: :number_to_currency, html_attrs: {class: 'span1'} %></td>
 					<td><%= producto.talle %></td>
 					<td><%= producto.referencia %></td>
 					<td class="strong red"><%= pretty_number(producto.stock_real) %></td>

@@ -35,7 +35,7 @@
   				<tr class="<%= "no_publicado" unless combo.publicado? %>">
 				    <td><%= combo.codigo %></td>
 				    <td><%= combo.nombre %></td>
-				    <td><%= number_to_currency(combo.precio) %></td>
+				    <td nowrap><%= best_in_place combo, :precio, display_with: :number_to_currency, html_attrs: {class: 'span1'} %></td>
 				    <td><%= number_to_currency(combo.precio_real) %></td>
 				    <td><%= combo.contenido %></td>
 						<td><%= boolean_listado(combo, :regalo) %></td>
