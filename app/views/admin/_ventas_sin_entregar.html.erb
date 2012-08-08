@@ -10,12 +10,13 @@
 
 	<br/>
 
-<table class="table table-striped table-condensed">
+<table class="table table-bordered table-striped table-condensed">
 	<thead>
 		<tr>
 			<th>Cliente</th>
 			<th>Domicilio</th>
 			<th>Importe</th>
+			<th>Env&iacute;o</th>
 			<th>Fecha entrega</th>
 			<th>Horario</th>
 			<th>&nbsp;</th>
@@ -26,12 +27,34 @@
 			<tr>
 				<td><%= v.usuario.nombre %>, <%= v.usuario.apellido %></td>
 				<td><%= v.domicilio.descripcion unless v.domicilio.nil? %></td>
-				<td><%= number_to_currency(v.monto_total) %></td>
+				<td nowrap><strong class="red"><%= number_to_currency(v.monto_total) %></td>
+				<td nowrap><strong><%= number_to_currency(v.costo_envio) %></strong></td>
 				<td><%= v.fecha_entrega %></td>
-				<td><%= v.hora_desde_entrega.strftime('%H:%M')%> - <%= v.hora_hasta_entrega.strftime('%H:%M') %></td>
-				<td>
+				<td nowrap><%= v.hora_desde_entrega.strftime('%H:%M')%> - <%= v.hora_hasta_entrega.strftime('%H:%M') %></td>
+				<td nowrap>
 					<%= link_to '<i class="icon-ok icon-white"></i>'.html_safe, {controller: :admin, action: :venta_entregada, venta_id: v.id}, class: 'btn btn-success' %>
 					<%= link_to '<i class="icon-remove icon-white"></i>'.html_safe, {controller: :admin, action: :venta_cancelada, venta_id: v.id}, class: 'btn btn-danger' %>
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td colspan="6" nowrap>
+					
+					<table class="table table-striped table-condensed">
+						<tbody>
+							<% v.venta_detalles.each do |d| %>
+								<tr>
+									<td><%= d.producto.nil? ? d.combo.detalle : "#{d.producto.descrip_corta} #{d.producto.descripcion}" %></td>
+									<td>
+										<%= pretty_number(d.cantidad) %>&times;
+										<%= number_to_currency(d.precio_unitario) %> =
+										<strong><%= number_to_currency(d.precio_total) %></strong>
+									</td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+					
 				</td>
 			</tr>
 		<% end %>

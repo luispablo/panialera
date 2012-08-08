@@ -6,14 +6,12 @@
 			<%= render partial: 'admin/domicilios_sin_conf', locals: {domicilios: @domicilios} %>
 		</div>
 		<div class="span6">
-			<div class="row">
-				<%= render partial: 'admin/ventas_sin_conf', locals: {ventas: @ventas_sin_conf} %>
-			</div>
-			<div class="row">
-				<div class="well">
-					<%= render partial: 'admin/ventas_sin_entregar', locals: {ventas: @ventas_sin_entregar} %>
-				</div>				
-			</div>
+			<%= render partial: 'admin/ventas_sin_conf', locals: {ventas: @ventas_sin_conf} %>
 		</div>
 	</div>
+	<div class="row-fluid">
+		<div class="well">
+			<%= render partial: 'admin/ventas_sin_entregar', locals: {ventas: @ventas_sin_entregar} %>
+		</div>				
+	</div>	
 	
