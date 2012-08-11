@@ -27,10 +27,6 @@
   			<%= f.label :utilizado, :class => 'control-label' %>
   			<div class="controls"><%= f.check_box :utilizado %></div>
   		</div>
-  		<div class="control-group">
-    		<%= f.label :usuario, :class => 'control-label' %>
-    		<div class="controls"><%= f.select :usuario_id, Usuario.all.map { |u| [u.apellido, u.id] } %></div>
-  		</div>
   		
   		<div class="form-actions">
     		<%= f.submit 'Grabar', :class => 'btn btn-primary'%>

@@ -7,7 +7,6 @@
 #  nombre               :string(255)
 #  created_at           :datetime        not null
 #  updated_at           :datetime        not null
-#  usuario_id           :integer
 #  porcentaje_descuento :float
 #  utilizado            :boolean
 #
