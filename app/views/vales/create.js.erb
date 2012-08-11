@@ -1,0 +1,12 @@
+
+	<% unless @vale.errors.empty? %>
+		<% @vale.errors.each do |e| %>
+			alert('<%= e %>: <%= raw(@vale.errors[e]) %>');
+		<% end %>
+	<% else %>
+		$('#cuerpo_tabla_vales').html('<%=j render @vales %>');
+		$('#vale_codigo').val('');
+		$('#vale_codigo').focus();
+		$('#vale_porcentaje_descuento').val('');
+	<% end %>
+

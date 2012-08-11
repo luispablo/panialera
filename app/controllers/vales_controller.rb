@@ -2,6 +2,7 @@ class ValesController < AdminController
   # GET /vales
   # GET /vales.json
   def index
+	  @vale = Vale.new
     @vales = Vale.all
 
     respond_to do |format|
@@ -41,13 +42,18 @@ class ValesController < AdminController
   # POST /vales.json
   def create
     @vale = Vale.new(params[:vale])
+    
+    @vale.nombre = @vale.codigo if @vale.nombre.nil? or @vale.nombre.empty?
+    @vale.utilizado = false
 
     respond_to do |format|
       if @vale.save
         format.html { redirect_to @vale, notice: 'Vale was successfully created.' }
+        format.js { @vales = Vale.all }
         format.json { render json: @vale, status: :created, location: @vale }
       else
         format.html { render action: "new" }
+        format.js
         format.json { render json: @vale.errors, status: :unprocessable_entity }
       end
     end

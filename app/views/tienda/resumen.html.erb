@@ -79,23 +79,45 @@
 							<td colspan="4"><%= i.combo.detalle %></td>
 						<% end %>
 						<td><%= pretty_number(i.cantidad) %></td>
-						<td><%= number_to_currency(i.precio_unitario) %></td>
-						<td><%= number_to_currency(i.precio_total) %></td>
+						<td nowrap><%= number_to_currency(i.precio_unitario) %></td>
+						<td nowrap><%= number_to_currency(i.precio_total) %></td>
 					</tr>
 				<% end %>
 			</tbody>
 			<tfoot>
+				<% if @carrito.vale %>
+					<tr>
+						<td colspan="6"><strong>Descuento vale <%= @carrito.vale.codigo %> (% <%= @carrito.vale.porcentaje_descuento %>)</strong></td>
+						<td class="descuento" nowrap>- <%= number_to_currency(@carrito.valor_descuento) %></td>
+					</tr>
+				<% end %>
 				<tr>
 					<td colspan="6" align="right">Costo de env&iacute;o</td>
-					<td><%= number_to_currency(@carrito.costo_envio) %></td>
+					<td nowrap><%= number_to_currency(@carrito.costo_envio) %></td>
 				</tr>
 				<tr>
 					<td colspan="6" align="right"><strong>Importe total de la compra</strong></td>
-					<td><strong><%= number_to_currency(@carrito.precio_total)%></strong></td>
+					<td nowrap><strong><%= number_to_currency(@carrito.precio_total)%></strong></td>
 				</tr>
 			</tfoot>
 		</table>
-		<br/>
+		
+		<% unless @carrito.vale %>
+			<table class="table table-striped table-bordered">
+				<tbody>
+					<tr>
+						<td><strong>Vale de descuento</strong></td>
+						<td>
+							<%= form_tag({}, {class: 'form-inline'}) do %>						
+								<label for="codigo">C&oacute;digo:&nbsp;</label>
+								<%= text_field_tag :codigo_vale, nil, {class: 'span2'} %>
+								<input type="submit" value="Agregar vale" class="btn btn-primary" />
+							<% end %>								
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		<% end %>
 	
 		<div class="row" style="text-align: center;">
 			<%= link_to "Confirmar la compra", '#', onclick: 'javascript: terminar();', class: 'btn btn-success btn-large' %>

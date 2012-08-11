@@ -9,6 +9,7 @@
 #  fecha_entrega      :date
 #  hora_desde_entrega :time
 #  hora_hasta_entrega :time
+#  vale_id            :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

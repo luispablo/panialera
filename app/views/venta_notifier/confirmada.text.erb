@@ -13,6 +13,7 @@ Has comprado:
 	<% end %>
 <% end %>
 
+<%= "- Descuento vale #{@venta.codigo_vale} #{number_to_currency(@venta.valor_descuento * -1)}" if @venta.tiene_descuento? %>
 <%= "- Delivery #{number_to_currency(@venta.costo_envio)}" unless @venta.costo_envio.nil? if @venta.costo_envio > 0 %>
 
 Precio total: <%= number_to_currency(@venta.monto_total) %>

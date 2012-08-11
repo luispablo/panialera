@@ -12,5 +12,10 @@
 #
 
 class Vale < ActiveRecord::Base
+	attr_accessor :valor_calculado
   belongs_to :usuario
+  
+  validates :codigo, presence: true, uniqueness: true
+  validates :porcentaje_descuento, presence: true 
+  
 end

@@ -56,6 +56,11 @@
       mensaje << '<br/>IMPORTANTE: Como es la primera vez que comprás, estaremos llamándote por teléfono para confirmar tus datos.'
     end
     
+    unless @carrito.vale.nil?
+		  @carrito.vale.utilizado = true
+		  @carrito.vale.save
+		end
+    
     redirect_to tienda_url, notice: mensaje
   end
   
@@ -64,6 +69,23 @@
 
 		@importe_minimo = Parametro.monto_minimo_sin_envio
 		@costo_envio = Parametro.precio_envio
+
+		unless params[:codigo_vale].nil?
+			vale = Vale.where("codigo = '#{params[:codigo_vale].strip}'").first
+			
+			if vale
+				unless vale.utilizado?
+					@carrito.vale = vale
+					flash[:error] = nil
+				else
+					flash[:error] = 'El vale que está intentando utilizar ya fue descontado de otra compra'
+				end
+			else
+				flash[:error] = 'El código ingresado no corresponde a un vale de descuento habilitado'
+			end
+		else
+			@carrito.vale = nil
+		end
 
     @carrito.domicilio_id = params[:domicilio_id]
     @carrito.fecha_entrega = Date.strptime(params[:fecha], '%Y%m%d')

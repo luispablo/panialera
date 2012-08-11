@@ -9,6 +9,7 @@
 #  fecha_entrega      :date
 #  hora_desde_entrega :time
 #  hora_hasta_entrega :time
+#  vale_id            :integer
 #
 
 class Carrito < ActiveRecord::Base
@@ -17,6 +18,7 @@ class Carrito < ActiveRecord::Base
   validates_associated :carrito_items
   
   belongs_to :domicilio
+  belongs_to :vale
 
 	def cantidad_agregada(algo)
 		carrito_items.find_all { |item| item.tiene_esto?(algo) }.sum { |item| item.cantidad }
@@ -30,12 +32,20 @@ class Carrito < ActiveRecord::Base
     end    
   end
 
+	def valor_descuento
+		if self.vale
+			precio_total_items * self.vale.porcentaje_descuento / 100
+		else
+			0
+		end
+	end
+
   def precio_total_items
     carrito_items.to_a.sum { |item| item.precio_total }
   end
 
   def precio_total
-    precio_total_items + costo_envio
+    precio_total_items - valor_descuento + costo_envio
   end
   
   def agregar_combo(combo_id, cantidad)

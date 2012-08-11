@@ -15,6 +15,8 @@
 #  costo_envio        :float
 #  comentarios        :string(255)
 #  entregada          :boolean
+#  codigo_vale        :string(255)
+#  valor_descuento    :float
 #
 
 class Venta < ActiveRecord::Base
@@ -27,6 +29,10 @@ class Venta < ActiveRecord::Base
 
   attr_accessor :entrega
 
+	def tiene_descuento?
+		not (codigo_vale.nil? and (valor_descuento.nil? or valor_descuento == 0))
+	end
+
   def self.crear_desde_carrito(carrito, usuario)
     venta = Venta.new
     
@@ -38,6 +44,13 @@ class Venta < ActiveRecord::Base
     venta.fecha_entrega = carrito.fecha_entrega
     venta.hora_desde_entrega = carrito.hora_desde_entrega
     venta.hora_hasta_entrega = carrito.hora_hasta_entrega
+             
+    if carrito.vale
+    	venta.codigo_vale = carrito.vale.codigo
+    	venta.valor_descuento = carrito.valor_descuento
+    else
+    	venta.valor_descuento = 0
+    end
              
     venta.cargar_items_carrito(carrito)
 
@@ -53,7 +66,7 @@ class Venta < ActiveRecord::Base
   end
   
   def monto_total
-    monto_total_lineas + (costo_envio.nil? ? 0: costo_envio)
+    monto_total_lineas - valor_descuento + (costo_envio.nil? ? 0: costo_envio)
   end
   
   def monto_total_lineas

@@ -15,6 +15,8 @@
 #  costo_envio        :float
 #  comentarios        :string(255)
 #  entregada          :boolean
+#  codigo_vale        :string(255)
+#  valor_descuento    :float
 #
 
 require 'test_helper'

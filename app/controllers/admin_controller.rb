@@ -16,6 +16,14 @@
   
   def venta_cancelada
     venta = Venta.find(params[:venta_id])
+
+		vale = Vale.find_by_codigo(venta.codigo_vale)
+		
+		if vale
+			vale.utilizado = false
+			vale.save
+		end
+
     venta.destroy
     
     redirect_to controller: :admin, action: :index

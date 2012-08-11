@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120811154207) do
+ActiveRecord::Schema.define(:version => 20120811165716) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20120811154207) do
     t.date     "fecha_entrega"
     t.time     "hora_desde_entrega"
     t.time     "hora_hasta_entrega"
+    t.integer  "vale_id"
   end
 
   create_table "cat_productos", :force => true do |t|
@@ -259,6 +260,8 @@ ActiveRecord::Schema.define(:version => 20120811154207) do
     t.float    "costo_envio"
     t.string   "comentarios"
     t.boolean  "entregada"
+    t.string   "codigo_vale"
+    t.float    "valor_descuento"
   end
 
   add_index "ventas", ["domicilio_id"], :name => "index_ventas_on_domicilio_id"
