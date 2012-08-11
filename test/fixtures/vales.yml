@@ -2,14 +2,14 @@
 #
 # Table name: vales
 #
-#  id          :integer         not null, primary key
-#  codigo      :string(255)
-#  nombre      :string(255)
-#  descripcion :string(255)
-#  valor       :float
-#  created_at  :datetime        not null
-#  updated_at  :datetime        not null
-#  usuario_id  :integer
+#  id                   :integer         not null, primary key
+#  codigo               :string(255)
+#  nombre               :string(255)
+#  created_at           :datetime        not null
+#  updated_at           :datetime        not null
+#  usuario_id           :integer
+#  porcentaje_descuento :float
+#  utilizado            :boolean
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120723001352) do
+ActiveRecord::Schema.define(:version => 20120811151506) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -183,13 +183,13 @@ ActiveRecord::Schema.define(:version => 20120723001352) do
     t.string   "codigo"
     t.string   "nombre"
     t.string   "descripcion"
-    t.string   "detalle"
+    t.text     "detalle",     :limit => 255
     t.float    "precio"
     t.string   "referencia"
     t.boolean  "disponible"
     t.boolean  "publicado"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.integer  "marca_id"
     t.string   "imagen"
     t.string   "talle"
@@ -227,11 +227,11 @@ ActiveRecord::Schema.define(:version => 20120723001352) do
   create_table "vales", :force => true do |t|
     t.string   "codigo"
     t.string   "nombre"
-    t.string   "descripcion"
-    t.float    "valor"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.integer  "usuario_id"
+    t.float    "porcentaje_descuento"
+    t.boolean  "utilizado"
   end
 
   create_table "venta_detalles", :force => true do |t|

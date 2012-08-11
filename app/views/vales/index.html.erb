@@ -1,4 +1,4 @@
-
+﻿
 	<legend>Listando vales</legend>
 
 	<table class="table table-bordered table-stripped">
@@ -6,8 +6,8 @@
 			<tr>
 				<th>C&oacute;digo</th>
 				<th>Nombre</th>
-				<th>Descripci&oacute;n</th>
-				<th>Valor</th>
+				<th>Porcentaje de descuento</th>
+				<th>¿Utilizado?</th>
 				<th colspan="3"></th>
 			</tr>
 		</thead>
@@ -16,8 +16,8 @@
   				<tr>
 				    <td><%= vale.codigo %></td>
 				    <td><%= vale.nombre %></td>
-				    <td><%= vale.descripcion %></td>
-				    <td><%= vale.valor %></td>
+				    <td><%= vale.porcentaje_descuento %></td>
+				    <td><%= vale.utilizado %></td>
 				    <td><%= link_to 'Ver', vale %></td>
 				    <td><%= link_to 'Editar', edit_vale_path(vale) %></td>
 				    <td><%= link_to 'Destruir', vale, confirm: '¿Estás seguro?', method: :delete %></td>

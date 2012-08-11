@@ -6,7 +6,7 @@
 #  codigo      :string(255)
 #  nombre      :string(255)
 #  descripcion :string(255)
-#  detalle     :string(255)
+#  detalle     :text(255)
 #  precio      :float
 #  referencia  :string(255)
 #  disponible  :boolean
