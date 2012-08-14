@@ -107,7 +107,7 @@
     precio = (params[:precio].nil? or params[:precio].empty?) ? producto.precio : params[:precio].to_f
     
     VentaDetalle.create(venta_id: @venta.id, producto_id: producto.id, precio: precio, cantidad: params[:cantidad])
-    
+
     redirect_to @venta
   end
   

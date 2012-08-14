@@ -66,7 +66,7 @@ class Venta < ActiveRecord::Base
   end
   
   def monto_total
-    monto_total_lineas - valor_descuento + (costo_envio.nil? ? 0: costo_envio)
+    monto_total_lineas - (valor_descuento.nil? ? 0 : valor_descuento) + (costo_envio.nil? ? 0: costo_envio)
   end
   
   def monto_total_lineas
