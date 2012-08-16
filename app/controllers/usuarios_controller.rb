@@ -2,7 +2,7 @@
   # GET /usuarios
   # GET /usuarios.json
   def index
-    @usuarios = Usuario.order(:apellido)
+    @usuarios = Usuario.order('created_at desc')
 
     respond_to do |format|
       format.html # index.html.erb

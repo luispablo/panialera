@@ -4,8 +4,8 @@
 	<table class="table table-bordered table-stripped">
 		<thead>
   			<tr>
-			    <th>Nombre</th>
-			    <th>Apellido</th>
+			    <th>Nombre y apellido</th>
+			    <th>Fecha de alta</th>
 			    <th>Sexo</th>
 			    <th>Tel&eacute;fono particular</th>
 			    <th>Tel&eacute;fono celular</th>
@@ -18,8 +18,8 @@
 		<tbody>
 			<% @usuarios.each do |usuario| %>
   				<tr>
-				    <td><%= usuario.nombre %></td>
-				    <td><%= usuario.apellido %></td>
+				    <td><%= usuario.nombre %> <%= usuario.apellido %></td>
+				    <td><%= usuario.created_at.strftime('%d/%m/%y') %></td>
 				    <td><%= usuario.sexo %></td>
 				    <td><%= usuario.tel_particular %></td>
 				    <td><%= usuario.tel_celular %></td>
@@ -32,9 +32,9 @@
   				</tr>
   				<% unless usuario.hijos.empty? %>
   					<tr>
-  						<td>&nbsp;</td>
+  						<td colspan="3">&nbsp;</td>
   						<td><strong>Hijos</strong></td>
-  						<td colspan="5">
+  						<td colspan="7">
   						
   							<table class="table table-condensed table-bordered">
   								<tbody>
@@ -50,7 +50,6 @@
 								</table>
   						
   						</td>
-  						<td colspan="4">&nbsp;</td>
   					</tr>
   				<% end %>
 			<% end %>
