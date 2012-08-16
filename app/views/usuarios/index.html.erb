@@ -30,6 +30,29 @@
 				    <td><%= link_to 'Editar', edit_usuario_path(usuario) %></td>
 				    <td><%= link_to 'Destruir', usuario, confirm: '¿Estás seguro?', method: :delete %></td>
   				</tr>
+  				<% unless usuario.hijos.empty? %>
+  					<tr>
+  						<td>&nbsp;</td>
+  						<td><strong>Hijos</strong></td>
+  						<td colspan="5">
+  						
+  							<table class="table table-condensed table-bordered">
+  								<tbody>
+										<% usuario.hijos.each do |h| %>
+											<tr>
+												<td><%= h.nombre %></td>
+												<td><%= h.sexo == 'F'? 'princesa': 'campeón' %></td>
+												<td><%= h.usa_paniales?? 'usa pañales': 'ya es grande' %></td>
+												<td><%= h.fecha_nacimiento.strftime('%d/%m/%Y') %></td>
+											</tr>
+										<% end %>
+									</tbody>
+								</table>
+  						
+  						</td>
+  						<td colspan="4">&nbsp;</td>
+  					</tr>
+  				<% end %>
 			<% end %>
 		</tbody>
 	</table>

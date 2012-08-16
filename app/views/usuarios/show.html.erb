@@ -34,6 +34,21 @@
   <b>Email:</b>
   <%= @usuario.email %>
 </p>
+<br/>
+
+<legend>Hijos</legend>
+<table class="table table-condensed table-bordered">
+	<tbody>
+		<% @usuario.hijos.each do |h| %>
+			<tr>
+				<td><%= h.nombre %></td>
+				<td><%= h.sexo == 'F'? 'princesa': 'campeón' %></td>
+				<td><%= h.usa_paniales?? 'usa pañales': 'ya es grande' %></td>
+				<td><%= h.fecha_nacimiento.strftime('%d/%m/%Y') %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
 
 
 <%= link_to 'Editar', edit_usuario_path(@usuario) %> |
