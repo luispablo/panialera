@@ -17,4 +17,6 @@ class Hijo < ActiveRecord::Base
   belongs_to :usuario
   
   validates :nombre, :apellido, :fecha_nacimiento, presence: { :message => ' es un campo requerido.' }
+  
 end
+

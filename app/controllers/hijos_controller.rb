@@ -2,7 +2,7 @@ class HijosController < AdminController
   # GET /hijos
   # GET /hijos.json
   def index
-    @hijos = Hijo.all
+    @hijos = Hijo.order(" usuario_id ")
 
     respond_to do |format|
       format.html # index.html.erb
