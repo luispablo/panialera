@@ -17,7 +17,7 @@
 				    <td><%= DIAS_SEMANA[entrega.wday].capitalize %></td>
 				    <td><%= entrega.desde.strftime('%H:%M') %></td>
 				    <td><%= entrega.hasta.strftime('%H:%M') %></td>
-				    <td><%= (entrega.disponible?? 'Si': 'No') %></td>
+				    <td><%= best_in_place entrega, :disponible, type: :checkbox, collection: ['<i class="icon-remove"></i>'.html_safe, '<i class="icon-ok"></i>'.html_safe]  %></td>
 				    <td><%= link_to 'Ver', entrega %></td>
 				    <td><%= link_to 'Editar', edit_entrega_path(entrega) %></td>
 				    <td><%= link_to 'Destruir', entrega, confirm: '¿Estás segura?', method: :delete %></td>

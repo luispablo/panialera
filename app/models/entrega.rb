@@ -61,7 +61,7 @@ class Entrega < ActiveRecord::Base
   
   def self.proximas_entregas(fecha)
     (fecha..fecha.next_day(6)).each do |f|
-      entregas = Entrega.where(wday: f.wday).each { |e| e.fecha = f }
+      entregas = Entrega.where(wday: f.wday, disponible: true).each { |e| e.fecha = f }
       no_cerradas = entregas.find_all { |e| not e.cerrada? }
       
       return no_cerradas unless no_cerradas.empty?
