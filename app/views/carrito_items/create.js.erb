@@ -15,3 +15,8 @@
 		$('#<%= @id_boton %>').attr('disabled', 'disabled');
 	<% end %>
 
+	<!-- Recargar la página si está en el resumen de la compra -->
+	<% unless @carrito.fecha_entrega.nil? %>
+		location.reload();
+	<% end %>
+

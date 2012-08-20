@@ -83,8 +83,6 @@
 			else
 				flash[:error] = 'El código ingresado no corresponde a un vale de descuento habilitado'
 			end
-		else
-			@carrito.vale = nil
 		end
 
     @carrito.domicilio_id = params[:domicilio_id]
