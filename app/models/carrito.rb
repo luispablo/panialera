@@ -20,6 +20,10 @@ class Carrito < ActiveRecord::Base
   belongs_to :domicilio
   belongs_to :vale
 
+	def vacio?
+		carrito_items.empty? or carrito_items.to_a.sum { |item| item.cantidad } == 0
+	end
+
 	def cantidad_agregada(algo)
 		carrito_items.find_all { |item| item.tiene_esto?(algo) }.sum { |item| item.cantidad }
 	end

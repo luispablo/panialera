@@ -132,7 +132,7 @@
   end
 
   def seleccionar_domicilio
-    if @carrito.carrito_items.empty?
+    if @carrito.vacio?
       redirect_to tienda_url, notice: 'El carrito está vacío'
       return
     end
