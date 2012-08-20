@@ -1,4 +1,4 @@
-# == Schema Information
+﻿# == Schema Information
 #
 # Table name: productos
 #
@@ -37,6 +37,7 @@ class Producto < ActiveRecord::Base
   mount_uploader :imagen, ImagenUploader
   
   validates :codigo, :nombre, :precio, :presence => { :message => "es un campo requerido." }
+  validates :codigo, uniqueness:  { message: 'El código que intentás utilizar ya está en uso.' }
   
   def pertenece_a?(categoria_id)
     unless categorias.nil? || categorias.empty?
