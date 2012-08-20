@@ -12,6 +12,12 @@ Panialera::Application.configure do
     enable_starttls_auto: true
   }
   
+	# For a full list of configurable options, see the gem's GitHub home page.
+	config.middleware.use ExceptionNotifier,
+  	:email_prefix => "[Pañalera Digital] ",
+	  :sender_address => %{ "Pañalera Digital" <panialeradigital@gmail.com> },
+  	:exception_recipients => %w{ luispablo.gallo@gmail.com }  
+  
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
