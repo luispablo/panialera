@@ -7,7 +7,11 @@
 			    <th>Fecha</th>
 			    <th>Usuario</th>
 			    <th>Domicilio</th>
-					<th>Importe</th>
+			    <th>Total l&iacute;neas</th>
+			    <th>Costo env&iacute;o</th>
+			    <th>Descuento ($)</th>
+					<th>Importe FINAL</th>
+					<th>Comentarios</th>
 			    <th></th>
 			</tr>
 		</thead>
@@ -17,10 +21,14 @@
 				    <td><%= venta.fecha.strftime('%d/%m/%Y') %></td>
 				    <td><%= "#{venta.usuario.nombre} #{venta.usuario.apellido}" unless venta.usuario.nil? %></td>
 				    <td><%= venta.domicilio.nombre unless venta.domicilio.nil? %></td>
+				    <td><%= number_to_currency(venta.monto_total_lineas) %></td>
+				    <td><%= best_in_place venta, :costo_envio, display_with: :number_to_currency %></td>
+				    <td><%= best_in_place venta, :valor_descuento, display_with: :number_to_currency %></td>
 				    <td><%= number_to_currency(venta.monto_total) %></td>
+				    <td><%= best_in_place venta, :comentarios, type: :textarea %>
 				    <td>
-				    	<%= link_to 'Detalle <i class="icon-edit icon-white"></i>'.html_safe, venta, class: 'btn btn-info' %>
-				    	<%= link_to 'Destruir <i class="icon-remove icon-white"></i>'.html_safe, venta, confirm: '¿Estás seguro?', method: :delete, class: 'btn btn-danger' %>
+				    	<%= link_to '<i class="icon-edit icon-white"></i>'.html_safe, venta, class: 'btn btn-info' %>
+				    	<%= link_to '<i class="icon-remove icon-white"></i>'.html_safe, venta, confirm: '¿Estás seguro?', method: :delete, class: 'btn btn-danger' %>
 			    	</td>
 				</tr>
 			<% end %>

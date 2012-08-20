@@ -26,16 +26,19 @@
 					<%= best_in_place @venta, :costo_envio, display_with: :number_to_currency %>
 				</p>
 				<p>
+					<b>Descuento ($):</b>
+					<%= best_in_place @venta, :valor_descuento, display_with: :number_to_currency %>
+				<p>
+					<b>Importe FINAL:</b>
+					<%= number_to_currency(@venta.monto_total) %>
+				</p>
+				<p>
 					<b>Confirmada:</b>
 					<%= best_in_place @venta, :confirmada, type: :checkbox, collection: ['<i class="icon-remove"></i>'.html_safe, '<i class="icon-ok"></i>'.html_safe] %>
 				</p>
 				<p>
 					<b>Entregada:</b>
 					<%= best_in_place @venta, :entregada, type: :checkbox, collection: ['<i class="icon-remove"></i>'.html_safe, '<i class="icon-ok"></i>'.html_safe] %>
-				</p>
-				<p>
-					<b>Monto total:</b>
-					<%= number_to_currency(@venta.monto_total) %>
 				</p>
 				<p>
 					<b>Comentarios:</b>
