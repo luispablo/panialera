@@ -121,8 +121,9 @@
 
 					<%= yield %>
 
-					<footer class="footer">
+					<footer class="footer" style="text-align: center;">
 						<p>&copy;2012 Pa&ntilde;alera Digital. Todos los derechos reservados. - Escribinos: <a href="mailto:panialeradigital@gmail.com" target="_blank">panialeradigital@gmail.com</a></p>
+						<p><a href="#" onclick="javascript: $('#dialog-modal').dialog('open');">T&eacute;rminos y condiciones</a></p>
 					</footer>
 				</div>
 				<!-- Columna derecha -->
@@ -147,7 +148,49 @@
 					
 			</div>
 		</div>
-		
+
+		<div id="dialog-modal" title="Términos y condiciones de la compra">
+			<p>
+				No se aceptan devoluciones de productos comprados a trav&eacute;s de 
+				<a href="http://www.pañaleradigital.com.ar">www.Pa&ntilde;aleraDigital.com.ar</a>
+				con la excepci&oacute;n de cualquier art&iacute;culo que llegue a tu 
+				casa da&ntilde;ado. En dicho caso se debe notificar inmediatamente a 
+				Servicio al Cliente y se realizar&aacute; una investigaci&oacute;n para 
+				cerciorar que el da&ntilde;o fue previo a la entrega.
+			</p>
+			<p>
+				La entrega a domicilio ser&aacute; en la franja horaria elegida por el cliente. 
+				Cada franja horaria se bloquear&aacute; autom&aacute;ticamente cuando 
+				supere nuestras posibilidades de cumplir con las entregas en tiempo y 
+				forma. Las entregas ser&aacute;n realizadas por el personal de 
+				Pa&ntilde;alera Digital. En caso de no poder cumplir con alg&uacute;n 
+				horario o existir alg&uacute;n problema con un producto, personal de 
+				Pa&ntilde;alera Digital se comunicar&aacute; con usted a los 
+				tel&eacute;fonos proporcionados en su registro.
+			</p>
+			<p>
+				El radio de entrega de Pa&ntilde;alera Digital queda limitado, 
+				moment&aacute;neamente, entre las avenidas: General Paz, Gaona y San 
+				Mart&iacute;n. 
+			</p>
+			<p>
+				El costo de este servicio es gratuito para compras iguales o mayores a 
+				<%= number_to_currency(@importe_minimo) %>. En otro caso, se 
+				deber&aacute; abonar el costo de env&iacute;o que es de 
+				<%= number_to_currency(@costo_envio) %>. Estos montos pueden sufrir 
+				cambios sin previo aviso.
+			</p>
+			<p>
+				Pa&ntilde;alera Digital toma medidas de seguridad para proteger su 
+				informaci&oacute;n. Toda informaci&oacute;n personal brindada, es 
+				absolutamente confidencial. 
+			</p>
+			<p>
+				Cualquier duda sobre su pedido, por favor comunicarse con Servicio al Cliente a 
+				<a href="mailto: pañaleradigital@gmail.com">pa&ntilde;aleradigital@gmail.com</a>.
+			</p>
+		</div>
+			
 		<script>
 			function block(mensaje)
 			{ 
@@ -166,6 +209,16 @@
         			} 
     			});
 			}
+	
+			$(function() {
+				$( "#dialog-modal" ).dialog({
+					width: 700,
+					height: 410,
+					autoOpen: false,
+					modal: true,
+					position: "top"
+				});
+			});
 		</script>
 
 	</body>

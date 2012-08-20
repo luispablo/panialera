@@ -67,9 +67,6 @@
   def resumen
     entrega = Entrega.find(params[:entrega_id])
 
-		@importe_minimo = Parametro.monto_minimo_sin_envio
-		@costo_envio = Parametro.precio_envio
-
 		unless params[:codigo_vale].nil?
 			vale = Vale.where("codigo = '#{params[:codigo_vale].strip}'").first
 			

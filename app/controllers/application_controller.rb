@@ -1,9 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :cargar_categorias, :cargar_usuario, :cargar_destacado
+  before_filter :cargar_categorias, :cargar_usuario, :cargar_destacado, :cargar_variables
     
 private
+	def cargar_variables
+		@importe_minimo = Parametro.monto_minimo_sin_envio
+		@costo_envio = Parametro.precio_envio	
+	end
+
   def cargar_destacado
     destacados = Producto.where(destacado: true)
     @destacado = destacados[rand(destacados.size - 1)]

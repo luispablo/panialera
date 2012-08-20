@@ -142,47 +142,6 @@
 				alert('Por favor aceptá los términos y condiciones.');
 			}
 		}
-	
-		$(function() {
-			$( "#dialog-modal" ).dialog({
-				width: 700,
-				height: 410,
-				autoOpen: false,
-				modal: true,
-				position: "top"
-			});
-		});
 	</script>
 	
-	<div id="dialog-modal" title="Términos y condiciones de la compra">
-		<p>
-No se aceptan devoluciones de productos comprados a través de <a href="http://www.pañaleradigital.com.ar">www.PañaleraDigital.com.ar</a>
-con la excepción de cualquier artículo que llegue a tu casa dañado. 
-En dicho caso se debe notificar inmediatamente a Servicio al Cliente y se realizará una
- investigación para cerciorar que el daño fue previo a la entrega.
-		</p>
-		<p>
-La entrega a domicilio será en la franja horaria elegida por el cliente. 
-Cada franja horaria se bloqueará automáticamente cuando supere nuestras posibilidades de cumplir 
-con las entregas en tiempo y forma. Las entregas serán realizadas por el personal de Pañalera Digital. 
-En caso de no poder cumplir con algún horario o existir algún problema con un producto, personal de 
-Pañalera Digital se comunicará con usted a los teléfonos proporcionados en su registro.
-		</p>
-		<p>
-El radio de entrega de Pañalera Digital queda limitado, momentáneamente, entre las avenidas: 
-General Paz, Gaona y San Martín. 
-		</p>
-		<p>
-El costo de este servicio es gratuito para compras iguales o mayores a <%= number_to_currency(@importe_minimo) %>. 
-En otro caso, se deberá abonar el costo de envío que es de <%= number_to_currency(@costo_envio) %>. 
-Estos montos pueden sufrir cambios sin previo aviso.
-		</p>
-		<p>
-Pañalera Digital toma medidas de seguridad para proteger su información. Toda información personal 
-brindada, es absolutamente confidencial. 
-		</p>
-		<p>
-Cualquier duda sobre su pedido, por favor comunicarse con Servicio al Cliente a 
-<a href="mailto: pañaleradigital@gmail.com">pañaleradigital@gmail.com</a>.
-		</p>
-	</div>
+
