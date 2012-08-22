@@ -44,7 +44,6 @@ class ValesController < AdminController
     @vale = Vale.new(params[:vale])
     
     @vale.nombre = @vale.codigo if @vale.nombre.nil? or @vale.nombre.empty?
-    @vale.utilizado = false
 
     respond_to do |format|
       if @vale.save

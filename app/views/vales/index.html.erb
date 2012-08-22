@@ -7,8 +7,10 @@
 
     		<%= f.label :codigo %>&nbsp;
     		<%= f.text_field :codigo, class: 'span2' %>
-    		<%= f.label :porcentaje_descuento %>
+    		<%= f.label :porcentaje_descuento, '% descuento' %>
 				<%= f.number_field :porcentaje_descuento, class: 'span1' %>
+				<%= f.label :cantidad_usos_disponibles, 'Usos' %>
+				<%= f.number_field :cantidad_usos_disponibles, class: 'span1' %>
     		<%= f.submit 'Agregar', class: 'btn' %>
 			<% end %>
 		</div>
@@ -20,7 +22,7 @@
 				<th>C&oacute;digo</th>
 				<th>Nombre</th>
 				<th>Porcentaje de descuento</th>
-				<th>¿Utilizado?</th>
+				<th>Cant. usos disponibles</th>
 				<th colspan="3"></th>
 			</tr>
 		</thead>

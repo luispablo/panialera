@@ -20,7 +20,7 @@
 		vale = Vale.find_by_codigo(venta.codigo_vale)
 		
 		if vale
-			vale.utilizado = false
+			vale.cancelar_uso
 			vale.save
 		end
 

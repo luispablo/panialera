@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120811165716) do
+ActiveRecord::Schema.define(:version => 20120822132728) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -228,10 +228,10 @@ ActiveRecord::Schema.define(:version => 20120811165716) do
   create_table "vales", :force => true do |t|
     t.string   "codigo"
     t.string   "nombre"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.float    "porcentaje_descuento"
-    t.boolean  "utilizado"
+    t.integer  "cantidad_usos_disponibles"
   end
 
   create_table "venta_detalles", :force => true do |t|

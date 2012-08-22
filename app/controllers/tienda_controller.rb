@@ -57,7 +57,7 @@
     end
     
     unless @carrito.vale.nil?
-		  @carrito.vale.utilizado = true
+		  @carrito.vale.utilizar
 		  @carrito.vale.save
 		end
     
@@ -71,7 +71,7 @@
 			vale = Vale.where("codigo = '#{params[:codigo_vale].strip}'").first
 			
 			if vale
-				unless vale.utilizado?
+				if vale.se_puede_usar?
 					@carrito.vale = vale
 					flash[:error] = nil
 				else

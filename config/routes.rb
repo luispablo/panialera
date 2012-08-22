@@ -183,7 +183,7 @@
   # Note: This route will make all actions in every controller accessible via GET requests.
 end
 #== Route Map
-# Generated on 11 Aug 2012 12:56
+# Generated on 22 Aug 2012 10:14
 #
 #                                    POST   /excepcion_entregas(.:format)                                    excepcion_entregas#create
 #              new_excepcion_entrega GET    /excepcion_entregas/new(.:format)                                excepcion_entregas#new
@@ -359,6 +359,7 @@ end
 # nueva_compra_seleccionar_domicilio GET    /nueva_compra/seleccionar_domicilio(.:format)                    tienda#seleccionar_domicilio
 #                                    GET    /nueva_compra/entrega/:domicilio_id(.:format)                    tienda#entrega
 #                                    GET    /nueva_compra/resumen/:domicilio_id/:entrega_id/:fecha(.:format) tienda#resumen
+#                                    POST   /nueva_compra/resumen/:domicilio_id/:entrega_id/:fecha(.:format) tienda#resumen
 #             nueva_compra_confirmar GET    /nueva_compra/confirmar(.:format)                                tienda#confirmar
 #                    nuevo_domicilio POST   /nuevo_domicilio(.:format)                                       tienda#nuevo_dom
 #                           busqueda POST   /busqueda(.:format)                                              tienda#busqueda

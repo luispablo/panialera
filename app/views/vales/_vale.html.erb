@@ -3,7 +3,7 @@
     <td><%= best_in_place vale, :codigo %></td>
     <td><%= best_in_place vale, :nombre %></td>
     <td><%= best_in_place vale, :porcentaje_descuento %></td>
-    <td><%= vale.utilizado %></td>
+    <td><%= best_in_place vale, :cantidad_usos_disponibles %></td>
     <td><%= link_to 'Ver', vale %></td>
     <td><%= link_to 'Editar', edit_vale_path(vale) %></td>
     <td><%= link_to 'Destruir', vale, confirm: '¿Estás seguro?', method: :delete %></td>
