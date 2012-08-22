@@ -29,7 +29,7 @@
   end
   
   def login_or_register
-    session[:url_original] = new_venta_path    
+   	session[:url_original] = nueva_compra_seleccionar_domicilio_url
   end
   
   def new
