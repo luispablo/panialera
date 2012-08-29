@@ -15,6 +15,8 @@ class ComprasController < AdminController
   def show
     @compra = Compra.find(params[:id])
     @productos = Producto.order(:codigo)
+    
+    @productos.sort! { |a,b| a.label_combos <=> b.label_combos }
 
     respond_to do |format|
       format.html # show.html.erb
