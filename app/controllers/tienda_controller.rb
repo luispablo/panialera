@@ -1,4 +1,5 @@
 ﻿class TiendaController < ApplicationController
+
   before_filter :cargar_carrito
 	before_filter :cargar_variables_orden, only: [:productos_categoria, :destacados, :ofertas]
 
@@ -65,6 +66,8 @@
   end
   
   def resumen
+  	@mostrar_carrito = false
+
     entrega = Entrega.find(params[:entrega_id])
 
 		unless params[:codigo_vale].nil?
@@ -91,6 +94,8 @@
   end
 
   def entrega
+  	@mostrar_carrito = false
+
     @domicilio = Domicilio.find(params[:domicilio_id])
     
     entregas_totales = Entrega.entregas_disponibles
@@ -129,6 +134,8 @@
   end
 
   def seleccionar_domicilio
+  	@mostrar_carrito = false
+  
     if @carrito.vacio?
       redirect_to tienda_url, notice: 'El carrito está vacío'
       return
@@ -186,10 +193,15 @@
   end
 
 private
+	def ocultar_carrito
+		@mostrar_carrito = false
+	end
+	
 	def cargar_variables_orden
     @opciones_orden = opciones_orden_categoria
     @orden = params[:orden] || 'nombre asc'
 	end
+	
   def opciones_orden_categoria
     [
       ['Más baratos primero', 'precio asc'],

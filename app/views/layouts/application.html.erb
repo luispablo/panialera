@@ -134,7 +134,7 @@
 					</div>					
 					
 					<!-- Sólo mostrar el carrito lateral cuando no se está editando el carrito -->
-					<% unless params[:controller] == 'carritos' or params[:controller] == 'ventas' %>
+					<% if @mostrar_carrito %>
 						<div class="well" id="carrito">
 							<%= render @carrito %>
 						</div>

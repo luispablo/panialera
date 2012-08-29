@@ -16,6 +16,7 @@ private
 
   def cargar_carrito
     @carrito = carrito_actual
+    @mostrar_carrito = true
   end
   
   def cargar_categorias
