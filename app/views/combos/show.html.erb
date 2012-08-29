@@ -39,6 +39,9 @@
 						<b>Stock:</b>
 						<%= best_in_place @combo, :stock %>
 					</p>
+					<p>
+						<%= link_to 'Link público', "#{tienda_url}detalle_oferta/#{@combo.id}" %>
+					</p>
 				</div>
 				<div class="span1">
 					<br/>
