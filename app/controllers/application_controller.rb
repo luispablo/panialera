@@ -10,8 +10,10 @@ private
 	end
 
   def cargar_destacado
-    destacados = Producto.where(destacado: true)
-    @destacado = destacados[rand(destacados.size - 1)]
+    destacados = Producto.destacados
+		destacados += Combo.destacados
+		
+    @destacado = destacados[rand(destacados.size)]
   end
 
   def cargar_carrito

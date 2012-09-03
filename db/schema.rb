@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120822132728) do
+ActiveRecord::Schema.define(:version => 20120903232428) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(:version => 20120822132728) do
     t.string   "nombre"
     t.boolean  "publicado"
     t.float    "stock"
-    t.boolean  "regalo"
+    t.boolean  "destacado"
   end
 
   create_table "compra_detalles", :force => true do |t|

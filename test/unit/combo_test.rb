@@ -11,7 +11,7 @@
 #  nombre     :string(255)
 #  publicado  :boolean
 #  stock      :float
-#  regalo     :boolean
+#  destacado  :boolean
 #
 
 require 'test_helper'

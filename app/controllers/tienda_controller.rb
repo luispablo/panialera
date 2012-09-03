@@ -11,6 +11,9 @@
   
 	def destacados
 		@destacados = Producto.destacados(@orden)
+		@destacados += Combo.destacados
+		
+		@destacados.sort { |a, b| a.comparar(b, @orden) }
 	end
 
   def ofertas

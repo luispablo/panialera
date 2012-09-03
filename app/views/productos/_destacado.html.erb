@@ -13,11 +13,20 @@
 			<br/>
 			<br/>
 		
-			<p><%= destacado.marca.nombre %>&nbsp;<%= destacado.nombre %></p>
+			<% if destacado.kind_of? Producto %>
+				<p><%= destacado.marca.nombre %>&nbsp;<%= destacado.nombre %></p>
+			<% else %>
+				<p><%= destacado.detalle %></p>
+			<% end %>
 			<p><%= number_to_currency(destacado.precio) %></p>
 	
-			<p><%= link_to 'Ver Detalles', controller: :tienda, action: :detalle_producto, codigo: destacado.codigo %></p>
-			<%= button_to texto_boton_carrito(destacado), carrito_items_path(producto_id: destacado), remote: true, class: 'btn btn-danger', disabled: !puede_comprar?(destacado), id: "boton_producto_#{destacado.id}" %>
+			<% if destacado.kind_of? Producto %>
+				<p><%= link_to 'Ver Detalles', controller: :tienda, action: :detalle_producto, codigo: destacado.codigo %></p>
+				<%= button_to texto_boton_carrito(destacado), carrito_items_path(producto_id: destacado), remote: true, class: 'btn btn-danger', disabled: !puede_comprar?(destacado), id: "boton_producto_#{destacado.id}" %>
+			<% else %>
+				<%= link_to 'Ver Detalles', controller: :tienda, action: :detalle_combo, combo_id: destacado.id %>
+				<%= button_to texto_boton_carrito(destacado), carrito_items_path(combo_id: destacado), disabled: !puede_comprar?(destacado), remote: true, class: 'btn btn-danger', id: "boton_combo_#{destacado.id}" %>				
+			<% end %>
 		<% end %>
 	</div>
 

@@ -11,13 +11,17 @@
 #  nombre     :string(255)
 #  publicado  :boolean
 #  stock      :float
-#  regalo     :boolean
+#  destacado  :boolean
 #
 
 class Combo < ActiveRecord::Base
   has_many :combo_detalles, dependent: :destroy
 
   mount_uploader :imagen, ImagenUploader
+    
+	def self.destacados
+		Combo.where(publicado: true, destacado: true)
+	end
     
   def self.disponibles
     Combo.where(publicado: true)
