@@ -33,7 +33,7 @@ class Categoria < ActiveRecord::Base
       productos += hija.todos_productos(orden)
     end
     
-    return productos.sort { |a, b| a.comparar(b, orden) }.find_all { |p| p.publicado }
+    return productos.sort { |a, b| a.comparar(b, orden) }.find_all { |p| p.publicado }.uniq
   end
   
   def seleccionada?(sel)
