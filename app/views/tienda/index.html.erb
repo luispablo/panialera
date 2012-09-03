@@ -1,5 +1,5 @@
 
-	<div id="promos" class="well shadow" style="height: 200px;">
+	<div id="promos" class="well shadow">
 		<div class="well titulo negro" style="text-align: center;">
 			<h3>C&Oacute;MO COMPRAR EN LA PA&Ntilde;ALERA DIGITAL:</h3>
 		</div>
@@ -14,6 +14,11 @@
 			</tr>
 		</table>
 		
+		<div id="delivery_gratis_home">
+			<strong>Delivery GRATIS</strong> con tu compra de 
+			<strong><%= number_to_currency(Parametro.monto_minimo_sin_envio) %></strong>
+			o m&aacute;s.
+		</div>	
 	</div>
 	
 	<div id="destacados" class="well shadow">

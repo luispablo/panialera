@@ -156,9 +156,11 @@ div.destacado
 	height: 275px;
 }
 
-div#promos
+div#delivery_gratis_home
 {
-	height: 180px;
+	margin-top: 20px;
+	text-align: center;
+	font-size: 14px;
 }
 div#destacados div#titulo
 {
