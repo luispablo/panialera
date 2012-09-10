@@ -19,7 +19,7 @@
 			<tbody>
 				<% @pedidos.each do |v| %>
 					<tr>
-						<td rowspan="2" width="13%"><%= v.fecha %></td>
+						<td rowspan="2" width="13%" rowspan><%= v.fecha.strftime('%d/%m/%Y') %></td>
 						<td width="30%"><%= v.hora_desde_entrega.strftime('%H:%M') %> - <%= v.hora_hasta_entrega.strftime('%H:%M') %> hs.</td>
 						<td><%= v.domicilio.descripcion unless v.domicilio.nil? %></td>
 						<td><%= link_to 'Detalle', "#{mi_cuenta_pedidos_url}/#{v.id}", remote: true, class: 'btn' %></td>
