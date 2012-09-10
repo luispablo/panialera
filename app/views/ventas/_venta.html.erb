@@ -31,11 +31,17 @@
 		<tfoot>
 			<tr>
 				<td colspan="6" align="right">Costo de env&iacute;o</td>
-				<td><%= number_to_currency(venta.costo_envio) %></td>
+				<td nowrap><%= number_to_currency(venta.costo_envio) %></td>
 			</tr>
+			<% unless venta.codigo_vale.nil? %>
+				<tr>
+					<td colspan="6"><strong>Vale de descuento <%= venta.codigo_vale %></strong></td>
+					<td nowrap>(<%= number_to_currency(venta.valor_descuento) %>)</td>
+				</tr>
+			<% end %>
 			<tr>
 				<td colspan="6" align="right"><strong>Importe total de la compra</strong></td>
-				<td><strong><%= number_to_currency(venta.monto_total)%></strong></td>
+				<td nowrap><strong><%= number_to_currency(venta.monto_total)%></strong></td>
 			</tr>
 		</tfoot>
 	</table>
