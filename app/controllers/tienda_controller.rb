@@ -22,6 +22,9 @@
 		@ofertas = (combos + productos).sort { |a, b| a.comparar(b, @orden) }
   end
 
+	def preguntas
+	end
+  
 	def servicios
 	end
 

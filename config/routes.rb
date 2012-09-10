@@ -88,13 +88,13 @@
     get 'productos_categoria/:codigo' => :productos_categoria
     post 'productos_categoria/:codigo' => :productos_categoria
     get 'detalle_producto/:codigo' => :detalle_producto
-		get 'detalle_oferta/:combo_id' => :detalle_combo
+	get 'detalle_oferta/:combo_id' => :detalle_combo
     get 'contacto' => :contacto
     post 'contacto' => :contacto
     get 'nueva_compra/seleccionar_domicilio' => :seleccionar_domicilio
     get 'nueva_compra/entrega/:domicilio_id' => :entrega
     get 'nueva_compra/resumen/:domicilio_id/:entrega_id/:fecha' => :resumen
-		post 'nueva_compra/resumen/:domicilio_id/:entrega_id/:fecha' => :resumen
+	post 'nueva_compra/resumen/:domicilio_id/:entrega_id/:fecha' => :resumen
     get 'nueva_compra/confirmar' => :confirmar
     post 'nuevo_domicilio' => :nuevo_dom
     post 'busqueda' => :busqueda
@@ -102,9 +102,10 @@
     get 'nosotros' => :nosotros
     get 'ofertas' => :ofertas
     post 'ofertas' => :ofertas
-		get 'destacados' => :destacados
-		post 'destacados' => :destacados
-		get 'servicios' => :servicios
+	get 'destacados' => :destacados
+	post 'destacados' => :destacados
+	get 'servicios' => :servicios
+	get 'preguntas' => :preguntas
   end
 
   controller :mi_cuenta do
@@ -123,7 +124,7 @@
     get 'mi_cuenta/domicilios' => :domicilios
     get 'mi_cuenta/domicilios/new' => :new_domicilio
     post 'mi_cuenta/domicilios' => :create_domicilio
-		delete 'mi_cuenta/domicilios/:dom_id' => :delete_domicilio
+	delete 'mi_cuenta/domicilios/:dom_id' => :delete_domicilio
     get 'mi_cuenta/domicilios/:dom_id' => :edit_domicilio
     put 'mi_cuenta/domicilios/:dom_id' => :update_domicilio
   end
@@ -183,7 +184,7 @@
   # Note: This route will make all actions in every controller accessible via GET requests.
 end
 #== Route Map
-# Generated on 22 Aug 2012 10:14
+# Generated on 10 Sep 2012 20:16
 #
 #                                    POST   /excepcion_entregas(.:format)                                    excepcion_entregas#create
 #              new_excepcion_entrega GET    /excepcion_entregas/new(.:format)                                excepcion_entregas#new
@@ -370,6 +371,7 @@ end
 #                         destacados GET    /destacados(.:format)                                            tienda#destacados
 #                                    POST   /destacados(.:format)                                            tienda#destacados
 #                          servicios GET    /servicios(.:format)                                             tienda#servicios
+#                          preguntas GET    /preguntas(.:format)                                             tienda#preguntas
 #         mi_cuenta_datos_personales GET    /mi_cuenta/datos_personales(.:format)                            mi_cuenta#datos_personales
 #                  mi_cuenta_pedidos GET    /mi_cuenta/pedidos(.:format)                                     mi_cuenta#pedidos
 #                                    GET    /mi_cuenta/pedidos/:venta_id(.:format)                           mi_cuenta#pedido

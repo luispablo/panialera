@@ -96,6 +96,7 @@
 								<li class="ofertas"><%= link_to '¡OFERTAS!', ofertas_url %></li>
 								<li><%= link_to 'Contacto', url_for(controller: :tienda, action: :contacto) %></li>
 								<li><%= link_to '¡Registrate!', url_for(controller: :sessions, action: :registro) unless usuario_logueado? %></li>
+								<li><%= link_to 'Preguntas Frecuentes', preguntas_url %></li>
 							</ul>
 							<ul class="nav pull-right">
 								<li class="divider-vertical"></li>
