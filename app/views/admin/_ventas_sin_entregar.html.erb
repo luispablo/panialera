@@ -25,7 +25,7 @@
 	<tbody>
 		<% ventas.each do |v| %>
 			<tr>
-				<td><%= v.usuario.nombre %>, <%= v.usuario.apellido %></td>
+				<td><%= v.usuario.nombre unless v.usuario.nil? %>, <%= v.usuario.apellido unless v.usuario.nil? %></td>
 				<td><%= v.domicilio.descripcion unless v.domicilio.nil? %></td>
 				<td nowrap><strong class="red"><%= number_to_currency(v.monto_total) %></td>
 				<td nowrap><strong><%= number_to_currency(v.costo_envio) %></strong></td>
