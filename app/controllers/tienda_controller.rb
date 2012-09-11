@@ -51,7 +51,7 @@
     
     @carrito.destroy
     
-    unless @venta.domicilio.valido_delivery.nil?
+    unless @venta.domicilio.nil? or @venta.domicilio.valido_delivery.nil?
       VentaNotifier.confirmada(@venta).deliver
     else
       VentaNotifier.pendiente_conf_domicilio(@venta).deliver
