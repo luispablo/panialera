@@ -116,10 +116,15 @@ ul#categorias li.active a:hover
 	background-color: #CCCCCC;
 }
 
+div.navbar-inner
+{
+	padding-left: 5px;
+}
 .navbar ul.nav li a
 {
 	font-size: 16px;
 	font-weight: bold;
+	padding-right: 4px;
 }
 
 div.page-header
