@@ -36,7 +36,7 @@
 	</div>
 
 	<div id="dialog" title="Imagen de <%= @producto.nombre %>" style="display: none;">
-		<%= image_tag @producto.imagen_url %>
+		<%= image_tag @producto.imagen_url if @producto.imagen? %>
 	</div>
 
 	<script>
