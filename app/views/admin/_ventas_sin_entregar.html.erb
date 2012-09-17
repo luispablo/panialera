@@ -30,7 +30,11 @@
 				<td nowrap><strong class="red"><%= number_to_currency(v.monto_total) %></td>
 				<td nowrap><strong><%= number_to_currency(v.costo_envio) %></strong></td>
 				<td><%= v.fecha_entrega %></td>
-				<td nowrap><%= v.hora_desde_entrega.strftime('%H:%M')%> - <%= v.hora_hasta_entrega.strftime('%H:%M') %></td>
+				<td nowrap>
+					<% unless v.hora_desde_entrega.nil? or v.hora_hasta_entrega.nil? %>
+						<%= v.hora_desde_entrega.strftime('%H:%M')%> - <%= v.hora_hasta_entrega.strftime('%H:%M') %>
+					<% end %>
+				</td>
 				<td nowrap>
 					<%= link_to '<i class="icon-ok icon-white"></i>'.html_safe, {controller: :admin, action: :venta_entregada, venta_id: v.id}, class: 'btn btn-success' %>
 					<%= link_to '<i class="icon-remove icon-white"></i>'.html_safe, {controller: :admin, action: :venta_cancelada, venta_id: v.id}, class: 'btn btn-danger' %>
