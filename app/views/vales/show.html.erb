@@ -15,11 +15,6 @@
   <%= @vale.porcentaje_descuento %>
 </p>
 
-<p>
-  <b>Utilizado:</b>
-  <%= @vale.utilizado ? "Si" : "No" %>
-</p>
-
 
 <%= link_to "<i class='icon-pencil icon-white'></i> Editar".html_safe, edit_vale_path(@vale), class: 'btn btn-primary' %>
 <%= link_to "<i class='icon-chevron-left icon-white'></i> Volver".html_safe, vales_path, class: 'btn btn-info' %>
