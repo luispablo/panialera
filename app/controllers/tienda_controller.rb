@@ -37,7 +37,10 @@
   end
 
   def busqueda
-    @productos = Producto.buscar(params[:texto])
+    productos = Producto.buscar(params[:texto])
+		combos = Combo.buscar(params[:texto])
+		
+		@items = combos + productos
   end
 
   def confirmar

@@ -19,6 +19,17 @@ class Combo < ActiveRecord::Base
 
   mount_uploader :imagen, ImagenUploader
     
+	def self.buscar(texto)
+		query = " combos.publicado = :publicado AND ( "
+		query += " combos.nombre like '%#{texto}%' OR "
+		query += " productos.nombre like '%#{texto}%' OR "
+		query += " productos.descripcion like '%#{texto}%' OR "
+		query += " productos.detalle like '%#{texto}%' OR "
+		query += " marcas.nombre like '%#{texto}%' ) "
+		
+		combos = Combo.joins(combo_detalles: {producto: :marca}).where(query, publicado: true)
+	end
+	
 	def self.destacados
 		Combo.where(publicado: true, destacado: true)
 	end
