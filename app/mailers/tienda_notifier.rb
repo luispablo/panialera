@@ -11,6 +11,6 @@
     @consulta = consulta
     @quiere_recibir = quiere_recibir
 
-    mail to: Parametro.email_admin, from: Parametro.remitente_mails, subject: 'Consulta', reply_to: email
+    mail to: Parametro.email_admin, from: email, subject: 'Consulta', reply_to: email
   end
 end
