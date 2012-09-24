@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120903232428) do
+ActiveRecord::Schema.define(:version => 20120924223918) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -223,6 +223,7 @@ ActiveRecord::Schema.define(:version => 20120903232428) do
     t.string   "tel_laboral"
     t.string   "password_digest"
     t.boolean  "administrador"
+    t.string   "comentarios"
   end
 
   create_table "vales", :force => true do |t|

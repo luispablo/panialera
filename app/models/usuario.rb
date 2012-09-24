@@ -14,6 +14,7 @@
 #  tel_laboral     :string(255)
 #  password_digest :string(255)
 #  administrador   :boolean
+#  comentarios     :string(255)
 #
 
 class Usuario < ActiveRecord::Base

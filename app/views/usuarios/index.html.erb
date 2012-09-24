@@ -18,7 +18,13 @@
 		<tbody>
 			<% @usuarios.each do |usuario| %>
   				<tr>
-				    <td><%= usuario.nombre %> <%= usuario.apellido %></td>
+				    <td>
+							<%= usuario.nombre %> <%= usuario.apellido %>
+							<% unless usuario.comentarios.nil? or usuario.comentarios.empty? %>
+								<br/>
+								(<strong><%= usuario.comentarios %></strong>)
+							<% end %>
+						</td>
 				    <td><%= usuario.created_at.strftime('%d/%m/%y') %></td>
 				    <td><%= usuario.sexo %></td>
 				    <td><%= usuario.tel_particular %></td>

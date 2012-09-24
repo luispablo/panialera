@@ -32,7 +32,11 @@
 				<div class="control-group">
 					<%= f.label :password_confirmation, 'Confirm', class: 'control-label' %>
 					<div class="controls"><%= f.password_field :password_confirmation, size: 40 %></div>
-				</div>		  		
+				</div>
+				<div class="control-group">
+					<%= f.label :comentarios, class: 'control-label' %>
+					<div class="controls"><%= f.text_area :comentarios, rows: 5 %></div>
+				</div>
 			</div>
 			<div class="span6">
 				<div class="control-group">
