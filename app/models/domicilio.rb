@@ -32,7 +32,7 @@ class Domicilio < ActiveRecord::Base
   end
   
   def descripcion
-    "#{calle} #{numero} #{piso} #{depto}"
+    "#{calle} #{numero} #{piso} #{depto} (#{self.barrio.nombre unless self.barrio.nil?})"
   end
   
 protected
