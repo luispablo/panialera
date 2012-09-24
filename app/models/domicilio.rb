@@ -62,6 +62,7 @@ protected
     else
       ventas.each do |v|
         VentaNotifier.confirmada(v).deliver
+				VentaNotifier.venta_confirmada(v).deliver
       end
     end
   end

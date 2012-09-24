@@ -56,6 +56,7 @@
     
     unless @venta.domicilio.nil? or @venta.domicilio.valido_delivery.nil?
       VentaNotifier.confirmada(@venta).deliver
+			VentaNotifier.venta_confirmada(@venta).deliver
     else
       VentaNotifier.pendiente_conf_domicilio(@venta).deliver
     end

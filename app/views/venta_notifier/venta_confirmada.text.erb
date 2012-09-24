@@ -1,0 +1,22 @@
+﻿¡Venta confirmada!
+
+Nombre: <%= @venta.usuario.nombre %>, <%= @venta.usuario.apellido %>.
+Dirección: <%= @venta.domicilio.descripcion %>.
+Teléfono particular: <%= @venta.usuario.tel_particular %>.
+Teléfono celular: <%= @venta.usuario.tel_celular %>.
+Fecha y hora de entrega: <%=l @venta.fecha_entrega, format: :short %> entre las <%=l @venta.hora_desde_entrega, format: :hora %> y las <%=l @venta.hora_hasta_entrega, format: :hora %>.
+
+----------------------------------------------------------------------------------------------------------------------
+<% @venta.venta_detalles.each do |d| %>
+	<% unless d.producto.nil? %>
+- <%= d.producto.marca.nombre %> <%= d.producto.nombre %>: <%= d.cantidad %> x <%= number_to_currency(d.producto.precio) %> = <%= number_to_currency(d.precio_total) %>
+	<% else %>
+- <%= d.combo.detalle %>: <%= d.cantidad %> x <%= number_to_currency(d.combo.precio) %> = <%= number_to_currency(d.precio_total) %>	
+	<% end %>
+<% end %>
+
+<%= "- Descuento vale #{@venta.codigo_vale} #{number_to_currency(@venta.valor_descuento * -1)}" if @venta.tiene_descuento? %>
+<%= "- Delivery #{number_to_currency(@venta.costo_envio)}" unless @venta.costo_envio.nil? if @venta.costo_envio > 0 %>
+
+Precio total: <%= number_to_currency(@venta.monto_total) %>
+----------------------------------------------------------------------------------------------------------------------
