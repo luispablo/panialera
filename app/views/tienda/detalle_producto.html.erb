@@ -5,7 +5,7 @@
 		</div>
 		<div class="row">
 			<div class="span2">
-				<a class="popup" href="#" <%= 'onclick="pop();"' if @producto.imagen? %>>
+				<a class="popup" href="#" <%= "onclick='pop();'" if @producto.imagen? %>>
 					<% if @producto.imagen? %>
 						<%= image_tag @producto.imagen_url(:thumb) %>
 					<% else %>
