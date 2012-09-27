@@ -1,4 +1,4 @@
-
+﻿
 	<% if @carrito_item.errors.any? %>
 		alert('<%= @carrito_item.errors.values.map {|m| t(m) }.join('. ') %>');
 	<% else %>
@@ -9,14 +9,11 @@
 		$('#total').css({'background-color':'#ED3968'}).animate({'background-color':'#9EAA4F'}, 3500);		
 	<% end %>
 
-	<!-- Apagar el botón si no queda stock -->
 	<% unless @carrito_item.se_pueden_agregar_mas? %>
 		$('#<%= @id_boton %>').val("Sin stock");
 		$('#<%= @id_boton %>').attr('disabled', 'disabled');
 	<% end %>
 
-	<!-- Recargar la página si está en el resumen de la compra -->
 	<% unless @carrito.fecha_entrega.nil? %>
 		location.reload();
 	<% end %>
-
