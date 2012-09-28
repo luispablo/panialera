@@ -7,8 +7,8 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<% @entregas.keys.each do |dia| %>
-							<th>Este <%= dia %> (<%= @entregas[dia].last.fecha.strftime('%d/%m') %>)</th>
+						<% @entregas.keys.each do |fecha| %>
+							<th><%= nombre_fecha_amigable(fecha) %></th>
 						<% end %>
 					</tr>
 				</thead>

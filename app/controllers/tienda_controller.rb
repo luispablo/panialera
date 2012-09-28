@@ -119,8 +119,8 @@
     
     unless entregas_disponibles.nil? or entregas_disponibles.empty?
       entregas_disponibles.each do |e|
-        @entregas[DIAS_SEMANA[e.wday]] = Array.new if @entregas[DIAS_SEMANA[e.wday]].nil?
-        @entregas[DIAS_SEMANA[e.wday]] << e
+        @entregas[e.fecha] = Array.new if @entregas[e.fecha].nil?
+				@entregas[e.fecha] << e
       end
     end
     

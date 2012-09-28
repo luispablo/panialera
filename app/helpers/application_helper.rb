@@ -1,4 +1,21 @@
-module ApplicationHelper
+﻿module ApplicationHelper
+
+	def nombre_fecha_amigable(fecha)
+		diferencia = fecha - Date.today
+		fecha_formateada = fecha.strftime('%d/%m')
+		
+		if diferencia == 0
+			"Hoy (#{fecha_formateada})"
+		elsif diferencia == 1
+			"Mañana (#{fecha_formateada})"
+		elsif diferencia == 2
+			"Pasado mañana (#{fecha_formateada})"
+		elsif diferencia > 2 and diferencia < 7
+			"El #{DIAS_SEMANA[fecha.wday]} que viene (#{fecha_formateada})"
+		else
+			"El #{DIAS_SEMANA[fecha.wday]} #{fecha_formateada}"
+		end
+	end
 
 	def boolean_listado(objeto, campo)
 		best_in_place objeto, campo, type: :checkbox, collection: ['<i class="icon-remove"></i>'.html_safe, '<i class="icon-ok"></i>'.html_safe]
