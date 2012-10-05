@@ -1,4 +1,4 @@
-# == Schema Information
+﻿# == Schema Information
 #
 # Table name: carritos
 #
@@ -36,12 +36,14 @@ class Carrito < ActiveRecord::Base
     end    
   end
 
+	# Indica si alguna de las líneas no aplican a los vales de descuento
+	def tiene_items_exentos_vale?
+		not carrito_items.find_all { |item| not item.aplica_vale? }.empty?
+	end
+	
+	# Esta es la papa, acá se calcula el descuento de los vales
 	def valor_descuento
-		if self.vale
-			precio_total_items * self.vale.porcentaje_descuento / 100
-		else
-			0
-		end
+		carrito_items.to_a.sum { |item| item.valor_descuento }
 	end
 
   def precio_total_items

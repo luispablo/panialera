@@ -21,6 +21,7 @@
 #  destacado   :boolean
 #  oferta      :boolean
 #  stock       :float
+#  aplica_vale :boolean
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

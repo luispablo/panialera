@@ -71,12 +71,18 @@
 				<% @carrito.carrito_items.each do |i| %>
 					<tr>
 						<% unless i.producto.nil? %>
-							<td><%= i.producto.marca.nombre %></td>
+							<td>
+								<%= i.aplica_vale? ? "": asterisco %>
+								<%= i.producto.marca.nombre %>
+							</td>
 							<td><%= i.producto.nombre %> <%= i.producto.descripcion %></td>
 							<td><%= i.producto.talle %></td>
 							<td><%= i.producto.referencia %></td>
 						<% else %>
-							<td colspan="4"><%= i.combo.detalle %></td>
+							<td colspan="4">
+								<%= i.aplica_vale? ? "": asterisco %>
+								<%= i.combo.detalle %>
+							</td>
 						<% end %>
 						<td><%= pretty_number(i.cantidad) %></td>
 						<td nowrap><%= number_to_currency(i.precio_unitario) %></td>
@@ -120,6 +126,9 @@
 		<% end %>
 	
 		<div class="row" style="text-align: center;">
+			<% unless @carrito.vale.nil? or not @carrito.tiene_items_exentos_vale? %>
+				<span class="red italic">* Estos items no aplican al descuento del vale ingresado</span><br/>
+			<% end %>
 			<%= link_to "Confirmar la compra", '#', onclick: 'javascript: terminar();', class: 'btn btn-success btn-large' %>
 		</div>
 	</div>

@@ -1,4 +1,4 @@
-
+﻿
 	<p id="notice"><%= notice %></p>
 
 	<div class="row">
@@ -26,6 +26,10 @@
 					<p>
 						<b>¿Destacado?</b>
 						<%= best_in_place @combo, :destacado, type: :checkbox, collection: ['<i class="icon-remove"></i>'.html_safe, '<i class="icon-ok"></i>'.html_safe] %>
+					</p>
+					<p>
+						<b>¿Aplican los vales?</b>
+						<%= best_in_place @combo, :aplica_vale, type: :checkbox, collection: ['<i class="icon-remove"></i>'.html_safe, '<i class="icon-ok"></i>'.html_safe] %>
 					</p>
 					<p>
 			  			<b>Precio:</b>

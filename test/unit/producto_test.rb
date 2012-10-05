@@ -21,6 +21,7 @@
 #  destacado   :boolean
 #  oferta      :boolean
 #  stock       :float
+#  aplica_vale :boolean
 #
 
 require 'test_helper'

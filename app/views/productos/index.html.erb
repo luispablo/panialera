@@ -33,7 +33,8 @@
 		<thead>
 	  		<tr>
 				<th rowspan="2" colspan="2"><%= sortable 'codigo', 'Código' %></th>
-	  			<th rowspan="2">Marca</th>	  			
+				<th rowspan="2" class="small"><%= vert("OFER") %></th>
+				<th rowspan="2">Marca</th>	  			
 				<th rowspan="2"><%= sortable 'nombre' %></th>
 				<th rowspan="2"><%= sortable 'descripcion', 'Descripción' %></th>
 				<th rowspan="2">Categor&iacute;as</th>
@@ -41,12 +42,12 @@
 				<th rowspan="2"><%= sortable 'precio' %></th>
 				<th rowspan="2">Talle</th>
 				<th rowspan="2"><%= sortable 'referencia', 'Ref.' %></th>
+				<th rowspan="2" class="small"><%= vert("PUBLI") %></th>
 				<th colspan="3">Stock</th>
-				<th rowspan="2">¿Oferta?</th>
-				<th rowspan="2">¿Publicado?</th>
-				<th rowspan="2">¿Destacado?</th>
+				<th rowspan="2" class="small"><%= vert("DESTA") %></th>
 				<th rowspan="2">Peso del beb&eacute;</th>
 				<th rowspan="2">Edad del beb&eacute;</th>
+				<th rowspan="2" class="small"><%= vert("DESCU") %></th>
 				<th rowspan="2"></th>
 	  		</tr>
 	  		<tr>
@@ -60,6 +61,7 @@
 	  			<tr class="<%= "oferta" if producto.oferta? %> <%= "no_publicado" unless producto.publicado? %> <%= "destacado" if producto.destacado? %>">
 	  				<td nowrap><%= image_tag producto.imagen_url(:thumb) if producto.imagen? %></td>
 					<td><%= producto.codigo %></td>
+  				<td><%= boolean_listado(producto, :oferta) %></td>					
 					<td><%= producto.marca.nombre unless producto.marca.nil? %></td>
 					<td><%= producto.nombre %></td>
 					<td><%= producto.descripcion %></td>
@@ -68,14 +70,14 @@
 					<td nowrap><%= best_in_place producto, :precio, display_with: :number_to_currency, html_attrs: {class: 'span1'} %></td>
 					<td><%= producto.talle %></td>
 					<td><%= producto.referencia %></td>
+  				<td><%= boolean_listado(producto, :publicado) %></td>
 					<td class="strong red"><%= pretty_number(producto.stock_real) %></td>
 					<td><%= pretty_number(producto.stock_comprometido) %></td>
 					<td><%= pretty_number(producto.stock_disponible) %></td>
-  				<td><%= boolean_listado(producto, :oferta) %></td>					
-  				<td><%= boolean_listado(producto, :publicado) %></td>
   				<td><%= boolean_listado(producto, :destacado) %></td>
 					<td><%= producto.peso_bebe %></td>
 					<td><%= producto.edad_bebe %></td>
+					<td><%= boolean_listado(producto, :aplica_vale) %></td>
 					<td nowrap>
 						<!-- %= link_to '<i class="icon-eye-open icon-white"></i>'.html_safe, producto, class: 'btn btn-info btn-mini' % -->
 						<%= link_to '<i class="icon-pencil icon-white"></i>'.html_safe, edit_producto_path(producto), class: 'btn btn-primary btn-mini' %>

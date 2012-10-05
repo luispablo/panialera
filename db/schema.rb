@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120924223918) do
+ActiveRecord::Schema.define(:version => 20121004233029) do
 
   create_table "barrios", :force => true do |t|
     t.string   "nombre"
@@ -77,13 +77,14 @@ ActiveRecord::Schema.define(:version => 20120924223918) do
   create_table "combos", :force => true do |t|
     t.string   "codigo"
     t.float    "precio"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "imagen"
     t.string   "nombre"
     t.boolean  "publicado"
     t.float    "stock"
     t.boolean  "destacado"
+    t.boolean  "aplica_vale", :default => true
   end
 
   create_table "compra_detalles", :force => true do |t|
@@ -189,8 +190,8 @@ ActiveRecord::Schema.define(:version => 20120924223918) do
     t.string   "referencia"
     t.boolean  "disponible"
     t.boolean  "publicado"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.integer  "marca_id"
     t.string   "imagen"
     t.string   "talle"
@@ -199,6 +200,7 @@ ActiveRecord::Schema.define(:version => 20120924223918) do
     t.boolean  "destacado"
     t.boolean  "oferta"
     t.float    "stock"
+    t.boolean  "aplica_vale",                :default => true
   end
 
   create_table "proveedores", :force => true do |t|

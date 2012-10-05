@@ -1,5 +1,9 @@
 ﻿module ApplicationHelper
 
+	def asterisco
+		"<span class='red bold big'>*</span>".html_safe
+	end
+
 	def nombre_fecha_amigable(fecha)
 		diferencia = fecha - Date.today
 		fecha_formateada = fecha.strftime('%d/%m')

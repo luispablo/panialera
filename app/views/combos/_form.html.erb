@@ -1,4 +1,4 @@
-
+﻿
 	<%= form_for(@combo, html: {class: 'form-horizontal'}) do |f| %>
 	  <% if @combo.errors.any? %>
 	    <div id="error_explanation">
@@ -35,6 +35,10 @@
   		<div class="control-group">
   			<%= f.label :destacado, class: 'control-label' %>
   			<div class="controls"><%= f.check_box :destacado %></div>
+		</div>
+  		<div class="control-group">
+  			<%= f.label :aplica_vale, '¿Aplican los vales?', class: 'control-label' %>
+  			<div class="controls"><%= f.check_box :aplica_vale %></div>
 		</div>
 		<div class="control-group">
 			<%= f.label :stock, class: 'control-label' %>

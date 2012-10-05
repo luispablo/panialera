@@ -73,9 +73,36 @@ class CarritoItem < ActiveRecord::Base
       combo.precio
     end
   end
-  
+
+	# Se fija si el producto o combo de esta línea aplica para
+	# vales de descuento
+	def aplica_vale?
+		unless self.producto.nil?
+			producto.aplica_vale
+		else
+			combo.aplica_vale
+		end
+	end
+	
+	# El precio total de la línea por el porcentaje de descuento
+	# del vale del carrito.
+	def valor_descuento
+		precio_total * porcentaje_descuento
+	end
+	
+	# Si el carrito tiene un vale, y el producto o combo aplica
+	# para vales, devuelve el porcentaje de descuento del vale
+	# del carrito, si no devuelve 0.
+	def porcentaje_descuento
+		if self.aplica_vale? and not self.carrito.vale.nil?
+			self.carrito.vale.porcentaje_descuento / 100
+		else
+			0
+		end
+	end
+	
   def precio_total
-    cantidad * (producto.nil? ? combo.precio : producto.precio)
+    cantidad * precio_unitario
   end
   
   def agregar(cantidad)

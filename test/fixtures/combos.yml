@@ -2,16 +2,17 @@
 #
 # Table name: combos
 #
-#  id         :integer         not null, primary key
-#  codigo     :string(255)
-#  precio     :float
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
-#  imagen     :string(255)
-#  nombre     :string(255)
-#  publicado  :boolean
-#  stock      :float
-#  destacado  :boolean
+#  id          :integer         not null, primary key
+#  codigo      :string(255)
+#  precio      :float
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
+#  imagen      :string(255)
+#  nombre      :string(255)
+#  publicado   :boolean
+#  stock       :float
+#  destacado   :boolean
+#  aplica_vale :boolean
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

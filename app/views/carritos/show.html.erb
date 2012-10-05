@@ -11,6 +11,9 @@
 			
 		<div class="row">
 			<div style="text-align: center;">
+				<% unless @carrito.vale.nil? or not @carrito.tiene_items_exentos_vale? %>
+					<span class="red italic">* Estos items no aplican al descuento del vale ingresado</span><br/>
+				<% end %>
 				<%= link_to raw('<i class="icon-shopping-cart icon-white"></i> Comprar '), nueva_compra_seleccionar_domicilio_path, class: 'btn btn-success btn-large' %>
 			</div>
 		</div>
