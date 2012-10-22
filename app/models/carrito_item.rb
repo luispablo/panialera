@@ -35,7 +35,7 @@ class CarritoItem < ActiveRecord::Base
   end
   
   def alcanza_stock?
-    cantidad <= stock_disponible
+    not cantidad.nil? and cantidad <= stock_disponible
   end
   
   def imagen_url(size)
