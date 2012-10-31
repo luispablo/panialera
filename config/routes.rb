@@ -96,6 +96,7 @@
     get 'nueva_compra/resumen/:domicilio_id/:entrega_id/:fecha' => :resumen
 	post 'nueva_compra/resumen/:domicilio_id/:entrega_id/:fecha' => :resumen
     get 'nueva_compra/confirmar' => :confirmar
+    post 'nueva_compra/confirmar' => :confirmar
     post 'nuevo_domicilio' => :nuevo_dom
     post 'busqueda' => :busqueda
     get 'alcance' => :alcance

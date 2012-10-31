@@ -108,6 +108,19 @@
 			</tfoot>
 		</table>
 		
+		<table class="table table-striped table-bordered">
+			<tbody>
+				<tr>
+					<td><strong>Comentarios</strong></td>
+					<td>
+						<%= form_tag(nueva_compra_confirmar_path, id: 'form_comentarios') do %>
+							<%= text_area_tag 'comentarios', nil, size: '180x3' %>
+						<% end %>		
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
 		<% unless @carrito.vale %>
 			<table class="table table-striped table-bordered">
 				<tbody>
@@ -144,7 +157,8 @@
 			if ($('#terminos').attr('checked'))
 			{
 				block("Aguardá un instante mientras procesamos tu compra...");
-				location.href = '<%= nueva_compra_confirmar_path %>';
+				
+				$('#form_comentarios').submit();
 			}
 			else
 			{

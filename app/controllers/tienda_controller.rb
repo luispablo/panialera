@@ -45,6 +45,7 @@
 
   def confirmar
     @venta = Venta.crear_desde_carrito(@carrito, @usuario)
+    @venta.comentarios = params[:comentarios]
     
     unless @venta.save
       flash[:error] = "No se puede completar la compra, ya que falta stock de algunos de los productos que elegiste."
