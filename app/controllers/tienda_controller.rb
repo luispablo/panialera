@@ -18,7 +18,7 @@
 
   def ofertas
 		combos = Combo.disponibles
-		productos = Producto.where(oferta: true)
+		productos = Producto.ofertas
 		@ofertas = (combos + productos).sort { |a, b| a.comparar(b, @orden) }
   end
 
@@ -185,7 +185,7 @@
   
   def index    
     combos = Combo.disponibles
-    productos = Producto.where(oferta: true)
+    productos = Producto.ofertas
     
     @ofertas = (combos + productos).first(3)
   end
