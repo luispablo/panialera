@@ -4,8 +4,10 @@
     @venta = venta
     @usuario = venta.usuario
     @domicilio = venta.domicilio
-    
-    mail to: venta.usuario.email, from: Parametro.remitente_mails, subject: 'Compra pendiente de confirmación'    
+
+		unless venta.usuario.nil?
+			mail to: venta.usuario.email, from: Parametro.remitente_mails, subject: 'Compra pendiente de confirmación'    
+		end
   end
   
   def confirmada(venta)
