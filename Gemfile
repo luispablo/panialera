@@ -4,7 +4,7 @@ gem 'rails', '3.2.1'
 
 gem 'execjs'
 gem 'rvm-capistrano'
-gem 'will_paginate', '~> 3.0.0'
+gem 'will_paginate', '~> 3.0.5'
 gem "mini_magick"
 gem "carrierwave"
 gem "best_in_place"
